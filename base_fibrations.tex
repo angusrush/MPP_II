@@ -1,0 +1,426 @@
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+
+\section{The non-monoidal construction}
+\label{sec:the_non_monoidal_construction}
+
+Let $\category{C}$ be a category admitting small colimits. We consider the pullback
+\begin{equation*}
+  \begin{tikzcd}
+    \LS(\category{C})
+    \arrow[r]
+    \arrow[d, swap, "r"]
+    & \Tw(\ICat)
+    \arrow[d]
+    \\
+    \ICat \times \{\category{C}\}
+    \arrow[r, hook]
+    & \ICat \times \ICat\op
+  \end{tikzcd}.
+\end{equation*}
+
+A general morphism in $\LS(\category{C})$ is of the form
+\begin{equation*}
+  \begin{tikzcd}
+    \category{D}
+    \arrow[r, "\alpha"]
+    \arrow[d, ""{name=L, right}, "F"{left}]
+    & \category{D}'
+    \arrow[d, ""{name=R, left}, "F'"{right}]
+    \\
+    \category{C}
+    & \category{C}
+    \arrow[l, equals]
+    \arrow[Rightarrow, from=L, to=R, shorten=1.5ex, "\eta"{description}]
+  \end{tikzcd}
+\end{equation*}
+This is $r$-cartesian if and only if $\eta$ is a natural isomorphism $F \Rightarrow F' \circ \alpha$; that is, if the above square (weakly) commutes. We will denote a weakly commuting square via
+\begin{equation*}
+  \begin{tikzcd}
+    \category{D}
+    \arrow[r, "\alpha"]
+    \arrow[d, ""{name=L, right}, "F"{left}]
+    & \category{D}'
+    \arrow[d, ""{name=R, left}, "F'"{right}]
+    \\
+    \category{C}
+    & \category{C}
+    \arrow[l, equals]
+    \arrow[Rightarrow, from=L, to=R, shorten=1.5ex, phantom, "\circlearrowleft"]
+  \end{tikzcd}
+\end{equation*}
+
+The functor $r\colon \LS(\category{C}) \to \ICat$ thus classifies the functor
+\begin{equation*}
+  \ICat\op \to \ICat;\qquad \category{D} \mapsto \Fun(\category{D}, \category{C}),
+\end{equation*}
+which sends a functor $f\colon \category{D} \to \category{D}'$ to the pullback
+\begin{equation*}
+  f^{*}\colon \Fun(\category{D}', \category{C}) \to \Fun(\category{D}, \category{C}).
+\end{equation*}
+Under the assumption that $\category{C}$ admits colimits, each of these functors admit a left adjoint $f_{!}$ given by left Kan extension. The map $r$ is thus a bicartesian fibration with cocartesian morphisms given by morphisms
+\begin{equation*}
+  \begin{tikzcd}
+    \category{D}
+    \arrow[r, "\alpha"]
+    \arrow[d, ""{name=L, right}, "F"{left}]
+    & \category{D}'
+    \arrow[d, ""{name=R, left}, "\Lan_{\alpha}F"{right}]
+    \\
+    \category{C}
+    & \category{C}
+    \arrow[l, equals]
+    \arrow[Rightarrow, from=L, to=R, shorten=1.5ex, "\eta"{description}]
+  \end{tikzcd}
+\end{equation*}
+
+We define a triple structure $\triple{Q}$ on $\LS(\category{C})$ as follows.
+\begin{itemize}
+  \item $\category{Q} = \LS(\category{C})$.
+
+  \item $\category{Q}\downdag = \LS(\category{C})$.
+
+  \item $\category{Q}\updag$ consists only of cartesian morphisms.
+\end{itemize}
+
+This corresponds to spans of the form
+\begin{equation*}
+  \begin{tikzcd}
+    \category{D}'
+    \arrow[d, ""{name=L, right}]
+    & \category{D}
+    \arrow[d, ""{name=ML, left}, ""{name=MR, right}]
+    \arrow[l, swap]
+    \arrow[r]
+    & \category{D}''
+    \arrow[d, ""{name=R, left}]
+    \\
+    \category{C}
+    \arrow[r, equals]
+    &\category{C}
+    & \category{C}
+    \arrow[l, equals]
+    \arrow[Rightarrow, from=MR, to=R, shorten=2ex]
+    \arrow[Rightarrow, from=ML, to=L, phantom, "\circlearrowleft"{description}]
+  \end{tikzcd}
+\end{equation*}
+
+\begin{proposition}
+  The triple $\triple{Q}$ is adequate.
+\end{proposition}
+
+To do this, we need to prove:
+\begin{lemma}
+  Let $\CC$ be an $\infty$-bicategory such that the underlying quasicategory $\category{C}$ has pullbacks and pushouts. Consider a square
+  \begin{equation*}
+    \begin{tikzcd}
+      C_{1}
+      \arrow[r]
+      \arrow[d, swap, "a"]
+      & C_{2}
+      \arrow[d, "b"]
+      \\
+      C_{3}
+      \arrow[r]
+      & C_{4}
+    \end{tikzcd}
+  \end{equation*}
+  in $\Tw(\CC)$ corresponding to a twisted cube
+  \begin{equation*}
+    \begin{tikzcd}
+      c_{1}
+      \arrow[rrr]
+      \arrow[dr, ""{name=TL, right}]
+      \arrow[ddd, ""{name=R1, right}]
+      &&& c_{2}
+      \arrow[ddd, ""{name=L2, left}, ""{name=R2, right}]
+      \arrow[dr, ""{name=TR, left}]
+      \arrow[from=R1, to=L2, Rightarrow, shorten=7ex]
+      \\
+      & c_{3}
+      \arrow[rrr, crossing over]
+      &&& c_{4}
+      \arrow[ddd, ""{name=L4, left}"]
+      \\
+      \\
+      d_{1}
+      &&& d_{2}
+      \arrow[lll]
+      \\
+      & d_{3}
+      \arrow[from=uuu, crossing over, ""{name=L3, left}, ""{name=R3, right}]
+      \arrow[ul]
+      &&& d_{4}
+      \arrow[lll]
+      \arrow[ul]
+      \arrow[from=R1, to=L3, Rightarrow, shorten=3ex, "\alpha"]
+      \arrow[from=R3, to=L4, Rightarrow, crossing over, shorten=7ex]
+      \arrow[from=R2, to=L4, Rightarrow, shorten=3ex, "\beta"]
+    \end{tikzcd}
+  \end{equation*}
+  in $\CC$, where the top face is pullback and the bottom face is pushout. Note that the top and bottom faces of any such diagram in $\Tw(\CC)$ belong to $\category{C}$, and hence must weakly commute, by definition of $\Tw(\CC)$.
+
+  Suppose $\alpha$ is an equivalence. Then 
+\end{lemma}
+
+\section{The base fibration}
+\label{sec:base_fibrations}
+
+The starting point of our construction is the functor
+\begin{equation*}
+  \begin{tikzcd}
+    \Finp
+    \arrow[r, "\ICat^{\times}"]
+    & \Cat_{(\infty, 2)}
+    \arrow[r, "\Tw"]
+    & \ICat
+  \end{tikzcd}
+\end{equation*}
+Note that this gives a monoidal category since $\Tw(\ICat^{n})\cong \Tw(\ICat)^{n}$.
+
+We're not gonna worry too much about where the functor $\Tw$ comes from, just keep notes about what properties we're using. The relative nerve of this functor is a Cartesian fibration $\Tw(\ICat)_{\otimes} \to \Finp\op$ with the following description: an $n$-simplex $\sigma$ corresponding to a diagram
+\begin{equation*}
+  \begin{tikzcd}
+    \Delta^{n}
+    \arrow[rr, "\sigma"]
+    \arrow[dr, swap, "\phi"]
+    && \LS(\ICat)_{\otimes}
+    \arrow[dl, "p'"]
+    \\
+    & \Finp\op
+  \end{tikzcd}
+\end{equation*}
+corresponds to the data of, for each subset $I \subseteq [n]$ having minimal element $i$, a map
+\begin{equation*}
+  \tau(I)\colon \Delta^{I} \to \Tw(\ICat)^{i}
+\end{equation*}
+such that For nonempty subsets $I' \subseteq I \subseteq [n]$, the diagram
+\begin{equation*}
+  \begin{tikzcd}
+    \Delta^{I'}
+    \arrow[r]
+    \arrow[d, hook]
+    & \Tw(\ICat)^{i'}
+    \arrow[d]
+    \\
+    \Delta^{I}
+    \arrow[r]
+    & \Tw(\ICat)^{i}
+  \end{tikzcd}
+\end{equation*}
+
+\begin{example}
+  An object of $\Tw(\ICat)_{\otimes}$ lying over $\langle n \rangle$ corresponds to a collection of functors $\category{C}_{i} \to \category{D}_{i}$, $i \in \langle n \rangle^{\circ}$. We will denote this $\vec{\category{C}} \to \vec{\category{D}}$.
+
+  A morphism in $\Tw(\ICat)_{\otimes}$ lying over the active map $\langle 1 \rangle \leftarrow \langle 2 \rangle$ in $\Finp\op$\footnote{Here we mean the morphism in $\Finp\op$ corresponding to the active map $\langle 2 \rangle \to \langle 1 \rangle$ in $\Finp$.} consists of
+  \begin{itemize}
+    \item A `source' object $F\colon \category{C} \to \category{C}'$
+
+    \item A pair of `target' objects $G_{i}\colon \category{D}_{i} \to \category{D}'_{i}$, $i = 1$, $2$.
+
+    \item A morphism
+      \begin{equation*}
+        \begin{tikzcd}
+          \category{C}
+          \arrow[r, "\alpha"]
+          \arrow[d, ""{name=L, right}, "F"{left}]
+          & \category{D}_{1} \times D_{2}
+          \arrow[d, ""{name=R, left}, "G_{1} \times G_{2}"{right}]
+          \\
+          \category{C}'
+          & \category{D}'_{1} \times \category{D}'_{2}
+          \arrow[l, "\beta"]
+          \arrow[Rightarrow, from=L, to=R, shorten=2ex, "\eta"{description}]
+        \end{tikzcd}
+      \end{equation*}
+      where here we mean $\eta\colon F \Rightarrow \beta \circ G_{1} \times G_{2} \circ \alpha$.
+  \end{itemize}
+\end{example}
+
+Note that $\Tw(\ICat)_{\otimes}$ admits a map to $\TICatCart \times (\TICatCocart)\op$, where
+\begin{itemize}
+  \item $\TICatCart$ is the relative nerve (as a cartesian fibration) of the functor $\Finp \to \ICat$ giving the cartesian monoidal structure on $\ICat$
+
+  \item $\TICatCocart$ is the \emph{cocartesian} relative nerve of the same.
+\end{itemize}
+
+Taking all this together gives a commuting triangle
+\begin{equation*}
+  \begin{tikzcd}
+    \Tw(\ICat)_{\otimes}
+    \arrow[rr]
+    \arrow[dr]
+    && \TICatCart \times (\TICatCocart)\op
+    \arrow[dl]
+    \\
+    & \Finp\op
+  \end{tikzcd}.
+\end{equation*}
+where
+\begin{proposition}
+  Everything in sight is a cartesian fibration.
+\end{proposition}
+
+\begin{proposition}
+  There is an equivalence $\ICatCart \simeq \TICatCart$ which is homotopic to the identity on $\ICat$.
+\end{proposition}
+
+\begin{proposition}
+  We can express a monoidal $\infty$-category as a functor $\Finp \to \TICatCocart$.
+\end{proposition}
+
+Fix some monoidal $\infty$-category $\category{C}$ which admits colimits, and such that the monoidal structure preserves colimits in each slot. We can thus define a functor
+\begin{equation*}
+  \ICatCart \to \TICatCart \times (\TICatCocart)\op
+\end{equation*}
+which is the equivalence on the first component, and given by the composition
+\begin{equation*}
+  \ICatCart \to \Finp\op \overset{\category{C}}{\to} (\TICatCocart)\op.
+\end{equation*}
+
+Forming the pullback
+\begin{equation*}
+  \begin{tikzcd}
+    \LS(\category{C})_{\otimes}
+    \arrow[r]
+    \arrow[d, swap, "r"]
+    & \Tw(\ICat)_{\otimes}
+    \arrow[d]
+    \\
+    \ICatCart
+    \arrow[r]
+    & \TICatCart \times (\TICatCocart)\op
+  \end{tikzcd}
+\end{equation*}
+gives us a commutative triangle
+\begin{equation*}
+  \begin{tikzcd}
+    \LS(\category{C})_{\otimes}
+    \arrow[rr, "r"]
+    \arrow[dr, swap, "q"]
+    && \ICatCart
+    \arrow[dl, "p"]
+    \\
+    & \Finp\op
+  \end{tikzcd}.
+\end{equation*}
+
+\begin{proposition}
+  The map $p$ is a cartesian fibration, and the $p$-cartesian morphisms in $\ICatCart$ are precisely those representing products.
+\end{proposition}
+
+\begin{proposition}
+  The maps $q$ and $r$ are cartesian fibrations, and a generic morphism
+  \begin{equation*}
+    \begin{tikzcd}
+      \vec{\category{D}}
+      \arrow[r, "\alpha"]
+      \arrow[d, ""{name=L, right}, "F"{left}]
+      & \vec{\category{D}}'
+      \arrow[d, ""{name=R, left}, "G_{1} \times G_{2}"{right}]
+      \\
+      \vec{\category{C}}
+      & \vec{\category{C}}
+      \arrow[l, "\otimes"]
+      \arrow[Rightarrow, from=L, to=R, shorten=1.5ex, "\eta"{description}]
+    \end{tikzcd}
+  \end{equation*}
+  in $\LS(\category{C})$ is
+  \begin{itemize}
+    \item $r$-cartesian if $\eta$ is an equivalence
+
+    \item $q$-cartesian if $\alpha$ exhibits a product and $\eta$ is an equivalence.
+  \end{itemize}
+\end{proposition}
+One sees immediately that $r$ sends $q$-cartesian morphisms to $p$-cartesian morphisms, and has the sanity check that for any morphism $f$ in $\LS(\category{C})_{\otimes}$ whose image in $\ICatCart$ is $p$-cartesian, $f$ is $q$-cartesian if and only if it is $r$-cartesian.
+
+\section{The triple structures}
+\label{sec:the_triple_structures}
+
+\subsection{The triple structure on finite pointed sets}
+\label{ssc:the_triple_structure_on_finite_pointed_sets}
+
+We're not gonna notationally distinguish between $\Finp$ and $N\Finp$. Who has time for that these days?
+
+We define a triple structure $\triple{F}$ on $\Finp\op$, where
+\begin{itemize}
+  \item $\category{F} = \Finp\op$
+
+  \item $\category{F}\downdag = (\Finp\op)^{\simeq}$
+
+  \item $\category{F}\updag = \Finp\op$
+\end{itemize}
+
+\begin{proposition}
+  This is an adequate triple structure.
+\end{proposition}
+
+\begin{proposition}
+  There is a Joyal equivalence $\Finp \to \Span\triple{F}$.
+\end{proposition}
+
+\subsection{The triple structure on infinity-categories}
+\label{ssc:the_triple_structure_on_categories}
+
+We define a triple $\triple{P}$ as follows.
+\begin{itemize}
+  \item $\category{P} = \ICatCart$
+
+  \item $\category{P}\downdag = \ICatCart \times_{\Finp\op}(\Finp\op)^{\simeq}$
+
+  \item $\category{P}\updag = \ICatCart$
+\end{itemize}
+
+\begin{proposition}
+  The cartesian fibration $\ICatCart \to \Finp\op$ admits relative pullbacks.
+\end{proposition}
+
+\begin{proposition}
+  This is an adequate triple structure.
+\end{proposition}
+
+\subsection{The triple structure on the twisted arrow category}
+\label{ssc:the_triple_structure_on_the_twisted_arrow_category}
+
+We define a triple $\triple{Q}$ as follows:
+\begin{itemize}
+  \item $\category{Q} = \LS(\category{C})_{\otimes}$
+
+  \item $\category{Q}\downdag = \LS(\category{C})_{\otimes} \times_{\Finp\op}(\Finp\op)^{\simeq}$
+
+  \item $\category{Q}\updag$ consists of the subcategory of $\LS(\category{C})_{\otimes}$ of $r$-cartesian morphisms.
+\end{itemize}
+
+These triple constructions correspond to spans of the following form.
+\begin{equation*}
+  \begin{tikzcd}
+    \vec{\category{D}}
+    \arrow[d, ""{name=L, right}]
+    & \vec{\category{D}}'
+    \arrow[d, ""{name=ML, left}, ""{name=MR, right}]
+    \arrow[r]
+    \arrow[l]
+    & \vec{\category{D}}''
+    \arrow[d, ""{name=R, right}]
+    \\
+    \category{C}^{n}
+    \arrow[d, no head, dotted, bend left]
+    \arrow[r]
+    & \category{C}^{m}
+    \arrow[d, no head, dotted, bend left]
+    & \category{C}^{m}
+    \arrow[l, swap, "\simeq"]
+    \arrow[d, no head, dotted, bend left]
+    \\
+    \langle n \rangle
+    & \langle m \rangle
+    \arrow[l]
+    \arrow[r, "\simeq"]
+    & \langle m \rangle
+    \arrow[from=ML, to=L, phantom, shorten=1.5ex, "\circlearrowleft"{description}]
+    \arrow[from=MR, to=R, Rightarrow, shorten=2ex]
+  \end{tikzcd}
+\end{equation*}
+
+\end{document}

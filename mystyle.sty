@@ -1,0 +1,207 @@
+\ProvidesPackage{mystyle}
+
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+
+%\usepackage[margin=1.2in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%\usepackage{fancyhdr}
+\usepackage{amstext}
+\usepackage{array}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{mathrsfs}
+\usepackage{soul}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{biblatex}
+\usepackage[makeroom]{cancel}
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+\usepackage{anyfontsize}
+\usepackage{interval}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{eucal}
+\usepackage{setspace}
+\usepackage{mathdots}
+\usepackage{epigraph}
+\usepackage[bbgreekl]{mathbbol}
+\usepackage{mathtools}
+\usepackage{rotating}
+\usepackage{caption}
+
+\usetikzlibrary{decorations.markings}
+
+% Increase line spacing
+%\setstretch{1.1}
+\renewcommand{\baselinestretch}{1.1} 
+
+% Set up hyperref colors
+\hypersetup{colorlinks,
+  linkcolor={blue!50!black},
+  citecolor={blue!50!black},
+  urlcolor={blue!80!black}
+}
+
+% chktex-file 18
+% chktex-file 23
+% chktex-file 6
+
+% Set up interval package
+\intervalconfig{soft open fences}
+
+% load tikz-cd
+\usetikzlibrary{cd}
+
+% Makes indentation more note-ish
+\setlength{\parindent}{0em}
+\setlength{\parskip}{.5em}
+\setlength{\headheight}{14.0pt}
+
+% Make mathbbl and mathbb coexist
+\DeclareSymbolFontAlphabet{\mathbbm}{bbold}
+\DeclareSymbolFontAlphabet{\mathbb}{AMSb}
+
+%%% My commands
+% Fonts
+\newcommand{\category}[1]{\mathcal{#1}}
+\newcommand{\bicat}[1]{\mathbbm{#1}}
+\newcommand{\catname}[1]{\mathbf{#1}}
+\newcommand{\marked}[1]{\mathbf{#1}}
+% General
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\triple}[1]{(\category{#1}, \category{#1}_{\dagger}, \category{#1}^{\dagger})}
+\newcommand{\CC}{\mathbbm{C}}
+\newcommand{\DD}{\mathbbm{D}}
+% Typesetting
+\newcommand{\defn}[1]{\emph{\textbf{#1}}}
+\newcommand{\abs}[1]{{| #1 |}}
+\newcommand{\tallabs}[1]{\left| #1 \right|}
+% Category theory
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\const}{\mathrm{const}}
+\newcommand{\Sing}{\mathbf{Sing}}
+\newcommand{\op}{^{\mathrm{op}}}
+\newcommand{\otm}{^{\otimes}}
+\newcommand{\rel}[1]{\quad(\mathrm{rel.\ }#1)}
+\newcommand{\W}{\mathsf{W}}
+\newcommand{\ob}{\mathrm{ob}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Mul}{\mathrm{Mul}}
+\newcommand{\im}{\mathrm{im}}
+\newcommand{\coker}{\mathrm{coker}}
+\DeclareMathOperator*{\colim}{colim}
+\newcommand{\Fun}{\mathrm{Fun}}
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\Map}{\mathrm{Map}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Lan}{\mathrm{Lan}}
+\newcommand{\Ran}{\mathrm{Ran}}
+\newcommand{\aCart}{\mathrm{aCart}}
+\newcommand{\N}{\mathrm{N}}
+\newcommand{\C}{\mathfrak{C}}
+\newcommand{\Nsc}{\mathrm{N}_{\mathrm{sc}}}
+\newcommand{\Csc}{\mathfrak{C}^{\mathrm{sc}}}
+\newcommand{\Mapsc}{\Map^{\mathrm{sc}}}
+% Model categories
+\newcommand{\fib}{\mathsf{Fib}}
+\newcommand{\cof}{\mathsf{Cof}}
+\newcommand{\llp}{{}_{\perp}}
+\newcommand{\rlp}{_{\perp}}
+% Category names
+\newcommand{\D}{\Delta}
+\newcommand{\Sig}{\Sigma}
+\newcommand{\Lam}{\Lambda}
+\newcommand{\CGHaus}{\catname{CGHaus}}
+\newcommand{\Set}{\mathcal{S}\mathrm{et}}
+\newcommand{\pSet}{\Set_{*}}
+%\renewcommand{\Top}{\catname{Top}}
+\newcommand{\Ab}{\catname{Ab}}
+\newcommand{\Vect}{\catname{Vect}}
+\newcommand{\Ch}{\catname{Ch}}
+\newcommand{\Rep}{\catname{Rep}}
+\newcommand{\h}{\mathrm{h}}
+\newcommand{\Rmod}{R\text{-}\catname{Mod}}
+\newcommand{\modR}{\catname{Mod}\text{-}R}
+\newcommand{\Pair}{\catname{Pair}}
+\newcommand{\Mod}{\catname{Mod}}
+\newcommand{\SSet}{\Set_{\D}}
+\newcommand{\SSSet}{\Set_{\D^{2}}}
+\newcommand{\SSetmk}{\Set_{\D}^{+}}
+\newcommand{\SSetsc}{\Set_{\D}^{\mathrm{sc}}}
+\newcommand{\Kan}{\catname{Kan}}
+\renewcommand{\Top}{\catname{Top}}
+\newcommand{\Cat}{\mathcal{C}\mathrm{at}}
+\newcommand{\SCat}{\Cat_{\D}}
+\newcommand{\SCatmk}{\Cat_{\D}^{+}}
+\newcommand{\ICat}{\Cat_{\infty}}
+\newcommand{\ICatCart}{\Cat_{\infty,\times}}
+\newcommand{\ICatCocart}{\Cat_{\infty}^{\times}}
+\newcommand{\TICatCart}{\widetilde{\Cat}_{\infty,\times}}
+\newcommand{\TICatCocart}{\widetilde{\Cat}_{\infty}^{\times}}
+\newcommand{\ITCat}{\Cat_{(\infty,2)}}
+\newcommand{\Tw}{\mathbf{Tw}}
+\newcommand{\TTw}{\widetilde{\mathbf{Tw}}}
+\newcommand{\LS}{\catname{LS}}
+\newcommand{\pt}{\mathrm{pt}}
+\newcommand{\Seg}{\catname{Seg}}
+\newcommand{\CSS}{\catname{CSS}}
+\newcommand{\Corr}{\catname{Corr}}
+\newcommand{\Span}{\mathrm{Span}}
+\newcommand{\SPAN}{\catname{Span}}
+\newcommand{\Bord}{\catname{Bord}}
+\newcommand{\LocSys}{\catname{LocSys}}
+\newcommand{\CAlg}{\catname{CAlg}}
+\newcommand{\Cell}{\catname{Cell}}
+\newcommand{\mhyp}{\text{-}}
+\newcommand{\simto}{\overset{\simeq}{\to}}
+\newcommand{\PD}{\mathsf{PD}}
+\newcommand{\Dint}{\D_{\mathrm{int}}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\CSPAN}{\overline{\catname{SPAN}}}
+\newcommand{\Finp}{\mathcal{F}\mathrm{in}_{*}}
+\newcommand{\OS}{\mathcal{O}_{\S}}
+\newcommand{\ev}{\mathrm{ev}}
+\newcommand{\RFib}{\catname{RFib}}
+\newcommand{\LFib}{\catname{LFib}}
+\newcommand{\shp}{^{\sharp}}
+\newcommand{\nat}{^{\natural}}
+\newcommand{\pr}{\mathrm{pr}}
+\newcommand{\flt}{^{\flat}}
+\newcommand{\ing}{\rightarrowtail}
+\newcommand{\eg}{\twoheadrightarrow}
+\newcommand{\updag}{^{\dagger}}
+\newcommand{\downdag}{_{\dagger}}
+\newcommand{\cone}{^{\vartriangleleft}}
+
+% Dirty typesetting hacks
+\newcommand{\lmarkedparen}{\mathrlap{(}\text{\textbf{-}}}
+\newcommand{\rmarkedparen}{\mathrlap{)}\text{\textbf{-}}}
+\newcommand{\sdots}{\mathrlap{{}\ddots{}} {}\iddots{}}
+\newcommand{\respace}[1]{\phantom{00}\smash{\kern-1em#1}}
+
+
+% Second level of list uses empty bullets
+\renewcommand{\labelitemii}{$\circ$}
+
+% Declare theorem styles
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{remark}
+\newtheorem{note}[theorem]{Note}
+\newtheorem{notation}[theorem]{Notation}
