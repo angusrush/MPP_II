@@ -1,0 +1,35 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/angus/latex/monoidal_twisted_arrow/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20210110.0/
+A new Barwick's theorem	background.tex	/^\\section{A new Barwick's theorem}$/;"	s
+Background	background.tex	/^\\section{Background}$/;"	s
+Enhanced twisted arrow categories	background.tex	/^\\subsection{Enhanced twisted arrow categories}$/;"	u	section:Background
+Scaled simplicial sets	background.tex	/^\\subsection{Scaled simplicial sets}$/;"	u	section:Background
+The base fibration	base_fibrations.tex	/^\\section{The base fibration}$/;"	s
+The non-monoidal construction	non_monoidal.tex	/^\\section{The non-monoidal construction}$/;"	s
+The triple structure on finite pointed sets	base_fibrations.tex	/^\\subsection{The triple structure on finite pointed sets}$/;"	u	section:The triple structures
+The triple structure on infinity-categories	base_fibrations.tex	/^\\subsection{The triple structure on infinity-categories}$/;"	u	section:The triple structures
+The triple structure on the twisted arrow category	base_fibrations.tex	/^\\subsection{The triple structure on the twisted arrow category}$/;"	u	section:The triple structures
+The triple structures	base_fibrations.tex	/^\\section{The triple structures}$/;"	s
+Tilting at cosimplicial objects	don_quixote.tex	/^\\section{Tilting at cosimplicial objects}$/;"	s
+def:scaled_simplicial_set	background.tex	/^  \\label{def:scaled_simplicial_set}$/;"	l
+prop:q_triple_is_adequate	non_monoidal.tex	/^  \\label{prop:q_triple_is_adequate}$/;"	l
+sec:a_new_barwick_s_theorem	background.tex	/^\\label{sec:a_new_barwick_s_theorem}$/;"	l
+sec:background	background.tex	/^\\label{sec:background}$/;"	l
+sec:base_fibrations	base_fibrations.tex	/^\\label{sec:base_fibrations}$/;"	l
+sec:the_non_monoidal_construction	non_monoidal.tex	/^\\label{sec:the_non_monoidal_construction}$/;"	l
+sec:the_triple_structures	base_fibrations.tex	/^\\label{sec:the_triple_structures}$/;"	l
+sec:tilting_at_cosimplicial_objects	don_quixote.tex	/^\\label{sec:tilting_at_cosimplicial_objects}$/;"	l
+ssc:enhanced_twisted_arrow_categories	background.tex	/^\\label{ssc:enhanced_twisted_arrow_categories}$/;"	l
+ssc:scal	background.tex	/^\\label{ssc:scal}$/;"	l
+ssc:the_triple_structure_on_categories	base_fibrations.tex	/^\\label{ssc:the_triple_structure_on_categories}$/;"	l
+ssc:the_triple_structure_on_finite_pointed_sets	base_fibrations.tex	/^\\label{ssc:the_triple_structure_on_finite_pointed_sets}$/;"	l
+ssc:the_triple_structure_on_the_twisted_arrow_category	base_fibrations.tex	/^\\label{ssc:the_triple_structure_on_the_twisted_arrow_category}$/;"	l

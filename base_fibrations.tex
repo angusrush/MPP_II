@@ -2,168 +2,6 @@
 
 \begin{document}
 
-\section{The non-monoidal construction}
-\label{sec:the_non_monoidal_construction}
-
-Let $\category{C}$ be a category admitting small colimits. We consider the pullback
-\begin{equation*}
-  \begin{tikzcd}
-    \LS(\category{C})
-    \arrow[r]
-    \arrow[d, swap, "r"]
-    & \Tw(\ICat)
-    \arrow[d]
-    \\
-    \ICat \times \{\category{C}\}
-    \arrow[r, hook]
-    & \ICat \times \ICat\op
-  \end{tikzcd}.
-\end{equation*}
-
-A general morphism in $\LS(\category{C})$ is of the form
-\begin{equation*}
-  \begin{tikzcd}
-    \category{D}
-    \arrow[r, "\alpha"]
-    \arrow[d, ""{name=L, right}, "F"{left}]
-    & \category{D}'
-    \arrow[d, ""{name=R, left}, "F'"{right}]
-    \\
-    \category{C}
-    & \category{C}
-    \arrow[l, equals]
-    \arrow[Rightarrow, from=L, to=R, shorten=1.5ex, "\eta"{description}]
-  \end{tikzcd}
-\end{equation*}
-This is $r$-cartesian if and only if $\eta$ is a natural isomorphism $F \Rightarrow F' \circ \alpha$; that is, if the above square (weakly) commutes. We will denote a weakly commuting square via
-\begin{equation*}
-  \begin{tikzcd}
-    \category{D}
-    \arrow[r, "\alpha"]
-    \arrow[d, ""{name=L, right}, "F"{left}]
-    & \category{D}'
-    \arrow[d, ""{name=R, left}, "F'"{right}]
-    \\
-    \category{C}
-    & \category{C}
-    \arrow[l, equals]
-    \arrow[Rightarrow, from=L, to=R, shorten=1.5ex, phantom, "\circlearrowleft"]
-  \end{tikzcd}
-\end{equation*}
-
-The functor $r\colon \LS(\category{C}) \to \ICat$ thus classifies the functor
-\begin{equation*}
-  \ICat\op \to \ICat;\qquad \category{D} \mapsto \Fun(\category{D}, \category{C}),
-\end{equation*}
-which sends a functor $f\colon \category{D} \to \category{D}'$ to the pullback
-\begin{equation*}
-  f^{*}\colon \Fun(\category{D}', \category{C}) \to \Fun(\category{D}, \category{C}).
-\end{equation*}
-Under the assumption that $\category{C}$ admits colimits, each of these functors admit a left adjoint $f_{!}$ given by left Kan extension. The map $r$ is thus a bicartesian fibration with cocartesian morphisms given by morphisms
-\begin{equation*}
-  \begin{tikzcd}
-    \category{D}
-    \arrow[r, "\alpha"]
-    \arrow[d, ""{name=L, right}, "F"{left}]
-    & \category{D}'
-    \arrow[d, ""{name=R, left}, "\Lan_{\alpha}F"{right}]
-    \\
-    \category{C}
-    & \category{C}
-    \arrow[l, equals]
-    \arrow[Rightarrow, from=L, to=R, shorten=1.5ex, "\eta"{description}]
-  \end{tikzcd}
-\end{equation*}
-
-We define a triple structure $\triple{Q}$ on $\LS(\category{C})$ as follows.
-\begin{itemize}
-  \item $\category{Q} = \LS(\category{C})$.
-
-  \item $\category{Q}\downdag = \LS(\category{C})$.
-
-  \item $\category{Q}\updag$ consists only of cartesian morphisms.
-\end{itemize}
-
-This corresponds to spans of the form
-\begin{equation*}
-  \begin{tikzcd}
-    \category{D}'
-    \arrow[d, ""{name=L, right}]
-    & \category{D}
-    \arrow[d, ""{name=ML, left}, ""{name=MR, right}]
-    \arrow[l, swap]
-    \arrow[r]
-    & \category{D}''
-    \arrow[d, ""{name=R, left}]
-    \\
-    \category{C}
-    \arrow[r, equals]
-    &\category{C}
-    & \category{C}
-    \arrow[l, equals]
-    \arrow[Rightarrow, from=MR, to=R, shorten=2ex]
-    \arrow[Rightarrow, from=ML, to=L, phantom, "\circlearrowleft"{description}]
-  \end{tikzcd}
-\end{equation*}
-
-\begin{proposition}
-  The triple $\triple{Q}$ is adequate.
-\end{proposition}
-
-To do this, we need to prove:
-\begin{lemma}
-  Let $\CC$ be an $\infty$-bicategory such that the underlying quasicategory $\category{C}$ has pullbacks and pushouts. Consider a square
-  \begin{equation*}
-    \begin{tikzcd}
-      C_{1}
-      \arrow[r]
-      \arrow[d, swap, "a"]
-      & C_{2}
-      \arrow[d, "b"]
-      \\
-      C_{3}
-      \arrow[r]
-      & C_{4}
-    \end{tikzcd}
-  \end{equation*}
-  in $\Tw(\CC)$ corresponding to a twisted cube
-  \begin{equation*}
-    \begin{tikzcd}
-      c_{1}
-      \arrow[rrr]
-      \arrow[dr, ""{name=TL, right}]
-      \arrow[ddd, ""{name=R1, right}]
-      &&& c_{2}
-      \arrow[ddd, ""{name=L2, left}, ""{name=R2, right}]
-      \arrow[dr, ""{name=TR, left}]
-      \arrow[from=R1, to=L2, Rightarrow, shorten=7ex]
-      \\
-      & c_{3}
-      \arrow[rrr, crossing over]
-      &&& c_{4}
-      \arrow[ddd, ""{name=L4, left}"]
-      \\
-      \\
-      d_{1}
-      &&& d_{2}
-      \arrow[lll]
-      \\
-      & d_{3}
-      \arrow[from=uuu, crossing over, ""{name=L3, left}, ""{name=R3, right}]
-      \arrow[ul]
-      &&& d_{4}
-      \arrow[lll]
-      \arrow[ul]
-      \arrow[from=R1, to=L3, Rightarrow, shorten=3ex, "\alpha"]
-      \arrow[from=R3, to=L4, Rightarrow, crossing over, shorten=7ex]
-      \arrow[from=R2, to=L4, Rightarrow, shorten=3ex, "\beta"]
-    \end{tikzcd}
-  \end{equation*}
-  in $\CC$, where the top face is pullback and the bottom face is pushout. Note that the top and bottom faces of any such diagram in $\Tw(\CC)$ belong to $\category{C}$, and hence must weakly commute, by definition of $\Tw(\CC)$.
-
-  Suppose $\alpha$ is an equivalence. Then 
-\end{lemma}
-
 \section{The base fibration}
 \label{sec:base_fibrations}
 
@@ -185,7 +23,7 @@ We're not gonna worry too much about where the functor $\Tw$ comes from, just ke
     \Delta^{n}
     \arrow[rr, "\sigma"]
     \arrow[dr, swap, "\phi"]
-    && \LS(\ICat)_{\otimes}
+    && \Tw(\ICat)_{\otimes}
     \arrow[dl, "p'"]
     \\
     & \Finp\op
@@ -213,7 +51,7 @@ such that For nonempty subsets $I' \subseteq I \subseteq [n]$, the diagram
 \begin{example}
   An object of $\Tw(\ICat)_{\otimes}$ lying over $\langle n \rangle$ corresponds to a collection of functors $\category{C}_{i} \to \category{D}_{i}$, $i \in \langle n \rangle^{\circ}$. We will denote this $\vec{\category{C}} \to \vec{\category{D}}$.
 
-  A morphism in $\Tw(\ICat)_{\otimes}$ lying over the active map $\langle 1 \rangle \leftarrow \langle 2 \rangle$ in $\Finp\op$\footnote{Here we mean the morphism in $\Finp\op$ corresponding to the active map $\langle 2 \rangle \to \langle 1 \rangle$ in $\Finp$.} consists of
+  A morphism in $\Tw(\ICat)_{\otimes}$ lying over the active map $\langle 1 \rangle \leftarrow \langle 2 \rangle$ in $\Finp\op$ consists\footnote{Here we mean the morphism in $\Finp\op$ corresponding to the active map $\langle 2 \rangle \to \langle 1 \rangle$ in $\Finp$.} of
   \begin{itemize}
     \item A `source' object $F\colon \category{C} \to \category{C}'$
 
@@ -234,7 +72,7 @@ such that For nonempty subsets $I' \subseteq I \subseteq [n]$, the diagram
           \arrow[Rightarrow, from=L, to=R, shorten=2ex, "\eta"{description}]
         \end{tikzcd}
       \end{equation*}
-      where here we mean $\eta\colon F \Rightarrow \beta \circ G_{1} \times G_{2} \circ \alpha$.
+      where here we mean $\eta\colon F \Rightarrow \beta \circ (G_{1} \times G_{2}) \circ \alpha$.
   \end{itemize}
 \end{example}
 
@@ -261,6 +99,9 @@ where
 \begin{proposition}
   Everything in sight is a cartesian fibration.
 \end{proposition}
+\begin{proof}
+  The left-hand map is a cartesian fibration by construction, as is the right-hand map. The 
+\end{proof}
 
 \begin{proposition}
   There is an equivalence $\ICatCart \simeq \TICatCart$ which is homotopic to the identity on $\ICat$.
@@ -318,7 +159,7 @@ gives us a commutative triangle
       \arrow[r, "\alpha"]
       \arrow[d, ""{name=L, right}, "F"{left}]
       & \vec{\category{D}}'
-      \arrow[d, ""{name=R, left}, "G_{1} \times G_{2}"{right}]
+      \arrow[d, ""{name=R, left}, "G"{right}]
       \\
       \vec{\category{C}}
       & \vec{\category{C}}
@@ -355,6 +196,9 @@ We define a triple structure $\triple{F}$ on $\Finp\op$, where
 \begin{proposition}
   This is an adequate triple structure.
 \end{proposition}
+\begin{proof}
+  Trivial.
+\end{proof}
 
 \begin{proposition}
   There is a Joyal equivalence $\Finp \to \Span\triple{F}$.
@@ -413,14 +257,46 @@ These triple constructions correspond to spans of the following form.
     \arrow[l, swap, "\simeq"]
     \arrow[d, no head, dotted, bend left]
     \\
-    \langle n \rangle
-    & \langle m \rangle
+    \vec{\category{D}}
+    \arrow[d, no head, dotted, bend left]
+    & \vec{\category{D}}'
+    \arrow[d, no head, dotted, bend left]
+    \arrow[r]
     \arrow[l]
-    \arrow[r, "\simeq"]
+    & \vec{\category{D}}''
+    \arrow[d, no head, dotted, bend left]
+    \\
+    \langle n \rangle
+    \arrow[r]
     & \langle m \rangle
+    & \langle m \rangle
+    \arrow[l, swap, "\cong"]
     \arrow[from=ML, to=L, phantom, shorten=1.5ex, "\circlearrowleft"{description}]
     \arrow[from=MR, to=R, Rightarrow, shorten=2ex]
   \end{tikzcd}
 \end{equation*}
 
+According to the modified Barwick's theorem, such a span will correspond to a cocartesian morphism in $\Span\triple{P}$ if it is of the form
+
+\begin{equation*}
+  \begin{tikzcd}
+    \vec{\category{D}}
+    \arrow[d, "\mathcal{F}"{left}, ""{name=L, right}]
+    & \vec{\category{D}}'
+    \arrow[d, "g^{*}\mathcal{F}t"{description}, ""{name=ML, left}, ""{name=MR, right}]
+    \arrow[r, "f"]
+    \arrow[l, swap, "g"]
+    & \vec{\category{D}}''
+    \arrow[d, ""{name=R, right}, "f_{!}(t \circ g^{*}\mathcal{F}t)"]
+    \\
+    \category{C}^{n}
+    \arrow[r]
+    & \category{C}^{m}
+    & \category{C}^{m}
+    \arrow[l, swap, "\cong"]
+    \arrow[from=ML, to=L, phantom, shorten=1.5ex, "\circlearrowleft"{description}]
+    \arrow[from=MR, to=R, Rightarrow, shorten=2ex]
+  \end{tikzcd}.
+\end{equation*}
+In particular, in the fiber over $\langle 1 \rangle \in \Finp\op$, this is simply pull-push.
 \end{document}

@@ -1,0 +1,300 @@
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+
+\section{The non-monoidal construction}
+\label{sec:the_non_monoidal_construction}
+
+Let $\category{C}$ be a category admitting small colimits. We consider the pullback
+\begin{equation*}
+  \begin{tikzcd}
+    \LS(\category{C})
+    \arrow[r]
+    \arrow[d, swap, "r"]
+    & \Tw(\ICat)
+    \arrow[d]
+    \\
+    \ICat \times \{\category{C}\}
+    \arrow[r, hook]
+    & \S \times \ICat\op
+  \end{tikzcd}.
+\end{equation*}
+
+A general morphism in $\LS(\category{C})$ is of the form
+\begin{equation*}
+  \begin{tikzcd}
+    X
+    \arrow[r, "\alpha"]
+    \arrow[d, ""{name=L, right}, "F"{left}]
+    & Y
+    \arrow[d, ""{name=R, left}, "F'"{right}]
+    \\
+    \category{C}
+    & \category{C}
+    \arrow[l, equals]
+    \arrow[Rightarrow, from=L, to=R, shorten=1.5ex, "\eta"{description}]
+  \end{tikzcd}
+\end{equation*}
+This is $r$-cartesian if and only if $\eta$ is a natural isomorphism $F \Rightarrow F' \circ \alpha$; that is, if the above square (weakly) commutes. We will use the symbol $\circlearrowleft$ denote a weakly commuting square:
+\begin{equation*}
+  \begin{tikzcd}
+    X
+    \arrow[r, "\alpha"]
+    \arrow[d, ""{name=L, right}, "F"{left}]
+    & Y
+    \arrow[d, ""{name=R, left}, "F'"{right}]
+    \\
+    \category{C}
+    & \category{C}
+    \arrow[l, equals]
+    \arrow[Rightarrow, from=L, to=R, shorten=1.5ex, phantom, "\circlearrowleft"]
+  \end{tikzcd}.
+\end{equation*}
+
+The functor $r\colon \LS(\category{C}) \to \ICat$ thus classifies the functor
+\begin{equation*}
+  \ICat\op \to \ICat;\qquad \category{D} \mapsto \Fun(\category{D}, \category{C}),
+\end{equation*}
+which sends a functor $f\colon \category{D} \to \category{D}'$ to the pullback
+\begin{equation*}
+  f^{*}\colon \Fun(\category{D}', \category{C}) \to \Fun(\category{D}, \category{C}).
+\end{equation*}
+Under the assumption that $\category{C}$ admits colimits, each of these functors admit a left adjoint $f_{!}$ given by left Kan extension. The map $r$ is thus a bicartesian fibration with cocartesian morphisms given by morphisms
+\begin{equation*}
+  \begin{tikzcd}
+    \category{D}
+    \arrow[r, "\alpha"]
+    \arrow[d, ""{name=L, right}, "F"{left}]
+    & \category{D}'
+    \arrow[d, ""{name=R, left}, "\Lan_{\alpha}F"{right}]
+    \\
+    \category{C}
+    & \category{C}
+    \arrow[l, equals]
+    \arrow[Rightarrow, from=L, to=R, shorten=1.5ex, "\eta"{description}]
+  \end{tikzcd}
+\end{equation*}
+
+We define a triple structure $\triple{Q}$ on $\LS(\category{C})$ as follows.
+\begin{itemize}
+  \item $\category{Q} = \LS(\category{C})$.
+
+  \item $\category{Q}\downdag = \LS(\category{C})$.
+
+  \item $\category{Q}\updag$ consists only of cartesian morphisms.
+\end{itemize}
+
+This corresponds to spans of the form
+\begin{equation*}
+  \begin{tikzcd}
+    \category{D}'
+    \arrow[d, ""{name=L, right}]
+    & \category{D}
+    \arrow[d, ""{name=ML, left}, ""{name=MR, right}]
+    \arrow[l, swap]
+    \arrow[r]
+    & \category{D}''
+    \arrow[d, ""{name=R, left}]
+    \\
+    \category{C}
+    \arrow[r, equals]
+    &\category{C}
+    & \category{C}
+    \arrow[l, equals]
+    \arrow[Rightarrow, from=MR, to=R, shorten=2ex]
+    \arrow[Rightarrow, from=ML, to=L, phantom, "\circlearrowleft"{description}]
+  \end{tikzcd}
+\end{equation*}
+
+Such a span will correspond to a cocartesian morphism if it is of the form
+\begin{equation*}
+  \begin{tikzcd}
+    \category{D}'
+    \arrow[d, "\mathcal{F}"{left}, ""{name=L, right}]
+    & \category{D}
+    \arrow[d, "g^{*}\mathcal{F}"{description}, ""{name=ML, left}, ""{name=MR, right}]
+    \arrow[l, swap, "g"]
+    \arrow[r, "f"]
+    & \category{D}''
+    \arrow[d, ""{name=R, left}, "f_{!}g^{*}\mathcal{F}"{right}]
+    \\
+    \category{C}
+    \arrow[r, equals]
+    &\category{C}
+    & \category{C}
+    \arrow[l, equals]
+    \arrow[Rightarrow, from=MR, to=R, shorten=2ex]
+    \arrow[Rightarrow, from=ML, to=L, phantom, "\circlearrowleft"{description}]
+  \end{tikzcd}
+\end{equation*}
+
+\begin{proposition}
+  \label{prop:q_triple_is_adequate}
+  The triple $\triple{Q}$ is adequate.
+\end{proposition}
+
+To do this, we need to prove:
+\begin{lemma}
+  Let $\CC$ be an $\infty$-bicategory such that the underlying quasicategory $\category{C}$ has pullbacks and pushouts. Consider a square
+  \begin{equation*}
+    \sigma =
+    \begin{tikzcd}
+      A
+      \arrow[r]
+      \arrow[d, swap, "a"]
+      & B
+      \arrow[d, "b"]
+      \\
+      B'
+      \arrow[r]
+      & C
+    \end{tikzcd}
+  \end{equation*}
+  in $\Tw(\CC)$ corresponding to a twisted cube
+  \begin{equation*}
+    \begin{tikzcd}
+      a
+      \arrow[rrr]
+      \arrow[dr, ""{name=TL, right}]
+      \arrow[ddd, ""{name=R1, right}]
+      &&& b
+      \arrow[ddd, ""{name=L2, left}, ""{name=R2, right}]
+      \arrow[dr, ""{name=TR, left}]
+      \arrow[from=R1, to=L2, Rightarrow, shorten=7ex]
+      \\
+      & b'
+      \arrow[rrr, crossing over]
+      &&& c
+      \arrow[ddd, ""{name=L4, left}"]
+      \\
+      \\
+      \bar{a}
+      &&& \bar{b}
+      \arrow[lll]
+      \\
+      & \bar{b}'
+      \arrow[from=uuu, crossing over, ""{name=L3, left}, ""{name=R3, right}]
+      \arrow[ul]
+      &&& \bar{c}
+      \arrow[lll]
+      \arrow[ul]
+      \arrow[from=R1, to=L3, Rightarrow, shorten=3ex, "\alpha"]
+      \arrow[from=R3, to=L4, Rightarrow, crossing over, shorten=7ex]
+      \arrow[from=R2, to=L4, Rightarrow, shorten=3ex, "\beta"]
+    \end{tikzcd}
+  \end{equation*}
+  in $\CC$.\footnote{Note that the top and bottom faces of any such diagram in $\Tw(\CC)$ belong to $\category{C}$, and hence must weakly commute by definition.} Suppose $\beta$ is an equivalence, the top face is a pullback, and the bottom face is a pushout. Then the square $\sigma$ is pullback if and only if $\alpha$ is an equivalence.
+\end{lemma}
+\begin{proof}
+  Sorry for the writing, I'm really tired. This corresponds to a square $\sigma$ in $\Tw(\CC)$ lying over a pullback square in $\category{C} \times \category{C}\op$, such that $b$ is $p$-cartesian. It is then classically known that $\sigma$ is pullback if and only if $a$ is $p$-cartesian.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref*{prop:q_triple_is_adequate}]
+  This is literally the lemma right above us.
+\end{proof}
+
+Well, it's nice to see that this stuff works as intended. We know that the triple $\triple{P}$ of unconstrained spans of spaces works as intended, so let's just move on.
+
+\begin{proposition}
+  The map $p\colon \triple{P} \to \triple{Q}$ of triples whose underlying map is $p\colon \LS(\category{C}) \to \S$ is adequate, i.e.\ satisfies the conditions of our modified version of Barwick's theorem.
+\end{proposition}
+\begin{proof}
+  We need to show that for any square
+  \begin{equation*}
+    \sigma =\quad
+    \begin{tikzcd}
+      x'
+      \arrow[r, "f'"]
+      \arrow[d, swap, "g'"]
+      & y'
+      \arrow[d, "g"]
+      \\
+      x
+      \arrow[r, "f"]
+      & y
+    \end{tikzcd}
+  \end{equation*}
+  in $\LS(\category{C})$ lying over a pullback square
+  \begin{equation*}
+    \begin{tikzcd}
+      X'
+      \arrow[r, "f'"]
+      \arrow[d, swap, "g'"]
+      & Y'
+      \arrow[d, "g"]
+      \\
+      X
+      \arrow[r, "f"]
+      & Y
+    \end{tikzcd}
+  \end{equation*}
+  in $\S$ (corresponding to a \emph{homotopy} pullback of Kan complexes), such that $g$ and $g'$ are $p$-cartesian and $f$ is $p$-cocartesian, $f'$ is $p$-cocartesian. The square $\sigma$ corresponds to a twisted cube
+  \begin{equation*}
+    \begin{tikzcd}
+      X'
+      \arrow[rrr, "f'"]
+      \arrow[dr, ""{name=TL, below}, "g'"{swap}]
+      \arrow[ddd, ""{name=R1, below}]
+      &&& Y'
+      \arrow[ddd, ""{name=L2, below}, ""{name=R2, above}]
+      \arrow[dr, ""{name=TR, below}, "g"]
+      \arrow[from=R1, to=L2, Rightarrow, shorten=6ex]
+      \\
+      & X
+      \arrow[rrr, crossing over, "f"]
+      &&& Y
+      \arrow[ddd, ""{name=L4, below}"]
+      \\
+      \\
+      \category{C}
+      &&& \category{C}
+      \arrow[lll, equals]
+      \\
+      & \category{C}
+      \arrow[from=uuu, crossing over, ""{name=L3, below}, ""{name=R3, above}]
+      \arrow[ul, equals]
+      &&& \category{C}
+      \arrow[lll, equals]
+      \arrow[ul, equals]
+      \arrow[from=R1, to=L3, phantom, "\circlearrowleft"{description}]
+      \arrow[from=R3, to=L4, Rightarrow, crossing over, shorten=6ex]
+      \arrow[from=R2, to=L4, phantom, "\circlearrowleft"{description}]
+    \end{tikzcd}
+  \end{equation*}
+  in which the left and right faces are thin (as are the top and bottom faces), and the front face corresponds to a left Kan extension. For ease of notation, we flatten this out and add some more labels.
+  \begin{equation*}
+    \begin{tikzcd}
+      X'
+      \arrow[rr, "f'"]
+      \arrow[dd, swap, "g'"]
+      \arrow[dr, "g'^{*}\mathcal{F}"]
+      && Y'
+      \arrow[dd, "g"]
+      \arrow[dl, "\mathcal{G}"]
+      \\
+      & \category{C}
+      \\
+      X
+      \arrow[ur, "\mathcal{F}"]
+      \arrow[rr, swap, "f"]
+      && Y
+      \arrow[ul, "f_{!}\mathcal{F}"]
+    \end{tikzcd}
+  \end{equation*}
+  We need to show that $\mathcal{G}$ is a left Kan extension of $g'^{*}\mathcal{F}$ along $f'$, i.e.\ that for all $y' \in Y'$,
+  \begin{align*}
+    \mathcal{G}(y') &\cong \colim\left[ X'_{/y'} \to X \to \category{C} \right] \\
+    &\cong \colim\left[ X \times_{Y} (Y'_{/y'}) \to X \to \category{C} \right],
+  \end{align*}
+  where here we mean by $X' \cong X \times_{Y} Y'$ the homotopy pullback. We know that $\mathcal{G}$ is the pullback along $g$ of $f_{!}\mathcal{F}$, i.e.\ that
+  \begin{align*}
+    \mathcal{G}(y') &\cong \colim\left[ X_{/g(y')} \to X \to \category{C} \right] \\
+    &\cong \colim \left[ X \times_{Y} (Y_{/g(y')}) \to X \to \category{C} \right].
+  \end{align*}
+  The map $X \times_{Y} (Y'_{/y'}) \to X$ factors through $X \times_{Y} (Y_{/g(y')})$ thanks to the map $s\colon Y'_{/y'} \to Y_{/g(y')}$. This is a weak equivalence between contractible Kan complexes (because both $Y'_{/y'}$ and $Y_{/g(y')}$ are Kan complexes with terminal objects, and $s$ sends the terminal object of one to the other.) Thus, the map $X \times_{Y}(Y'_{/y'}) \to X \times_{Y}(Y_{/g(y')})$ is also a weak homotopy equivalence between Kan complexes, thus cofinal.
+\end{proof}
+
+c
+
+
+\end{document}

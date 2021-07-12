@@ -1,0 +1,67 @@
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+
+\section{Tilting at cosimplicial objects}
+\label{sec:tilting_at_cosimplicial_objects}
+
+\textbf{Future Angus:} This definitely isn't going to work. We're throwing away any semblance of coherence. This is just the twisted arrow category of $\QCat$ as a 2-category.
+
+Let's consider $\Tw(\ICat)$. The $n$-simplices are given by maps
+\begin{align*}
+  \Hom_{\SSet}(\Delta^{n}, \Tw(\ICat)) &\simeq \Hom_{\SSetmk}(Q(n), \ICat) \\
+  &\simeq \Hom_{\SCatmk}(\Csc Q(n), \QCat),
+\end{align*}
+so we can think of $\Tw(\ICat)$ as coming from the cosimplicial object $\Csc Q\colon \Delta \to \SCatmk$, with the following description:
+\begin{itemize}
+  \item The objects of $\Csc Q(n)$ are the objects of the linearly ordered set
+    \begin{equation*}
+      S_{n} = [n] \star [\bar{n}] = \{0 < 1 < \cdots < n < \bar{n} < \cdots < \bar{0}\}.
+    \end{equation*}
+    We will denote a generic element of $S_{n}$ by $a$, $b$, etc. We will denote an element of $[n] \subset S_{n}$ by $i$, and a generic element of $[\bar{n}] \subset S_{n}$ by $\bar{i}$. That is, for each $a \in S_{n}$ we always have either $a = i$ or $a = \bar{i}$ for some $0 \leq i \leq n$. We refer to $i$ as the \emph{digit} of $a$.
+
+  \item For any $a$, $b \in S_{n}$, the underlying simplicial set of $\Csc Q(n)(a, b)$ is the (nerve of the) poset of subsets of $\{a < \cdots < b\}$ containing $a$ and $b$.
+
+  \item A morphism $A \subseteq B \subseteq \{a < \cdots < b\}$ in such a mapping space is marked if and only if the highest digit between 0 and $n$ appearing in both $A$ and $B$ is the same. For instance, for mapping spaces between objects $i$, $j \in [n]$, the situation corresponding to $A$ and $B$ both belonging to $[n] \subseteq S_{n}$, everything is marked because by definition both $A$ and $B$ must contain $i$ (and similarly if both belong to $[\bar{n}]$).
+\end{itemize}
+
+We then define a cosimplicial object $R\colon \Delta \to \SCatmk$ as follows.
+\begin{itemize}
+  \item The objects of $R(n)$ are the objects of the linearly ordered set
+    \begin{equation*}
+      S_{n} = \{0 < 1 < \cdots < n < \bar{n} < \cdots < \bar{0}\}.
+    \end{equation*}
+
+  \item The mapping space $R(n)(a, b)$ is given by the (nerve of the) linearly ordered set
+    \begin{equation*}
+      \{\max(a, b) < \cdots < n\},
+    \end{equation*}
+    where by $\max(a, b)$, we mean the maximum digit appearing. In particular: 
+    \begin{itemize}
+      \item For $b < a$, the mapping simplicial sets are empty. To avoid having to repeatedly mention that this case is trivial, we implicitly consider only mapping spaces $\Map(a, b)$ with $a \leq b$.
+
+      \item For $a = i$ and $b = j$, 
+    \end{itemize}
+
+  \item Let $\phi\colon [m] \to [n]$. We define a map $R(m) \to R(n)$ as follows.
+    \begin{itemize}
+      \item On objects, we send $i \mapsto \phi(i)$ and $\bar{i} \mapsto \overline{\phi(i)}$. We write both of these $a \mapsto \phi(a)$.
+
+      \item On morphisms, we define a map
+        \begin{equation*}
+          R(m)(a, b) \to R(n)(\phi(a), \phi(b))
+        \end{equation*}
+        sending $i \in \{\max(a, b) < \cdots < m\}$ to $\phi(i) \in \{\max(\phi(a), \phi(b)) < \cdots < n\}$.
+    \end{itemize}
+\end{itemize}
+
+For each $n$, we get a map
+\begin{equation*}
+  \iota_{n}\colon R(n) \to \Csc Q(n)
+\end{equation*}
+which is the identity on objects, and acts on morphisms in the following way:
+\begin{itemize}
+  \item For $a = i$ and $b = j$, $c$ is given by some digit $k$ with $i \leq k \leq j$, and we send
+\end{itemize}
+
+\end{document}
