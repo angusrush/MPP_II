@@ -56,6 +56,8 @@ We will need the following facts about scaled simplicial sets.
   \item With this,
 
   \item We will denote the simplicially enriched category whose objects are $\infty$-bicategories, with mapping spaces as above by $\catname{Bicat}_{\infty}$. We then define $\Cat_{(\infty, 2)} = \N(\catname{Bicat}_{\infty})$. This is a quasicategory.
+
+  \item We have also a simplicially enriched category whose objects are quasicategories, and whose morphisms are $\SSetmk$-enriched mapping spaces. The coherent nerve of this is
 \end{enumerate}
 
 We will need multiple notions of the quasicategory of $(\infty,2)$-categories.
@@ -147,106 +149,8 @@ This is a summary of the parts of the theory that we'll need.
 \end{enumerate}
 
 \begin{definition}
-  We will call a 1-simplex in $\Delta^{1} \to \Tw(\overline{X})$ \defn{svelte} if it corresponds to a map $(\Delta^{1} \star {\Delta^{1}}\op)_{\sharp} \to \overline{X}$.
+  We will call a 1-simplex $\Delta^{1} \to \Tw(\overline{X})$ \defn{thin} if it corresponds to a map $(\Delta^{1} \star {\Delta^{1}}\op)_{\sharp} \to \overline{X}$; that is, a 1-simplex in $\Delta^{1} \to \Tw(\overline{X})$ is thin if and only if each of the faces of the adjunct map $\Delta^{1} \star (\Delta^{1})\op$ is a thin 2-simplex.
 \end{definition}
-
-We would like to understand (relative) pullbacks in $p\colon \Tw(\overline{X}) \to \category{C} \times \category{C}\op$. More specifically, we would like to have the following.
-
-\begin{proposition}
-  Let $\sigma\colon \Lambda^{2}_{2} \to \Tw(\CC)$ corresponding to a diagram
-  \begin{equation*}
-    \begin{tikzcd}
-      & C'
-      \arrow[d, "F"]
-      \\
-      C''
-      \arrow[r]
-      & C
-    \end{tikzcd}
-  \end{equation*}
-  in $\Tw(\CC)$, where $F$ is svelte. Then a filling
-  \begin{equation*}
-    \overline{\sigma} = \quad
-    \begin{tikzcd}
-      \tilde{C}
-      \arrow[r]
-      \arrow[d, swap, "F'"]
-      & C'
-      \arrow[d, "F"]
-      \\
-      C''
-      \arrow[r]
-      & C
-    \end{tikzcd}
-  \end{equation*}
-  to a square is a pullback if and only if the following conditions are satisfied:
-  \begin{itemize}
-    \item The image of $\overline{\sigma}$ in $\category{C} \times \category{C}\op$ is pullback (that is, the top square of $\overline{\sigma}$ is pullback, and the bottom square is pushout)
-
-    \item The morphism $F'$ is svelte.
-  \end{itemize}
-\end{proposition}
-\begin{proof}
-  We need to show that we can lift
-  \begin{equation*}
-    \begin{tikzcd}
-      \partial \Delta^{n}
-      \arrow[r]
-      \arrow[d]
-      & \Tw(\CC)_{/ \overline{\sigma}}
-      \arrow[d]
-      \\
-      \Delta^{n}
-      \arrow[r]
-      \arrow[ur, dashed]
-      & \Tw(\CC)_{/ \sigma} \times_{(\category{C} \times \category{C}\op)_{/\sigma}}(\category{C} \times \category{C}\op)_{/\overline{\sigma}}
-    \end{tikzcd},
-  \end{equation*}
-  or equivalently
-  \begin{equation*}
-    \begin{tikzcd}
-      \partial \Delta^{n} \star (\Lambda^{2}_{0})^{\triangleleft} \displaystyle\coprod_{\partial \Delta^{n} \star \Lambda^{2}_{0}} \Delta^{n} \star (\Lambda^{2}_{0})^{\triangleleft}
-      \arrow[r]
-      \arrow[d]
-      & \Tw(\CC)
-      \arrow[d]
-      \\
-      \Delta^{n} \star (\Lambda^{2}_{0})^{\triangleleft}
-      \arrow[r]
-      \arrow[ur, dashed]
-      & \category{C} \times \category{C}\op
-    \end{tikzcd}.
-  \end{equation*}
-
-  We can write $(\Lambda^{2}_{0}) \cong \Delta^{\{012\}} \amalg_{\Delta^{\{02\}}} \Delta^{\{01'2\}}$.
-\end{proof}
-
-%Unfortunately, this construction is a bit too unwieldy. Thankfully we are working with an $\infty$-category, $\ICat$, which has a very natural model as a $\SSetmk$ enriched category. We can therefore achieve what we want by modifying the cosimplicial object $Q$.
-%
-%\subsection{Enhanced twisted arrow categories for simplicially-enriched categories}
-%\label{ssc:enhanced_twisted_arrow_categories_for_simplicially_enriched_categories}
-%
-%Let's unwrap the above construction in the particular case that $\overline{X} = \ICat$. The $n$-simplices of $\Tw(\ICat)$ are then
-%\begin{align*}
-%  \Tw(\ICat)_{n} &= \Hom_{\SSet}(\Delta^{n}, \Tw(\ICat)) \\
-%  &= \Hom_{\SSetmk}(Q(\Delta^{n}), \ICat) \\
-%  &= \Hom_{\SCatmk}(\Csc Q(\Delta^{n}), \QCat),
-%\end{align*}
-%where $\QCat$ is the $\SSetmk$-enriched category of quasicategories. We should understand the cosimplicial object $\Csc Q$.
-%\begin{itemize}
-%  \item For any $[n] \in \Delta$, the object $\Csc Q ([n])$ in $\SCatmk$ has the following description.
-%
-%  \item The objects are the elements of $[n] \star [n]\op \cong [2n+1]$. We will conventionally write the elements of $[n]$ by $i$, $j$, etc., and the elements of $[n]\op$ by $\bar{i}$, $\bar{j}$, etc. We will denote a generic element of $[n] \star [n]\op$ by $a$, $b$, etc.
-%
-%  \item For any $a$, $b \in [n] \star [n]\op$, the simplicial set underlying the marked simplicial set $\Hom_{\Csc Q [n]}(a, b)$ is the poset of subsets of $\{a, \ldots, b\}$ containing $a$ and $b$.
-%
-%  \item For subsets
-%    \begin{equation*}
-%      S' \subseteq S \subseteq [n] \star [n]\op,
-%    \end{equation*}
-%    both starting at $a \in [n] \star [n]\op$ and ending at $b$, the corresponding map in $\Hom_{\Csc Q[n]}(a, b)$ is marked if and only if
-%
-%\end{itemize}
 
 \section{A new Barwick's theorem}
 \label{sec:a_new_barwick_s_theorem}
@@ -256,7 +160,7 @@ It turns out Barwick's construction can be obviously modified. Here is a form wh
 \begin{theorem}
   Let $p\colon \triple{C} \to \triple{D}$ be a functor between adequate triples which is an inner fibration, satisfying the following conditions.
   \begin{enumerate}
-    \item Every egressive morphism in $\category{D}$ admits a lift which is both egressive and $p$-cartesian.
+    \item Every egressive morphism in $\category{D}$ admits a lift in $\category{C}$ (given a lift of the target) which is both egressive and $p$-cartesian.
 
     \item Consider a square
       \begin{equation*}

@@ -5,44 +5,119 @@
 \section{The non-monoidal construction}
 \label{sec:the_non_monoidal_construction}
 
+\subsection{Con extensions}
+\label{ssc:con_extensions}
+
+We provide a conjectural answer to the following question. Let $f\colon \category{D} \to \category{D}'$ be a functor of quasicategories, and let $\mathcal{F}\colon \category{D} \to \category{C}$ be similar. What universal property does the $\infty$-Kan extension $f_{!}\mathcal{F}\colon \category{D}' \to \category{C}$ satisfy?
+
+A Kan extension, conjecturally, should be modelled by a 2-simplex in $\ICCat$
+\begin{equation*}
+  \label{eq:left_kan_ext}
+  \begin{tikzcd}
+    \category{D}
+    \arrow[rr, "\mathcal{F}", ""{below, name=M}]
+    \arrow[dr, swap, "f"]
+    && \category{C}
+    \\
+    & \category{D}'
+    \arrow[ur, swap, "f_{!}\mathcal{F}"]
+    \arrow[to=M, Rightarrow, "\eta"]
+  \end{tikzcd},
+\end{equation*}
+where $\eta$ is the unit map.
+
+\begin{definition}
+  \label{def:con_extension}
+  A 2-simplex $\sigma\colon \Delta^{2} \to \ICCat$ is a \defn{left con extension} if for all
+  \begin{equation*}
+    \tau\colon \Lambda^{3}_{0} \to \ICCat
+  \end{equation*}
+  such that $d_{2}\tau = \sigma$, and such that $d_{3}\tau$ is thin, the space
+  \begin{equation*}
+    \Map(\Delta^{3}, \ICCat) \times_{\Map(\Lambda^{3}_{0}, \ICCat)} \{\tau\}
+  \end{equation*}
+  of fillings to a full 3-simplex is contractible.
+\end{definition}
+
+We conjecture that left con extensions are not really a con at all, but rather bona fide left Kan extensions; that is, a 2-simplex in $\ICat$ is a left con extension if and only if it is of the form pictured in \hyperref[eq:left_kan_ext]{Equation~\ref*{eq:left_kan_ext}}.
+
+
+\subsection{The bare functor}
+\label{ssc:the_bare_functor}
+
 Let $\category{C}$ be a category admitting small colimits. We consider the pullback
 \begin{equation*}
   \begin{tikzcd}
     \LS(\category{C})
     \arrow[r]
     \arrow[d, swap, "r"]
-    & \Tw(\ICat)
+    & \Tw(\ICCat)
     \arrow[d]
     \\
-    \ICat \times \{\category{C}\}
+    \S \times \{\category{C}\}
     \arrow[r, hook]
-    & \S \times \ICat\op
+    & \ICat \times \ICat\op
   \end{tikzcd}.
 \end{equation*}
 
-A general morphism in $\LS(\category{C})$ is of the form
+A general morphism in $\LS(\category{C})$ is a 3-simplex of the form
 \begin{equation*}
-  \begin{tikzcd}
+  \begin{tikzcd}[column sep=large, row sep=large]
     X
-    \arrow[r, "\alpha"]
-    \arrow[d, ""{name=L, right}, "F"{left}]
+    \arrow[r]
+    \arrow[d, ""{name=L, right}]
+    \arrow[dr]
     & Y
-    \arrow[d, ""{name=R, left}, "F'"{right}]
+    \arrow[d, ""{name=R, left}]
+    \arrow[from=l, to=R, phantom, near end, "\circlearrowleft"{description}]
     \\
     \category{C}
     & \category{C}
     \arrow[l, equals]
-    \arrow[Rightarrow, from=L, to=R, shorten=1.5ex, "\eta"{description}]
+    \arrow[from=L, Rightarrow, shorten=3ex]
   \end{tikzcd}
+  \qquad
+  \begin{tikzcd}[column sep=large, row sep=large]
+    X
+    \arrow[r]
+    \arrow[d, ""{name=L, right}]
+    & Y
+    \arrow[d, ""{name=R, left}]
+    \arrow[dl]
+    \\
+    \category{C}
+    \arrow[from=R, phantom, near start, "\circlearrowleft"{description}]
+    & \category{C}
+    \arrow[l, equals]
+    \arrow[from=L, to=u, shorten=3ex, Rightarrow]
+  \end{tikzcd},
 \end{equation*}
-This is $r$-cartesian if and only if $\eta$ is a natural isomorphism $F \Rightarrow F' \circ \alpha$; that is, if the above square (weakly) commutes. We will use the symbol $\circlearrowleft$ denote a weakly commuting square:
+We will generally denote such a morphism as follows.
 \begin{equation*}
   \begin{tikzcd}
     X
-    \arrow[r, "\alpha"]
-    \arrow[d, ""{name=L, right}, "F"{left}]
+    \arrow[r]
+    \arrow[d, ""{name=L, right}]
     & Y
-    \arrow[d, ""{name=R, left}, "F'"{right}]
+    \arrow[d, ""{name=R, left}]
+    \\
+    \category{C}
+    & \category{C}
+    \arrow[l, equals]
+    \arrow[Rightarrow, from=L, to=R, shorten=1.5ex]
+  \end{tikzcd}.
+\end{equation*}
+
+There is a potential to be confused here. The natural transformation notated above does not correspond to a single natural transformation, but rather to two natural transformations. However, both of these natural transformations agree up to a homotopy provided by the interior of the 3-simplex.
+
+Such a morphism is $r$-cartesian if and only if all 2-simplices are thin; that is, if the 3-simplex making up the twisted square weakly commutes. We will use the symbol $\circlearrowleft$ to denote a weakly commuting twisted morphism, and call such morphisms \emph{thin:}
+\begin{equation*}
+  \begin{tikzcd}
+    X
+    \arrow[r]
+    \arrow[d, ""{name=L, right}]
+    & Y
+    \arrow[d, ""{name=R, left}]
     \\
     \category{C}
     & \category{C}
@@ -53,26 +128,63 @@ This is $r$-cartesian if and only if $\eta$ is a natural isomorphism $F \Rightar
 
 The functor $r\colon \LS(\category{C}) \to \ICat$ thus classifies the functor
 \begin{equation*}
-  \ICat\op \to \ICat;\qquad \category{D} \mapsto \Fun(\category{D}, \category{C}),
+  \S\op \to \ICat;\qquad X \mapsto \Fun(X, \category{C}),
 \end{equation*}
-which sends a functor $f\colon \category{D} \to \category{D}'$ to the pullback
+which sends a map $f\colon X \to Y$ to the pullback
 \begin{equation*}
-  f^{*}\colon \Fun(\category{D}', \category{C}) \to \Fun(\category{D}, \category{C}).
+  f^{*}\colon \Fun(Y, \category{C}) \to \Fun(X, \category{C}).
 \end{equation*}
-Under the assumption that $\category{C}$ admits colimits, each of these functors admit a left adjoint $f_{!}$ given by left Kan extension. The map $r$ is thus a bicartesian fibration with cocartesian morphisms given by morphisms
+Under the assumption that $\category{C}$ admits colimits, each of these functors admit a left adjoint $f_{!}$ given by left Kan extension. More explicitly, we have the following.
+\begin{proposition}
+  A morphism $\Delta^{1} \to \LS(\category{C})$ is $r$-cocartesian if and only the 3-simplex it corresponds to in $\ICCat$ has the form
+  \begin{equation*}
+    \begin{tikzcd}[column sep=large, row sep=large]
+      X
+      \arrow[r]
+      \arrow[d, ""{name=L, right}]
+      \arrow[dr]
+      & Y
+      \arrow[d, ""{name=R, left}]
+      \arrow[from=l, to=R, phantom, near end, "\circlearrowleft"{description}]
+      \\
+      \category{C}
+      & \category{C}
+      \arrow[l, equals]
+      \arrow[from=L, Rightarrow, shorten=3ex]
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}[column sep=large, row sep=large]
+      X
+      \arrow[r, "f"]
+      \arrow[d, "\mathcal{F}"{swap}, ""{name=L, right}]
+      & Y
+      \arrow[d, ""{name=R, left}, "f_{!}\mathcal{F}'"]
+      \arrow[dl, near end, "f_{!}\mathcal{F}"]
+      \\
+      \category{C}
+      \arrow[from=R, phantom, near start, "\circlearrowleft"{description}]
+      & \category{C}
+      \arrow[l, equals]
+      \arrow[from=L, to=u, shorten=3ex, Rightarrow, "\eta"]
+    \end{tikzcd},
+  \end{equation*}
+  where $f_{!}\mathcal{F}$ and $f_{!}\mathcal{F}'$ are both left Kan extensions of $\mathcal{F}$ along $f$, and $\eta$ is the counit map. Note that the data of the second diagram determines the data of the first, and the filling 3-simplex, up to contractible choice.
+\end{proposition}
+
+For short, we will denote cocartesian morphisms
 \begin{equation*}
   \begin{tikzcd}
-    \category{D}
-    \arrow[r, "\alpha"]
-    \arrow[d, ""{name=L, right}, "F"{left}]
-    & \category{D}'
-    \arrow[d, ""{name=R, left}, "\Lan_{\alpha}F"{right}]
+    X
+    \arrow[r, "f"]
+    \arrow[d, ""{name=L, right}, "\mathcal{F}"{left}]
+    & X'
+    \arrow[d, ""{name=R, left}, "\Lan_{f}\mathcal{F}"{right}]
     \\
     \category{C}
     & \category{C}
     \arrow[l, equals]
-    \arrow[Rightarrow, from=L, to=R, shorten=1.5ex, "\eta"{description}]
-  \end{tikzcd}
+    \arrow[Rightarrow, from=L, to=R, shorten=1.5ex, "!"{description}]
+  \end{tikzcd}.
 \end{equation*}
 
 We define a triple structure $\triple{Q}$ on $\LS(\category{C})$ as follows.
@@ -123,8 +235,8 @@ Such a span will correspond to a cocartesian morphism if it is of the form
     &\category{C}
     & \category{C}
     \arrow[l, equals]
-    \arrow[Rightarrow, from=MR, to=R, shorten=2ex]
-    \arrow[Rightarrow, from=ML, to=L, phantom, "\circlearrowleft"{description}]
+    \arrow[Rightarrow, from=MR, to=R, shorten=2ex, "!"{description}]
+    \arrow[from=ML, to=L, phantom, "\circlearrowleft"{description}]
   \end{tikzcd}
 \end{equation*}
 
@@ -137,7 +249,7 @@ To do this, we need to prove:
 \begin{lemma}
   Let $\CC$ be an $\infty$-bicategory such that the underlying quasicategory $\category{C}$ has pullbacks and pushouts. Consider a square
   \begin{equation*}
-    \sigma =
+    \sigma =\quad
     \begin{tikzcd}
       A
       \arrow[r]
@@ -183,7 +295,7 @@ To do this, we need to prove:
       \arrow[from=R2, to=L4, Rightarrow, shorten=3ex, "\beta"]
     \end{tikzcd}
   \end{equation*}
-  in $\CC$.\footnote{Note that the top and bottom faces of any such diagram in $\Tw(\CC)$ belong to $\category{C}$, and hence must weakly commute by definition.} Suppose $\beta$ is an equivalence, the top face is a pullback, and the bottom face is a pushout. Then the square $\sigma$ is pullback if and only if $\alpha$ is an equivalence.
+  in $\CC$.\footnote{Note that the top and bottom faces of any such diagram in $\Tw(\CC)$ belong to $\category{C}$, and hence must weakly commute by definition.} Suppose $b$ is thin, the top face is a pullback, and the bottom face is a pushout. Then the square $\sigma$ is pullback if and only if $a$ is thin.
 \end{lemma}
 \begin{proof}
   Sorry for the writing, I'm really tired. This corresponds to a square $\sigma$ in $\Tw(\CC)$ lying over a pullback square in $\category{C} \times \category{C}\op$, such that $b$ is $p$-cartesian. It is then classically known that $\sigma$ is pullback if and only if $a$ is $p$-cartesian.
@@ -194,6 +306,44 @@ To do this, we need to prove:
 \end{proof}
 
 Well, it's nice to see that this stuff works as intended. We know that the triple $\triple{P}$ of unconstrained spans of spaces works as intended, so let's just move on.
+
+\begin{lemma}
+  \label{lemma:homotopy_pullbacks_and_overcategories}
+  Let
+  \begin{equation*}
+    \begin{tikzcd}
+      X \times_{Y}^{h} Y'
+      \arrow[r]
+      \arrow[d]
+      & Y'
+      \arrow[d]
+      \\
+      X
+      \arrow[r]
+      & Y
+    \end{tikzcd}
+  \end{equation*}
+  be a homotopy pullback diagram of Kan complexes, and let $y' \in Y'$. Then
+  \begin{equation}
+    \label{eq:overcategory_commutes_with_homotopy_pullback}
+    (X \times_{Y}^{h}Y')_{/y'} \simeq X \times_{Y}^{h} (Y'_{/y'})
+  \end{equation}
+\end{lemma}
+\begin{proof}
+  We can model the homotopy pullback $X \times^{h}_{Y}Y'$ as the strict pullback
+  \begin{equation*}
+    Y^{\Delta^{1}} \times_{Y \times Y} (X \times Y').
+  \end{equation*}
+  The left-hand side of \hyperref[eq:overcategory_commutes_with_homotopy_pullback]{Equation~\ref*{eq:overcategory_commutes_with_homotopy_pullback}} is then given by the pullback
+  \begin{equation*}
+    \left(Y^{\Delta^{1}} \times_{Y \times Y}(X \times Y')\right) \times_{Y'} Y'_{/y'}.
+  \end{equation*}
+  But this is isomorphic to
+  \begin{equation*}
+    Y^{\Delta^{1}} \times_{Y \times Y} (X \times Y^{'}_{/y'}),
+  \end{equation*}
+  which is a model for the right-hand side.
+\end{proof}
 
 \begin{proposition}
   The map $p\colon \triple{P} \to \triple{Q}$ of triples whose underlying map is $p\colon \LS(\category{C}) \to \S$ is adequate, i.e.\ satisfies the conditions of our modified version of Barwick's theorem.
@@ -261,7 +411,7 @@ Well, it's nice to see that this stuff works as intended. We know that the tripl
       \arrow[from=R2, to=L4, phantom, "\circlearrowleft"{description}]
     \end{tikzcd}
   \end{equation*}
-  in which the left and right faces are thin (as are the top and bottom faces), and the front face corresponds to a left Kan extension. For ease of notation, we flatten this out and add some more labels.
+  in which the left and right faces are thin, the top face is a pullback, the bottom face is a pushout, and the front face corresponds to a left Kan extension. For ease of notation, we flatten this out and add some more labels.
   \begin{equation*}
     \begin{tikzcd}
       X'
@@ -283,18 +433,16 @@ Well, it's nice to see that this stuff works as intended. We know that the tripl
   \end{equation*}
   We need to show that $\mathcal{G}$ is a left Kan extension of $g'^{*}\mathcal{F}$ along $f'$, i.e.\ that for all $y' \in Y'$,
   \begin{align*}
-    \mathcal{G}(y') &\cong \colim\left[ X'_{/y'} \to X \to \category{C} \right] \\
-    &\cong \colim\left[ X \times_{Y} (Y'_{/y'}) \to X \to \category{C} \right],
+    \mathcal{G}(y') &\simeq \colim\left[ X'_{/y'} \to X \to \category{C} \right] \\
+    &\simeq \colim\left[ X \times_{Y} (Y'_{/y'}) \to X \to \category{C} \right],
   \end{align*}
-  where here we mean by $X' \cong X \times_{Y} Y'$ the homotopy pullback. We know that $\mathcal{G}$ is the pullback along $g$ of $f_{!}\mathcal{F}$, i.e.\ that
+  where here we mean by $X' \simeq X \times_{Y} Y'$ the homotopy pullback, and we have used \hyperref[lemma:homotopy_pullbacks_and_overcategories]{Lemma~\ref*{lemma:homotopy_pullbacks_and_overcategories}}. We know that $\mathcal{G}$ is the pullback along $g$ of $f_{!}\mathcal{F}$, i.e.\ that
   \begin{align*}
-    \mathcal{G}(y') &\cong \colim\left[ X_{/g(y')} \to X \to \category{C} \right] \\
-    &\cong \colim \left[ X \times_{Y} (Y_{/g(y')}) \to X \to \category{C} \right].
+    \mathcal{G}(y') &\simeq \colim\left[ X_{/g(y')} \to X \to \category{C} \right] \\
+    &\simeq \colim \left[ X \times_{Y} (Y_{/g(y')}) \to X \to \category{C} \right].
   \end{align*}
   The map $X \times_{Y} (Y'_{/y'}) \to X$ factors through $X \times_{Y} (Y_{/g(y')})$ thanks to the map $s\colon Y'_{/y'} \to Y_{/g(y')}$. This is a weak equivalence between contractible Kan complexes (because both $Y'_{/y'}$ and $Y_{/g(y')}$ are Kan complexes with terminal objects, and $s$ sends the terminal object of one to the other.) Thus, the map $X \times_{Y}(Y'_{/y'}) \to X \times_{Y}(Y_{/g(y')})$ is also a weak homotopy equivalence between Kan complexes, thus cofinal.
 \end{proof}
-
-c
 
 
 \end{document}

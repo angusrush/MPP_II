@@ -11,8 +11,12 @@
 !_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20210110.0/
 A new Barwick's theorem	background.tex	/^\\section{A new Barwick's theorem}$/;"	s
 Background	background.tex	/^\\section{Background}$/;"	s
+Building categories of spans	base_fibrations.tex	/^\\section{Building categories of spans}$/;"	s
+Con extensions	non_monoidal.tex	/^\\subsection{Con extensions}$/;"	u	section:The non-monoidal construction
 Enhanced twisted arrow categories	background.tex	/^\\subsection{Enhanced twisted arrow categories}$/;"	u	section:Background
 Scaled simplicial sets	background.tex	/^\\subsection{Scaled simplicial sets}$/;"	u	section:Background
+Some problems	main.tex	/^\\section{Some problems}$/;"	s
+The bare functor	non_monoidal.tex	/^\\subsection{The bare functor}$/;"	u	section:The non-monoidal construction
 The base fibration	base_fibrations.tex	/^\\section{The base fibration}$/;"	s
 The non-monoidal construction	non_monoidal.tex	/^\\section{The non-monoidal construction}$/;"	s
 The triple structure on finite pointed sets	base_fibrations.tex	/^\\subsection{The triple structure on finite pointed sets}$/;"	u	section:The triple structures
@@ -20,16 +24,24 @@ The triple structure on infinity-categories	base_fibrations.tex	/^\\subsection{T
 The triple structure on the twisted arrow category	base_fibrations.tex	/^\\subsection{The triple structure on the twisted arrow category}$/;"	u	section:The triple structures
 The triple structures	base_fibrations.tex	/^\\section{The triple structures}$/;"	s
 Tilting at cosimplicial objects	don_quixote.tex	/^\\section{Tilting at cosimplicial objects}$/;"	s
+def:con_extension	non_monoidal.tex	/^  \\label{def:con_extension}$/;"	l
 def:scaled_simplicial_set	background.tex	/^  \\label{def:scaled_simplicial_set}$/;"	l
+eq:left_kan_ext	non_monoidal.tex	/^  \\label{eq:left_kan_ext}$/;"	l
+eq:overcategory_commutes_with_homotopy_pullback	non_monoidal.tex	/^    \\label{eq:overcategory_commutes_with_homotopy_pullback}$/;"	l
+lemma:homotopy_pullbacks_and_overcategories	non_monoidal.tex	/^  \\label{lemma:homotopy_pullbacks_and_overcategories}$/;"	l
 prop:q_triple_is_adequate	non_monoidal.tex	/^  \\label{prop:q_triple_is_adequate}$/;"	l
 sec:a_new_barwick_s_theorem	background.tex	/^\\label{sec:a_new_barwick_s_theorem}$/;"	l
 sec:background	background.tex	/^\\label{sec:background}$/;"	l
 sec:base_fibrations	base_fibrations.tex	/^\\label{sec:base_fibrations}$/;"	l
+sec:building_categories_of_spans	base_fibrations.tex	/^\\label{sec:building_categories_of_spans}$/;"	l
+sec:some_problems	main.tex	/^\\label{sec:some_problems}$/;"	l
 sec:the_non_monoidal_construction	non_monoidal.tex	/^\\label{sec:the_non_monoidal_construction}$/;"	l
 sec:the_triple_structures	base_fibrations.tex	/^\\label{sec:the_triple_structures}$/;"	l
 sec:tilting_at_cosimplicial_objects	don_quixote.tex	/^\\label{sec:tilting_at_cosimplicial_objects}$/;"	l
+ssc:con_extensions	non_monoidal.tex	/^\\label{ssc:con_extensions}$/;"	l
 ssc:enhanced_twisted_arrow_categories	background.tex	/^\\label{ssc:enhanced_twisted_arrow_categories}$/;"	l
 ssc:scal	background.tex	/^\\label{ssc:scal}$/;"	l
+ssc:the_bare_functor	non_monoidal.tex	/^\\label{ssc:the_bare_functor}$/;"	l
 ssc:the_triple_structure_on_categories	base_fibrations.tex	/^\\label{ssc:the_triple_structure_on_categories}$/;"	l
 ssc:the_triple_structure_on_finite_pointed_sets	base_fibrations.tex	/^\\label{ssc:the_triple_structure_on_finite_pointed_sets}$/;"	l
 ssc:the_triple_structure_on_the_twisted_arrow_category	base_fibrations.tex	/^\\label{ssc:the_triple_structure_on_the_twisted_arrow_category}$/;"	l

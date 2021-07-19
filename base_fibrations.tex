@@ -74,9 +74,11 @@ such that For nonempty subsets $I' \subseteq I \subseteq [n]$, the diagram
       \end{equation*}
       where here we mean $\eta\colon F \Rightarrow \beta \circ (G_{1} \times G_{2}) \circ \alpha$.
   \end{itemize}
+
+  A morphism of the above form is cartesian if and only if $\eta$ is an equivalence, in which case we call the morphism \emph{thin.} A general morphism is cartesian if and only if each component of $\eta$ is an equivalence.
 \end{example}
 
-Note that $\Tw(\ICat)_{\otimes}$ admits a map to $\TICatCart \times (\TICatCocart)\op$, where
+Note that $\Tw(\ICat)_{\otimes}$ admits a forgetful functor to $\TICatCart \times (\TICatCocart)\op$, where
 \begin{itemize}
   \item $\TICatCart$ is the relative nerve (as a cartesian fibration) of the functor $\Finp \to \ICat$ giving the cartesian monoidal structure on $\ICat$
 
@@ -95,17 +97,83 @@ Taking all this together gives a commuting triangle
     & \Finp\op
   \end{tikzcd}.
 \end{equation*}
-where
-\begin{proposition}
-  Everything in sight is a cartesian fibration.
-\end{proposition}
+
+\begin{lemma}
+  Let $\category{C}$ be a small 1-category (and, by abuse of notation, its nerve), let $F$, $G\colon \category{C} \to \SSet$ be functors, and let $\alpha\colon F \Rightarrow G$. Suppose that $\alpha$ satisfes the following conditions.
+  \begin{enumerate}
+    \item For each object $c \in \category{C}$, $\alpha_{c}\colon F(c) \to G(c)$ is a cartesian fibration.
+
+    \item For each morphism $f\colon c \to d$ in $\category{C}$, the map $Ff\colon F(c) \to F(d)$ takes $\alpha_{c}$-cartesian morphisms to $\alpha_{d}$-cartesian morphisms.
+  \end{enumerate}
+  Then taking the relative nerve gives a diagram
+  \begin{equation*}
+    \begin{tikzcd}
+      N_{F}(\category{C})
+      \arrow[rr, "\rho"]
+      \arrow[dr, swap, "\Phi"]
+      &&
+      N_{G}(\category{C})
+      \arrow[dl, "\Gamma"]
+      \\
+      & \category{C}\op
+    \end{tikzcd}
+  \end{equation*}
+  with the following properties.
+  \begin{enumerate}
+    \item The maps $\Phi$, $\Gamma$, and $\rho$ are all cartesian fibrations.
+
+    \item The $\rho$-cartesian morphisms in $N_{F}(\category{C})$ admit the following description: a morphism in $N(F)(\category{C})$ lying over a morphim $f\colon d \leftarrow c$ in $\category{C}\op$ consists of a triple $(x, y, \phi)$, where $x \in F(d)$, $y \in F(c)$, and $\phi\colon x \to Ff(y)$. Such a morphism is $\rho$-cartesian if the morphism $\phi$ is $\alpha_{d}$-cartesian.
+
+    \item The map $\rho$ sends $\Phi$-cartesian morphisms in $N_{F}(\category{C})$ to $\Gamma$-cartesian morphisms in $N_{G}(\category{C})$.
+  \end{enumerate}
+\end{lemma}
 \begin{proof}
-  The left-hand map is a cartesian fibration by construction, as is the right-hand map. The 
+  We first prove 2. We already know (HTT 3.2.5.11) that $\rho$ is an inner fibration, so in order to prove 2., we need to show that we can solve lifting problems
+  \begin{equation*}
+    \begin{tikzcd}
+      \Lambda^{n}_{n}
+      \arrow[r]
+      \arrow[d]
+      & N_{F}(\category{C})
+      \arrow[d]
+      \\
+      \Delta^{n}
+      \arrow[r]
+      \arrow[ur, dashed]
+      \arrow[dr, swap, "\gamma"]
+      & N_{G}(\category{C})
+      \arrow[d]
+      \\
+      & \category{C}\op
+    \end{tikzcd},
+  \end{equation*}
+  where $\Delta^{\{n-1, n\}} \subset \Lambda^{n}_{n}$ is mapped to a cartesian morphism as described above, i.e.\ a triple $(x, y, \phi)$, where $x \in F(\gamma(n-1))$, $y \in F(\gamma(n))$, and $\phi\colon x \to F(\gamma_{n})(y)$ is $\alpha_{\gamma(n-1)}$-cartesian. This is equivalent to solving the lifting problem
+  \begin{equation*}
+    \begin{tikzcd}
+      \Lambda^{n}_{n}
+      \arrow[r]
+      \arrow[d]
+      & F(\gamma(0))
+      \arrow[d, "\alpha_{\gamma(0)}"]
+      \\
+      \Delta^{n}
+      \arrow[r]
+      \arrow[ur, dashed]
+      & G(\gamma(0))
+    \end{tikzcd},
+  \end{equation*}
+  where $\Lambda^{n}_{n}$ is $F(\gamma_{n-1, 0})(\phi)$. But by assumption $F(\gamma_{n-1, 0})(\phi)$ is $\alpha_{\gamma(0)}$-cartesian, so this lifting problem has a solution.
+
+  The assumption that each $\alpha_{c}$ is a cartesian fibration guarantees that we have enough cartesian lifts, so $\rho$ is indeed a cartesian fibration.
+
+  The $\rho$-cartesian morphisms in $N_{F}(\category{C})$ are pairs $(x, y, \phi)$ as above, where $\phi$ is an equivalence. Claim 3. then follows because the functors $\alpha_{c}$ functors map equivalences to equivalences.
 \end{proof}
 
-\begin{proposition}
-  There is an equivalence $\ICatCart \simeq \TICatCart$ which is homotopic to the identity on $\ICat$.
-\end{proposition}
+\begin{corollary}
+  Everything in sight is a cartesian fibration.
+\end{corollary}
+
+Because both $\TICatCart \to \Finp\op$ and $\ICatCart \to \Finp\op$ classify the same functor $\Finp \to \ICat$, they are related by a symmetric monoidal equivalence. Composing a monoidal $\infty$-category $\Finp \to \ICat$ gives:
 
 \begin{proposition}
   We can express a monoidal $\infty$-category as a functor $\Finp \to \TICatCocart$.
@@ -113,11 +181,11 @@ where
 
 Fix some monoidal $\infty$-category $\category{C}$ which admits colimits, and such that the monoidal structure preserves colimits in each slot. We can thus define a functor
 \begin{equation*}
-  \ICatCart \to \TICatCart \times (\TICatCocart)\op
+  \TSCart \to \TICatCart \times (\TICatCocart)\op
 \end{equation*}
-which is the equivalence on the first component, and given by the composition
+which is induced by the inclusion on the first component, and given by the composition
 \begin{equation*}
-  \ICatCart \to \Finp\op \overset{\category{C}}{\to} (\TICatCocart)\op.
+  \TSCart \to \Finp\op \overset{\category{C}}{\to} (\TICatCocart)\op.
 \end{equation*}
 
 Forming the pullback
@@ -129,7 +197,7 @@ Forming the pullback
     & \Tw(\ICat)_{\otimes}
     \arrow[d]
     \\
-    \ICatCart
+    \TSCart
     \arrow[r]
     & \TICatCart \times (\TICatCocart)\op
   \end{tikzcd}
@@ -140,16 +208,14 @@ gives us a commutative triangle
     \LS(\category{C})_{\otimes}
     \arrow[rr, "r"]
     \arrow[dr, swap, "q"]
-    && \ICatCart
+    && \TSCart
     \arrow[dl, "p"]
     \\
     & \Finp\op
   \end{tikzcd}.
 \end{equation*}
 
-\begin{proposition}
-  The map $p$ is a cartesian fibration, and the $p$-cartesian morphisms in $\ICatCart$ are precisely those representing products.
-\end{proposition}
+By definition, one sees that the map $p$ is a cartesian fibration, and the $p$-cartesian morphisms in $\TSCart$ are precisely those representing products.
 
 \begin{proposition}
   The maps $q$ and $r$ are cartesian fibrations, and a generic morphism
@@ -169,12 +235,12 @@ gives us a commutative triangle
   \end{equation*}
   in $\LS(\category{C})$ is
   \begin{itemize}
-    \item $r$-cartesian if $\eta$ is an equivalence
+    \item $r$-cartesian if each component of $\eta$ is an equivalence
 
     \item $q$-cartesian if $\alpha$ exhibits a product and $\eta$ is an equivalence.
   \end{itemize}
 \end{proposition}
-One sees immediately that $r$ sends $q$-cartesian morphisms to $p$-cartesian morphisms, and has the sanity check that for any morphism $f$ in $\LS(\category{C})_{\otimes}$ whose image in $\ICatCart$ is $p$-cartesian, $f$ is $q$-cartesian if and only if it is $r$-cartesian.
+One sees immediately that $r$ sends $q$-cartesian morphisms in $\LS(\category{C})_{\otimes}$ to $p$-cartesian morphisms in $\TSCart$, and has the sanity check that for any morphism $f$ in $\LS(\category{C})_{\otimes}$ whose image in $\ICatCart$ is $p$-cartesian, $f$ is $q$-cartesian if and only if it is $r$-cartesian.
 
 \section{The triple structures}
 \label{sec:the_triple_structures}
@@ -209,20 +275,40 @@ We define a triple structure $\triple{F}$ on $\Finp\op$, where
 
 We define a triple $\triple{P}$ as follows.
 \begin{itemize}
-  \item $\category{P} = \ICatCart$
+  \item $\category{P} = \TSCart$
 
-  \item $\category{P}\downdag = \ICatCart \times_{\Finp\op}(\Finp\op)^{\simeq}$
+  \item $\category{P}\downdag = \TSCart \times_{\Finp\op}(\Finp\op)^{\simeq}$
 
-  \item $\category{P}\updag = \ICatCart$
+  \item $\category{P}\updag = \TSCart$
 \end{itemize}
 
 \begin{proposition}
-  The cartesian fibration $\ICatCart \to \Finp\op$ admits relative pullbacks.
+  The cartesian fibration $\TSCart \to \Finp\op$ admits relative pullbacks.
 \end{proposition}
+\begin{proof}
+  The fibers clearly admit pullbacks, and the pullback maps commute with pullbacks because products commute with pullbacks.
+\end{proof}
 
 \begin{proposition}
   This is an adequate triple structure.
 \end{proposition}
+\begin{proof}
+  It suffices to show that $\TSCart$ admits pullbacks, and that for any pullback square in $\TSCart$ lying over a square
+  \begin{equation*}
+    \begin{tikzcd}
+      \langle n \rangle
+      & \langle m \rangle
+      \arrow[l]
+      \\
+      \langle n' \rangle
+      \arrow[u, "\phi"]
+      & \langle m' \rangle
+      \arrow[l]
+      \arrow[u, swap, "\simeq"]
+    \end{tikzcd}
+  \end{equation*}
+  in $\TSCart$, the morphism $\phi$ is an isomorphism in $\Finp$. But $\TSCart$ admits relative pullbacks and $\Finp\op$ admits pullbacks, so $p$ preserves pullbacks. (Just take the proof from my thesis!)
+\end{proof}
 
 \subsection{The triple structure on the twisted arrow category}
 \label{ssc:the_triple_structure_on_the_twisted_arrow_category}
@@ -233,19 +319,19 @@ We define a triple $\triple{Q}$ as follows:
 
   \item $\category{Q}\downdag = \LS(\category{C})_{\otimes} \times_{\Finp\op}(\Finp\op)^{\simeq}$
 
-  \item $\category{Q}\updag$ consists of the subcategory of $\LS(\category{C})_{\otimes}$ of $r$-cartesian morphisms.
+  \item $\category{Q}\updag$ consists of the subcategory of $\LS(\category{C})_{\otimes}$ of $r$-cartesian morphisms, i.e.\ thin morphisms.
 \end{itemize}
 
 These triple constructions correspond to spans of the following form.
 \begin{equation*}
   \begin{tikzcd}
-    \vec{\category{D}}
+    \vec{X}
     \arrow[d, ""{name=L, right}]
-    & \vec{\category{D}}'
+    & \vec{Z}
     \arrow[d, ""{name=ML, left}, ""{name=MR, right}]
     \arrow[r]
     \arrow[l]
-    & \vec{\category{D}}''
+    & \vec{Y}
     \arrow[d, ""{name=R, right}]
     \\
     \category{C}^{n}
@@ -257,13 +343,13 @@ These triple constructions correspond to spans of the following form.
     \arrow[l, swap, "\simeq"]
     \arrow[d, no head, dotted, bend left]
     \\
-    \vec{\category{D}}
+    \vec{X}
     \arrow[d, no head, dotted, bend left]
-    & \vec{\category{D}}'
+    & \vec{Z}
     \arrow[d, no head, dotted, bend left]
     \arrow[r]
     \arrow[l]
-    & \vec{\category{D}}''
+    & \vec{Y}
     \arrow[d, no head, dotted, bend left]
     \\
     \langle n \rangle
@@ -280,14 +366,14 @@ According to the modified Barwick's theorem, such a span will correspond to a co
 
 \begin{equation*}
   \begin{tikzcd}
-    \vec{\category{D}}
+    \vec{X}
     \arrow[d, "\mathcal{F}"{left}, ""{name=L, right}]
-    & \vec{\category{D}}'
-    \arrow[d, "g^{*}\mathcal{F}t"{description}, ""{name=ML, left}, ""{name=MR, right}]
+    & \vec{Z}
+    \arrow[d, "g^{*}t \circ \mathcal{F}"{description}, ""{name=ML, left}, ""{name=MR, right}]
     \arrow[r, "f"]
     \arrow[l, swap, "g"]
-    & \vec{\category{D}}''
-    \arrow[d, ""{name=R, right}, "f_{!}(t \circ g^{*}\mathcal{F}t)"]
+    & \vec{Y}
+    \arrow[d, ""{name=R, right}, "f_{!}(g^{*}t\mathcal{F})"]
     \\
     \category{C}^{n}
     \arrow[r]
@@ -299,4 +385,200 @@ According to the modified Barwick's theorem, such a span will correspond to a co
   \end{tikzcd}.
 \end{equation*}
 In particular, in the fiber over $\langle 1 \rangle \in \Finp\op$, this is simply pull-push.
+
+%\begin{lemma}
+%  Given a square
+%  \begin{equation*}
+%    \begin{tikzcd}
+%      \langle n \rangle
+%      & \langle n \rangle
+%      \arrow[l, swap, "\simeq"]
+%      \\
+%      \langle m \rangle
+%      \arrow[u]
+%      & \langle m \rangle
+%      \arrow[l, swap, "\simeq"]
+%      \arrow[u]
+%    \end{tikzcd}
+%  \end{equation*}
+%  in $\Finp\op$ and a solid cospan
+%  \begin{equation*}
+%    \begin{tikzcd}
+%      y
+%      \arrow[r, dashed]
+%      \arrow[d, dashed]
+%      & y'
+%      \arrow[d, "g"]
+%      \\
+%      x
+%      \arrow[r]
+%      & y
+%    \end{tikzcd}
+%  \end{equation*}
+%  lying over it, where $g$ is cartesian, a relative pullback always exists.
+%\end{lemma}
+%\begin{proof}
+%  The fiber of $q$ over $\langle n \rangle \in \Finp\op$ is equivalent to $\LS(\category{C})^{n}$, which admits pullbacks by
+%\end{proof}
+
+\begin{proposition}
+  The triple $\triple{Q}$ is adequate.
+\end{proposition}
+\begin{proof}
+  We need to show that for any solid diagram in $\LS(\category{C})_{\otimes}$ of the form
+  \begin{equation*}
+    \begin{tikzcd}
+      y
+      \arrow[r, dashed, "f'"]
+      \arrow[d, swap, dashed, "g'"]
+      & y'
+      \arrow[d, "g"]
+      \\
+      x
+      \arrow[r, "f"]
+      & y
+    \end{tikzcd},
+  \end{equation*}
+  where $g$ is cartesian and $f$ lies over an isomorphism in $\Finp\op$, a dashed pullback exists, and for each such dashed pullback, $g'$ is cartesian and $f'$ lies over an isomorphism in $\Finp\op$. The existence of such a pullback is easy; one takes a pullback in $\Finp\op$, takes a $q$-cartesian lift $g'$, then fills an inner and an outer horn. That this is pullback is immediate because $g$ and $g'$ are $q$-cartesian. That any other pullback square has the necessary properties follows from the existence of a comparison equivalence.
+\end{proof}
+
+\section{Building categories of spans}
+\label{sec:building_categories_of_spans}
+
+\begin{proposition}
+  The map $p$ satisfies the conditions of the original Barwick's Theorem.
+\end{proposition}
+\begin{proof}
+  See thesis.
+\end{proof}
+
+\begin{proposition}
+  The map $r$ satisifes the conditions of the modified Barwick's Theorem.
+\end{proposition}
+\begin{proof}
+  The first condition is obvious since $r$ is a cartesian fibration. In order to check the second condition, we fix a square $\sigma$ in $\Tw(\category{C})_{\otimes}$, lying over a square $r(\sigma)$ in $\TSCart$ and a square $q(\sigma)$ in $\Finp\op$. Fixing notation, we will let $q(\sigma)$ be the square
+  \begin{equation*}
+    \begin{tikzcd}
+      \langle n \rangle
+      & \langle n \rangle
+      \arrow[l, swap, "\gamma'"]
+      \\
+      \langle m \rangle
+      \arrow[u, "\tau'"]
+      & \langle m \rangle
+      \arrow[u, swap, "\tau"]
+      \arrow[l, swap, "\gamma"]
+    \end{tikzcd},
+  \end{equation*}
+  where $\tau$ and $\tau'$ are isomorphisms.
+
+  The square $r(\sigma)$ thus has the form
+  \begin{equation*}
+    \begin{tikzcd}
+      \vec{X}'
+      \arrow[r, "f'"]
+      \arrow[d, swap, "g'"]
+      & \vec{Y}'
+      \arrow[d, "g"]
+      \\
+      \vec{X}
+      \arrow[r, "f"]
+      & \vec{Y}
+    \end{tikzcd},
+  \end{equation*}
+  where $f$ has components
+  \begin{equation*}
+    f_{i}\colon X_{i} \to Y_{\gamma^{-1}(i)},\qquad i \in \langle m \rangle^{\circ},
+  \end{equation*}
+  $f'$ has components
+  \begin{equation*}
+    f'_{j}\colon X'_{j} \to Y'_{\gamma'^{-1}(j)},\qquad j \in \langle n \rangle^{\circ},
+  \end{equation*}
+  $g$ has components
+  \begin{equation*}
+    g_{j}\colon Y'_{j} \to \prod_{\tau(i) = j} Y_{i},\qquad j \in \langle n \rangle^{\circ},
+  \end{equation*}
+  and $g'$ has components
+  \begin{equation*}
+    g'_{j}\colon X'_{j} \to \prod_{\tau'(i) = j} X_{i},\qquad j \in \langle n \rangle^{\circ}.
+  \end{equation*}
+
+  Note that the condition that $r(\sigma)$ be pullback is the condition that
+  \begin{equation*}
+    X'_{j} \simeq Y'_{j} \times_{\left( \prod_{\tau'(i) = j} Y_{i} \right)} \left( \prod_{\tau'(i) = j} X_{i} \right),
+  \end{equation*}
+  and that the maps $f'_{j}$ and $g'_{j}$ be the canonical projections.
+
+  The data of the square $\sigma$ is thus given by a diagram of the form
+  \begin{equation*}
+    \begin{tikzcd}
+      \vec{X}'
+      \arrow[rrr, "f'"]
+      \arrow[dr, "g'"]
+      \arrow[ddd, swap, "\tau'_{\otimes} \circ g'^{*}\mathcal{F}"]
+      &&& \vec{Y}'
+      \arrow[ddd, near end, "\mathcal{G}"]
+      \arrow[dr, "g"]
+      %\arrow[from=R1, to=L2, Rightarrow, shorten=6ex]
+      \\
+      & \vec{X}
+      \arrow[rrr, crossing over, "f"]
+      &&& \vec{Y}
+      \arrow[ddd, "f_{!}\mathcal{F}"]
+      \\
+      \\
+      \category{C}^{(n)}
+      &&& \category{C}^{(n)}
+      \arrow[lll, near start, "\gamma'_{\otimes}"]
+      \\
+      & \category{C}^{(m)}
+      \arrow[ul, "\tau'_{\otimes}"]
+      \arrow[from=uuu, crossing over, near start, "\mathcal{F}"]
+      &&& \category{C}^{(m)}
+      \arrow[lll, "\gamma_{\otimes}"]
+      \arrow[ul, "\tau_{\otimes}"]
+      %\arrow[from=R1, to=L3, phantom, "\circlearrowleft"{description}]
+      %\arrow[from=R3, to=L4, Rightarrow, crossing over, shorten=6ex]
+      %\arrow[from=R2, to=L4, phantom, "\circlearrowleft"{description}]
+    \end{tikzcd},
+  \end{equation*}
+  where the left and right faces (as well as the top and bottom faces) are thin, and the front face is a left Kan extension, i.e.\
+
+  . Here $\mathcal{F}$ has components
+  \begin{equation*}
+    \mathcal{F}_{i}\colon X_{i} \to \category{C}_{i}\colon i \in \langle m \rangle^{\otimes}.
+  \end{equation*}
+
+  Kan extending $\mathcal{F}$ along $f$ we find a map $f_{!}\mathcal{F}\colon \vec{Y} \to \category{C}^{(m)}$, with components
+  \begin{equation*}
+    (f_{!}\mathcal{F})_{i} \simeq (f_{\gamma(i)})_{!}\mathcal{F}_{\gamma(i)}\colon Y_{i} \to \category{C}_{i}.
+  \end{equation*}
+  Thus, we find that
+  \begin{equation*}
+    \mathcal{G} \simeq \tau_{\otimes} \circ g^{*}f_{!}\mathcal{F},
+  \end{equation*}
+  with components given by the composition
+  \begin{equation*}
+    \mathcal{G}_{j}\colon Y'_{j} \to \prod_{\tau(i) = j} Y_{j} \to \prod_{\tau(i) = j} \category{C}_{i} \to \category{C}_{j}.
+  \end{equation*}
+
+  Alternatively, starting from $\mathcal{F}$ and pulling back along the left face gives a map
+  \begin{equation*}
+    \tau'_{\otimes} \circ g'^{*}\mathcal{F}
+  \end{equation*}
+  with components
+  \begin{equation*}
+    (\tau'_{\otimes} \circ g'^{*}\mathcal{F})_{j}\colon X'_{j} \to \prod_{\tau'(i) = j} X_{j} \to \prod_{\tau'(i) = j} \category{C}_{i} \to \category{C}_{j}.
+  \end{equation*}
+   
+  We need to show that
+  \begin{equation*}
+    \mathcal{G} \simeq f'_{!}(\tau'_{\otimes} \circ g'^{*}\mathcal{F})
+  \end{equation*}
+  or equivalently, componentwise, that
+  \begin{equation*}
+    \mathcal{G}_{j} \simeq (f'_{\gamma'(j)})_{!}(\tau'_{\otimes} \circ g'^{*}\mathcal{F})_{\gamma'(j)}
+  \end{equation*}
+\end{proof}
+
 \end{document}
