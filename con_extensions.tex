@@ -1,0 +1,60 @@
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+
+\section{Conjectural lifting properties of left Kan extensions}
+\label{sec:con_extensions}
+
+We provide a conjectural answer to the following question. Let $f\colon X \to Y'$ be a map of Kan complexes, and let $\mathcal{F}\colon X \to \category{C}$ be a functor, where $\category{C}$ is cocomplete. What universal property does the $\infty$-Kan extension $f_{!}\mathcal{F}\colon Y \to \category{C}$ satisfy? More generally, we would like an answer to this question where $X$ and $Y$ are $\infty$-categories rather than just spaces.
+
+A left Kan extension should be modelled by a 2-simplex in $\ICCat$
+\begin{equation*}
+  \label{eq:left_kan_ext}
+  \begin{tikzcd}
+    X
+    \arrow[rr, "\mathcal{F}", ""{below, name=M}]
+    \arrow[dr, swap, "f"]
+    && \category{C}
+    \\
+    & Y
+    \arrow[ur, swap, "f_{!}\mathcal{F}"]
+    \arrow[to=M, Rightarrow, "\eta"]
+  \end{tikzcd},
+\end{equation*}
+where $\eta$ is the unit map. In analogy to the 1-categorical case, it is logical to assume that such $2$-simplices would enjoy certain pleasant lifting properties. Here is the property we need to hold in order to make our construction work out.
+
+\begin{definition}
+  \label{def:con_extension}
+  A 2-simplex $\sigma\colon \Delta^{2}_{\flat} \to \ICCat$ is \defn{left Kan} if for all
+  \begin{equation*}
+    \tau\colon ( \Lambda^{3}_{0} )_{\flat} \to \ICCat
+  \end{equation*}
+  such that $d_{2}\tau = \sigma$, the space
+  \begin{equation*}
+    \left( \Map(\Delta^{3}_{\flat}, \ICCat) \times_{\Map((\Lambda^{3}_{0})_{\flat}, \ICCat)} \{\tau\} \right)^{\simeq}
+  \end{equation*}
+  of fillings of $\tau$ to a full 3-simplex is contractible.
+
+  Or: if for all $n \geq 3$, we can find a lift
+  \begin{equation*}
+    \begin{tikzcd}
+      \Delta^{\{0,1,n\}}
+      \arrow[d, hook]
+      \arrow[dr, "\sigma"]
+      \\
+      \Lambda^{n}_{0}
+      \arrow[r]
+      \arrow[d, hook]
+      & \ICCat
+      \\
+      \Delta^{n}
+      \arrow[ur, dashed]
+    \end{tikzcd}
+  \end{equation*}
+\end{definition}
+
+We conjecture that left Kan $2$-simplices are precisely those corresponding to left Kan extensions; that is, a 2-simplex in $\ICat$ is left Kan if and only if it is of the form pictured in \hyperref[eq:left_kan_ext]{Equation~\ref*{eq:left_kan_ext}} (where here we allow $X$ and $Y$ to be $\infty$-categories).
+
+Note: this is probably not true because not all left Kan extensions are pointwise. This might be genuinely complicated. Ah, but for functors whose codomain is a cocomplete category, they are all pointwise. So this is probably true in less generality than stated, but more generality than we really need.
+
+\end{document}
