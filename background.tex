@@ -152,65 +152,232 @@ This is a summary of the parts of the theory that we'll need.
   We will call a 1-simplex $\Delta^{1} \to \Tw(\overline{X})$ \defn{thin} if it corresponds to a map $(\Delta^{1} \star {\Delta^{1}}\op)_{\sharp} \to \overline{X}$; that is, a 1-simplex in $\Delta^{1} \to \Tw(\overline{X})$ is thin if and only if each of the faces of the adjunct map $\Delta^{1} \star (\Delta^{1})\op$ is a thin 2-simplex.
 \end{definition}
 
-\section{A new Barwick's theorem}
-\label{sec:a_new_barwick_s_theorem}
+\subsection{The universal property of Kan extensions}
+\label{ssc:the_universal_property_of_kan_extensions}
 
-It turns out Barwick's construction can be obviously modified. Here is a form which is more useful to us. Little to no effort has been made to make this as general as possible, as long as it works. It is relatively clear from the proof that there are many sets of conditions that suffice, and probably no unique weakest one.
+We start by providing a proof of the standard universal property for Kan extensions.
 
-\begin{theorem}
-  Let $p\colon \triple{C} \to \triple{D}$ be a functor between adequate triples which is an inner fibration, satisfying the following conditions.
-  \begin{enumerate}
-    \item Every egressive morphism in $\category{D}$ admits a lift in $\category{C}$ (given a lift of the target) which is both egressive and $p$-cartesian.
-
-    \item Consider a square
-      \begin{equation*}
-          \sigma = \quad
-          \begin{tikzcd}
-            y'
-            \arrow[r, "f'"]
-            \arrow[d, two heads, swap, "g'"]
-            & x'
-            \arrow[d, two heads, "g"]
-            \\
-            y
-            \arrow[r, rightarrowtail, "f"]
-            & x
-          \end{tikzcd}
-      \end{equation*}
-      in $\category{C}$ in which $f$ is $p$-cocartesian and $g$ and $g'$ are $p$-cartesian, lying over an ambigressive pullback square
-      \begin{equation*}
-        p(\sigma) = \quad
-        \begin{tikzcd}
-          py'
-          \arrow[r, rightarrowtail]
-          \arrow[d, two heads]
-          & px'
-          \arrow[d, two heads]
-          \\
-          py
-          \arrow[r, rightarrowtail]
-          & px
-        \end{tikzcd}
-      \end{equation*}
-      in $\category{D}$. Then $\sigma$ is pullback, and $f'$ is ingressive, $p$-cocartesian, and and $p\downdag$-cocartesian.
-  \end{enumerate}
-  Then spans of the form
+\begin{definition}
+  Let $\category{C}$, $\category{D}$, and $\category{E}$ be 1-categories, and let $f\colon \category{C} \to \category{D}$ and $\mathcal{F}\colon \category{C} \to \category{E}$ be functors. A left Kan extension $\mathcal{F}$ along $f$ is a pair $( f_{!}\mathcal{F}, \eta )$, where $f_{!}\colon \category{D} \to \category{E}$ is a functor, and $\eta$ is a natural transformation $\eta\colon \mathcal{F} \Rightarrow f_{!}\mathcal{F} \circ f$ satisfying the following universal property: for any functor $\mathcal{G}\colon \category{D} \to \category{E}$ and natural transformation $\gamma\colon \mathcal{F} \Rightarrow \mathcal{G} \circ f$, there exists a unique natural transformation $f_{!}\mathcal{F} \Rightarrow \mathcal{G}$ such that the pasting
   \begin{equation*}
-    \begin{tikzcd}
-      & z
-      \arrow[dl, two heads, swap, "g"]
-      \arrow[dr, rightarrowtail, "f"]
+    \begin{tikzcd}[row sep=huge, column sep=huge]
+      \category{C}
+      \arrow[rr, ""{name=M, below}, "\mathcal{F}"]
+      \arrow[dr, swap, "f"]
+      && \category{E}
       \\
-      x
-      && y
+      & \category{D}
+      \arrow[from=M, Rightarrow, "\eta", swap]
+      \arrow[ur, bend left, ""{name=LU, swap}, "f_{!}\mathcal{F}"]
+      \arrow[ur, bend right, ""{name=LD, swap}, swap, "\mathcal{G}"]
+      \arrow[from=LU, to=LD, Rightarrow, "\exists!\chi"]
     \end{tikzcd}
   \end{equation*}
-  are cocartesian, where $g$ is $p\updag$ is cocartesian and $f$ is $p$-cartesian.
-\end{theorem}
+  is equal to $\gamma$.
+\end{definition}
+
+\begin{proposition}
+  Suppose we are given categories $\category{C}$, $\category{D}$, and $\category{E}$, and functors $\mathcal{F}$ and $f$ as above, and assume that for all objects $c \in \category{C}$, the colimit
+  \begin{equation*}
+    \colim\left[ \category{C}_{/d} \to \category{C} \to \category{E} \right]
+  \end{equation*}
+  exists. Then the left Kan extension $(f_{!}\mathcal{F}, \eta)$ exists, and is specified up to natural isomorphism by the prescription that on objects the functor $\mathcal{F}_{!}f$ should take the values
+  \begin{equation*}
+    f_{!}\mathcal{F}(d) = \colim \left[ \category{C}_{/d} \to \category{C} \to \category{E} \right].
+  \end{equation*}
+\end{proposition}
 \begin{proof}
-  Even simpler than before. The square that we have to show is pullback factors as before, but this time we don't have to take the final pullback; the square is automatically pullback.
+  We have specified our functor on objects. We need to specify how it acts on morphisms. Let $d \to d'$ be a morphism in $\category{D}$. We need to provide a morphism
+  \begin{equation}
+    \label{eq:map_between_colimits_defining_kan_extension_on_morphism}
+    \colim\left[ \category{C}_{/d} \to \category{C} \to \category{E} \right] \to \colim\left[ \category{C}_{/d'} \to \category{C} \to \category{E} \right].
+  \end{equation}
+
+  The map $\category{C}_{/d} \to \category{C}$ factors through the map $\category{C}_{/d'} \to \category{C}$ via the map $\category{C}_{/d} \to \category{C}_{/d'}$ given by composing everything in sight with our map $d \to d'$, sending
+  \begin{equation*}
+    (c, f(c) \to d) \mapsto (c, f(c) \to d \to d').
+  \end{equation*}
+  This allows us to turn the cocone $(\kappa', f_{!}\mathcal{F}(d'))$ under $\category{C}_{/d'} \to \category{C} \to \category{E}$ to a cocone $(\kappa, f_{!}\mathcal{F}(d'))$ under $\category{C}_{/d} \to \category{C} \to \category{E}$. The cocone $\kappa$ has components 
+  \begin{equation*}
+    \kappa_{(c, f(c) \to d)} = \kappa'_{(c, f(c) \to d \to d')}\colon \mathcal{F}(c) \to f_{!}\mathcal{F}(d'),
+  \end{equation*}
+  and it is easy to see that these really do form a cocone under $\category{C}_{/d} \to \category{C} \to \category{E}$; for any morphism $c \to c'$ in $\category{C}_{/d}$, the diagram
+  \begin{equation}
+    \label{eq:first_triangle_kan_extension}
+    \begin{tikzcd}[row sep=small]
+      \mathcal{F}(c)
+      \arrow[dd]
+      \arrow[dr]
+      \\
+      & f_{!}\mathcal{F}(d')
+      \\
+      \mathcal{F}(c')
+      \arrow[ur]
+    \end{tikzcd}
+  \end{equation}
+  commutes because $c \to c'$ is also a morphism in $\mathcal{C}_{/d'}$. We therefore get a map out of the \emph{universal} cocone under this diagram, i.e.\ $f_{!}\mathcal{F}(d)$, into $f_{!}\mathcal{F}(d')$; according to the universal property for colimits, this is the uniquely defined such map so that for all objects $(c, f(c) \to d)$ in $\category{C}_{/d}$, the diagram
+  \begin{equation}
+    \label{eq:second_triangle_kan_extension}
+    \begin{tikzcd}[row sep=small]
+      & f_{!}\mathcal{F}(d)
+      \arrow[dd]
+      \\
+      \mathcal{F}(c)
+      \arrow[ur]
+      \arrow[dr]
+      \\
+      & f_{!}\mathcal{F}(d')
+    \end{tikzcd}
+  \end{equation}
+  commutes. This is how we define our functor on morphisms. Functoriality follows from uniqueness of these maps.
+
+  Next, we need to provide the components of the natural transformation $\eta$; that is, for each $c \in \category{C}$, we need a map
+  \begin{equation*}
+    \eta_{c}\colon \mathcal{F}(c) \to f_{!}\mathcal{F}(f(c)) = \colim \left[ \category{C}_{/f(c)} \to \category{C} \to \category{E} \right].
+  \end{equation*}
+  The overcategory $\category{C}_{/f(c)}$ contains a distinguished object $(c, f(\id_{c})\colon f(c) \to f(c))$, and the image of this object in $\category{E}$ is $\mathcal{F}(c)$. The corresponding leg of the cocone thus provides the morphism $\eta_{c}$ we are interested in.
+
+  Next, we show naturality. Let $c \to c'$ be a morphism in $\category{C}$. Then $f(c) \to f(c')$ is a morphism in $\category{D}$, and this is what gives us the map $f_{!}\mathcal{F}(f(c)) \to f_{!}\mathcal{F}(f(c'))$. Consider the diagram
+  \begin{equation*}
+    \begin{tikzcd}
+      \mathcal{F}(c)
+      \arrow[r]
+      \arrow[d]
+      \arrow[dr]
+      & \mathcal{F}(c')
+      \arrow[d]
+      \\
+      \colim\left[ \category{C}_{/f(c)} \to \category{C} \to \category{E} \right]
+      \arrow[r]
+      & \colim\left[ \category{C}_{/f(c')} \to \category{C} \to \category{E} \right]
+    \end{tikzcd},
+  \end{equation*}
+  where the left- and right-hand arrows are the components of the yet-to-be-proven-natural transformation $\eta$, and the diagonal map is part of the colimit cone for $f_{!}\mathcal{F}(f(c'J))$ corresponding to the object $(c, f(c) \to f(c'))$. The upper triangle is of the type mentioned in \hyperref[eq:first_triangle_kan_extension]{Diagram~\ref*{eq:first_triangle_kan_extension}}. The lower triangle is of the type mentioned in \hyperref[eq:second_triangle_kan_extension]{Diagram~\ref*{eq:second_triangle_kan_extension}}.
+
+  It remains only to check that our data satisfies the correct universal property. Let $\mathcal{G}\colon \category{D} \to \category{E}$ be a functor, and let $\gamma\colon \mathcal{F} \Rightarrow \mathcal{G} \circ f$ be a natural transformation. We first need to find the components of our natural transformation $\chi$, i.e.\ maps
+  \begin{equation*}
+    \chi_{d}\colon f_{!}\mathcal{F}(d) = \colim \left[ \mathcal{C}_{/d} \to \category{C} \to \category{E} \right] \to \category{G}(d).
+  \end{equation*}
+  This is induced by the universal property for colimits via the cocone with components indexed by $(c, \alpha\colon f(c) \to d) \in \category{C}_{/d}$ given by
+  \begin{equation*}
+    \mathcal{F}(c) \overset{\gamma_{c}}{\to} \mathcal{G}(f(c)) \overset{\mathcal{G}(\alpha)}{\to} \mathcal{G}(d).
+  \end{equation*}
+
+  In order to show that this really is a cocone, we need to show that for any morphism $c \to c'$ in $\category{C}_{/d}$, the outer pentagon in the diagram
+  \begin{equation*}
+    \begin{tikzcd}[row sep=small]
+      \mathcal{F}(c)
+      \arrow[r]
+      \arrow[dd]
+      & \mathcal{G}(f(c))
+      \arrow[dr]
+      \arrow[dd]
+      \\
+      && \mathcal{G}(d)
+      \\
+      \mathcal{F}(c')
+      \arrow[r]
+      & \mathcal{G}(f(c'))
+      \arrow[ur]
+    \end{tikzcd}
+  \end{equation*}
+  commutes. But the left-hand square commutes because $\gamma$ is natural, and the right-hand triangle commutes by definition of the overcategory.
+
+  Now we check that the natural transformation defined in this way really is natural. In order to do that, we need to check that the following solid diagram commutes.
+  \begin{equation}
+    \label{eq:pentagon_naturality_of_univ_prop}
+    \begin{tikzcd}[row sep=small]
+      & \colim\left[ \category{C}_{/d} \to \category{C} \to \category{E} \right]
+      \arrow[r]
+      \arrow[dd]
+      \arrow[ddr, dashed]
+      & \category{G}(d)
+      \arrow[dd]
+      \\
+      \mathcal{F}(c)
+      \arrow[ur, dotted]
+      \arrow[dr, dotted]
+      \\
+      & \colim\left[ \category{C}_{/d'} \to \category{C} \to \category{E} \right]
+      \arrow[r]
+      & \category{G}(d')
+    \end{tikzcd}
+  \end{equation}
+  There is a cocone under $\category{C}_{/d} \to \category{C} \to \category{E}$ with nadir $\category{G}(d')$, where the leg corresponding to $(c, f(c) \to d)$ is given by either solid composition in the diagram
+  \begin{equation}
+    \label{eq:inner_square_naturality_of_univ_prop}
+    \begin{tikzcd}[row sep=small]
+      & \colim\left[ \category{C}_{/d} \to \category{C} \to \category{E} \right]
+      \arrow[dd]
+      \arrow[ddr, dashed]
+      \\
+      \mathcal{F}(c)
+      \arrow[ur]
+      \arrow[dr]
+      \\
+      & \colim\left[ \category{C}_{/d'} \to \category{C} \to \category{E} \right]
+      \arrow[r]
+      & \category{G}(d')
+    \end{tikzcd}.
+  \end{equation}
+  (Both composites agree because the triangle commutes). The dashed diagonal map is the defined by the universal property of the colimit to be the unique map such that for all objects $(c, f(c) \to d)$, the outside of \hyperref[eq:inner_square_naturality_of_univ_prop]{Diagram~\ref*{eq:inner_square_naturality_of_univ_prop}} commutes. But both ways of composing around the solid square in \hyperref[eq:pentagon_naturality_of_univ_prop]{Diagram~\ref*{eq:pentagon_naturality_of_univ_prop}} make this triangle commute, so they must agree.
 \end{proof}
 
+Note that this is equivalent to the following definition. Consider a map
+\begin{equation*}
+  \tau_{\flat}\colon \Lambda^{3}_{0} \to \Cat
+\end{equation*}
+such that $d_{2}\tau$ is the triangle
+\begin{equation*}
+  \begin{tikzcd}
+    \category{C}
+    \arrow[rr, "\mathcal{F}", ""{swap, name=M}]
+    \arrow[dr, swap, "\mathcal{F}"]
+    && \category{E}
+    \\
+    & \category{D}
+    \arrow[ur, swap, "f_{!}\mathcal{F}"]
+    \arrow[from=M, Rightarrow, "\eta"]
+  \end{tikzcd}
+\end{equation*}
+and $d_{3}\tau$ is strictly commutative. Then there is a unique filling to a full 3-simplex.
+
+We would like to show that, assuming our Kan extension is pointwise, this remains true if one drops the condition that $d_{3}\tau$ be strictly commutative; in fact, it needn't even be thin!
+
+We consider such a horn:
+\begin{equation*}
+  \begin{tikzcd}
+    && \category{D}
+    \arrow[drrr, "f_{!}\mathcal{F}"]
+    \arrow[dddrr, near start, "g"]
+    \\
+    &&&&& \category{E}
+    \\
+    \category{C}
+    \arrow[uurr, "f"]
+    \arrow[urrrrr, crossing over, near start, "\mathcal{F}", ""{name=CE}]
+    \arrow[drrrr, swap, "h"]
+    \\
+    &&&& \category{D}'
+    \arrow[uur, swap, "\mathcal{G}"]
+  \end{tikzcd}
+\end{equation*}
+This is a bad drawing. Anyway\dots the back left face is supposed to be thin, and the top-front face is supposed to be a (pointwise) left Kan extension. We need to produce a natural transformation $f_{!}\mathcal{F} \Rightarrow \mathcal{G} \circ g$ making the pasting diagram given by the two different compositions along the outside of the 3-simplex agree.
+
+In order to show this, we first need to produce a natural transformation $\chi\colon f_{!}\mathcal{F} \Rightarrow \mathcal{G} \circ g$. First, we produce the components
+\begin{equation*}
+  \chi_{d}\colon \colim\left[ \category{C}_{/d} \to \category{C} \overset{\mathcal{F}}{\to} \category{E} \right] \to \mathcal{G}(g(d)).
+\end{equation*}
+This should be induced by a cocone under our diagram indexed by objects $(c, \alpha\colon f(c) \to d)$. There is an obvious choice: we take the cocone with legs
+\begin{equation*}
+  \mathcal{F}(c) \to \mathcal{G}(h(c)) \to \mathcal{G}(g(f(c))) \to \mathcal{G}(g(d)).
+\end{equation*}
+It follows easily that these legs really do form a cocone, giving us our morphisms $\chi_{d}$.
+
+Next we have to show that these components $\chi_{d}$ really do form a natural transformation. This is the same as the ordinary proof.
+
+
+Okay, so it's definitely true for 1-categories. What about
 
 
 \end{document}

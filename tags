@@ -9,39 +9,63 @@
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20210110.0/
-A new Barwick's theorem	background.tex	/^\\section{A new Barwick's theorem}$/;"	s
+A new Barwick's theorem	new_barwick.tex	/^\\section{A new Barwick's theorem}$/;"	s
 Background	background.tex	/^\\section{Background}$/;"	s
-Building categories of spans	base_fibrations.tex	/^\\section{Building categories of spans}$/;"	s
-Con extensions	non_monoidal.tex	/^\\subsection{Con extensions}$/;"	u	section:The non-monoidal construction
+Building categories of spans	base_fibrations.tex	/^\\subsection{Building categories of spans}$/;"	u	section:The monoidal construction
+Building categories of spans	non_monoidal.tex	/^\\subsection{Building categories of spans}$/;"	u	section:The non-monoidal construction
+Conjectural lifting properties of left Kan extensions	con_extensions.tex	/^\\section{Conjectural lifting properties of left Kan extensions}$/;"	s
+Constructing the symmetric monoidal functor	base_fibrations.tex	/^\\section{Constructing the symmetric monoidal functor}$/;"	s
 Enhanced twisted arrow categories	background.tex	/^\\subsection{Enhanced twisted arrow categories}$/;"	u	section:Background
+Introduction	main.tex	/^\\section{Introduction}$/;"	s
 Scaled simplicial sets	background.tex	/^\\subsection{Scaled simplicial sets}$/;"	u	section:Background
-Some problems	main.tex	/^\\section{Some problems}$/;"	s
 The bare functor	non_monoidal.tex	/^\\subsection{The bare functor}$/;"	u	section:The non-monoidal construction
-The base fibration	base_fibrations.tex	/^\\section{The base fibration}$/;"	s
+The base fibration	base_fibrations.tex	/^\\subsection{The base fibration}$/;"	u	section:The monoidal construction
+The monoidal construction	base_fibrations.tex	/^\\section{The monoidal construction}$/;"	s
 The non-monoidal construction	non_monoidal.tex	/^\\section{The non-monoidal construction}$/;"	s
-The triple structure on finite pointed sets	base_fibrations.tex	/^\\subsection{The triple structure on finite pointed sets}$/;"	u	section:The triple structures
-The triple structure on infinity-categories	base_fibrations.tex	/^\\subsection{The triple structure on infinity-categories}$/;"	u	section:The triple structures
-The triple structure on the twisted arrow category	base_fibrations.tex	/^\\subsection{The triple structure on the twisted arrow category}$/;"	u	section:The triple structures
-The triple structures	base_fibrations.tex	/^\\section{The triple structures}$/;"	s
+The triple structure on finite pointed sets	base_fibrations.tex	/^\\subsubsection{The triple structure on finite pointed sets}$/;"	b	subsection:The monoidal construction""The triple structures
+The triple structure on finite pointed sets	non_monoidal.tex	/^\\subsubsection{The triple structure on finite pointed sets}$/;"	b	subsection:The non-monoidal construction""The triple structures
+The triple structure on infinity-categories	base_fibrations.tex	/^\\subsubsection{The triple structure on infinity-categories}$/;"	b	subsection:The monoidal construction""The triple structures
+The triple structure on local systems	non_monoidal.tex	/^\\subsubsection{The triple structure on local systems}$/;"	b	subsection:The non-monoidal construction""The triple structures
+The triple structure on the twisted arrow category	base_fibrations.tex	/^\\subsubsection{The triple structure on the twisted arrow category}$/;"	b	subsection:The monoidal construction""The triple structures
+The triple structures	base_fibrations.tex	/^\\subsection{The triple structures}$/;"	u	section:The monoidal construction
+The triple structures	non_monoidal.tex	/^\\subsection{The triple structures}$/;"	u	section:The non-monoidal construction
+The universal property of Kan extensions	background.tex	/^\\subsection{The universal property of Kan extensions}$/;"	u	section:Background
 Tilting at cosimplicial objects	don_quixote.tex	/^\\section{Tilting at cosimplicial objects}$/;"	s
-def:con_extension	non_monoidal.tex	/^  \\label{def:con_extension}$/;"	l
+def:con_extension	con_extensions.tex	/^  \\label{def:con_extension}$/;"	l
 def:scaled_simplicial_set	background.tex	/^  \\label{def:scaled_simplicial_set}$/;"	l
-eq:left_kan_ext	non_monoidal.tex	/^  \\label{eq:left_kan_ext}$/;"	l
+eq:base_triangle	base_fibrations.tex	/^  \\label{eq:base_triangle}$/;"	l
+eq:first_triangle_kan_extension	background.tex	/^    \\label{eq:first_triangle_kan_extension}$/;"	l
+eq:general_morphism_of_local_systems_explicit	non_monoidal.tex	/^  \\label{eq:general_morphism_of_local_systems_explicit}$/;"	l
+eq:general_morphism_of_local_systems_short	non_monoidal.tex	/^  \\label{eq:general_morphism_of_local_systems_short}$/;"	l
+eq:inner_square_naturality_of_univ_prop	background.tex	/^    \\label{eq:inner_square_naturality_of_univ_prop}$/;"	l
+eq:left_kan_ext	con_extensions.tex	/^  \\label{eq:left_kan_ext}$/;"	l
+eq:map_between_colimits_defining_kan_extension_on_morphism	background.tex	/^    \\label{eq:map_between_colimits_defining_kan_extension_on_morphism}$/;"	l
 eq:overcategory_commutes_with_homotopy_pullback	non_monoidal.tex	/^    \\label{eq:overcategory_commutes_with_homotopy_pullback}$/;"	l
+eq:pentagon_naturality_of_univ_prop	background.tex	/^    \\label{eq:pentagon_naturality_of_univ_prop}$/;"	l
+eq:second_triangle_kan_extension	background.tex	/^    \\label{eq:second_triangle_kan_extension}$/;"	l
 lemma:homotopy_pullbacks_and_overcategories	non_monoidal.tex	/^  \\label{lemma:homotopy_pullbacks_and_overcategories}$/;"	l
+lemma:pullbacks_in_ttw	non_monoidal.tex	/^  \\label{lemma:pullbacks_in_ttw}$/;"	l
+lemma:triangle_of_cartesian_fibrations	base_fibrations.tex	/^  \\label{lemma:triangle_of_cartesian_fibrations}$/;"	l
 prop:q_triple_is_adequate	non_monoidal.tex	/^  \\label{prop:q_triple_is_adequate}$/;"	l
-sec:a_new_barwick_s_theorem	background.tex	/^\\label{sec:a_new_barwick_s_theorem}$/;"	l
+sec:a_new_barwick_s_theorem	new_barwick.tex	/^\\label{sec:a_new_barwick_s_theorem}$/;"	l
 sec:background	background.tex	/^\\label{sec:background}$/;"	l
-sec:base_fibrations	base_fibrations.tex	/^\\label{sec:base_fibrations}$/;"	l
-sec:building_categories_of_spans	base_fibrations.tex	/^\\label{sec:building_categories_of_spans}$/;"	l
-sec:some_problems	main.tex	/^\\label{sec:some_problems}$/;"	l
+sec:con_extensions	con_extensions.tex	/^\\label{sec:con_extensions}$/;"	l
+sec:constructing_the_symmetric_monoidal_functor	base_fibrations.tex	/^\\label{sec:constructing_the_symmetric_monoidal_functor}$/;"	l
+sec:introduction	main.tex	/^\\label{sec:introduction}$/;"	l
+sec:the_monoidal_construction	base_fibrations.tex	/^\\label{sec:the_monoidal_construction}$/;"	l
 sec:the_non_monoidal_construction	non_monoidal.tex	/^\\label{sec:the_non_monoidal_construction}$/;"	l
-sec:the_triple_structures	base_fibrations.tex	/^\\label{sec:the_triple_structures}$/;"	l
 sec:tilting_at_cosimplicial_objects	don_quixote.tex	/^\\label{sec:tilting_at_cosimplicial_objects}$/;"	l
-ssc:con_extensions	non_monoidal.tex	/^\\label{ssc:con_extensions}$/;"	l
+ssc:base_fibrations	base_fibrations.tex	/^\\label{ssc:base_fibrations}$/;"	l
+ssc:building_categories_of_spans	base_fibrations.tex	/^\\label{ssc:building_categories_of_spans}$/;"	l
+ssc:building_categories_of_spans_bare	non_monoidal.tex	/^\\label{ssc:building_categories_of_spans_bare}$/;"	l
 ssc:enhanced_twisted_arrow_categories	background.tex	/^\\label{ssc:enhanced_twisted_arrow_categories}$/;"	l
 ssc:scal	background.tex	/^\\label{ssc:scal}$/;"	l
 ssc:the_bare_functor	non_monoidal.tex	/^\\label{ssc:the_bare_functor}$/;"	l
-ssc:the_triple_structure_on_categories	base_fibrations.tex	/^\\label{ssc:the_triple_structure_on_categories}$/;"	l
-ssc:the_triple_structure_on_finite_pointed_sets	base_fibrations.tex	/^\\label{ssc:the_triple_structure_on_finite_pointed_sets}$/;"	l
-ssc:the_triple_structure_on_the_twisted_arrow_category	base_fibrations.tex	/^\\label{ssc:the_triple_structure_on_the_twisted_arrow_category}$/;"	l
+ssc:the_triple_structures	base_fibrations.tex	/^\\label{ssc:the_triple_structures}$/;"	l
+ssc:the_triple_structures_bare	non_monoidal.tex	/^\\label{ssc:the_triple_structures_bare}$/;"	l
+ssc:the_universal_property_of_kan_extensions	background.tex	/^\\label{ssc:the_universal_property_of_kan_extensions}$/;"	l
+sss:the_triple_structure_on_categories	base_fibrations.tex	/^\\label{sss:the_triple_structure_on_categories}$/;"	l
+sss:the_triple_structure_on_finite_pointed_sets	base_fibrations.tex	/^\\label{sss:the_triple_structure_on_finite_pointed_sets}$/;"	l
+sss:the_triple_structure_on_finite_pointed_sets_bare	non_monoidal.tex	/^\\label{sss:the_triple_structure_on_finite_pointed_sets_bare}$/;"	l
+sss:the_triple_structure_on_local_systems	non_monoidal.tex	/^\\label{sss:the_triple_structure_on_local_systems}$/;"	l
+sss:the_triple_structure_on_the_twisted_arrow_category	base_fibrations.tex	/^\\label{sss:the_triple_structure_on_the_twisted_arrow_category}$/;"	l
