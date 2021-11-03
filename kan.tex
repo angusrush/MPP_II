@@ -1,0 +1,1061 @@
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+
+\section{Horn filling via left Kan extensions}
+\label{sec:horn_filling_via_left_kan_extensions}
+
+In this section, we show that a simplex $\Delta^{2}_{\flat} \to \ICCat$ which is left Kan is also globally left Kan. This will amount to showing that a simplex $\tau\colon \Delta^{2}_{\flat} \to \ICCat$ of the form
+\begin{equation*}
+  \begin{tikzcd}
+    X
+    \arrow[dr, swap, "f"]
+    \arrow[rr, "F", ""{below, name=M}]
+    && \category{C}
+    \\
+    & Y
+    \arrow[ur, swap, "f_{!}F"]
+    \arrow[from=M, Rightarrow, swap, "\eta"]
+  \end{tikzcd},
+\end{equation*}
+where $\category{C}$ is cocomplete, $X$ is small, $f_{!}F$ is a left Kan extension of $F$ along $f$, and $\eta\colon F \Rightarrow f^{*}f_{!}F$ is the unit map, has the property that for any $n \geq 2$, any solid filling problem
+\begin{equation}
+  \label{eq:lifting_problems_for_global_kan_extensions}
+  \begin{tikzcd}
+    \Delta^{\{0,1,n+1\}}_{\flat}
+    \arrow[d, hook]
+    \arrow[dr, "\tau"]
+    \\
+    (\Lambda^{n+1}_{0})_{\flat}
+    \arrow[r]
+    \arrow[d, hook]
+    & \ICCat
+    \\
+    \Delta^{n+1}_{\flat}
+    \arrow[ur, dashed]
+  \end{tikzcd}
+\end{equation}
+has a dashed solution.
+
+Let us examine this in the case $n = 2$. In this case we have the data of categories and functors
+\begin{equation*}
+  \begin{tikzcd}
+    & Y
+    \arrow[drr, "f_{!}F"]
+    \\
+    X
+    \arrow[drr, swap, "h"]
+    \arrow[ur, "f"]
+    \arrow[rrr, near end, "F"]
+    &&& \category{C}
+    \\
+    && Z
+    \arrow[ur, swap, "G"]
+    \arrow[from=uul, crossing over, near start, "g"]
+  \end{tikzcd}
+\end{equation*}
+together with natural transformations $\eta\colon F \Rightarrow f_{!}F \circ f$, $\beta\colon h \Rightarrow g \circ f$, and $\delta\colon F \Rightarrow G \circ h$. We need to produce a natural transformation $\alpha\colon f_{!}F \Rightarrow G \circ g$ and a filling of the full 3-simplex, which is the data of a homomotopy-commutative diagram
+\begin{equation*}
+  \begin{tikzcd}
+    F
+    \arrow[r, "\eta"]
+    \arrow[d, swap, "\delta"]
+    & f_{!}F \circ f
+    \arrow[d, "\alpha f"]
+    \\
+    G \circ h
+    \arrow[r, "G \beta"]
+    & G \circ g \circ f
+  \end{tikzcd}
+\end{equation*}
+in $\Fun(X, \category{C})$.
+
+We can rephrase this as follows. We are given the data
+\begin{equation*}
+  \overbrace{
+  \begin{tikzcd}[ampersand replacement=\&]
+    F
+    \arrow[r, "\eta"]
+    \arrow[d, swap, "\delta"]
+    \& f_{!}F \circ f
+    \\
+    G \circ h
+    \arrow[r, "G \beta"]
+    \& G \circ g \circ f
+  \end{tikzcd}}^{\text{in }\Fun(X, \category{C})}
+  \qquad\qquad
+  \overbrace{
+  \begin{tikzcd}
+    f_{!}F
+    \\
+    G \circ g
+  \end{tikzcd}}^{\text{ in }\Fun(Y, \category{C})}
+\end{equation*}
+where the left-hand diagram is a map $LC^{2} \to \Fun(X, C)$, where $LC^{2}$ is the simplicial subset of the boundary of $\Delta^{1} \times \Delta^{1}$ except the right-hand face, and the right-hand diagram is a map $\partial \Delta^{1} \to \Fun(Y, C)$. We need to construct a filler $\partial \Delta^{1} \hookrightarrow \Delta^{1}$ on the right, and from it a filler $LC^{2} \hookrightarrow \Delta^{1} \times \Delta^{1}$ on the left. We do this in the following sequence of steps.
+
+\begin{enumerate}
+  \item We first can fill the lower-left half of the diagram on the left simply by taking the composition $G\beta \circ \delta$. Doing this, we are left with the filling problem
+    \begin{equation*}
+      \overbrace{
+      \begin{tikzcd}[ampersand replacement=\&]
+        F
+        \arrow[r, "\eta"]
+        \arrow[dr]
+        \& f_{!}F \circ f
+        \\
+        \& G \circ g \circ f
+      \end{tikzcd}}^{\text{in }\Fun(X, \category{C})}
+      \qquad\qquad
+      \overbrace{
+      \begin{tikzcd}
+        f_{!}F
+        \\
+        G \circ g
+      \end{tikzcd}}^{\text{ in }\Fun(Y, \category{C})}.
+    \end{equation*}
+
+  \item We note that we can extend the diagram on the right to a diagram which is adjunct to the diagram on the left under the adjunction $f_{!} \dashv f^{*}$:
+    \begin{equation*}
+      \overbrace{
+      \begin{tikzcd}[ampersand replacement=\&]
+        F
+        \arrow[r, "\eta"]
+        \arrow[dr]
+        \& f_{!}F \circ f
+        \\
+        \& G \circ g \circ f
+      \end{tikzcd}}^{\text{in }\Fun(X, \category{C})}
+      \qquad\qquad
+      \overbrace{
+        \begin{tikzcd}[ampersand replacement=\&]
+          f_{!}F
+          \arrow[r, "\id"]
+          \arrow[dr]
+        \& f_{!}F
+        \\
+        \& G \circ g
+      \end{tikzcd}}^{\text{ in }\Fun(Y, \category{C})}
+    \end{equation*}
+
+  \item The diagram on the right has an obvious filler, which is adjunct to a filler on the left.
+    \begin{equation*}
+      \overbrace{
+      \begin{tikzcd}[ampersand replacement=\&]
+        F
+        \arrow[r, "\eta"]
+        \arrow[dr]
+        \& f_{!}F \circ f
+        \arrow[d, "\alpha f"]
+        \\
+        \& G \circ g \circ f
+      \end{tikzcd}}^{\text{in }\Fun(X, \category{C})}
+      \qquad\qquad
+      \overbrace{
+        \begin{tikzcd}[ampersand replacement=\&]
+          f_{!}F
+          \arrow[r, "\id"]
+          \arrow[dr]
+        \& f_{!}F
+        \arrow[d, "\alpha"]
+        \\
+        \& G \circ g
+      \end{tikzcd}}^{\text{ in }\Fun(Y, \category{C})}
+    \end{equation*}
+\end{enumerate}
+
+The lifting problems which we have to solve in \hyperref[eq:lifting_problems_for_global_kan_extensions]{Equation~\ref*{eq:lifting_problems_for_global_kan_extensions}} for $n > 2$ amount to replacing $\Delta^{1} \times \Delta^{1}$ by $(\Delta^{1})^{n}$, etc; the basic process remains unchanged, but the combinatorics involved in filling the necessary cubes becomes more involved. In \hyperref[ssc:filling_cubes_relative_to_their_boundary]{Subsection~\ref*{ssc:filling_cubes_relative_to_their_boundary}} we explain the combinatorics of filling cubes relative to their boundaries. In \hyperref[ssc:adjunct_data]{Subsection~\ref*{ssc:adjunct_data}}, we give a formalization the concept of adjunct data, and provide a means of for filling partial data to total adjunct data. In \hyperref[ssc:left_kan_implies_globally_left_kan]{Subsection~\ref*{ssc:left_kan_implies_globally_left_kan}}, we show that we can always solve the lifting problems of \hyperref[eq:lifting_problems_for_global_kan_extensions]{Equation~\ref*{eq:lifting_problems_for_global_kan_extensions}}.
+
+\subsection{Filling cubes relative to their boundary}
+\label{ssc:filling_cubes_relative_to_their_boundary}
+
+In this section, we give the combinatorics of filling the $n$-cube $(\Delta^{1})^{n}$ relative to its boundary. Our main result is \hyperref[prop:cube_filling]{Proposition~\ref*{prop:cube_filling}}, which writes the inclusion the boundary of the $n$-cube missing a certain face into the full cube as a composition of an inner anodyne map and a marked anodyne map. Our first step is to understand the nondegenerate simplices of the $n$-cube.
+
+\begin{definition}
+  The \defn{$n$-cube} is the simplicial set $C^{n} := (\Delta^{1})^{n}$.
+\end{definition}
+
+\begin{note}
+  We will consider the the factors $\Delta^{1}$ of $C^{n}$ to be ordered, so that we can speak about the first factor, the second factor, etc.
+\end{note}
+
+\begin{definition}
+  Denote by $a^{i}\colon \Delta^{n} \to \Delta^{1}$ the map which sends $\Delta^{\{0, \ldots, i-1\}}$ to $\{0\}$, and $\Delta^{\{i, \ldots, n\}}$ to $\{1\}$.
+\end{definition}
+
+The superscript of $a^{i}$ counts how many vertices of $\Delta^{n}$ are sent to $\Delta^{\{0\}} \subset \Delta^{1}$.
+
+We would now like to understand which $n$-simplices in $C^{n}$ are nondegenerate. Every nondegenerate simplex $\Delta^{n} \to C^{n}$ can be specified by giving a walk along the edges of $C^{n}$ starting at $(0, \ldots, 0)$ and ending at $(1, \ldots, 1)$, and any simplex specified in this way is nondegenerate. We now use this to define a bijection between $S_{n}$, the symmetric group on the set $\{1, \ldots, n\}$, and the nondegenerate simplices $\Delta^{n} \to C^{n}$ as follows.
+
+\begin{definition}
+  For any permutation $\tau\colon \{1, \ldots, n\} \to \{1, \ldots, n\}$, we define an $n$-simplex
+  \begin{equation*}
+    \phi(\tau)\colon \Delta^{n} \to C^{n};\qquad \phi(\tau)_{i} = a^{\tau(i)}.
+  \end{equation*}
+  That is,
+  \begin{equation*}
+    \phi(\tau) = (a^{\tau(1)}, \ldots, a^{\tau(n)}).
+  \end{equation*}
+\end{definition}
+
+\begin{notation}
+  We will denote any permutatation $\tau\colon \{1, \ldots, n\} \to \{1, \ldots, n\}$ by the corresponding $n$-tuple $(\tau(1), \ldots, \tau(n))$. Thus, the identity permutation is $(1, \ldots, n)$, and the permutation $\gamma_{1,2}$ which swaps $1$ and $2$ is $(2, 1, 3, \ldots, n)$.
+\end{notation}
+
+Given a permutation $\tau \in S_{n}$ corresponding to an $n$-simplex
+\begin{equation*}
+  \phi(\tau) = (a^{\tau(1)}, \ldots, a^{\tau(n)})\colon \Delta^{n} \to C^{n},
+\end{equation*}
+the $i$th face of $\phi(\tau)$ is a nondegenerate $(n-1)$-simplex in $C^{n}$, i.e.\ a map $\Delta^{n-1} \to C^{n}$. We calculate this as follows: for any $a^{i}\colon \Delta^{n} \to \Delta^{1}$ and any face map $\partial_{j}\colon \Delta^{n-1} \to \Delta^{n}$, we note that
+\begin{equation*}
+  \partial_{j}^{*}a^{i} =
+  \begin{cases}
+    a^{i-1}, & j < i \\
+    a^{i}, & j \geq i
+  \end{cases},
+\end{equation*}
+where by minor abuse of notation we denote the map $\Delta^{n-1} \to \Delta^{1}$ sending $\Delta^{\{0, \ldots i-1\}}$ to $\{0\}$ and the rest to $\{1\}$ also by $a^{i}$. We then have that
+\begin{gather*}
+  \label{eq:simplicial_identity_for_cubes}
+  d_{i}\tau = d_{i}(a^{\tau(1)}, \ldots, a^{\tau(n)}) := (\partial_{i}^{*} a^{\tau(1)}, \ldots, \partial_{i}^{*} a^{\tau(n)}).
+\end{gather*}
+
+\begin{example}
+  Consider the 3-simplex $(a^{1}, a^{2}, a^{3})$ in $C^{3}$. This has spine
+  \begin{equation*}
+    (0, 0, 0) \to (1, 0, 0) \to (1, 1, 0) \to (1, 1, 1),
+  \end{equation*}
+  as is easy to see quickly:
+  \begin{itemize}
+    \item The function $\Delta^{3} \to \Delta^{1}$ corresponding to the first coordinate is $a^{1}$, so the first coordinate of the first vertex is 0, and the first coordinate of the rest of the vertices are 1.
+
+    \item The function $\Delta^{3} \to \Delta^{1}$ corresponding to the second coordinate is $a^{2}$, so the second coordinates of the first two points are equal to zero, and the second coordinate of the remaining vertices is 1.
+
+    \item The function $\Delta^{3} \to \Delta^{1}$ corresponding to the third coordinate is $a^{3}$, so the third coordinates of the first three points is equal to zero, and the second coordinate of the final vertex is equal to 1.
+  \end{itemize}
+  Using \hyperref[eq:simplicial_identity_for_cubes]{Equation~\ref*{eq:simplicial_identity_for_cubes}}, we then calculate that
+  \begin{equation*}
+    d_{2} (a^{1}, a^{2}, a^{3}) = (a^{1}, a^{2}, a^{2}).
+  \end{equation*}
+  This corresponds to the 2-simplex in $C^{n}$ with spine
+  \begin{equation*}
+    (0, 0, 0) \to (1, 0, 0) \to (1, 1, 1).
+  \end{equation*}
+\end{example}
+
+Our next task is to understand the boundary of the $n$-cube. We can view the boundary of the cube $C^{n}$ as the union of its faces.
+
+\begin{definition}
+  \label{def:boundary_of_n-cube}
+  The \defn{boundary of the $n$-cube} is the simplicial subset
+  \begin{equation}
+    \label{eq:boundary_of_cube}
+    \partial C^{n} := \bigcup_{i = 1}^{n} \bigcup_{j = 0}^{1} \overset{(1)}{\Delta^{1}} \times \cdots \times \overset{(i)}{\{j\}} \times \cdots \times \overset{(n)}{\Delta^{1}} \subset C^{n}.
+  \end{equation}
+\end{definition}
+
+The following is easy to see.
+\begin{proposition}
+  \label{prop:simplex_intersect_faces}
+  An $(n-1)$-simplex
+  \begin{equation*}
+    \gamma = (\gamma_{1}, \ldots, \gamma_{n})\colon \Delta^{n-1} \to C^{n}
+  \end{equation*}
+  lies entirely within the face
+  \begin{equation*}
+    \overset{(1)}{\Delta^{1}} \times \cdots \times \overset{(i)}{\{0\}} \times \cdots \times \overset{(n)}{\Delta^{1}}
+  \end{equation*}
+  if and only if $\gamma_{i} = a^{n} = \const_{0}$, and to the face
+  \begin{equation*}
+    \overset{(1)}{\Delta^{1}} \times \cdots \times \overset{(i)}{\{1\}} \times \cdots \times \overset{(n)}{\Delta^{1}}
+  \end{equation*}
+  if and only if $\gamma_{i} = a^0 = \const_{1}$.
+\end{proposition}
+
+\begin{definition}
+  \label{def:left_box}
+  The \defn{left box of the $n$-cube}, denoted $LC^{n}$, is the simplicial subset of $C^{n}$ given by the union of all of the faces in \hyperref[eq:boundary_of_cube]{Equation~\ref*{eq:boundary_of_cube}} except for
+  \begin{equation*}
+    \Delta^{1} \times \cdots \times \Delta^{1} \times \Delta^{\{1\}}.
+  \end{equation*}
+
+  Note that drawing the box with the final coordinate going from left to right, the right face is open here; the terminology is chosen to match with `left horn'.
+\end{definition}
+
+\begin{example}
+  The simplicial subset $LC^{2} \subset C^{2}$ can be drawn as follows.
+  \begin{equation*}
+    \begin{tikzcd}
+      {(0, 0)}
+      \arrow[r]
+      \arrow[d]
+      & {(0, 1)}
+      \\
+      {(1, 0)}
+      \arrow[r]
+      & {(1, 1)}
+    \end{tikzcd}
+  \end{equation*}
+\end{example}
+
+Note that in $LC^{2}$, the morphisms $(0,0) \to (1, 0) \to (1, 1)$ form an inner horn, which we can fill by pushing out along an inner horn inclusion. Our main goal in this section is to show that this is generically true: given a left cube $LC^{n}$, we can fill much of $C^{n}$ using pushouts along inner horn inclusions. To this end, it will be helpful to know how each nondegenerate simplex in $C^{n}$ intersects $LC^{n}$.
+
+\begin{lemma}
+  \label{lemma:first_and_last_face}
+  Let $\phi\colon \Delta^{n} \to C^{n}$ be a nondegenerate $n$-simplex corresponding to the permutaton $\tau \in S_{n}$. We have the following.
+  \begin{enumerate}
+    \item The zeroth face $d_{0}\phi$ belongs to $LC^{n}$ if and only if $\tau(n) \neq 1$.
+
+    \item For $0 < i < n$, the face $d_{i}\phi$ never belongs to $LC^{n}$.
+
+    \item The $n$th face $d_{n}\phi$ always belongs to $LC^{n}$.
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  \begin{enumerate}
+    \item We have
+      \begin{equation*}
+        d_{0}\phi = (a^{\tau(0) - 1}, \ldots a^{\tau(n)-1})
+      \end{equation*}
+      since $\tau(i) > 0$ for all $i$. For $j = \tau^{-1}(1)$, we have that $\tau(j) = 1$, so the $j$th entry of $d_{0}\phi$ is $a^{0}$. Thus, \hyperref[prop:simplex_intersect_faces]{Proposition~\ref*{prop:simplex_intersect_faces}} guarantees that $d_{0}\phi$ is contained in the face
+      \begin{equation*}
+        \overset{(1)}{\Delta^{1}} \times \cdots \times \overset{(j)}{\{1\}} \times \cdots \times \overset{(n)}{\Delta^{1}}.
+      \end{equation*}
+      This face belongs to $LC^{n}$ except when $j = n$.
+
+    \item In this case, the superscript of each entry of $d_{i}\phi$ is between $1$ and $n-1$, hence not equal to $n$ or $0$.
+
+    \item In this case,
+      \begin{equation*}
+        d_{n}(a^{\tau(1)}, \ldots, a^{\tau(n)}) = (a^{\tau(1)}, \ldots, a^{\tau(n)})
+      \end{equation*}
+      since $n \geq \tau(i)$ for all $1 \leq i \leq n$. Thus, the $\tau^{-1}(n) = j$th entry is $a^{n}$, so $d_{n}\phi$ belongs to the face
+      \begin{equation*}
+        \overset{(1)}{\Delta^{1}} \times \cdots \times \overset{(j)}{\{0\}} \times \cdots \times \overset{(n)}{\Delta^{1}}.
+      \end{equation*}
+  \end{enumerate}
+\end{proof}
+
+This is promising: it means that for many simplices in $C^{n}$ which we want to fill relative to $LC^{n}$, we already have the data of the first and last faces. The following lemma will allow us to take advantage of this.
+
+\begin{notation}
+  For any subset $T \subseteq [n]$, write
+  \begin{equation*}
+    \Lambda^{n}_{T} := \bigcup_{t \in T} d_{t} \Delta^{n} \subset \Delta^{n}.
+  \end{equation*}
+\end{notation}
+
+\begin{lemma}
+  \label{lemma:subset_of_faces_inner_anodyne}
+  For any proper subset $T \subset [n]$ containing 0 and $n$, the inclusion $\Lambda^{n}_{T} \hookrightarrow \Delta^{n}$ is inner anodyne.
+\end{lemma}
+\begin{proof}
+  Induction. For $n = 2$, $T$ must be equal to $\{0, 2\}$, so $\Delta^{2}_{T} = \Lambda^{2}_{1}$.
+
+  Assume the result holds for $n-1$, and let $T \subset [n]$ be a proper subset containing $0$ and $n$. Using the inductive step, we can fill all but one of the faces $d_{1}\Delta^{n}, \ldots, d_{n-1}\Delta^{n}$. The result follows
+\end{proof}
+
+We can use \hyperref[lemma:subset_of_faces_inner_anodyne]{Lemma~\ref*{lemma:subset_of_faces_inner_anodyne}} to show that we can fill much of $C^{n}$ as a sequence of inner anodyne pushouts, but to do this we need to pick an order in which to fill our simplices. We do this as follows.
+
+\begin{definition}
+  \label{def:order_on_nondegenerate_simplices}
+  We define a total order on $S_{n}$ as follows. For any two permutations $\tau$, $\tau' \in S_{n}$, we say that $\tau < \tau'$ if there exists $k \in [n]$ such that the following conditions are satisfied.
+  \begin{itemize}
+    \item For all $i < k$, we have that $\tau^{-1}(i) = \tau'^{-1}(i)$.
+
+    \item We have that $\tau^{-1}(k) = \tau'^{-1}(k)$.
+  \end{itemize}
+
+  We then define a total order on the nondegenerate simplices of $C^{n}$ by saying that $\phi(\tau) < \phi(\tau')$ if and only if $\tau < \tau'$.
+\end{definition}
+
+Note that this is \emph{not} the lexicographic order on $S_{n}$; instead, we have that $\tau < \tau'$ if and only if $\tau^{-1}$ is less than $\tau'^{-1}$ under the lexicographic order.
+
+\begin{example}
+  The elements of the permutation group $S_{3}$ have the order
+  \begin{equation*}
+    (1,2,3) < (1,3,2) < (2,1,3) < (3,1,2) < (2,3,1) < (3,2,1).
+  \end{equation*}
+\end{example}
+
+We use this ordering to define our filtration.
+
+\begin{notation}
+  For $\tau \in S_{n}$, we mean by
+  \begin{equation*}
+    \bigcup_{\tau' \in S_{n}}^{\tau}
+  \end{equation*}
+  the union over all $\tau' \in S_{n}$ for which $\tau' < \tau$ with respect to the ordering defined above. Note the strict inequality.
+\end{notation}
+
+We would like to show that each step of the filtration
+\begin{align}
+  \label{eq:inclusions_inner_anodyne}
+  \begin{split}
+    LC^{n} &\hookrightarrow LC^{n} \cup \phi(0, \ldots, n) \\
+    & \hookrightarrow \cdots \\
+    & \hookrightarrow LC^{n} \cup \bigcup_{\tau \in S_{n}}^{(2, \ldots, n, 1)} \phi(\tau)
+  \end{split}
+\end{align}
+is inner anodyne. To do this, it suffices to show that for each $\tau < (2, \ldots, n, 1)$, the intersection
+\begin{equation}
+  \label{eq:intersections_inner_anodyne}
+  B_{\tau} = \left(LC^{n} \cup \bigcup_{\tau' \in S_{n}}^{\tau} \phi(\tau')\right) \cap \phi(\tau)
+\end{equation}
+is of the form $\Lambda^{n}_{T}$ for some proper $T \subseteq [n]$ containing 0 and $n$.
+
+\begin{proposition}
+  \label{prop:inner_anodyne_cube_filling}
+  Each inclusion in \hyperref[eq:inclusions_inner_anodyne]{Equation~\ref*{eq:inclusions_inner_anodyne}} is inner anodyne.
+\end{proposition}
+\begin{proof}
+  The first inclusion
+  \begin{equation*}
+    LC^{n} \hookrightarrow LC^{n} \cup \phi(0, \ldots, n)
+  \end{equation*}
+  is inner anodyne because by \hyperref[lemma:first_and_last_face]{Lemma~\ref*{lemma:first_and_last_face}} the intersection $LC^{n} \cap \phi(0, \ldots, n)$ is of the form $d_{0}\Delta^{n} \cup d_{n} \Delta^{n}$.
+
+  Each subsequent intersection contains the faces $d_{0}\Delta^{n}$ and $d_{n}\Delta^{n}$ (again by \hyperref[lemma:first_and_last_face]{Lemma~\ref*{lemma:first_and_last_face}}), so by \hyperref[lemma:subset_of_faces_inner_anodyne]{Lemma~\ref*{lemma:subset_of_faces_inner_anodyne}}, it suffices to show that for each $\tau$ under consideration, there is at least one face not shared with any previous $\tau'$.
+
+  To this end, fix $0 < i < n$, and consider $\tau \in S_{n}$ such that $\tau \neq (0, \ldots, n)$. We consider the face $d_{i}\phi(\tau)$. Let $j = \tau^{-1}(i)$ and $j' = \tau^{-1}(i+1)$. Then $d_{i} a^{\tau(j)} = d_{i}a^{\tau(j')}$, so $d_{i} \phi(\tau) = d_{i}\phi(\tau \circ \gamma_{jj'})$, where $\gamma_{jj'} \in S_{n}$ is the permutation swapping $j$ and $j'$. Thus, the face $d_{i}\sigma(\tau)$ is equal to the face $d_{i}\sigma(\tau \circ \gamma_{jj'})$, which is already contained in the union under consideration if and only $\tau \circ \gamma_{jj'} < \tau$. This in turn is true if and only if $j < j'$.
+
+  Assume that every face of $\phi(\tau)$ is contained in the union. Then
+  \begin{equation*}
+    \tau^{-1}(1) < \tau^{-1}(2) < \cdots \tau^{-1}(n),
+  \end{equation*}
+  which implies that $\tau = (1, \ldots, n)$. This is a contradiction. Thus, each boundary inclusion under consideration is of the form $\Lambda^{n}_{T} \hookrightarrow \Delta^{n}$, for $T \subset [n]$ a proper subset containing 0 and $n$, and is thus inner anodyne.
+\end{proof}
+
+Each nondegenerate simplex of $C^{n}$ which we have yet to fill is of the form $\phi(\tau)$, where $\tau(n) = 1$. Thus, each of their spines begins
+\begin{equation*}
+  (0, \ldots, 0, 0) \to (0, \ldots, 0, 1) \to \cdots,
+\end{equation*}
+and then remains confined to the face $\Delta^{1} \times \cdots \times \Delta^{1} \times \{1\}$. This implies that the part of $LC^{n}$ yet to be filled is of the form $\Delta^{0} \ast C^{n-1}$, and the boundary of this with respect to which we must do the filling is of the form $\Delta^{0} \ast \partial C^{n-1}$.
+
+Our next task is to show that we can also perform this filling, under the assumption that $(0, \ldots, 0, 0) \to (0, \ldots, 0, 1)$ is marked. We do not give the details of this proof, at is quite similar to the proof of \hyperref[prop:inner_anodyne_cube_filling]{Proposition~\ref*{prop:inner_anodyne_cube_filling}}. One continues to fill simplices in the order prescribed in \hyperref[def:order_on_nondegenerate_simplices]{Definition~\ref*{def:order_on_nondegenerate_simplices}}, and shows that each of these inclusions is marked anodyne. The main tool is the following lemma, proved using the same inductive argument as \hyperref[lemma:subset_of_faces_inner_anodyne]{Lemma~\ref*{lemma:subset_of_faces_inner_anodyne}}.
+
+\begin{lemma}
+  \label{lemma:subset_of_faces_marked_anodyne}
+  For any subset $T \subset [n]$ containing 1 and $n$, and \emph{not} containing 0, the inclusion
+  \begin{equation*}
+    (\Lambda^{n}_{T}, \mathcal{E}) \hookrightarrow (\Delta^{n}, \mathcal{F})
+  \end{equation*}
+  is (cocartesian-)marked anodyne, where by $\mathcal{F}$ we mean the set of degenerate $1$-simplces together with $\Delta^{\{0, 1\}}$, and by $\mathcal{E}$ we mean the restriction of this marking to $\Lambda^{n}_{T}$.
+\end{lemma}
+
+We collect our major results from this section in the following proposition.
+
+\begin{proposition}
+  \label{prop:cube_filling}
+  Denote by $J^{n} \subseteq C^{n}$ the simplicial subset spanned by those nondegenerate $n$-simplices whose spines do not begin $(0, \ldots, 0, 0) \to (0, \ldots, 0, 1)$. We can write the filling $LC^{n} \hookrightarrow C^{n}$ as a composition
+  \begin{equation*}
+    \begin{tikzcd}
+      LC^{n}
+      \arrow[r, hook, "i"]
+      & J^{n}
+      \arrow[r, hook, "j"]
+      & C^{n}
+    \end{tikzcd},
+  \end{equation*}
+  where $i$ is inner anodyne, and $j$ fits into a pushout square
+  \begin{equation*}
+    \begin{tikzcd}
+      \Delta^{0} \ast \partial C^{n-1}
+      \arrow[dr, phantom, "\ulcorner"{at end}]
+      \arrow[r, hook]
+      \arrow[d, hook]
+      & \Delta^{0} \ast C^{n-1}
+      \arrow[d, hook]
+      \\
+      J^{n}
+      \arrow[r, hook]
+      & C^{n}
+    \end{tikzcd},
+  \end{equation*}
+  where the top inclusion underlies a marked anodyne morphism
+  \begin{equation*}
+    (\Delta^{0} \ast \partial C^{n-1}, \mathcal{G}) \hookrightarrow (\Delta^{0} \ast C^{n-1}, \mathcal{G}),
+  \end{equation*}
+  where the marking $\mathcal{G}$ contains all degenerate morphisms together with the morphism $(0, \ldots, 0) \to (0, \ldots 1)$.
+
+  %is the morphism underlying a
+  %(cocartesian-) marked anodyne morphism of marked simplicial sets $(J^{n})^{\clubsuit} \hookrightarrow (C^{n})^{\clubsuit}$. Furthermore, we have a pushout square
+  %\begin{equation*}
+  %  \begin{tikzcd}
+  %    \Delta^{0} \ast \partial C^{n-1}
+  %    \arrow[dr, phantom, "\ulcorner"{at end}]
+  %    \arrow[r, hook]
+  %    \arrow[d, hook]
+  %    & \Delta^{0} \ast C^{n-1}
+  %    \arrow[d, hook]
+  %    \\
+  %    J^{n}
+  %    \arrow[r, hook]
+  %    & C^{n}
+  %  \end{tikzcd},
+  %\end{equation*}
+  %where the right-hand downward-facing inclusion is the unique one taking $\Delta^{0}$ to $(0, \ldots, 0) \in C^{n}$, and $C^{n-1}$ to the right face
+  %\begin{equation*}
+  %  \Delta^{1} \times \cdots \times \Delta^{1} \times \{1\} \subset C^{n}.
+  %\end{equation*}
+\end{proposition}
+
+\subsection{Adjunct data}
+\label{ssc:adjunct_data}
+
+In this section, we give a formalization of the the notion of adjunct data. Our main result is \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}}, which shows that under certain conditions, we can use data on one side of an adjunction to solve lifting problems on the other side.
+
+\begin{definition}
+  \label{def:adjunct_data}
+  Let $s\colon K \to \Delta^{1}$ be a map of simplicial sets, and let $p\colon \category{M} \to \Delta^{1}$ be a bicartesian fibration associated to the adjunction
+  \begin{equation*}
+    f : \category{C} \longleftrightarrow \category{D} : g
+  \end{equation*}
+  via equivalences $h_{0}\colon \category{C} \to \category{M}_{0}$ and $h_{1}\colon \category{D} \to \category{M}_{1}$. We say that a map $\alpha\colon K \to \category{C}$ is \defn{adjunct} to a map $\tilde{\alpha}\colon K \to \category{D}$ relative to $s$, and equivalently that $\tilde{\alpha}$ is adjunct to $\alpha$ relative to $s$, if there exists a map $A\colon K \times \Delta^{1} \to \category{M}$ such that the diagram
+  \begin{equation*}
+    \begin{tikzcd}
+      K \times \Delta^{1}
+      \arrow[r, "A"]
+      \arrow[dr, swap, "\pr_{\Delta^{1}}"]
+      & \category{M}
+      \arrow[d, "p"]
+      \\
+      & \Delta^{1}
+    \end{tikzcd}
+  \end{equation*}
+  commutes, and such that the following conditions are satisfied.
+  \begin{enumerate}
+    \item The restriction $A|_{K \times \{0\}} = h_{0} \circ \alpha$.
+
+    \item The restriction $A|_{K \times \{1\}} = h_{1} \circ \tilde{\alpha}$.
+
+    \item For each vertex $k \in K$ in the fiber $s^{-1}\{0\}$, the image of the edge $\{k\} \times \Delta^{1} \to \category{M}$ is $p$-cocartesian.
+
+    \item For each vertex $k' \in K$ in the fiber $s^{-1}\{1\}$, the image of the edge $\{k'\} \times \Delta^{1} \to \category{M}$ is $p$-cartesian.
+  \end{enumerate}
+\end{definition}
+
+We often leave the equivalences $h_{0}$ and $h_{1}$ implicit to lighen notation.
+
+In the next examples, fix an adjunction
+\begin{equation*}
+  f : \category{C} \longleftrightarrow \category{D} : g
+\end{equation*}
+corresponding to a bicartesian fibration $p\colon \category{M} \to \Delta^{1}$.
+
+\begin{example}
+  Any morphism in $\category{D}$ of the form $fC \to D$ is adjunct to some morphism in $\category{C}$ of the form $C \to gD$, witnessed by any square
+  \begin{equation*}
+    \begin{tikzcd}
+      C
+      \arrow[r, "a"]
+      \arrow[d]
+      & fC
+      \arrow[d]
+      \\
+      gD
+      \arrow[r, "b"]
+      & D
+    \end{tikzcd}
+  \end{equation*}
+  in $\category{M}$ where $a$ is $p$-cocartesian and $b$ is $p$-cartesian. This corresponds to the map $s = \id\colon \Delta^{1} \to \Delta^{1}$.
+\end{example}
+
+\begin{example}
+  Pick some object $D \in \category{D}$, and consider the identity morphism $\id\colon gD \to gD$ in $\category{C}$. This morphism is adjunct to the component of the unit map $\eta_{D}\colon D \to fgD$ relative to $s = \id\colon \Delta^{1} \to \Delta^{1}$.
+\end{example}
+
+The next example will follow from \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}}.
+
+\begin{example}
+  Any diagram $K \ast K' \to \category{D}$ such that $K$ is in the image of $f$ is adjunct to some diagram $K \ast K' \to \category{C}$ such that $K'$ is in the image of $g$.
+\end{example}
+
+\begin{lemma}
+  \label{lemma:left_cylinder_inclusion_marked_anodyne}
+  The inclusion of marked simplicial sets
+  \begin{equation}
+    \label{eq:cocartesian_anodyne_morphism}
+    \left( \Delta^{n} \times \Delta^{\{0\}} \coprod_{\Delta^{n} \times \Delta^{\{0\}}} \partial \Delta^{n} \times \Delta^{\{0\}}, \mathcal{E} \right) \hookrightarrow (\Delta^{n} \times \Delta^{1}, \mathcal{F})
+  \end{equation}
+  where the marking $\mathcal{F}$ is the flat marking together with the edge $\Delta^{\{0\}} \times \Delta^{1}$, and $\mathcal{E}$ is the restriction of this marking, is marked (cocartesian) anodyne.
+\end{lemma}
+
+The next proposition shows the power of adjunctions in lifting problems: given data on either side of an adjunction, we can fill in adjunct data on the other side.
+
+% This is obviously bullshit
+%\begin{lemma}
+%  Let $f\colon \category{C} \to \category{D}$ be a equivalence of quasicategories with homotopy inverse $f^{-1}$ (and natural isomorphism $c\colon f \circ f^{-1} \to \id_{\category{D}}$). Let $i\colon K' \hookrightarrow K$ be an inclusion of simplicial sets, $\alpha\colon K \to \category{C}$ and $\tilde{\alpha}'\colon K' \to \category{D}$ be maps, and denote $\alpha' = \alpha \circ i$. Suppose that $f^{-1} \circ \tilde{\alpha}' = \alpha'$. Then there exists a dashed extension
+%  \begin{equation*}
+%    \begin{tikzcd}
+%      K'
+%      \arrow[r, "\alpha'"]
+%      \arrow[d, swap, hook, "i"]
+%      & \category{C}
+%      \\
+%      K
+%      \arrow[ur, swap, "\alpha"]
+%    \end{tikzcd}
+%    \quad \rightsquigarrow \quad
+%    \begin{tikzcd}
+%      K'
+%      \arrow[r, "\tilde{\alpha}'"]
+%      \arrow[d, swap, hook, "i"]
+%      & \category{D}
+%      \\
+%      K
+%      \arrow[ur, dashed, swap, "\tilde{\alpha}"]
+%    \end{tikzcd}
+%  \end{equation*}
+%  such that $f \circ \alpha = \tilde{\alpha}$.
+%\end{lemma}
+%\begin{proof}
+%  Using the maps
+%  \begin{equation*}
+%    K \overset{\alpha}{\to} \category{C} \overset{f}{\to} \category{D}
+%  \end{equation*}
+%  and
+%  \begin{equation*}
+%    K' \times \Delta^{1} \to \category{D} \times \Delta^{1} \to \category{D},
+%  \end{equation*}
+%  we can construct the solid filling problem
+%  \begin{equation*}
+%    \begin{tikzcd}
+%      K \times \Delta^{\{0\}} \coprod_{K' \times \Delta^{\{0\}}} K' \times \Delta^{1}
+%      \arrow[r]
+%      \arrow[d, hook]
+%      & \category{D}
+%      \\
+%      K \times \Delta^{1}
+%      \arrow[ur, dashed]
+%    \end{tikzcd},
+%  \end{equation*}
+%  which has a dashed solution such that for each $k \in K$, $\{k\} \times \Delta^{1}$ is mapped to an equivalence in $\category{D}$. The restriction to $K \times \Delta^{\{1\}}$ gives us the extension we want.
+%\end{proof}
+
+\begin{proposition}
+  \label{prop:can_transport_adjunct_data}
+  Let $\category{M} \to \Delta^{1}$, $\category{C}$, $\category{D}$, $f$, $g$, $h_{0}$ and $h_{1}$ be as in \hyperref[def:adjunct_data]{Definition~\ref*{def:adjunct_data}}, and let
+  \begin{equation*}
+    \begin{tikzcd}[column sep=small]
+      K'
+      \arrow[rr, hook, "i"]
+      \arrow[dr, swap, "s \circ i"]
+      && K
+      \arrow[dl, "s"]
+      \\
+      & \Delta^{1}
+    \end{tikzcd},
+  \end{equation*}
+  be a commuting triangle of simplicial sets, where $i$ is a cofibration such that $i|_{\{1\}}$ is an isomorphism. Let $\tilde{\alpha}'\colon K' \to \category{D}$ and $\alpha\colon K \to \category{C}$ be maps, and denote $\alpha' = \alpha \circ i$. Suppose that $\tilde{\alpha}'$ is adjunct to $\alpha'$ relative to $s \circ i$. Then there exists a dashed extension
+  \begin{equation}
+    \label{eq:adjunct_filling_problems}
+    \begin{tikzcd}
+      K'
+      \arrow[r, "\alpha'"]
+      \arrow[d, swap, hook, "i"]
+      & \category{C}
+      \\
+      K
+      \arrow[ur, swap, "\alpha"]
+    \end{tikzcd}
+    \quad \rightsquigarrow \quad
+    \begin{tikzcd}
+      K'
+      \arrow[r, "\tilde{\alpha}'"]
+      \arrow[d, swap, hook, "i"]
+      & \category{D}
+      \\
+      K
+      \arrow[ur, dashed, swap, "\tilde{\alpha}"]
+    \end{tikzcd}
+  \end{equation}
+  such that $\tilde{\alpha}$ is adjunct to $\alpha$ relative to $s$.
+
+  %Furthermore, denoting by
+  %\begin{equation*}
+  %  \catname{Adj} \subseteq \Fun(K, \category{D}) \times_{\Fun(K', \category{D})} \{\alpha'\}
+  %\end{equation*}
+  %the full simplicial subset on those functors $\tilde{\alpha}\colon K \to \category{D}$ which which are adjoint to $\alpha$, so that $\catname{Adj}$ is the space of solutions to the above lifting problem, we have that $\catname{Adj}$ is a contractible Kan complex.
+\end{proposition}
+\begin{proof}
+  Pick some commutative diagram
+  \begin{equation*}
+    \begin{tikzcd}
+      K' \times \Delta^{1}
+      \arrow[r, "A"]
+      \arrow[dr, swap, "\pr_{\Delta^{1}}"]
+      & \category{M}
+      \arrow[d]
+      \\
+      & \Delta^{1}
+    \end{tikzcd}
+  \end{equation*}
+  displaying $\tilde{\alpha}'$ and $\alpha'$ as adjunct. We further consider the map $h_{0} \circ \alpha\colon K \to \category{M}_{0}$. From these two pieces of data we can construct the solid commutative square of cocartesian-marked simplicial sets
+  \begin{equation*}
+    \begin{tikzcd}
+      \left(K \times \Delta^{\{0\}} \coprod_{K' \times \Delta^{\{0\}}} K' \times \Delta^{1}\right)^{\heartsuit}
+      \arrow[r]
+      \arrow[d]
+      & \category{M}^{\natural}
+      \arrow[d]
+      \\
+      (K \times \Delta^{1})^{\heartsuit}
+      \arrow[ur, dashed, "\ell"]
+      \arrow[r]
+      & (\Delta^{1})^{\sharp}
+    \end{tikzcd},
+  \end{equation*}
+  where $(K \times \Delta^{1})^{\heartsuit}$ is the marked simplicial set where the only nondenerate morphisms marked are those of the form $\{k\} \times \Delta^{1}$, for $k \in K|_{s^{-1}\{0\}}$, and the $\heartsuit$-marked pushout-product denotes the restriction of this marking to the pushout-product. Starting from $K'$ and adjoining one nondegenerate simplex of $K$ at a time, we can write the left-hand map in the above square as a transfinite composition of pushouts of morphisms of the form given in \hyperref[eq:cocartesian_anodyne_morphism]{Equation~\ref*{eq:cocartesian_anodyne_morphism}} (by assumption each simplex $\sigma$ we adjoin is not completely contained in $K'$, so the initial vertex of $\sigma$ must lie in the fiber of $s$ over $0$). Each of these is marked anodyne, so the left-hand map is as well. Thus, a dashed lift $\ell$ exists, giving us a map $h_{1}^{-1} \circ \ell|_{K \times \Delta^{\{1\}}}\colon K \to \category{D}$. This, together with the composition
+  \begin{equation*}
+    K' \times \Delta^{1} \overset{\tilde{\alpha}' \times \id}{\to} \category{D} \times \Delta^{1} \overset{c}{\to} \category{D}
+  \end{equation*}
+  where $c\colon h_{1}^{-1} \circ h_{1} \to \id_{\category{D}}$ is a natural isomorphism, gives a solid diagram
+  \begin{equation*}
+    \begin{tikzcd}
+      K \times \Delta^{\{0\}} \coprod_{K' \times \Delta^{\{0\}}} K' \times (\Delta^{1})^{\sharp}
+      \arrow[r]
+      \arrow[d]
+      & \category{D}^{\natural}
+      \\
+      K \times (\Delta^{1})^{\sharp}
+      \arrow[ur, dashed, swap, "m"]
+    \end{tikzcd},
+  \end{equation*}
+  where $\category{D}^{\natural}$ is the marked simplicial set whose underlying simplicial set is $\category{D}$ and where all equivalences are marked. This admits a dashed lift, and restricting $m|_{K \times \Delta^{\{1\}}}$ gives us a map $\tilde{\alpha}\colon K \to \category{D}$ as in \hyperref[eq:adjunct_filling_problems]{Equation~\ref*{eq:adjunct_filling_problems}}. However, we still need to display this as adjunct to $\alpha$: the lift $\ell$ has $\ell|_{K \times \Delta^{\{0\}}} = h_{0} \circ \alpha$, but only $\ell|_{K \times \Delta^{\{1\}}} \simeq h_{1} \circ \tilde{\alpha}$, not equality as we require.
+
+  Our last task is to remedy this. Denote the spine of the $3$-simplex by
+  \begin{equation*}
+    I_{3} := \Delta^{\{0, 1\}} \amalg_{\Delta^{\{1\}}} \Delta^{\{1,2\}} \amalg_{\Delta^{\{2\}}} \Delta^{\{2,3\}} \hookrightarrow \Delta^{3}.
+  \end{equation*}
+  We build a map $I_{3} \times K \overset{b}{\to} \category{M}$ which:
+  \begin{itemize}
+    \item On $\Delta^{\{0, 1\}} \times K$ is given by the lift $\ell$.
+
+    \item On $\Delta^{\{1, 2\}} \times K$ is given by the composition
+      \begin{equation*}
+        K \times \Delta^{1} \overset{\ell|_{K \times \Delta^{\{1\}}} \times \id}{\to} \category{M}_{1} \times \Delta^{1} \overset{H}{\to} \category{M}_{1} \hookrightarrow \category{M},
+      \end{equation*}
+      where $H$ is a natural isomorphism $\id_{\category{M}_{1}} \to h_{1} \circ h_{1}^{-1}$.
+
+    \item On $\Delta^{\{2, 3\}} \times K$ is given by the natural isomorphism
+      \begin{equation*}
+        K \times \Delta^{1} \overset{m}{\to} \category{D} \overset{h_{1}}{\to} \category{M}_{1} \hookrightarrow \category{M}.
+      \end{equation*}
+  \end{itemize}
+  The map $I_{3} \hookrightarrow \Delta^{3}$ is inner anodyne, so there exists a map $\Delta^{3} \times K \to \category{M}$ whose restriction to $I_{3} \times K$ is equal to $b$. The restriction of this filling to $\Delta^{\{0,3\}} \times K$ satisfies the conditions of \hyperref[def:adjunct_data]{Definition~\ref*{def:adjunct_data}} (since the composition of a (co)cartesian morphism with an equivalence is again (co)cartesian), exhibiting $\tilde{\alpha}$ as adjunct to $\alpha$.
+\end{proof}
+
+\begin{note}
+  \label{note:can_pick_which_simplex_in_construction_of_adjunct_filling}
+  The filler provided by \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}} is not guaranteed to be unique (even up to equivalence). However, we have some say in how our filler should look. We construct our adjoint filler $\tilde{\alpha}$ by starting with the solid data of \hyperref[eq:adjunct_filling_problems]{Equation~\ref*{eq:adjunct_filling_problems}} and building the dashed extension $\tilde{\alpha}\colon K \to \category{D}$ by filling a simplex at a time relative to its boundary, such that each new simplex making up the map $\tilde{\alpha}$ is adjunct to the corresponding one in $\alpha$. We are free to choose each new adjunct simplex however we like.
+\end{note}
+
+\begin{example}
+  Let $f : \category{C} \leftrightarrow \category{D} : g$ be an adjunction of $1$-categories, giving an adjunction between quasicategories upon taking nerves. Consider the diagram
+  \begin{equation*}
+    \begin{tikzcd}[column sep=small]
+      K' = \Delta^{\{0,1,3\}} \cup \Delta^{\{0,2,3\}}
+      \arrow[dr]
+      \arrow[rr, hook, "i"]
+      && \Delta^{3} = K
+      \arrow[dl]
+      \\
+      & \Delta^{1}
+    \end{tikzcd},
+  \end{equation*}
+  where both downwards-facing arrows take $0$, $1 \mapsto 0$ and $2$, $3 \mapsto 1$, and fix a map $\tilde{\alpha}\colon K \to N(\category{C})$ and a map $\alpha'\colon K' \to N(\category{D})$ such that $\tilde{\alpha} \circ i$ is adjunct to $\alpha'$. This corresponds to the diagrams
+  \begin{equation*}
+    \overbrace{
+      \begin{tikzcd}[ampersand replacement=\&]
+        C
+        \arrow[r]
+        \arrow[d]
+        \& gD
+        \arrow[d]
+        \\
+        C'
+        \arrow[r]
+        \arrow[ur, dashed]
+        \& gD'
+      \end{tikzcd}
+    }^{\text{in } \category{C}}
+    \qquad\qquad
+    \overbrace{\begin{tikzcd}[ampersand replacement=\&]
+      fC
+      \arrow[r]
+      \arrow[d]
+      \& D
+      \arrow[d]
+      \\
+      fC'
+      \arrow[r]
+      \& D'
+    \end{tikzcd}}^{\text{in }\category{D}}
+  \end{equation*}
+  where the solid diagrams in each category are adjunct to one another.
+  \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}} implies that the solution to the lifting problem on the left yields one on the right. Similarly, its dual implies the converse. Thus, \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}} implies in particular that such lifting problems are equivalent.
+\end{example}
+
+%\begin{proposition}
+%  Let $s\colon K \to \Delta^{1}$, and let $\alpha\colon K \to \category{C}$ and $\tilde{\alpha}\colon K \to \category{D}$ be adjunct diagrams. Then the squares
+%  \begin{equation*}
+%    \begin{tikzcd}
+%      K_{0}
+%      \arrow[r, "\alpha|_{0}"]
+%      \arrow[d, hook]
+%      & \category{C}
+%      \arrow[d, "f"]
+%      \\
+%      K
+%      \arrow[r, "\tilde{\alpha}"]
+%      & \category{D}
+%    \end{tikzcd}
+%    \qquad\text{and}\qquad
+%    \begin{tikzcd}
+%      K_{1}
+%      \arrow[r, "\tilde{\alpha}|_{1}"]
+%      \arrow[d, hook]
+%      & \category{D}
+%      \arrow[d, "g"]
+%      \\
+%      K
+%      \arrow[r, "\alpha"]
+%      & \category{C}
+%    \end{tikzcd}
+%  \end{equation*}
+%  are commutative.
+%\end{proposition}
+%\begin{proof}
+%  One sees equally easily that 2.\ implies 3.
+%\end{proof}
+
+
+
+\subsection{Left Kan implies globally left Kan}
+\label{ssc:left_kan_implies_globally_left_kan}
+
+In this subsection, we will show that we can solve lifting problems of the form
+\begin{equation*}
+  \label{eq:specific_left_horns_in_cat_infty_bicategories}
+  \begin{tikzcd}
+    \Delta^{\{0, 1, n+1\}}_{\flat}
+    \arrow[d, hook]
+    \arrow[dr, "\tau"]
+    \\
+    (\Lambda^{n+1}_{0})_{\flat}
+    \arrow[r]
+    \arrow[d, hook]
+    & \ICCat
+    \\
+    \Delta^{n+1}_{\flat}
+    \arrow[ur, dashed]
+  \end{tikzcd},
+\end{equation*}
+for $n \geq 2$, where $\tau$ is left Kan. Forgetting for a moment that have singled out some $2$-simplex $\tau$, and using the adjunction $\Csc \dashv \Nsc$, we will do this by solving equivalent lifting problems of the form\footnote{Note that we are implicitly taking $\C[\Lambda^{n+1}_{0}]$ and $\C[\Delta^{n+1}]$ to carry the flat markings on their mapping spaces.}
+\begin{equation}
+  \label{eq:left_horns_in_cat_infty_scaled}
+  \begin{tikzcd}
+    \C[\Lambda^{n+1}_{0}]
+    \arrow[r]
+    \arrow[d, hook]
+    & \QCat
+    \\
+    \C[\Delta^{n+1}]
+    \arrow[ur, dashed, swap, "\mathcal{F}"]
+  \end{tikzcd}.
+\end{equation}
+We expect that the reader is familiar with the basics of (scaled) rigidification, so we give only a rough description of this lifting problem here. The objects of the simplicial category $\C[\Delta^{n+1}]$ are given by the set $\{0, \ldots, n+1\}$, and the mapping spaces are defined by
+\begin{equation*}
+  \C[\Delta^{n+1}](i, j) =
+  \begin{cases}
+    N(P_{ij}), &i \leq j \\
+    \emptyset, & i > j
+  \end{cases}.
+\end{equation*}
+
+where $P_{ij}$ is the poset of subsets of the linearly ordered set $\{i, \ldots, j\}$ containing $i$ and $j$, ordered by inclusion. The simplicial category $\C[\Lambda^{n+1}_{0}]$ has the same objects as $\C[\Delta^{n+1}]$, and each morphism space $\C[\Lambda^{n+1}_{0}](i, j)$ is a simplicial subset of $\C[\Delta^{n+1}](i, j)$, as we shall now describe.
+
+The map $\C[\Lambda^{n+1}_{0}](i, j) \hookrightarrow \C[\Delta^{n+1}](i, j)$ is an isomorphism except for $(i, j) = (1, n+1)$ and $(i, j) = (0, n+1)$. The missing data corresponds in the case of $(1, n+1)$ to the missing face $d_{0}\Delta^{n+1}$ of $\Lambda^{n+1}_{0}$, and in the case of $(0, n+1)$ to the missing interior. Thus, to find a filling as in \hyperref[eq:left_horns_in_cat_infty_scaled]{Equation~\ref*{eq:left_horns_in_cat_infty_scaled}}, we need to solve the lifting problems
+\begin{equation}
+  \label{eq:lifting_problem_1}
+  \begin{tikzcd}
+    \C[\Lambda^{n+1}_{0}](1, n+1)
+    \arrow[r]
+    \arrow[d, hook]
+    & \Fun(\mathcal{F}(1), \mathcal{F}(n+1))
+    \\
+    \C[\Delta^{n+1}](1, n+1)
+    \arrow[ur, dashed, swap, "\ell'"]
+  \end{tikzcd}
+\end{equation}
+and
+\begin{equation}
+  \label{eq:lifting_problem_2}
+  \begin{tikzcd}
+    \C[\Lambda^{n+1}_{0}](0, n+1)
+    \arrow[r]
+    \arrow[d, hook]
+    & \Fun(\mathcal{F}(0), \mathcal{F}(n+1))
+    \\
+    \C[\Delta^{n+1}](0, n+1)
+    \arrow[ur, dashed, swap, "\ell"]
+  \end{tikzcd}.
+\end{equation}
+However, these problems are not independent; the filling $\ell$ of the full simplex needs to agree with the filling $\ell'$ we found for the missing face of the horn, corresponding to the condition that the square
+\begin{equation}
+  \label{eq:lifting_problem_compatibility_condition}
+  \begin{tikzcd}
+    \C[\Delta^{n+1}](1, n+1)
+    \arrow[r, "\ell'"]
+    \arrow[d, swap, "{\{0,1\}}^{*}"]
+    & \Fun(\mathcal{F}(1), \mathcal{F}(n+1))
+    \arrow[d, "\mathcal{F}({\{0, 1\}})^{*}"]
+    \\
+    \C[\Delta^{n+1}](0, n+1)
+    \arrow[r, "\ell"]
+    & \Fun(\mathcal{F}(0), \mathcal{F}(n+1))
+  \end{tikzcd}
+\end{equation}
+commute.
+
+\begin{notation}
+  \label{notation:simplicial_lifting}
+  Recall our desired filling $\mathcal{F}\colon \C[\Delta^{n+1}] \to \QCat$ of \hyperref[eq:left_horns_in_cat_infty_scaled]{Equation~\ref*{eq:left_horns_in_cat_infty_scaled}}. We will denote $\mathcal{F}(i)$ by $X_{i}$, and for each subset $S = \{i_{1}, \ldots, i_{k}\} \subseteq [n]$, we will denote $\category{F}(S) \in \Map(X_{i_{1}}, X_{i_{k}})$ by $f_{i_{k}\cdots i_{1}}$. For any inclusion $S' \subseteq S \subseteq [n]$ preserving minimim and maximum elements, we will denote the corresponding morphism by $\alpha^{S'}_{S}$.
+\end{notation}
+
+\begin{theorem}
+  For any $n \geq 2$ and any globally left Kan $2$-simplex $\tau$, the solid extension problem
+  \begin{equation*}
+    \begin{tikzcd}
+      \Delta^{\{0, 1, n+1\}}_{\flat}
+      \arrow[d, hook]
+      \arrow[dr, "\tau"]
+      \\
+      (\Lambda^{n+1}_{0})_{\flat}
+      \arrow[r]
+      \arrow[d, hook]
+      & \ICCat
+      \\
+      \Delta^{n+1}_{\flat}
+      \arrow[ur, dashed]
+    \end{tikzcd}
+  \end{equation*}
+  admits a dashed filler.
+\end{theorem}
+\begin{proof}
+  We need to solve the lifting problems of \hyperref[eq:lifting_problem_1]{Equation~\ref*{eq:lifting_problem_1}} and \hyperref[eq:lifting_problem_2]{Equation~\ref*{eq:lifting_problem_2}}, and check that our solutions satisfy the condition of \hyperref[eq:lifting_problem_compatibility_condition]{Equation~\ref*{eq:lifting_problem_compatibility_condition}}. We note the following useful pieces of information.
+
+  \begin{itemize}
+    \item The information that the simplex $\tau\colon \Delta^{\{0,1,n+1\}}_{\flat} \to \ICCat$ is left Kan tells us that $f_{n,1}$ is the left Kan extension of $f_{n, 0}$ along $f_{1, 0}$, and that $\alpha_{\{0,n+1\}}^{\{0,1,n+1\}}\colon f_{n+1,0} \to f_{n+1, 1} \circ f_{1, 0} $ is the unit map.
+
+    \item We have an adjunction
+  \begin{equation*}
+    (f_{1,0})_{!} : \Fun(X_{0}, X_{n+1}) \longleftrightarrow \Fun(X_{1}, X_{n+1}) : f_{1,0}^{*}.
+  \end{equation*}
+  \end{itemize}
+
+  It is easy to see that we have the following succinct descriptions of the inclusions of \hyperref[eq:lifting_problem_1]{Equation~\ref*{eq:lifting_problem_1}} and \hyperref[eq:lifting_problem_2]{Equation~\ref*{eq:lifting_problem_2}} along which we have to extend.
+  \begin{itemize}
+    \item There is an isomorphism of simplicial sets
+      \begin{equation*}
+        \C[\Delta^{n+1}](0, n+1) \overset{\cong}{\to} C^{n}
+      \end{equation*}
+      specified completely by sending a subset $S \subseteq [n+1]$ to the point
+      \begin{equation*}
+        (z_{1}, \ldots, z_{n}) \in C^{n},\qquad z_{i} =
+        \begin{cases}
+          1, & i \in S \\
+          0, &\text{otherwise.}
+        \end{cases}
+      \end{equation*}
+
+      The inclusion $\C[\Lambda^{n+1}_{0}](0, n+1) \hookrightarrow \C[\Delta^{n+1}](0, n+1)$ corresponds to the simplicial subset $LC^{n} \hookrightarrow C^{n}$.
+
+    \item There is a similar isomorphism of simplicial sets
+      \begin{equation*}
+        \C[\Delta^{n+1}](1, n+1) \overset{\cong}{\to} C^{n-1}
+      \end{equation*}
+      specified completely by sending $S \subseteq \{1, \ldots, n+1\}$ to the point
+      \begin{equation*}
+        (z_{1}, \ldots, z_{n-1}) \in C^{n-1},\qquad z_{i} =
+        \begin{cases}
+          1, & i+1 \in S \\
+          0, &\text{otherwise.}
+        \end{cases}
+      \end{equation*}
+      The inclusion $\C[\Lambda^{n+1}_{0}](1, n+1) \hookrightarrow \C[\Delta^{n+1}](1, n+1)$ corresponds to the inclusion $\partial C^{n-1} \hookrightarrow C^{n-1}$.
+  \end{itemize}
+
+  Using these descriptions, we can write our lifting problems in the more inviting form
+  \begin{equation*}
+    (*) =
+    \begin{tikzcd}
+      LC^{n}
+      \arrow[r]
+      \arrow[d, hook]
+      & \Fun(X_{0}, X_{n+1})
+      \\
+      C^{n}
+      \arrow[ur, dashed]
+    \end{tikzcd},\qquad (**) =
+    \begin{tikzcd}
+      \partial C^{n-1}
+      \arrow[r, "\tilde{\alpha}'"]
+      \arrow[d, hook]
+      & \Fun(X_{1}, X_{n+1})
+      \\
+      C^{n-1}
+      \arrow[ur, dashed]
+    \end{tikzcd},
+  \end{equation*}
+  and our condition becomes that the square
+  \begin{equation*}
+    (\star) =
+    \begin{tikzcd}
+      C^{n-1}
+      \arrow[r]
+      \arrow[d, hook]
+      & \Fun(X_{1}, X_{n+1})
+      \arrow[d, "f_{1,0}^{*}"]
+      \\
+      C^{n}
+      \arrow[r]
+      & \Fun(X_{0}, X_{n+1})
+    \end{tikzcd}
+  \end{equation*}
+  commutes, where the left-hand vertical morphism is the inclusion of the right face.
+
+  Using \hyperref[prop:cube_filling]{Proposition~\ref*{prop:cube_filling}}, we can partially solve the lifting problem $(*)$, reducing it to the lifting problem
+  \begin{equation*}
+    (*') =
+    \begin{tikzcd}
+      \Delta^{0} \ast \partial C^{n-1}
+      \arrow[r, "\alpha"]
+      \arrow[d, hook]
+      & \Fun(X_{0}, X_{n+1})
+      \\
+      \Delta^{0} \ast C^{n-1}
+      \arrow[ur, dashed]
+    \end{tikzcd}.
+  \end{equation*}
+  The image of the 1-simplex $(0, \ldots, 0) \to (0, \ldots, 1)$ of $\Delta^{0} \ast \partial C^{n-1} \subseteq C^{n}$ under $\alpha$ is the unit map $\alpha^{\{0, 1, n+1\}}_{\{0, n+1\}}\colon f_{n+1, 0} \to f_{n+1, 1} \circ f_{1, 0}$. This is not an equivalence, so we cannot use \hyperref[prop:cube_filling]{Proposition~\ref*{prop:cube_filling}} to solve the lifting problem $(*')$ directly. However, the unit map is adjunct to the identity map $\id_{f_{n+1,1}}$ in $\Fun(X_{1}, X_{n+1})$ relative to $s = \id_{\Delta^{1}}$. Furthermore, the restriction of $\alpha$ to $\partial C^{n-1}$ is in the image of $f^{*}_{1,0}$, so by \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}} we can augment the map $\tilde{\alpha}'$ to a map $\tilde{\alpha}\colon \Delta^{0} \ast \partial C^{n-1} \to \Fun(X_{1}, X_{n-1})$ which is adjunct to $\alpha$ relative to the map
+  \begin{equation*}
+    s\colon \Delta^{0} \ast \partial C^{n-1} \to \Delta^{1}
+  \end{equation*}
+  sending $\Delta^{0}$ to $\Delta^{\{0\}}$ and $\partial C^{n-1}$ to $\Delta^{\{1\}}$; by \hyperref[note:can_pick_which_simplex_in_construction_of_adjunct_filling]{Note~\ref*{note:can_pick_which_simplex_in_construction_of_adjunct_filling}}, we can choose $\tilde{\alpha}$ such that the image of the morphism $(0, \ldots, 0) \to (0, \ldots 1)$ is an equivalence. This allows us to replace the lifting problem $(**)$ by the superficially more complicated lifting problem
+  \begin{equation*}
+    (**') =
+    \begin{tikzcd}
+      \Delta^{0} \ast \partial C^{n-1}
+      \arrow[r, "\tilde{\alpha}"]
+      \arrow[d, hook]
+      & \Fun(X_{1}, X_{n+1})
+      \\
+      \Delta^{0} \ast C^{n-1}
+      \arrow[ur, dashed, swap, "\tilde{\beta}"]
+    \end{tikzcd}
+  \end{equation*}
+  However, since image of $(0, \ldots 0) \to (0, \ldots, 1)$ is an equivalence, \hyperref[prop:cube_filling]{Proposition~\ref*{prop:cube_filling}} implies that we can solve the lifting problem $(**')$. Again using (the dual to) \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}}, we can transport this filling to a solution to the lifting problem $(*')$. The condition $(\star)$ amounts to demanding that the restriction $\beta|_{C^{n-1}}$ be the image of $\tilde{\beta}|_{C^{n-1}}$ under $f_{1,0}^{*}$, which is true by construction.
+\end{proof}
+
+\end{document}

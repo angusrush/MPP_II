@@ -2,7 +2,7 @@
 
 \begin{document}
 
-\section{Conjectural lifting properties of left Kan extensions}
+\section{Lifting properties of left Kan extensions}
 \label{sec:con_extensions}
 
 We provide a conjectural answer to the following question. Let $f\colon X \to Y'$ be a map of Kan complexes, and let $\mathcal{F}\colon X \to \category{C}$ be a functor, where $\category{C}$ is cocomplete. What universal property does the $\infty$-Kan extension $f_{!}\mathcal{F}\colon Y \to \category{C}$ satisfy? More generally, we would like an answer to this question where $X$ and $Y$ are $\infty$-categories rather than just spaces.
@@ -26,105 +26,19 @@ where $\eta$ is the unit map. In analogy to the 1-categorical case, it is logica
 This definition is terribly-phrased, but it'll get the job done.
 \begin{definition}
   \label{def:left_kan}
-  A 2-simplex $\sigma\colon \Delta^{2}_{\flat} \to \ICCat$ is \defn{left Kan} if either of the following equivalent hold.
-  \begin{enumerate}
-    \item For all
-      \begin{equation*}
-        \tau\colon ( \Lambda^{3}_{0} )_{\flat} \to \ICCat
-      \end{equation*}
-      such that 
-      \begin{itemize}
-        \item $d_{2}\tau = \sigma$, and
+  A 2-simplex $\tau\colon \Delta^{2}_{\flat} \to \ICCat$ is \defn{left Kan} if for each $n \geq 3$ and any
+  \begin{equation*}
+    \alpha\colon (\Lambda^{n}_{0})_{\flat} \to \ICat
+  \end{equation*}
+  such that 
+  \begin{itemize}
+    \item $\alpha|_{\Delta^{\{0,1,n\}}} = \tau$,
 
-        \item the image of each vertex $\Delta^{\{i\}}$ under $\tau$ is a small Kan complex\footnote{We don't need to assume Kan complex here, just $\infty$-category, but I don't wanna make my life any harder than it needs to be.} for $0 \leq i < 3$, and
+    \item the image of each vertex $\Delta^{\{i\}}$ under $\alpha$ is a small Kan complex for $0 \leq i < n$, and
 
-        \item the image of the vertex $\Delta^{\{3\}}$ under $\tau$ is a cocomplete $\infty$-category,
-      \end{itemize}
-      The space
-      \begin{equation*}
-        \left( \Map(\Delta^{3}_{\flat}, \ICCat) \times_{\Map((\Lambda^{3}_{0})_{\flat}, \ICCat)} \{\tau\} \right)^{\simeq}
-      \end{equation*}
-      of fillings of $\tau$ to a full 3-simplex is contractible.
-
-    \item For each $n \geq 3$ and any
-      \begin{equation*}
-        \tau\colon (\Lambda^{n}_{0})_{\flat} \to \ICat
-      \end{equation*}
-      such that 
-      \begin{itemize}
-        \item $\tau|_{\Delta^{\{0,1,n\}}} = \sigma$,
-
-        \item the image of each vertex $\Delta^{\{i\}}$ under $\tau$ is a small Kan complex for $0 \leq i < 3$, and
-
-        \item the image of the vertex $\Delta^{\{3\}}$ under $\tau$ is a cocomplete $\infty$-category,
-      \end{itemize}
-      a filling of $\tau$ to a full $n$-simplex exists.
-  \end{enumerate}
-
-  \begin{note}
-    It's not yet clear to me which of these definitions will be easier to use. They really are equivalent because of the following fact: for any categorical fibration $p\colon \category{C} \to \category{D}$, a morphism $f$ in $\category{C}$ is $p$-cocartesian if either of the following equivalent holds:
-    \begin{itemize}
-      \item For all $n \geq 2$, the space of solutions to the lifting problem
-        \begin{equation*}
-          \begin{tikzcd}
-            \Delta^{\{0, 1\}}
-            \arrow[dr, "f"]
-            \arrow[d]
-            \\
-            \Lambda^{n}_{0}
-            \arrow[r]
-            \arrow[d]
-            & \category{C}
-            \arrow[d]
-            \\
-            \Delta^{n}
-            \arrow[r]
-            \arrow[ur, dashed]
-            & \category{D}
-          \end{tikzcd}
-        \end{equation*}
-        is nonempty.
-
-      \item The space of solutions to the lifting problem
-        \begin{equation*}
-          \begin{tikzcd}
-            \Delta^{\{0, 1\}}
-            \arrow[rd, "f"]
-            \arrow[d]
-            \\
-            \Lambda^{2}_{0}
-            \arrow[r]
-            \arrow[d]
-            & \category{C}
-            \arrow[d]
-            \\
-            \Delta^{2}
-            \arrow[r]
-            \arrow[ur, dashed]
-            & \category{D}
-          \end{tikzcd}
-        \end{equation*}
-        is contractible.
-    \end{itemize}
-  \end{note}
-
-
-  %Or: if for all $n \geq 3$, we can find a lift
-  %\begin{equation*}
-  %  \begin{tikzcd}
-  %    \Delta^{\{0,1,n\}}
-  %    \arrow[d, hook]
-  %    \arrow[dr, "\sigma"]
-  %    \\
-  %    \Lambda^{n}_{0}
-  %    \arrow[r]
-  %    \arrow[d, hook]
-  %    & \ICCat
-  %    \\
-  %    \Delta^{n}
-  %    \arrow[ur, dashed]
-  %  \end{tikzcd}
-  %\end{equation*}
+    \item the image of the vertex $\Delta^{\{n\}}$ under $\alpha$ is a cocomplete $\infty$-category,
+  \end{itemize}
+  a filling of $\alpha$ to a full $n$-simplex exists.
 \end{definition}
 
 \begin{definition}
