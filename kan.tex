@@ -5,37 +5,81 @@
 \section{Horn filling via left Kan extensions}
 \label{sec:horn_filling_via_left_kan_extensions}
 
-In this section, we show that a simplex $\Delta^{2}_{\flat} \to \ICCat$ which is left Kan is also globally left Kan. This will amount to showing that a simplex $\tau\colon \Delta^{2}_{\flat} \to \ICCat$ of the form
-\begin{equation*}
-  \begin{tikzcd}
-    X
-    \arrow[dr, swap, "f"]
-    \arrow[rr, "F", ""{below, name=M}]
-    && \category{C}
-    \\
-    & Y
-    \arrow[ur, swap, "f_{!}F"]
-    \arrow[from=M, Rightarrow, swap, "\eta"]
-  \end{tikzcd},
-\end{equation*}
-where $\category{C}$ is cocomplete, $X$ is small, $f_{!}F$ is a left Kan extension of $F$ along $f$, and $\eta\colon F \Rightarrow f^{*}f_{!}F$ is the unit map, has the property that for any $n \geq 2$, any solid filling problem
-\begin{equation}
-  \label{eq:lifting_problems_for_global_kan_extensions}
-  \begin{tikzcd}
-    \Delta^{\{0,1,n+1\}}_{\flat}
-    \arrow[d, hook]
-    \arrow[dr, "\tau"]
-    \\
-    (\Lambda^{n+1}_{0})_{\flat}
-    \arrow[r]
-    \arrow[d, hook]
-    & \ICCat
-    \\
-    \Delta^{n+1}_{\flat}
-    \arrow[ur, dashed]
-  \end{tikzcd}
-\end{equation}
-has a dashed solution.
+Kan extensions of $\infty$-categories are usually defined pointwise via the colimit formula \cite{highertopostheory} \cite{cisinski2019higher}. In this section, we will show that such pointwise $\infty$-Kan extensions enjoy a horn filling property in $\ICCat$ which generalizes the universal property for Kan extensions of functors between $1$-categories.
+
+\begin{definition}
+  \label{def:left_kan}
+  We will call a $2$-simplex $\tau\colon \Delta^{2}_{\flat} \to \ICCat$ \defn{left Kan} if it is of the form
+  \begin{equation*}
+    \begin{tikzcd}
+      X
+      \arrow[dr, swap, "f"]
+      \arrow[rr, "F", ""{below, name=M}]
+      && \category{C}
+      \\
+      & Y
+      \arrow[ur, swap, "f_{!}F"]
+      \arrow[from=M, Rightarrow, swap, "\eta"]
+    \end{tikzcd},
+  \end{equation*}
+where $\category{C}$ is cocomplete, $X$ is small, $f_{!}F$ is a left Kan extension of $F$ along $f$, and $\eta\colon F \Rightarrow f^{*}f_{!}F$ is the unit map.
+\end{definition}
+
+The goal of this section is to prove the following.
+
+\begin{theorem}
+  \label{thm:left_kan_implies_globally_left_kan}
+  Let $\tau\colon \Delta^{2} \to \ICCat$ be left Kan. Then for each $n \geq 2$, every solid lifting problem of the form
+  \begin{equation}
+    \label{eq:lifting_problems_for_global_kan_extensions}
+    \begin{tikzcd}
+      \Delta^{\{0,1,n+1\}}_{\flat}
+      \arrow[d, hook]
+      \arrow[dr, "\tau"]
+      \\
+      (\Lambda^{n+1}_{0})_{\flat}
+      \arrow[r]
+      \arrow[d, hook]
+      & \ICCat
+      \\
+      \Delta^{n+1}_{\flat}
+      \arrow[ur, dashed]
+    \end{tikzcd}
+  \end{equation}
+  admits a dashed solution.
+\end{theorem}
+
+%In this section, we show that a simplex $\Delta^{2}_{\flat} \to \ICCat$ which is left Kan is also globally left Kan. This will amount to showing that a simplex $\tau\colon \Delta^{2}_{\flat} \to \ICCat$ of the form
+%\begin{equation*}
+%  \begin{tikzcd}
+%    X
+%    \arrow[dr, swap, "f"]
+%    \arrow[rr, "F", ""{below, name=M}]
+%    && \category{C}
+%    \\
+%    & Y
+%    \arrow[ur, swap, "f_{!}F"]
+%    \arrow[from=M, Rightarrow, swap, "\eta"]
+%  \end{tikzcd},
+%\end{equation*}
+%where $\category{C}$ is cocomplete, $X$ is small, $f_{!}F$ is a left Kan extension of $F$ along $f$, and $\eta\colon F \Rightarrow f^{*}f_{!}F$ is the unit map, has the property that for any $n \geq 2$, any solid filling problem
+%\begin{equation}
+%  \label{eq:lifting_problems_for_global_kan_extensions}
+%  \begin{tikzcd}
+%    \Delta^{\{0,1,n+1\}}_{\flat}
+%    \arrow[d, hook]
+%    \arrow[dr, "\tau"]
+%    \\
+%    (\Lambda^{n+1}_{0})_{\flat}
+%    \arrow[r]
+%    \arrow[d, hook]
+%    & \ICCat
+%    \\
+%    \Delta^{n+1}_{\flat}
+%    \arrow[ur, dashed]
+%  \end{tikzcd}
+%\end{equation}
+%has a dashed solution.
 
 Let us examine this in the case $n = 2$. In this case we have the data of categories and functors
 \begin{equation*}
@@ -68,7 +112,7 @@ together with natural transformations $\eta\colon F \Rightarrow f_{!}F \circ f$,
     & G \circ g \circ f
   \end{tikzcd}
 \end{equation*}
-in $\Fun(X, \category{C})$.
+in $\Fun(X, \category{C})$.\footnote{In particular, if we take $g = \id$ and $\beta$ to be a natural isomorphism, we recover the classical universal property satisfied by left Kan extension.}
 
 We can rephrase this as follows. We are given the data
 \begin{equation*}
@@ -168,7 +212,7 @@ The lifting problems which we have to solve in \hyperref[eq:lifting_problems_for
 \subsection{Filling cubes relative to their boundary}
 \label{ssc:filling_cubes_relative_to_their_boundary}
 
-In this section, we give the combinatorics of filling the $n$-cube $(\Delta^{1})^{n}$ relative to its boundary. Our main result is \hyperref[prop:cube_filling]{Proposition~\ref*{prop:cube_filling}}, which writes the inclusion the boundary of the $n$-cube missing a certain face into the full cube as a composition of an inner anodyne map and a marked anodyne map. Our first step is to understand the nondegenerate simplices of the $n$-cube.
+In this section, we give the combinatorics of filling the $n$-cube $(\Delta^{1})^{n}$ relative to its boundary. Our main result is \hyperref[prop:cube_filling]{Proposition~\ref*{prop:cube_filling}}, which writes the inclusion the boundary of the $n$-cube missing a certain face into the full cube as a composition of an inner anodyne map and a marked anodyne map.
 
 \begin{definition}
   The \defn{$n$-cube} is the simplicial set $C^{n} := (\Delta^{1})^{n}$.
@@ -178,13 +222,17 @@ In this section, we give the combinatorics of filling the $n$-cube $(\Delta^{1})
   We will consider the the factors $\Delta^{1}$ of $C^{n}$ to be ordered, so that we can speak about the first factor, the second factor, etc.
 \end{note}
 
+Our first step is to understand the nondegenerate simplices of the $n$-cube.
+
 \begin{definition}
   Denote by $a^{i}\colon \Delta^{n} \to \Delta^{1}$ the map which sends $\Delta^{\{0, \ldots, i-1\}}$ to $\{0\}$, and $\Delta^{\{i, \ldots, n\}}$ to $\{1\}$.
 \end{definition}
 
-The superscript of $a^{i}$ counts how many vertices of $\Delta^{n}$ are sent to $\Delta^{\{0\}} \subset \Delta^{1}$.
+\begin{note}
+  The superscript of $a^{i}$ counts how many vertices of $\Delta^{n}$ are sent to $\Delta^{\{0\}} \subset \Delta^{1}$.
+\end{note}
 
-We would now like to understand which $n$-simplices in $C^{n}$ are nondegenerate. Every nondegenerate simplex $\Delta^{n} \to C^{n}$ can be specified by giving a walk along the edges of $C^{n}$ starting at $(0, \ldots, 0)$ and ending at $(1, \ldots, 1)$, and any simplex specified in this way is nondegenerate. We now use this to define a bijection between $S_{n}$, the symmetric group on the set $\{1, \ldots, n\}$, and the nondegenerate simplices $\Delta^{n} \to C^{n}$ as follows.
+Every nondegenerate simplex $\Delta^{n} \to C^{n}$ can be specified by giving a walk along the edges of $C^{n}$ starting at $(0, \ldots, 0)$ and ending at $(1, \ldots, 1)$, and any simplex specified in this way is nondegenerate. We now use this to define a bijection between $S_{n}$, the symmetric group on the set $\{1, \ldots, n\}$, and the nondegenerate simplices $\Delta^{n} \to C^{n}$ as follows.
 
 \begin{definition}
   For any permutation $\tau\colon \{1, \ldots, n\} \to \{1, \ldots, n\}$, we define an $n$-simplex
@@ -196,6 +244,10 @@ We would now like to understand which $n$-simplices in $C^{n}$ are nondegenerate
     \phi(\tau) = (a^{\tau(1)}, \ldots, a^{\tau(n)}).
   \end{equation*}
 \end{definition}
+
+\begin{note}
+  It is easy to check that the above definition really results in a bijection between $S_{n}$ and the nondegenerate simplices of $C^{n}$.
+\end{note}
 
 \begin{notation}
   We will denote any permutatation $\tau\colon \{1, \ldots, n\} \to \{1, \ldots, n\}$ by the corresponding $n$-tuple $(\tau(1), \ldots, \tau(n))$. Thus, the identity permutation is $(1, \ldots, n)$, and the permutation $\gamma_{1,2}$ which swaps $1$ and $2$ is $(2, 1, 3, \ldots, n)$.
@@ -362,7 +414,7 @@ We can use \hyperref[lemma:subset_of_faces_inner_anodyne]{Lemma~\ref*{lemma:subs
   \begin{itemize}
     \item For all $i < k$, we have that $\tau^{-1}(i) = \tau'^{-1}(i)$.
 
-    \item We have that $\tau^{-1}(k) = \tau'^{-1}(k)$.
+    \item We have that $\tau^{-1}(k) < \tau'^{-1}(k)$.
   \end{itemize}
 
   We then define a total order on the nondegenerate simplices of $C^{n}$ by saying that $\phi(\tau) < \phi(\tau')$ if and only if $\tau < \tau'$.
@@ -391,7 +443,7 @@ We would like to show that each step of the filtration
 \begin{align}
   \label{eq:inclusions_inner_anodyne}
   \begin{split}
-    LC^{n} &\hookrightarrow LC^{n} \cup \phi(0, \ldots, n) \\
+    LC^{n} &\hookrightarrow LC^{n} \cup \phi(1, \ldots, n) \\
     & \hookrightarrow \cdots \\
     & \hookrightarrow LC^{n} \cup \bigcup_{\tau \in S_{n}}^{(2, \ldots, n, 1)} \phi(\tau)
   \end{split}
@@ -834,7 +886,7 @@ The next proposition shows the power of adjunctions in lifting problems: given d
 \subsection{Left Kan implies globally left Kan}
 \label{ssc:left_kan_implies_globally_left_kan}
 
-In this subsection, we will show that we can solve lifting problems of the form
+In this subsection, we will prove \hyperref[thm:left_kan_implies_globally_left_kan]{Theorem~\ref*{thm:left_kan_implies_globally_left_kan}}. In order to do that, we must show that we can solve lifting problems of the form
 \begin{equation*}
   \label{eq:specific_left_horns_in_cat_infty_bicategories}
   \begin{tikzcd}
@@ -873,7 +925,7 @@ We expect that the reader is familiar with the basics of (scaled) rigidification
   \end{cases}.
 \end{equation*}
 
-where $P_{ij}$ is the poset of subsets of the linearly ordered set $\{i, \ldots, j\}$ containing $i$ and $j$, ordered by inclusion. The simplicial category $\C[\Lambda^{n+1}_{0}]$ has the same objects as $\C[\Delta^{n+1}]$, and each morphism space $\C[\Lambda^{n+1}_{0}](i, j)$ is a simplicial subset of $\C[\Delta^{n+1}](i, j)$, as we shall now describe.
+where $P_{ij}$ is the poset of subsets of the linearly ordered set $\{i, \ldots, j\}$ containing $i$ and $j$, ordered by inclusion. The simplicial category $\C[\Lambda^{n+1}_{0}]$ has the same objects as $\C[\Delta^{n+1}]$, and each morphism space $\C[\Lambda^{n+1}_{0}](i, j)$ is a simplicial subset of $\C[\Delta^{n+1}](i, j)$, as we shall soon describe.
 
 The map $\C[\Lambda^{n+1}_{0}](i, j) \hookrightarrow \C[\Delta^{n+1}](i, j)$ is an isomorphism except for $(i, j) = (1, n+1)$ and $(i, j) = (0, n+1)$. The missing data corresponds in the case of $(1, n+1)$ to the missing face $d_{0}\Delta^{n+1}$ of $\Lambda^{n+1}_{0}$, and in the case of $(0, n+1)$ to the missing interior. Thus, to find a filling as in \hyperref[eq:left_horns_in_cat_infty_scaled]{Equation~\ref*{eq:left_horns_in_cat_infty_scaled}}, we need to solve the lifting problems
 \begin{equation}
@@ -1038,7 +1090,7 @@ commute.
       \arrow[ur, dashed]
     \end{tikzcd}.
   \end{equation*}
-  The image of the 1-simplex $(0, \ldots, 0) \to (0, \ldots, 1)$ of $\Delta^{0} \ast \partial C^{n-1} \subseteq C^{n}$ under $\alpha$ is the unit map $\alpha^{\{0, 1, n+1\}}_{\{0, n+1\}}\colon f_{n+1, 0} \to f_{n+1, 1} \circ f_{1, 0}$. This is not an equivalence, so we cannot use \hyperref[prop:cube_filling]{Proposition~\ref*{prop:cube_filling}} to solve the lifting problem $(*')$ directly. However, the unit map is adjunct to the identity map $\id_{f_{n+1,1}}$ in $\Fun(X_{1}, X_{n+1})$ relative to $s = \id_{\Delta^{1}}$. Furthermore, the restriction of $\alpha$ to $\partial C^{n-1}$ is in the image of $f^{*}_{1,0}$, so by \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}} we can augment the map $\tilde{\alpha}'$ to a map $\tilde{\alpha}\colon \Delta^{0} \ast \partial C^{n-1} \to \Fun(X_{1}, X_{n-1})$ which is adjunct to $\alpha$ relative to the map
+  The image of the 1-simplex $(0, \ldots, 0) \to (0, \ldots, 1)$ of $\Delta^{0} \ast \partial C^{n-1} \subseteq C^{n}$ under $\alpha$ is the unit map $\alpha^{\{0, 1, n+1\}}_{\{0, n+1\}}\colon f_{n+1, 0} \to f_{n+1, 1} \circ f_{1, 0}$. This is not in general an equivalence, so we cannot use \hyperref[prop:cube_filling]{Proposition~\ref*{prop:cube_filling}} to solve the lifting problem $(*')$ directly. However, the unit map is adjunct to the identity map $\id_{f_{n+1,1}}$ in $\Fun(X_{1}, X_{n+1})$ relative to $s = \id_{\Delta^{1}}$. Furthermore, the restriction of $\alpha$ to $\partial C^{n-1}$ is in the image of $f^{*}_{1,0}$, so by \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}} we can augment the map $\tilde{\alpha}'$ to a map $\tilde{\alpha}\colon \Delta^{0} \ast \partial C^{n-1} \to \Fun(X_{1}, X_{n-1})$ which is adjunct to $\alpha$ relative to the map
   \begin{equation*}
     s\colon \Delta^{0} \ast \partial C^{n-1} \to \Delta^{1}
   \end{equation*}

@@ -1,0 +1,223 @@
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+
+\appendix
+
+\section{Appendix}
+
+\subsection{A brief list of model structures}
+\label{sss:a_brief_list_of_model_structures}
+
+The category $\SSet$ carries two model structures of which we will make frequent use:
+\begin{itemize}
+  \item The \emph{Kan} model structure, which has the following description.
+    \begin{itemize}
+      \item The fibrations are the Kan fibrations.
+
+      \item The cofibrations are the monomorphisms.
+
+      \item The weak equivalences are weak homotopy equivalences.
+    \end{itemize}
+
+  \item The \emph{Joyal} model structure. We will not give a complete description, referring the reader to \cite[Sec.\ 2.2.5]{highertopostheory}. We will make use of the following properties.
+    \begin{itemize}
+      \item The cofibrations are monomorphisms.
+
+      \item The fibrant objects are quasicategories, and the fibrations between fibrant objects are isofibrations, i.e.\ inner fibrations with lifts of equivalences (cf.\ \cite[Cor.\ 2.6.5]{highertopostheory}).
+    \end{itemize}
+\end{itemize}
+
+The category $\D\op$ has a Reedy structure, which gives us, together with the Kan model structure, a model structure on the category $\Fun(\D\op, \SSet) = \SSSet$ with the following properties.
+\begin{itemize}
+  \item The cofibrations are monomorphisms.
+
+  \item The weak equivalences are level-wise weak homotopy equivalences.
+
+  \item The fibrations are \emph{Reedy fibrations} (\hyperref[def:reedy_fibration]{Definition~\ref*{def:reedy_fibration}}).
+\end{itemize}
+
+This model category has two important left Bousfeld localizations which we will need.
+
+\begin{itemize}
+  \item The \emph{Segal space model structure} on $\SSSet$ is the left Bousfeld localization of the Reedy model structure at the set of spine inclusions
+    \begin{equation*}
+      S = \left\{\left.\Delta^{\{0, 1\}} \amalg_{\Delta^{\{1\}}} \Delta^{\{1, 2\}} \amalg_{\Delta^{\{2\}}} \cdots \amalg_{\Delta^{\{n-1\}}} \Delta^{\{n-1, n\}} \hookrightarrow \Delta^{n}\ \right|\ n \geq 2\right\},
+    \end{equation*}
+    which has the following properties.
+    \begin{itemize}
+      \item The cofibrations are the monomorphisms.
+
+      \item The fibrant objects are Segal spaces.
+
+      \item Every Reedy weak equivalence is a weak equivalence in the Segal space model structure.
+    \end{itemize}
+
+  \item The \emph{complete Segal space model structure} is the left Bousfeld localization of the Reedy model structure at the set $S$ of spine inclusions together with the inclusion $\{0\} \hookrightarrow I$, where $I$ is the (nerve of the) walking isomorphism. The complete Segal space model structure has the following properties.
+    \begin{itemize}
+      \item The cofibrations are the monomorphisms.
+
+      \item The fibrant objects are complete Segal spaces.
+
+      \item Every weak equivalence in the Segal space model structure is a weak equivalence in the complete Segal space model structure.
+    \end{itemize}
+\end{itemize}
+
+\begin{proposition}[Joyal--Tierney]
+  \label{prop:joyal-tierney_quillen_equivalence}
+  There is a Quillen equivalence 
+  \begin{equation*}
+    \begin{tikzcd}
+      p_{1}^{*} : \SSet^{\mathrm{Joyal}} \longleftrightarrow \SSSet^{\mathrm{CSS}} : i_{1}^{*}
+    \end{tikzcd}
+  \end{equation*}
+  between the Joyal model structure on simplicial sets and the complete Segal space model structure on bisimplicial spaces. Here, the functors $p_{1}^{*}$ and $i_{1}^{*}$ are defined as follows.
+  \begin{itemize}
+    \item The functor $p_{1}^{*}$ takes a simplicial set $X$ to the bisimplicial space $(p_{1}^{*}X)_{mn} = X_{m}$. That is, the bisimplicial set $p_{1}^{*}X$ is constant in the the vertical direction, and each row is equal to the simplicial set $X$.
+
+    \item The functor $i_{1}^{*}$ takes a bisimplicial set $K$ to the simplicial set $(i_{1}^{*}K)_{n} = K_{n0}$. That is, in the language of \hyperref[sss:a_brief_list_of_model_structures]{Subsection~\ref*{sss:a_brief_list_of_model_structures}}, the simplicial set $i_{1}^{*}K$ is the `zeroth row' of $K$.
+  \end{itemize}
+\end{proposition}
+
+\begin{note}
+  In the notation of
+\end{note}
+
+For more information, the reader is directed to \cite{qcats_vs_segal_spaces}.
+
+\subsection{Divisibility of bifunctors}
+\label{sss:divisibility_of_bifunctors}
+
+In this section, we recall some key results from \cite{qcats_vs_segal_spaces}. We refer readers there for more information.
+
+Let $\odot\colon \mathcal{E}_{1} \times \category{E}_{2} \to \category{E}_{3}$ be a functor of $1$-categories. We will say that $\odot$ is \emph{divisible on the left} if for each $A \in \category{E}_{1}$, the functor $A \odot -$ admits a right adjoint $A \backslash -$. In this case, this construction turns out also to be functorial in $A$; that is, we get a functor
+\begin{equation*}
+  - \backslash -\colon \category{E}_{1}\op \times \category{E}_{3} \to \category{E}_{2}.
+\end{equation*}
+
+Analogously, $\odot\colon \mathcal{E}_{1} \times \mathcal{E}_{2} \to \mathcal{E}_{3}$ is \emph{divisible on the right} if for for each $B \in \category{E}_{2}$, the functor $- \odot B$ admits a right adjoint $- / B$. In this case we get a of two variables
+\begin{equation*}
+  - / -\colon \category{E}_{3} \times \category{E}_{2}\op \to \category{E}_{1}.
+\end{equation*}
+
+\begin{example}
+  The reader may find it helpful to keep in mind the cartesian product 
+  \begin{equation*}
+    - \times -\colon \SSet \times \SSet \to \SSet. 
+  \end{equation*}
+  In this case, both $A \backslash X$ and $X / A$ are the mapping space $X^{A}$.
+\end{example}
+
+If $\odot$ is divisible on both sides, then there is a bijection between maps of the following types:
+\begin{equation*}
+  A \odot B \to X,\qquad A \to X / B,\qquad B \to A \backslash X.
+\end{equation*}
+In particular, this implies that the functors $X / -$ and $- \backslash X$ are mutually right adjoint.
+
+If both $\category{E}_{1}$ and $\category{E}_{2}$ are finitely complete and $\category{E}_{3}$ is finitely cocomplete, then from a map $u\colon A \to A'$ in $\category{E}_{1}$, a map $v\colon B \to B'$ in $\category{E}_{2}$, and a map $f\colon X \to Y$ in $\category{E}_{3}$, we can build the following maps.
+\begin{itemize}
+  \item From the square
+    \begin{equation*}
+      \begin{tikzcd}
+        A \odot B
+        \arrow[r]
+        \arrow[d]
+        & A' \odot B
+        \arrow[d]
+        \\
+        A \odot B'
+        \arrow[r]
+        & A' \odot B'
+      \end{tikzcd}
+    \end{equation*}
+    we get a map
+    \begin{equation*}
+      u \odot' v\colon A \odot B' \amalg_{A \odot B} A' \odot B \to A' \odot B'.
+    \end{equation*}
+
+  \item From the square
+    \begin{equation*}
+      \begin{tikzcd}
+        A' \backslash X
+        \arrow[r]
+        \arrow[d]
+        & A \backslash X
+        \arrow[d]
+        \\
+        A' \backslash Y
+        \arrow[r]
+        & A \backslash Y
+      \end{tikzcd}
+    \end{equation*}
+    we get a map
+    \begin{equation*}
+      \langle u \backslash f \rangle\colon A' \backslash X \to A \backslash X \times_{A \backslash Y} A' \backslash Y
+    \end{equation*}
+
+  \item From the square
+    \begin{equation*}
+      \begin{tikzcd}
+        X / B'
+        \arrow[r]
+        \arrow[d]
+        & X / B
+        \arrow[d]
+        \\
+        Y / B'
+        \arrow[r]
+        & Y / B
+      \end{tikzcd}
+    \end{equation*}
+    we get a map
+    \begin{equation*}
+      \langle f / v \rangle\colon X / B' \to X / B \times_{Y / B} Y / B'.
+    \end{equation*}
+\end{itemize}
+
+\begin{proposition}
+  \label{prop:equivalent_lifting_problems}
+  With the above notation, the following are equivalent adjoint lifting problems:
+  \begin{equation*}
+    \begin{tikzcd}
+      A \odot B' \amalg_{A \odot B} A' \odot B
+      \arrow[r]
+      \arrow[d]
+      & X
+      \arrow[d]
+      \\
+      A' \odot B'
+      \arrow[r]
+      \arrow[ur, dashed]
+      & Y
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}
+      A
+      \arrow[r]
+      \arrow[d]
+      & X / B'
+      \arrow[d]
+      \\
+      A'
+      \arrow[r]
+      \arrow[ur, dashed]
+      & X / B \times_{Y / B} Y / B'
+    \end{tikzcd}
+  \end{equation*}
+  \begin{equation*}
+    \begin{tikzcd}
+      B
+      \arrow[r]
+      \arrow[d]
+      & A' \backslash X
+      \arrow[d]
+      \\
+      B'
+      \arrow[r]
+      \arrow[ur, dashed]
+      & A \backslash X \times_{A \backslash Y} A' \backslash Y
+    \end{tikzcd}
+  \end{equation*}
+\end{proposition}
+
+\end{document}

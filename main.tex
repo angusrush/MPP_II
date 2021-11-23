@@ -1,10 +1,9 @@
-\documentclass[a4paper,12pt]{scrartcl}
+\documentclass[a4paper]{scrartcl}
 
 \usepackage{mystyle}
 \usepackage{subfiles}
 
-%bibliography location
-%\addbibresource{/home/angus/latex/masters_notes/sources.bib}
+\addbibresource{sources.bib}
 
 \title{Monoidal push-pull for local systems}
 \author{Angus Rush}
@@ -14,27 +13,16 @@
 \maketitle 
 \tableofcontents
 
-\section{Introduction}
-\label{sec:introduction}
-
-Remaining gaps
-
-\begin{itemize}
-  \item I still need a functorial twisted arrow category.
-
-  \item Left horn fillings suffice to fill $Q(\Lambda^{n}_{0})^{R} \hookrightarrow Q(\Delta^{n})^{R}$.
-
-  \item In showing that certain maps in $\LS(\category{C})$ are left Kan extensions, I still need to show that the natural transformations involved are the unit maps.
-
-  \item I'm ignoring size issues.
-\end{itemize}
-
-%\subfile{background.tex}
+\subfile{background.tex}
+\subfile{cocart_fibs.tex}
+\subfile{constrained_spans.tex}
 \subfile{new_barwick.tex}
-\subfile{con_extensions.tex}
 \subfile{kan.tex}
+\subfile{twisted.tex}
 \subfile{non_monoidal.tex}
 \subfile{base_fibrations.tex}
+\subfile{combinatorix.tex}
+\subfile{appendix.tex}
 
 %\printbibliography
 
