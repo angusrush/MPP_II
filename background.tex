@@ -4,4 +4,52 @@
 \section{Introduction and conventions}
 \label{sec:introduction_and_conventions}
 
+\subsection{The marked-scaled model structure}
+\label{ssc:marked_scaled_model_structure}
+
+One common model for $(\infty,2)$-categories is Lurie's theory of $\infty$-bicategories
+
+In \cite{garcia20212}, a marked-biscaled model structure modelling cartesian fibrations of $\infty$-bicategories is defined. When taken over a point, the two scalings collapse into one, giving the following.
+
+\begin{definition}
+  \label{def:marked-scaled_simplicial_set}
+  A marked-scaled simplicial set is a triple $(X, E_{X}, T_{X})$, where $E_{X} \subseteq X_{1}$ is a collection of edges of $X$ containing all degenerate edges, and $T_{X} \subseteq X_{2}$ is a collection of triangles of $X$ containing all degenerate triangles.
+\end{definition}
+
+\begin{notation}
+  \begin{itemize}
+    \item We will denote the category of marked-scaled simplicial sets by $\SSetms$.
+
+    \item To save on notation, we will sometimes denote the marked-scaled simplicial set $(X, E_{X}, T_{X})$ by $X^{E_{X}}_{T_{X}}$, particularly in the case that $E_{X}$ or $T_{X}$ are $\sharp$ or $\flat$, the maximum (resp. minimum) markings and scalings.
+  \end{itemize}
+\end{notation}
+
+\begin{definition}
+  \label{def:ms-anodyne_generators}
+  The set of ms-anodyne morphisms is the smallest saturated set of morphisms between marked-scaled simplicial sets which contains the following classes of morphisms:
+  \begin{enumerate}
+    \item Inner horn inclusions
+      \begin{equation*}
+        (\Lambda^{n}_{i}, \flat, \{\Delta^{\{i-1,i,i+1\}}\}) \to (\Delta^{n}, \flat, \{\Delta^{\{i-1,i,i+1\}}\}),
+      \end{equation*}
+      for $n \geq 2$ and $0 < i < n$.
+
+    \item Outer horn inclusions
+      \begin{equation*}
+        (\Lambda^{n}_{n}, \{\Delta^{\{n-1,n\}}\}, \{\Delta^{\{0, n-1, n\}}\})
+      \end{equation*}
+
+    \item \dots
+  \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+  There is a model structure on the category $\SSetms$, whose trivial cofibrations are given by the ms-anodyne maps, and whose fibrant objects are $\infty$-bicategories with precisely the equivalences marked.
+\end{theorem}
+
+\section{Twisted arrow categories}
+\label{sec:twisted_arrow_categories}
+
+In \cite{garcia2020enhanced}, the twisted arrow $\infty$-category of an $\infty$-bicategory is defined as follows.
+
 \end{document}

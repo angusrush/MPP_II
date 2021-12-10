@@ -5,10 +5,60 @@
 \section{Local systems}
 \label{sec:local_systems}
 
-In \cite{garcia2020enhanced},
+In \cite{garcia2020enhanced}, the twisted arrow category of $\infty$-bicategory is defined. 
 
-\subsection{The fibration}
+\subsection{The twisted arrow category}
+\label{ssc:the_twisted_arrow_category}
+
+In this section we give a short exposition of the material of \cite{garcia2020enhanced} that we will need.
+
+We define a cosimplicial object $Q\colon \Delta \to \SSetsc$ by sending
+\begin{equation*}
+  Q([n]) = (\Delta^{n} \star (\Delta^{n})\op, \dagger),
+\end{equation*}
+where $\dagger$ is the scaling consisting of all degenerate 2-simplices, together with all 2-simplices of the following kinds:
+\begin{enumerate}
+  \item All simplices $\Delta^{2} \to \Delta^{n} \star (\Delta^{n})\op$ factoring through $\Delta^{n}$.
+
+  \item All simplices $\Delta^{2} \to \Delta^{n} \star (\Delta^{n})\op$ factoring through $(\Delta^{n})\op$.
+
+  \item All simplices $\Delta^{\{i, j, \bar{k}\}} \subseteq \Delta^{n} \star (\Delta^{n})\op$, $i < j \leq k$.
+
+  \item All simplices $\Delta^{\{k, \bar{j}, \bar{i}\}} \subseteq \Delta^{n} \star (\Delta^{n})\op$, $i < j \leq k$.
+\end{enumerate}
+
+This extends to nerve-realization adjunction
+\begin{equation*}
+  Q : \SSet \longleftrightarrow \SSetsc : \Tw,
+\end{equation*}
+where by mild abuse of notation, we denote the extension of the functor $Q$ defined above by colimits also by $Q$. For any scaled simplicial set $X$, the simplicial set $\Tw(X)$ has $n$-simplices
+\begin{equation*}
+  \Hom_{\SSetsc}(Q(n), X).
+\end{equation*}
+
+The inclusion $\Delta^{n} \amalg (\Delta^{n})\op \hookrightarrow \Delta^{n} \star (\Delta^{n})\op$ provides, for any scaled simplicial set $K$, a functor $\Tw(K) \to K \times K\op$.
+
+\subsection{The fibration exhibiting local systems}
 \label{ssc:the_fibration}
+
+\begin{definition}
+  For any cocomplete $\infty$-category $\category{C}$, we define the $\infty$-category of $\category{C}$-local systems $\LS(\category{C})$ together with a cartesian fibration $\LS(\category{C}) \to \S$ by the following homotopy pullback diagram.
+  \begin{equation*}
+    \begin{tikzcd}
+      \LS(\category{C})
+      \arrow[r, hook]
+      \arrow[d]
+      & \Tw(\ICCat)
+      \arrow[d]
+      \\
+      \S
+      \arrow[r]
+      & \ICat \times \ICat\op
+    \end{tikzcd}
+  \end{equation*}
+\end{definition}
+
+It follows from \cite{garcia2020enhanced} that $\LS(\category{C}) \to \S$ is a cartesian fibration. In this section, we show that it is also a cocartesian fibration,
 
 \subsection{Cocartesian edges}
 \label{ssc:cocartesian_edges}

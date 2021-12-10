@@ -44,10 +44,10 @@
   <internal package="biblatex" priority="9" active="0">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>kan.bcf</file>
+      <file>twisted.bcf</file>
     </provides>
     <requires type="dynamic">
-      <file>kan.bbl</file>
+      <file>twisted.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
@@ -64,19 +64,19 @@
     <generic>biber</generic>
     <cmdline>
       <binary>biber</binary>
-      <infile>kan</infile>
+      <infile>twisted</infile>
     </cmdline>
     <input>
-      <file>kan.bcf</file>
+      <file>twisted.bcf</file>
     </input>
     <output>
-      <file>kan.bbl</file>
+      <file>twisted.bbl</file>
     </output>
     <provides type="dynamic">
-      <file>kan.bbl</file>
+      <file>twisted.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>kan.bcf</file>
+      <file>twisted.bcf</file>
     </requires>
     <requires type="editable">
       <file>sources.bib</file>

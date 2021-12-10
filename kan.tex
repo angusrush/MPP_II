@@ -29,7 +29,7 @@ The goal of this section is to prove the following.
 
 \begin{theorem}
   \label{thm:left_kan_implies_globally_left_kan}
-  Let $\tau\colon \Delta^{2} \to \ICCat$ be left Kan. Then for each $n \geq 2$, every solid lifting problem of the form
+  Let $\tau\colon \Delta^{2} \to \ICCat$ be a left Kan 2-simplex. Then for each $n \geq 2$, every solid lifting problem of the form
   \begin{equation}
     \label{eq:lifting_problems_for_global_kan_extensions}
     \begin{tikzcd}
@@ -112,7 +112,7 @@ together with natural transformations $\eta\colon F \Rightarrow f_{!}F \circ f$,
     & G \circ g \circ f
   \end{tikzcd}
 \end{equation*}
-in $\Fun(X, \category{C})$.\footnote{In particular, if we take $g = \id$ and $\beta$ to be a natural isomorphism, we recover the classical universal property satisfied by left Kan extension.}
+in $\Fun(X, \category{C})$.\footnote{In particular, if we take $h = f$, $g = \id_{Y}$, and $\beta$ to be the identity $f \Rightarrow f$, we recover the classical universal property satisfied by left Kan extension.}
 
 We can rephrase this as follows. We are given the data
 \begin{equation*}
@@ -209,7 +209,7 @@ where the left-hand diagram is a map $LC^{2} \to \Fun(X, C)$, where $LC^{2}$ is 
 
 The lifting problems which we have to solve in \hyperref[eq:lifting_problems_for_global_kan_extensions]{Equation~\ref*{eq:lifting_problems_for_global_kan_extensions}} for $n > 2$ amount to replacing $\Delta^{1} \times \Delta^{1}$ by $(\Delta^{1})^{n}$, etc; the basic process remains unchanged, but the combinatorics involved in filling the necessary cubes becomes more involved. In \hyperref[ssc:filling_cubes_relative_to_their_boundary]{Subsection~\ref*{ssc:filling_cubes_relative_to_their_boundary}} we explain the combinatorics of filling cubes relative to their boundaries. In \hyperref[ssc:adjunct_data]{Subsection~\ref*{ssc:adjunct_data}}, we give a formalization the concept of adjunct data, and provide a means of for filling partial data to total adjunct data. In \hyperref[ssc:left_kan_implies_globally_left_kan]{Subsection~\ref*{ssc:left_kan_implies_globally_left_kan}}, we show that we can always solve the lifting problems of \hyperref[eq:lifting_problems_for_global_kan_extensions]{Equation~\ref*{eq:lifting_problems_for_global_kan_extensions}}.
 
-\subsection{Filling cubes relative to their boundary}
+\subsection{Filling cubes relative to their boundaries}
 \label{ssc:filling_cubes_relative_to_their_boundary}
 
 In this section, we give the combinatorics of filling the $n$-cube $(\Delta^{1})^{n}$ relative to its boundary. Our main result is \hyperref[prop:cube_filling]{Proposition~\ref*{prop:cube_filling}}, which writes the inclusion the boundary of the $n$-cube missing a certain face into the full cube as a composition of an inner anodyne map and a marked anodyne map.

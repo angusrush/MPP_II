@@ -19,55 +19,6 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
-    \entry{qcats_vs_segal_spaces}{article}{}
-      \name{author}{1}{}{%
-        {{hash=b7a14f58d77a2411bb1ddad138a56cf5}{%
-           family={A.\bibnamedelimi Joyal},
-           familyi={A\bibinitperiod\bibinitdelim J\bibinitperiod},
-           given={M.\bibnamedelimi Tierney},
-           giveni={M\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
-      }
-      \strng{namehash}{b7a14f58d77a2411bb1ddad138a56cf5}
-      \strng{fullhash}{b7a14f58d77a2411bb1ddad138a56cf5}
-      \strng{bibnamehash}{b7a14f58d77a2411bb1ddad138a56cf5}
-      \strng{authorbibnamehash}{b7a14f58d77a2411bb1ddad138a56cf5}
-      \strng{authornamehash}{b7a14f58d77a2411bb1ddad138a56cf5}
-      \strng{authorfullhash}{b7a14f58d77a2411bb1ddad138a56cf5}
-      \field{sortinit}{A}
-      \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{Contemp.\ Math. 431 (2007), pp. 277--326}
-      \field{title}{Quasi-categories vs Segal spaces}
-      \field{year}{2014}
-      \verb{eprint}
-      \verb arXiv:1409.0837
-      \endverb
-    \endentry
-    \entry{spectralmackeyfunctors1}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=5a69a25c19b869f4a198377a48671213}{%
-           family={Barwick},
-           familyi={B\bibinitperiod},
-           given={C.},
-           giveni={C\bibinitperiod}}}%
-      }
-      \strng{namehash}{5a69a25c19b869f4a198377a48671213}
-      \strng{fullhash}{5a69a25c19b869f4a198377a48671213}
-      \strng{bibnamehash}{5a69a25c19b869f4a198377a48671213}
-      \strng{authorbibnamehash}{5a69a25c19b869f4a198377a48671213}
-      \strng{authornamehash}{5a69a25c19b869f4a198377a48671213}
-      \strng{authorfullhash}{5a69a25c19b869f4a198377a48671213}
-      \field{sortinit}{B}
-      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Spectral Mackey functors and equivariant algebraic K-theory (I)}
-      \field{year}{2014}
-      \verb{eprint}
-      \verb arXiv:1404.0108
-      \endverb
-    \endentry
     \entry{cisinski2019higher}{book}{}
       \name{author}{1}{}{%
         {{hash=7dd2ed2fa26fc7e09189bfc17e41911a}{%
@@ -93,6 +44,34 @@
       \field{volume}{180}
       \field{year}{2019}
     \endentry
+    \entry{garcia20212}{article}{}
+      \name{author}{2}{}{%
+        {{hash=eb3b78305667f11131235e8045452722}{%
+           family={Garc{ı́}a},
+           familyi={G\bibinitperiod},
+           given={Fernando\bibnamedelima Abell{á}n},
+           giveni={F\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=4f077146fca3ea4174274c5a10830436}{%
+           family={Stern},
+           familyi={S\bibinitperiod},
+           given={Walker\bibnamedelima H},
+           giveni={W\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{58a77cf82dd7ff7b1e6af3dcb76162f3}
+      \strng{fullhash}{58a77cf82dd7ff7b1e6af3dcb76162f3}
+      \strng{bibnamehash}{58a77cf82dd7ff7b1e6af3dcb76162f3}
+      \strng{authorbibnamehash}{58a77cf82dd7ff7b1e6af3dcb76162f3}
+      \strng{authornamehash}{58a77cf82dd7ff7b1e6af3dcb76162f3}
+      \strng{authorfullhash}{58a77cf82dd7ff7b1e6af3dcb76162f3}
+      \field{extraname}{1}
+      \field{sortinit}{G}
+      \field{sortinithash}{62eb2aa29549e4fdbd3cb154ec5711cb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2106.03606}
+      \field{title}{2-Cartesian fibrations I: A model for $$\backslash$infty $-bicategories fibred in $$\backslash$infty $-bicategories}
+      \field{year}{2021}
+    \endentry
     \entry{garcia2020enhanced}{article}{}
       \name{author}{2}{}{%
         {{hash=eb3b78305667f11131235e8045452722}{%
@@ -112,6 +91,7 @@
       \strng{authorbibnamehash}{58a77cf82dd7ff7b1e6af3dcb76162f3}
       \strng{authornamehash}{58a77cf82dd7ff7b1e6af3dcb76162f3}
       \strng{authorfullhash}{58a77cf82dd7ff7b1e6af3dcb76162f3}
+      \field{extraname}{2}
       \field{sortinit}{G}
       \field{sortinithash}{62eb2aa29549e4fdbd3cb154ec5711cb}
       \field{labelnamesource}{author}
@@ -137,7 +117,6 @@
       \strng{authorbibnamehash}{760ea879284b1a6eeaad87a82be8d1d7}
       \strng{authornamehash}{760ea879284b1a6eeaad87a82be8d1d7}
       \strng{authorfullhash}{760ea879284b1a6eeaad87a82be8d1d7}
-      \field{extraname}{1}
       \field{sortinit}{L}
       \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
       \field{labelnamesource}{author}
@@ -145,55 +124,6 @@
       \field{isbn}{978-0-691-14049-0}
       \field{title}{Higher Topos Theory}
       \field{year}{2009}
-    \endentry
-    \entry{kerodon}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=760ea879284b1a6eeaad87a82be8d1d7}{%
-           family={Lurie},
-           familyi={L\bibinitperiod},
-           given={Jacob},
-           giveni={J\bibinitperiod}}}%
-      }
-      \strng{namehash}{760ea879284b1a6eeaad87a82be8d1d7}
-      \strng{fullhash}{760ea879284b1a6eeaad87a82be8d1d7}
-      \strng{bibnamehash}{760ea879284b1a6eeaad87a82be8d1d7}
-      \strng{authorbibnamehash}{760ea879284b1a6eeaad87a82be8d1d7}
-      \strng{authornamehash}{760ea879284b1a6eeaad87a82be8d1d7}
-      \strng{authorfullhash}{760ea879284b1a6eeaad87a82be8d1d7}
-      \field{extraname}{2}
-      \field{sortinit}{L}
-      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://kerodon.net}}
-      \field{title}{Kerodon}
-      \field{year}{2020}
-    \endentry
-    \entry{rezk2001model}{article}{}
-      \name{author}{1}{}{%
-        {{hash=71cc51e3c0ac090026d1e96750933ae0}{%
-           family={Rezk},
-           familyi={R\bibinitperiod},
-           given={Charles},
-           giveni={C\bibinitperiod}}}%
-      }
-      \strng{namehash}{71cc51e3c0ac090026d1e96750933ae0}
-      \strng{fullhash}{71cc51e3c0ac090026d1e96750933ae0}
-      \strng{bibnamehash}{71cc51e3c0ac090026d1e96750933ae0}
-      \strng{authorbibnamehash}{71cc51e3c0ac090026d1e96750933ae0}
-      \strng{authornamehash}{71cc51e3c0ac090026d1e96750933ae0}
-      \strng{authorfullhash}{71cc51e3c0ac090026d1e96750933ae0}
-      \field{sortinit}{R}
-      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Transactions of the American Mathematical Society}
-      \field{number}{3}
-      \field{title}{A model for the homotopy theory of homotopy theory}
-      \field{volume}{353}
-      \field{year}{2001}
-      \field{pages}{973\bibrangedash 1007}
-      \range{pages}{35}
     \endentry
   \enddatalist
 \endrefsection
