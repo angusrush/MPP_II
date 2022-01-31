@@ -46,8 +46,8 @@
     \endentry
     \entry{garcia20212}{article}{}
       \name{author}{2}{}{%
-        {{hash=eb3b78305667f11131235e8045452722}{%
-           family={Garc{ı́}a},
+        {{hash=55e5a03c8980dfc902177ad3e18aba74}{%
+           family={Garc{í}a},
            familyi={G\bibinitperiod},
            given={Fernando\bibnamedelima Abell{á}n},
            giveni={F\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
@@ -57,25 +57,25 @@
            given={Walker\bibnamedelima H},
            giveni={W\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
       }
-      \strng{namehash}{58a77cf82dd7ff7b1e6af3dcb76162f3}
-      \strng{fullhash}{58a77cf82dd7ff7b1e6af3dcb76162f3}
-      \strng{bibnamehash}{58a77cf82dd7ff7b1e6af3dcb76162f3}
-      \strng{authorbibnamehash}{58a77cf82dd7ff7b1e6af3dcb76162f3}
-      \strng{authornamehash}{58a77cf82dd7ff7b1e6af3dcb76162f3}
-      \strng{authorfullhash}{58a77cf82dd7ff7b1e6af3dcb76162f3}
+      \strng{namehash}{fa4b78b3f4567ab5794e88f398e38d86}
+      \strng{fullhash}{fa4b78b3f4567ab5794e88f398e38d86}
+      \strng{bibnamehash}{fa4b78b3f4567ab5794e88f398e38d86}
+      \strng{authorbibnamehash}{fa4b78b3f4567ab5794e88f398e38d86}
+      \strng{authornamehash}{fa4b78b3f4567ab5794e88f398e38d86}
+      \strng{authorfullhash}{fa4b78b3f4567ab5794e88f398e38d86}
       \field{extraname}{1}
       \field{sortinit}{G}
       \field{sortinithash}{62eb2aa29549e4fdbd3cb154ec5711cb}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{arXiv preprint arXiv:2106.03606}
-      \field{title}{2-Cartesian fibrations I: A model for $$\backslash$infty $-bicategories fibred in $$\backslash$infty $-bicategories}
+      \field{title}{2-Cartesian fibrations I: A model for infty-bicategories fibred in infty-bicategories}
       \field{year}{2021}
     \endentry
     \entry{garcia2020enhanced}{article}{}
       \name{author}{2}{}{%
-        {{hash=eb3b78305667f11131235e8045452722}{%
-           family={Garc{ı́}a},
+        {{hash=55e5a03c8980dfc902177ad3e18aba74}{%
+           family={Garc{í}a},
            familyi={G\bibinitperiod},
            given={Fernando\bibnamedelima Abell{á}n},
            giveni={F\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
@@ -85,12 +85,12 @@
            given={Walker\bibnamedelima H},
            giveni={W\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
       }
-      \strng{namehash}{58a77cf82dd7ff7b1e6af3dcb76162f3}
-      \strng{fullhash}{58a77cf82dd7ff7b1e6af3dcb76162f3}
-      \strng{bibnamehash}{58a77cf82dd7ff7b1e6af3dcb76162f3}
-      \strng{authorbibnamehash}{58a77cf82dd7ff7b1e6af3dcb76162f3}
-      \strng{authornamehash}{58a77cf82dd7ff7b1e6af3dcb76162f3}
-      \strng{authorfullhash}{58a77cf82dd7ff7b1e6af3dcb76162f3}
+      \strng{namehash}{fa4b78b3f4567ab5794e88f398e38d86}
+      \strng{fullhash}{fa4b78b3f4567ab5794e88f398e38d86}
+      \strng{bibnamehash}{fa4b78b3f4567ab5794e88f398e38d86}
+      \strng{authorbibnamehash}{fa4b78b3f4567ab5794e88f398e38d86}
+      \strng{authornamehash}{fa4b78b3f4567ab5794e88f398e38d86}
+      \strng{authorfullhash}{fa4b78b3f4567ab5794e88f398e38d86}
       \field{extraname}{2}
       \field{sortinit}{G}
       \field{sortinithash}{62eb2aa29549e4fdbd3cb154ec5711cb}

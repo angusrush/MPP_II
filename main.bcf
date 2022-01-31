@@ -2183,12 +2183,18 @@
   </bcf:bibdata>
   <bcf:section number="0">
     <bcf:citekey order="1">garcia20212</bcf:citekey>
-    <bcf:citekey order="2">garcia2020enhanced</bcf:citekey>
-    <bcf:citekey order="3">highertopostheory</bcf:citekey>
-    <bcf:citekey order="4">cisinski2019higher</bcf:citekey>
+    <bcf:citekey order="2">highertopostheory</bcf:citekey>
+    <bcf:citekey order="3">cisinski2019higher</bcf:citekey>
+    <bcf:citekey order="4">garcia2020enhanced</bcf:citekey>
     <bcf:citekey order="5">garcia2020enhanced</bcf:citekey>
     <bcf:citekey order="6">garcia2020enhanced</bcf:citekey>
     <bcf:citekey order="7">garcia2020enhanced</bcf:citekey>
+    <bcf:citekey order="8">garcia2020enhanced</bcf:citekey>
+    <bcf:citekey order="9">garcia2020enhanced</bcf:citekey>
+    <bcf:citekey order="10">garcia2020enhanced</bcf:citekey>
+    <bcf:citekey order="11">garcia2020enhanced</bcf:citekey>
+    <bcf:citekey order="12">highertopostheory</bcf:citekey>
+    <bcf:citekey order="13">garcia20212</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
@@ -2220,4 +2226,13 @@
     </bcf:sort>
   </bcf:sortingtemplate>
   <!-- DATALISTS -->
+  <bcf:datalist section="0"
+                name="nty/global//global/global"
+                type="entry"
+                sortingtemplatename="nty"
+                sortingnamekeytemplatename="global"
+                labelprefix=""
+                uniquenametemplatename="global"
+                labelalphanametemplatename="global">
+  </bcf:datalist>
 </bcf:controlfile>
