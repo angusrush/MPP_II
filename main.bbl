@@ -19,6 +19,43 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{garcia2cartesianfibrationsii}{article}{}
+      \name{author}{2}{}{%
+        {{hash=7ca9870b334c294f3dd8ae90460206fd}{%
+           family={{Abellán García}},
+           familyi={A\bibinitperiod},
+           given={Fernando},
+           giveni={F\bibinitperiod}}}%
+        {{hash=4f077146fca3ea4174274c5a10830436}{%
+           family={{Stern}},
+           familyi={S\bibinitperiod},
+           given={Walker\bibnamedelima H.},
+           giveni={W\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{a3fd39d4a96f928dbf2fb01d654b23cc}
+      \strng{fullhash}{a3fd39d4a96f928dbf2fb01d654b23cc}
+      \strng{bibnamehash}{a3fd39d4a96f928dbf2fb01d654b23cc}
+      \strng{authorbibnamehash}{a3fd39d4a96f928dbf2fb01d654b23cc}
+      \strng{authornamehash}{a3fd39d4a96f928dbf2fb01d654b23cc}
+      \strng{authorfullhash}{a3fd39d4a96f928dbf2fb01d654b23cc}
+      \field{sortinit}{A}
+      \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eid}{arXiv:2201.09589}
+      \field{eprintclass}{math.AT}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{arXiv e-prints}
+      \field{month}{1}
+      \field{title}{{2-Cartesian fibrations II: The Grothendieck construction}}
+      \field{year}{2022}
+      \field{pages}{arXiv:2201.09589}
+      \range{pages}{-1}
+      \verb{eprint}
+      \verb 2201.09589
+      \endverb
+      \keyw{Mathematics - Algebraic Topology,Mathematics - Category Theory}
+    \endentry
     \entry{cisinski2019higher}{book}{}
       \name{author}{1}{}{%
         {{hash=7dd2ed2fa26fc7e09189bfc17e41911a}{%
