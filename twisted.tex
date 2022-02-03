@@ -129,10 +129,24 @@ where the functor $Q$ is the extension by colimits of the functor $\tilde{Q}$, a
 \end{equation*}
 
 \begin{notation}
-  For any simplicial set $X$, $Q(X)$ carries the scaling given simplex-wise by that described above. We will denote this scaling by $\dagger_{X}$, or simply by $\dagger$ if the simplicial set $X$ is clear from context. It will sometimes pay to notate the scaling $\dagger$ on $Q(X)$ explicitly, writing $Q(X) = Q(X)_{\dagger}$. A We can thus write $Q(\Delta^{n})$ explicitly and compactly as $\Delta^{2n+1}_{\dagger}$, which we will often do.
+  For any simplicial set $X$, $Q(X)$ carries the scaling given simplex-wise by that described above. We will denote this scaling by $\dagger_{X}$, or simply by $\dagger$ if the simplicial set $X$ is clear from context. It will sometimes pay to notate the scaling $\dagger$ on $Q(X)$ explicitly, writing $Q(X) = Q(X)_{\dagger}$. We can thus write $Q(\Delta^{n})$ explicitly and compactly as $\Delta^{2n+1}_{\dagger}$, which we will often do.
 \end{notation}
 
-The inclusion $\Delta^{n} \amalg (\Delta^{n})\op \hookrightarrow \Delta^{n} \star (\Delta^{n})\op$ provides, for any scaled simplicial set $K$, a functor $\Tw(K) \to K \times K\op$. In fact, this assignment is functorial.
+The inclusion $\Delta^{n} \amalg (\Delta^{n})\op \hookrightarrow \Delta^{n} \star (\Delta^{n})\op$ provides, for any $\infty$-bicategory $\CC$ with underlying $\infty$-category $\category{C}$, a morphism of simplicial sets
+\begin{equation*}
+  \Tw(\CC) \to \category{C} \times \category{C}\op.
+\end{equation*}
+In \cite{garcia2020enhanced}, the following is shown.
+
+\begin{theorem}
+  Let $\CC$ be an $\infty$-bicategory (presented as a fibrant scaled simplicial set), and let $\category{C}$ be the underlying $\infty$-category (presented as a quasicategory). Then the map
+  \begin{equation*}
+    p_{\CC}\colon \Tw(\CC) \to \category{C} \times \category{C}\op.
+  \end{equation*}
+  is a cartesian fibration between quasicategories, and a morphism $f\colon \Delta^{1} \to \Tw(\CC)$ is $p_{\CC}$-cartesian if and only if the morphism $\sigma\colon \Delta^{3}_{\dagger} \to \CC$ to which it is adjunct is fully scaled, i.e.\ factors through the map $\Delta^{3}_{\dagger} \to \Delta^{3}_{\sharp}$.
+\end{theorem}
+
+In fact, this assignment is functorial.
 
 \begin{proposition}
   This extends to a functor $\ICCat \to \ICat^{\Delta^{1}}$.
@@ -301,15 +315,18 @@ In the remainder of this section we reproduce two lemmas from \cite{garcia2carte
   Then the inclusion $(\mathcal{S}^{\mathcal{A}}, E, T) \hookrightarrow (\Delta^{n}, E, T)$ is marked-scaled anodyne.
 \end{lemma}
 
+\subsection{Cosimplicial objects surrounding the infinity-category of local systems}
+\label{ssc:the_infinity_category_of_local_systems}
 
-\subsection{The fibration governing local systems}
-\label{ssc:the_fibration}
+\subsubsection{The infinity-category of local systems}
+\label{sss:the_infinity_category_of_local_systems}
 
 For any $\infty$-category $\category{C}$, a $\category{C}$-local system on some space $X$ is simply a functor $X \to \category{C}$. Thus, the $\infty$-category of $\category{C}$-local systems on $X$ should simply be $\LS(\category{C}, X):=\Fun(X, \category{C})$. We now allow $X$ to vary, defining the category $\LS(\category{C})$ of $\category{C}$-local systems.
 
 \begin{definition}
   For any cocomplete $\infty$-category $\category{C}$, we define the $\infty$-category of $\category{C}$-local systems $\LS(\category{C})$ together with a map of simplicial sets $p\colon \LS(\category{C}) \to \S$ by the following pullback diagram.
-  \begin{equation*}
+  \begin{equation}
+    \label{eq:pullback_square_defining_local_systems}
     \begin{tikzcd}
       \LS(\category{C})
       \arrow[r, hook]
@@ -318,28 +335,326 @@ For any $\infty$-category $\category{C}$, a $\category{C}$-local system on some 
       \arrow[d, "p'"]
       \\
       \S \times \{\category{C}\}
-      \arrow[r]
+      \arrow[r, hook]
       & \ICat \times \ICat\op
     \end{tikzcd}
-  \end{equation*}
+  \end{equation}
 \end{definition}
 
 It is shown in \cite{garcia2020enhanced} that $p'$, hence also $p$, is a cartesian fibration. The cartesian fibration $p$ classifies the functor $\S\op \to \ICat$ sending
 \begin{equation*}
   f\colon X \to Y \qquad \longmapsto \qquad f^{*}\colon \Fun(Y, \category{C}) \to \Fun(X, \category{C}).
 \end{equation*}
-Under the assumption that $\category{C}$ is cocomplete, each pullback map $f^{*}$ has a left adjoint $f_{!}$, given by left Kan extension. It follows on abstract grounds that $p$ is also a cocartesian fibration, whose cocartesian edges represent left Kan extension. In this section, we show this explicitly.
+Under the assumption that $\category{C}$ is cocomplete, each pullback map $f^{*}$ has a left adjoint $f_{!}$, given by left Kan extension. It follows on abstract grounds that $p$ is also a cocartesian fibration, whose cocartesian edges represent left Kan extension. In \hyperref[ssc:the_fibration]{Subsection~\ref*{ssc:the_fibration}}, we show this explicitly. In doing so, it will be useful to factor the pullback square in \hyperref[eq:pullback_square_defining_local_systems]{Equation~\ref*{eq:pullback_square_defining_local_systems}} into the two pullback squares
+\begin{equation*}
+  \begin{tikzcd}
+    \LS(\category{C})
+    \arrow[r, hook]
+    \arrow[d, swap, "p"]
+    & \mathcal{R}
+    \arrow[r, hook]
+    \arrow[d, "p''"]
+    & \Tw(\ICCat)
+    \arrow[d, "p'"]
+    \\
+    \S \times \{\category{C}\}
+    \arrow[r, hook]
+    & \S \times (\ICat\op)^{\simeq}
+    \arrow[r, hook]
+    & \ICat \times \ICat\op
+  \end{tikzcd}.
+\end{equation*}
+In order to show that $p$ is a cocartesian fibration, it will help us to understand the map $p''$. To do this, we will have to define several cosimplicial objects.
 
-A general morphism $\Delta^{1} \to \LS(\category{C})$ corresponds to a map $Q(\Delta^{1}) = \Delta^{3}_{\dagger} \to \ICCat$ satisfying the following conditions.
+\subsubsection{Cosimplicial objects}
+\label{sss:cosimplicial_objects}
+
+The $n$-simplices of $\category{R}$ are given by maps
+\begin{equation*}
+  Q(\Delta^{n}) = (\Delta^{n} \star (\Delta^{n})\op)_{\dagger} \to \ICCat
+\end{equation*}
+such that
+\begin{itemize}
+  \item each object in $\Delta^{n}$ is sent to a space, and
+
+  \item each morphism in $(\Delta^{n})\op$ is mapped to an equivalence in $\CC$.
+\end{itemize}
+We can more usefully encode the second condition by endowing $\ICCat$ and $Q$ with a marking.
+
+\begin{definition}
+  We denote by $\ICCat^{\natural}$ the marked-scaled simplicial set whose underlying scaled simplicial set is $\ICCat$, and where all equivalences have been marked.
+\end{definition}
+
+\begin{definition}
+  We denote by $\heartsuit$ the marking on $\Delta^{n} \star (\Delta^{n})\op$ consisting of all morphisms belonging to $(\Delta^{n})\op$, and by $(\Delta^{n} \star (\Delta^{n})\op)^{\heartsuit}_{\dagger}$ the corresponding marked-scaled simplicial set. We define a cosimplicial object
+  \begin{equation*}
+    \tilde{R}\colon \Delta \to \SSetms;\qquad [n] \mapsto (\Delta^{n} \star (\Delta^{n})\op)^{\heartsuit}_{\dagger}.
+  \end{equation*}
+
+  We denote the extension of $\tilde{R}$ by colimits by
+  \begin{equation*}
+    R\colon \SSet \to \SSetms;\qquad X \mapsto \colim_{\Delta^{n} \to X} R(n).
+  \end{equation*}
+\end{definition}
+
+The marked-scaled simplicial sets $R(\Delta^{n})$ are rather complicated, and showing that $p''$ is a cartesian fibration by solving the necessary lifting problems explicitly would be impractical. We will instead replace $R(\Delta^{n})$ by something simpler, considering the simplicial subsets coming from the inclusions
+\begin{equation*}
+  \Delta^{n} \star \Delta^{\{\overline{0}\}} \subseteq \Delta^{n} \star (\Delta^{n})\op,
+\end{equation*}
+which we understand to inherit the marking and scaling.
+
+\begin{definition}
+  We will denote by $\tilde{J}\colon \Delta \to \SSetms$ the cosimplicial object
+  \begin{equation*}
+    \tilde{J}\colon \Delta \to \SSetms;\qquad [n] \mapsto (\Delta^{n} \star \Delta^{\{\overline{0}\}})^{\heartsuit}_{\dagger},
+  \end{equation*}
+  and by $J$ the extension by colimits
+  \begin{equation*}
+    J\colon \SSet \to \SSetms;\qquad X \mapsto \colim_{\Delta^{n} \to X} \tilde{J}(n).
+  \end{equation*}
+\end{definition}
+
+We have defined, for each $n \geq 0$, inclusions of marked-scaled simplicial sets
+\begin{equation*}
+  v_{n}\colon \tilde{J}(n) \to \tilde{R}(n).
+\end{equation*}
+We will show in \hyperref[ssc:the_fibration]{Subsection~\ref*{ssc:the_fibration}} that each $a_{n}$ is an equivalence. However, extreme care is warranted: \emph{the $v_{n}$ are not the components of a natural transformation $u\colon \tilde{J} \Rightarrow \tilde{R}$!} The necessary squares simply do not commute for morphisms $\phi\colon [m] \to [n]$ in $\Delta$ such that $\phi(0) \neq 0$.
+
+We will simply define this problem away. Denote by $\mathring{\Delta}$ the subcategory of $\Delta$ on morphisms $[m] \to [n]$ which send $0 \mapsto 0$. Denote by $I$ the inclusion $\mathring{\Delta} \hookrightarrow \Delta$. The morphisms $v_{n}$ \emph{do} form a natural transformation $v\colon \tilde{J} \circ I \Rightarrow \tilde{R} \circ I$:
+\begin{equation*}
+  \begin{tikzcd}[column sep=huge]
+    \mathring{\Delta}
+    \arrow[r, bend left, "J \circ I", ""{name=U, below}]
+    \arrow[r, bend right, "Q \circ I"{swap}, ""{name=D, above}]
+    & \SSetms
+    \arrow[from=U, to=D, Rightarrow, "v"]
+  \end{tikzcd}.
+\end{equation*}
+
+Our goal in the remainder of this section is to show that each component $v_{n}$ is an equivalence in $\SSetms$.
+
+\begin{lemma}
+  \label{lemma:lower_morphism_equivalence}
+  For all $n \geq 0$, the map $v_{n}$ is marked-scaled anodyne, hence a weak equivalence.
+\end{lemma}
+\begin{proof}
+  In this proof, all simplicial subsets of $\Delta^{2n+1}$ will be assumed to carry the marking $\heartsuit$ and the scaling $\dagger$. 
+
+  We can write each $v_{n}$ as a composition
+  \begin{equation*}
+    \Delta^{\{0, \ldots, n, \overline{0}\}} \overset{v''_{n}}{\hookrightarrow} \Delta^{\{0, \ldots, n, \overline{0}\}} \cup \Delta^{\{\overline{n}, \ldots, \overline{0}\}} \overset{v'_{n}}{\hookrightarrow} \Delta^{2n+1}.
+  \end{equation*}
+  Here, the map $v_{n}''$ is a pushout along the inclusion $(\Delta^{\{n\}})^{\sharp}_{\sharp} \hookrightarrow (\Delta^{n})^{\sharp}_{\sharp}$, which is marked-scaled anodyne. It remains to show that each of the maps $v_{n}'$ is marked-scaled anodyne.
+
+  To this end, we introduce some notation. Let $M^{n}_{0} = \Delta^{\{0, \ldots, n, \overline{0}\}} \cup \Delta^{\{\overline{n}, \ldots \overline{0}\}} \subset \Delta^{2n+1}$, and for $1 \leq k \leq n$, define
+  \begin{equation*}
+    M^{n}_{k} := M^{n}_{0} \cup \left(\bigcup_{\ell = 1}^{k} \Delta^{[2n+1] \smallsetminus \{\ell, \overline{\ell}\}}\right).
+  \end{equation*}
+  There is an obvious filtration
+  \begin{equation}
+    \label{eq:filtration_by_adding_sides}
+    M^{n}_{0} \overset{i^{n}_{0}}{\hookrightarrow} M^{n}_{1} \overset{i^{n}_{1}}{\hookrightarrow} \cdots \overset{i^{n}_{n-1}}{\hookrightarrow} M^{n}_{n} \overset{i^{n}_{n}}{\hookrightarrow} \Delta^{2n+1}.
+  \end{equation}
+
+  Define
+  \begin{equation*}
+    j^{n}_{k} := i^{n}_{n} \circ \cdots \circ i^{n}_{k}\colon M^{n}_{k} \hookrightarrow \Delta^{2n+1},\qquad 0 \leq k \leq n.
+  \end{equation*}
+  In particular, note that $j^{n}_{0} = v_{n}'$.
+
+  This allows us to replace our goal to something superficially more difficult: we would like to show that, for each $n \geq 0$ and each $0 \leq k \leq n$, the map $i^{n}_{k}$ is marked-scaled anodyne. We proceed by induction. We take as our base case $n=0$, where we have the trivial filtration
+  \begin{equation*}
+    M^{0}_{0} \overset{i^{0}_{0}}{=} \Delta^{1}.
+  \end{equation*}
+  This is an equality of subsets of $\Delta^{1}$, hence certainly an equivalence.
+
+  We now suppose that the result holds true for $n-1$; that is, that the maps $i^{n-1}_{k}$ are marked-scaled anodyne for all $0 \leq k \leq n-1$. We aim to show that each $i^{n}_{k}$ is marked-scaled anodyne for each $0 \leq i \leq n$. 
+
+  For $0 \leq k < n$, we can write $i^{n}_{k}$ as the inclusion
+  \begin{equation*}
+    \S^{\mathcal{A}}_{[2n+1]} \hookrightarrow \S^{\mathcal{A}}_{[2n+1]} \cup \Delta^{[2n+1] \smallsetminus \{i, \overline{i}\}},\qquad \mathcal{A}
+    = \left\{ \substack{ \{\overline{n}, \ldots, \overline{1}\} \\ \{0, \ldots n\} \\ \{1, \overline{1}\} \\ \vdots \\ \{k-1, \overline{k-1}\} } \right\}.
+  \end{equation*}
+  By \hyperref[lemma:bicartesian_square]{Lemma~\ref*{lemma:bicartesian_square}}, we have a pushout square
+  \begin{equation*}
+    \begin{tikzcd}
+      \S^{\mathcal{A}|([2n+1] \smallsetminus \{k, \overline{k}\})}_{[2n+1] \smallsetminus \{k, \overline{k}\}}
+      \arrow[r, hook]
+      \arrow[d, hook]
+      & \Delta^{[2n+1] \smallsetminus \{k, \overline{k}\}}
+      \arrow[d, hook]
+      \\
+      \S^{\mathcal{A}}_{[2n+1]}
+      \arrow[r, hook]
+      & \S^{\mathcal{A}}_{[2n+1]} \cup \Delta^{[2n+1] \smallsetminus \{k, \overline{k}\}}.
+    \end{tikzcd}.
+  \end{equation*}
+  Therefore, it suffices to show that the top morphism is marked-scaled anodyne. One checks that this map is of the form $j^{n-1}_{k}$, and is thus marked-scaled anodyne. Therefore, it remains only to show that $i^{n}_{n}$ is marked-scaled anodyne.
+
+  We treat the case $n = 1$ separately. In this case, $v_{1}'$ takes the form
+  \begin{equation*}
+    \Delta^{\{0,1,\overline{0}\}} \cup \Delta^{\{\overline{1},\overline{0}\}} \overset{v_{1}'}{\hookrightarrow} \Delta^{3},
+  \end{equation*}
+  which we construct in the following way.
+  \begin{enumerate}
+    \item Then we fill the simplex $\Delta^{\{1,\overline{1},\overline{0}\}}$ (together with its marking and scaling) as a pushout along a morphism of type \ref{item:outerms}.
+
+    \item Then we fill the simplex $\Delta^{\{0,1,\overline{1}\}}$ (together with its marking and scaling) as a pushout along a morphism of type \ref{item:innerms}.
+
+    \item Finally, we fill the full simplex $\Delta^{3}$ (together with its marking and scaling) as a pushout along a morphism of type \ref{item:innerms}.
+  \end{enumerate}
+
+  Now we may assume that $n \geq 2$. In this case, we can write $i^{n}_{n}\colon M^{n}_{n} \hookrightarrow \Delta^{2n+1}$ as a simplicial inclusion
+  \begin{equation*}
+    \S^{\mathcal{A}}_{[2n+1]} \subseteq \Delta^{2n+1},\qquad \mathcal{A} = \left\{ \substack{ \{\overline{n}, \ldots, \overline{1}\} \\ \{0, \ldots n\} \\ \{1, \overline{1}\} \\ \vdots \\ \{n, \overline{n}\} } \right\}.
+  \end{equation*}
+
+
+  We will express this inclusion as the following composition of fillings:
+  \begin{enumerate}
+    \item We first add the simplices $\Delta^{\{n, \overline{n}, \ldots, \overline{0}\}}$, $\Delta^{\{n-1, n, \overline{n}, \ldots, \overline{0}\}}$, \dots, $\Delta^{\{2, \ldots, n, \overline{n}, \ldots, \overline{0}\}}$.
+
+    \item We next add $\Delta^{\{1, \ldots, n, \overline{n}, \overline{0}\}}$, $\Delta^{\{1, \ldots, n, \overline{n}, \overline{n-1}, \overline{0}\}}$, \dots, $\Delta^{\{1, \ldots, n, \overline{n}, \ldots, \overline{2}, \overline{0}\}}$
+
+    \item We next add $\Delta^{\{1, \ldots n, \overline{n}, \ldots, \overline{0}\}}$.
+
+    \item We then add $\Delta^{\{0, \ldots, n, \overline{n}, \overline{0}\}}$, $\Delta^{\{0, \ldots, n, \overline{n}, \overline{n-1}, \overline{0}\}}$, \dots, $\Delta^{\{0, \ldots n, \overline{n}, \ldots, \overline{0}\}}$.
+  \end{enumerate}
+  We proceed.
+  \begin{enumerate}
+    \item
+      \begin{itemize}
+        \item Using \hyperref[lemma:bicartesian_square]{Lemma~\ref*{lemma:bicartesian_square}}, we see that the square
+          \begin{equation*}
+            \begin{tikzcd}
+              \S^{\mathcal{A}|\{n, \overline{n}, \ldots, \overline{0}\}}_{\{n, \overline{n}, \ldots, \overline{0}\}}
+              \arrow[r, hook]
+              \arrow[d, hook]
+              & \Delta^{\{n, \overline{n}, \ldots, \overline{0}\}}
+              \arrow[d, hook]
+              \\
+              \S^{\mathcal{A}}_{[2n+1]}
+              \arrow[r, hook]
+              & \S^{\mathcal{A}}_{[2n+1]} \cup \Delta^{\{n, \overline{n}, \ldots, \overline{0}\}}
+            \end{tikzcd}
+          \end{equation*}
+          is pushout. In order to show that the bottom inclusion is marked-scaled anodyne, it thus suffices to show that the top inclusion is marked-scaled anodyne. We have
+          \begin{equation*}
+            \begin{tikzcd}
+              \mathcal{A}|\{n, \overline{n}, \ldots, \overline{0}\}
+              = \left\{ \substack{ \{\overline{n}, \ldots, \overline{1}\} \\ \{n\} \\ \{\overline{1}\} \\ \vdots \\ \{\overline{n-1}\} \\ \{n, \overline{n}\} } \right\}
+              \sim \left\{ \substack{ \{n\} \\ \{\overline{n-1}\} \\ \vdots \\ \{\overline{1}\} } \right\} =: \mathcal{A}'
+            \end{tikzcd}.
+          \end{equation*}
+          This is a dull subset of $\{n, \overline{n}, \ldots, \overline{0}\}$ with pivot $\overline{n}$. The only $\mathcal{A}'$-basal set is $\{n, \overline{n-1}, \ldots, \overline{1}\}$. One checks that $\mathcal{A}'$, together with the marking $\heartsuit$ and scaling $\dagger$, satisfies the conditions of the \hyperref[lemma:pivot_trick]{Pivot~Trick}:
+          \begin{itemize}
+            \item For $n = 2$, the only the marked edge not containing the pivot $\overline{2}$ is $\overline{1} \to \overline{0}$, which belongs to $\S^{\mathcal{A}'}_{\{n, \overline{n}, \ldots, \overline{0}\}}$. The only scaled simplex which does not contain $\overline{2}$, and which does not factor through $\S^{\mathcal{A}'}$, is $\sigma = \{2 < \overline{1} < \overline{0}\}$. The simplex $\sigma \cup \{\overline{2}\}$ is fully scaled.
+
+            \item For $n = 3$, each marked edge is contained in $\S^{\mathcal{A}'}$. The only scaled triangle which does not contain the pivot $\overline{3}$, and which does not factor through $\S^{\mathcal{A}'}$, is $\sigma = \{3 < \overline{2} < \overline{1}\}$. The simplex $\sigma \cup \{\overline{3}\}$ is fully scaled.
+
+            \item For $n \geq 4$, all scaled and marked simplices belong to $\S^{\mathcal{A}'}$ by \hyperref[lemma:subset_of_simplex_contains_k_simplices]{Lemma~\ref*{lemma:subset_of_simplex_contains_k_simplices}}.
+          \end{itemize}
+          In each case, the simplex $\{n, \overline{n}, \overline{n-1}\}$ is scaled, so the top inclusion is marked-scaled anodyne by the \hyperref[lemma:pivot_trick]{Pivot Trick}. We can write
+          \begin{equation*}
+            \S^{\mathcal{A}}_{[2n+1]} \cup \Delta^{\{n, \overline{n}, \ldots, \overline{0}\}} = \S^{\mathcal{A} \cup ([2n+1] \smallsetminus \{n, \overline{n}, \ldots, \overline{0}\})}_{[2n+1]},
+          \end{equation*}
+          We see that
+          \begin{equation*}
+            \mathcal{A} \cup ([2n+1] \smallsetminus \{n, \overline{n}, \ldots, \overline{0}\}) \sim \left\{ \substack{ \{\overline{n}, \ldots, \overline{1}\} \\ \{0, \ldots n-1\} \\ \{1, \overline{1}\} \\ \vdots \\ \{n, \overline{n}\} } \right\},
+          \end{equation*}
+          which we denote by $\mathcal{A}_{n-1}$.
+
+        \item We proceed inductively. Suppose we have added the simplices $\Delta^{\{n, \overline{n}, \ldots, \overline{0}\}}$, $\Delta^{\{n-1, n, \overline{n}, \ldots, \overline{0}\}}$, \dots, $\Delta^{\{k+1, \ldots, n, \overline{n}, \ldots, \overline{0}\}}$, for $2 \leq k \leq n-1$. Using \hyperref[lemma:add_a_simplex]{Lemma~\ref*{lemma:add_a_simplex}} and \hyperref[lemma:replace_poset_by_minimal_elements]{Lemma~\ref*{lemma:replace_poset_by_minimal_elements}} can write the result of these additions as
+          \begin{equation*}
+            \S^{\mathcal{A}}_{[2n+1]} \cup \left( \bigcup_{i = k+1}^{n} \Delta^{\{i, \ldots, n, \overline{n}, \ldots, \overline{0}\}}\right) = \S^{\mathcal{A}_{k+1}}_{[2n+1]},
+          \end{equation*}
+          where
+          \begin{equation*}
+            \mathcal{A}_{k+1} = \left\{ \substack{ \{\overline{n}, \ldots, \overline{1}\} \\ \{0, \ldots, k\} \\ \{1, \overline{1}\} \\ \vdots \\ \{n, \overline{n}\} } \right\}.
+          \end{equation*}
+
+          Using \hyperref[lemma:bicartesian_square]{Lemma~\ref*{lemma:bicartesian_square}}, we see that the square
+          \begin{equation*}
+            \begin{tikzcd}
+              \S^{\mathcal{A}_{k+1}|\{k, \ldots, n, \overline{n}, \ldots, \overline{0}\}}_{\{k, \ldots, n, \overline{n}, \ldots, \overline{0}\}}
+              \arrow[r, hook]
+              \arrow[d, hook]
+              & \Delta^{\{k, \ldots, n, \overline{n}, \ldots, \overline{0}\}}
+              \arrow[d, hook]
+              \\
+              \S^{\mathcal{A}_{k+1}}_{[2n+1]}
+              \arrow[r, hook]
+              & \S^{\mathcal{A}_{k+1}}_{[2n+1]} \cup \Delta^{\{k, \ldots, n, \overline{n}, \ldots, \overline{0}\}}
+            \end{tikzcd}
+          \end{equation*}
+          is pushout, so in order to show that the bottom morphism is marked-scaled anodyne, it suffices to show that the top morphism is. We see that
+          \begin{equation*}
+            \mathcal{A}_{k+1}|\{k, \ldots, n, \overline{n}, \ldots, \overline{0}\} =
+            \left\{ \substack{ \{\overline{n}, \ldots, \overline{1}\} \\ \{k\} \\ \{\overline{1}\} \\ \vdots \\ \{\overline{k-1}\} \\ \{k, \overline{k}\} \\ \vdots \\ \{n, \overline{n}\} } \right\}
+            \sim \left\{ \substack{ \{k\} \\ \{\overline{1}\} \\ \vdots \\ \{\overline{k-1}\} \\ \{k+1, \overline{k+1}\} \\ \vdots \\ \{n, \overline{n}\} } \right\} =: \mathcal{A}_{k+1}'.
+          \end{equation*}
+
+          This is a dull subset of $P(\{k, \ldots, n, \overline{n}, \ldots, \overline{0}\})$ with pivot $\overline{k}$, and one checks that the conditions of the \hyperref[lemma:pivot_trick]{Pivot Trick} are satisfied:
+          \begin{itemize}
+            \item For $n = 3$, where the only value of $k$ is $k = 2$, each marked edge is contained in $\S^{\mathcal{A}_{k+1}'}$ by \hyperref[lemma:subset_of_simplex_contains_k_simplices]{Lemma~\ref*{lemma:subset_of_simplex_contains_k_simplices}}, and one can check that each scaled triangle factors through $\S^{\mathcal{A}_{k+1}'}$.
+
+            \item For $n \geq 4$, all scaled and marked simplices belong to $\S^{\mathcal{A}'}$ by \hyperref[lemma:subset_of_simplex_contains_k_simplices]{Lemma~\ref*{lemma:subset_of_simplex_contains_k_simplices}}.
+          \end{itemize}
+          The basal sets are of the form
+          \begin{equation*}
+            \{k, a_{1}, \ldots, a_{n-k}, \overline{k-1}, \ldots, \overline{1}\},
+          \end{equation*}
+          where each $a_{1}$, \dots, $a_{n-k}$ is of the form $\ell$ or $\overline{\ell}$ for $k+1 \leq \ell \leq n$. In each case, the simplex $\{a_{n-k}, \overline{k}, \overline{k-1}\}$ is scaled. Thus, the conditions of the \hyperref[lemma:pivot_trick]{Pivot Trick}, the top morphism is marked-scaled anodyne.
+      \end{itemize}
+
+      We have now added the simplices promised in part 1., and are left with the simplicial subset $\S^{\mathcal{A}_{2}}_{[2n+1]}$, where
+      \begin{equation*}
+        \mathcal{A}_{2}
+        = \left\{ \substack{ \{\overline{n}, \ldots, \overline{1}\} \\ \{0, 1\} \\ \{1, \overline{1}\} \\ \vdots \\ \{n, \overline{n}\} } \right\}.
+      \end{equation*}
+
+    \item Each step in this sequence is solved exactly like those above. The calculations are omitted. The end result is the simplicial subset
+
+  \end{enumerate}
+\end{proof}
+
+
+\subsection{The map governing local systems is a cocartesian fibration}
+\label{ssc:the_fibration}
+
+Our aim is to show that the map of quasicategories $p\colon \LS(\category{C}) \to \S$ defined by the diagram
+\begin{equation*}
+  \begin{tikzcd}
+    \LS(\category{C})
+    \arrow[r, hook]
+    \arrow[d, swap, "p"]
+    & \mathcal{R}
+    \arrow[r, hook]
+    \arrow[d, "p''"]
+    & \Tw(\ICCat)
+    \arrow[d, "p'"]
+    \\
+    \S \times \{\category{C}\}
+    \arrow[r, hook]
+    & \S \times (\ICat\op)^{\simeq}
+    \arrow[r, hook]
+    & \ICat \times \ICat\op
+  \end{tikzcd},
+\end{equation*}
+where each square is pullback, is a cocartesian fibration, and that the the $p$-cocartesian edges correspond to left Kan extensions. Our plan of attack is as follows.
 \begin{enumerate}
-  \item The objects $\Delta^{\{0\}}$ and $\Delta^{\{1\}}$ are mapped to spaces.
+  \item We will first specify, in \hyperref[eg:left_kan_morphism]{Example~\ref*{eg:left_kan_morphism}}, a class of morphisms in $\LS(\category{C})$, so-called \emph{left Kan morphisms,} which we claim are precisely the $p$-cocartesian morphisms.
 
-  \item The image of $\Delta^{\{2,3\}} \subset \Delta^{3}$ is $\id_{\category{C}}$.
+  \item We will show that left Kan morphisms are in sufficient supply; that is, that given any morphism $f\colon X \to Y$ in $\S$ and a $\category{C}$-local system $\mathcal{F}\colon X \to \category{C}$, there exists a left Kan morphism $\hat{f}\colon \mathcal{F} \to f_{!}\mathcal{F}$ in $\LS(\category{C})$ whose image under $p$ is $f$.
+
+  \item We will show that left Kan morphisms really are $p$-cocartesian.
+
+  \item This, together with REF will imply that any $p$-cocartesian morphism is left Kan.
 \end{enumerate}
 
 \begin{definition}
   \label{def:admissible}
-  We will call a 3-simplex $\Delta^{3}_{\dagger} \to \ICCat$ satisfying conditions 1.\ and 2.\ above admissible. More generally, a $(2n+1)$-simplex $\sigma\colon \Delta^{2n+1}_{\dagger} \to \ICCat$ will be called \defn{admissible} if the following conditions are satisfied.
+  A $(2n+1)$-simplex $\sigma\colon \Delta^{2n+1}_{\dagger} \to \ICCat$ will be called \defn{admissible} if the following conditions are satisfied.
   \begin{itemize}
     \item The objects $\sigma(\Delta^{\{0\}})$, \dots, $\sigma(\Delta^{\{n\}})$ are spaces.
 
@@ -393,27 +708,18 @@ A general morphism $\Delta^{1} \to \LS(\category{C})$ corresponds to a map $Q(\D
       \arrow[l, "\id_{\category{C}}"]
     \end{tikzcd}
   \end{equation*}
-  Here, the $2$-simplices which are notated without natural transformations are constrained by the scaling $\dagger$ to be thin. Such an admissible simplex $\sigma$ is left Kan if and only if $\mathcal{G}'$ is a left Kan extension of $\mathcal{F}$ along $f$, and $\eta$ is a unit map.
+  Here, the $2$-simplices which are notated without natural transformations are constrained by the scaling $\dagger$ to be thin. Such an admissible simplex $\sigma$ is left Kan if and only if $\mathcal{G}'$ is a left Kan extension of $\mathcal{F}$ along $f$, and $\eta$ is a unit map. In this case, we will also call the morphism $\Delta^{1} \to \LS(\category{C})$ to which $\sigma$ is adjunct \emph{left Kan.}
 \end{example}
 
-Our main goal in this section will be to prove the following.
+The fibration $p\colon \LS(\category{C}) \to \S$ has enough left Kan lifts. More concretely, we have the following.
 
-\begin{theorem}
-  \label{thm:cocartesian_edges_of_p}
-  An edge $\Delta^{1} \to \LS(\category{C})$ is $p$-cocartesian if and only if it is left Kan.
-\end{theorem}
-
-This will imply \hyperref[cor:cocartesian_fibration]{Corollary~\ref*{cor:cocartesian_fibration}} below. We provide a full proof of \hyperref[cor:cocartesian_fibration]{Corollary~\ref*{cor:cocartesian_fibration}} before proving \hyperref[thm:cocartesian_edges_of_p]{Theorem~\ref*{thm:cocartesian_edges_of_p}} because the strategy we will use to prove \hyperref[thm:cocartesian_edges_of_p]{Theorem~\ref*{thm:cocartesian_edges_of_p}} is similar to, but more complicated than, that employed in the proof of \hyperref[cor:cocartesian_fibration]{Corollary~\ref*{cor:cocartesian_fibration}}.
-
-\begin{corollary}
-  \label{cor:cocartesian_fibration}
-  The map $p\colon \LS(\category{C}) \to \S$ is a cocartesian fibration.
-\end{corollary}
 \begin{notation}
   We endow the quasicategory $\LS(C)$ with the marking $\clubsuit \subseteq \LS(\category{C})_{1}$ consisting of all left Kan edges.
 \end{notation}
-\begin{proof}[Proof of Corollary \ref{cor:cocartesian_fibration}]
-  We know that $p$ is a cartesian fibration, hence certainly an inner fibration. We need to show that $p$ has enough cocartesian lifts, i.e.\ that any lifting problem
+
+\begin{corollary}
+  \label{cor:cocartesian_fibration}
+  The map $p\colon \LS(\category{C}) \to \S$ admits enough left Kan lifts. More precisely, any lifting problem
   \begin{equation*}
     \begin{tikzcd}
       (\Delta^{\{0\}})^{\flat}
@@ -428,7 +734,11 @@ This will imply \hyperref[cor:cocartesian_fibration]{Corollary~\ref*{cor:cocarte
       & (\S)^{\sharp}
     \end{tikzcd}
   \end{equation*}
-  has a dashed solution. Any such lifting problem is adjunct to a lifting problem of the form
+  has a dashed solution. 
+\end{corollary}
+
+\begin{proof}[Proof of Corollary \ref{cor:cocartesian_fibration}]
+  We know that $p$ is a cartesian fibration, hence certainly an inner fibration. We need to show that $p$ has enough cocartesian lifts, i.e.\ that Any such lifting problem is adjunct to a lifting problem of the form
   \begin{equation}
     \label{eq:unmarked_lifting_problem}
     \begin{tikzcd}
@@ -472,7 +782,7 @@ This will imply \hyperref[cor:cocartesian_fibration]{Corollary~\ref*{cor:cocarte
     \end{tikzcd}.
   \end{equation*}
 
-    The map $u_{1}$ is a pushout along the map $(\Delta^{\{1\}}, \flat, \flat) \hookrightarrow (\Delta^{1}, \sharp, \flat)$, which is marked-scaled anodyne of type \ref{item:outerms}. It is thus a weak equivalence. The map $v_{1}$ is a weak equivalence by \hyperref[lemma:map_u_is_equivalence]{Lemma~\ref*{lemma:map_u_is_equivalence}}. Thus, by \cite[Prop.~A.2.3.1]{highertopostheory}, in order to find a lift as in \hyperref[eq:unmarked_lifting_problem]{Equation~\ref*{eq:unmarked_lifting_problem}} it will suffice to find a lift
+    The map $u_{1}$ is a pushout along the map $(\Delta^{\{1\}}, \flat, \flat) \hookrightarrow (\Delta^{1}, \sharp, \flat)$, which is marked-scaled anodyne of type \ref{item:outerms}. It is thus a weak equivalence. The map $v_{1}$ is a weak equivalence by \hyperref[lemma:lower_morphism_equivalence]{Lemma~\ref*{lemma:lower_morphism_equivalence}}. Thus, by \cite[Prop.~A.2.3.1]{highertopostheory}, in order to find a lift as in \hyperref[eq:unmarked_lifting_problem]{Equation~\ref*{eq:unmarked_lifting_problem}} it will suffice to find a lift
   \begin{equation*}
     \begin{tikzcd}
       (\Delta^{\{0,1\}} \cup \Delta^{\{0,3\}}, \flat, \flat)
@@ -487,26 +797,13 @@ This will imply \hyperref[cor:cocartesian_fibration]{Corollary~\ref*{cor:cocarte
   which is left Kan. However, the existence of such lifts is precisely the condition that for any functor between spaces $f\colon X \to Y$, and any functor $\mathcal{F}\colon X \to \category{C}$, the left Kan extension $f_{!}\mathcal{F}$ exists. This is true by our assumption that $\category{C}$ be cocomplete.
 \end{proof}
 
-\begin{lemma}
-  \label{lemma:map_u_is_equivalence}
-  The map $v_{1}$ can be written as the composition
-  \begin{equation*}
-    v_{1} = (\Delta^{\{0,1,3\}}, \flat, \flat) \overset{v_{1}''}{\hookrightarrow} (\Delta^{\{0,1,3\}} \cup \Delta^{\{2,3\}}, \heartsuit, \flat) \overset{v_{1}'}{\hookrightarrow} (\Delta^{3}, \heartsuit, \dagger),
-  \end{equation*}
-  each of which is marked-scaled anodyne.
-\end{lemma}
-\begin{proof}
-  The morphism $v_{1}''$ is a pushout along a morphism of type \ref{item:outerms}. We construct the morphism $v_{1}'$ in the following way.
-  \begin{enumerate}
-    \item Then we fill the simplex $\Delta^{\{1,2,3\}}$ (together with its marking and scaling) as a pushout along a morphism of type \ref{item:outerms}.
-
-    \item Then we fill the simplex $\Delta^{\{0,1,2\}}$ (together with its marking and scaling) as a pushout along a morphism of type \ref{item:innerms}.
-
-    \item Finally, we fill the full simplex $\Delta^{3}$ (together with its marking and scaling) as a pushout along a morphism of type \ref{item:innerms}.
-  \end{enumerate}
-\end{proof}
-
 We have thus shown that, should the left Kan edges really turn out to be precisely the $p$-cocartesian edges, then $p$ is a cocartesian fibration. However, it remains to be verified that left Kan edges really are precisely the same as cocartesian edges. We first show one implication: that if an edge is left Kan, it is cocartesian.
+
+\begin{theorem}
+  \label{thm:cocartesian_edges_of_p}
+  An edge $\Delta^{1} \to \LS(\category{C})$ is $p$-cocartesian if and only if it is left Kan.
+\end{theorem}
+
 
 In order to show that all left Kan edges are cocartesian, we have to show that lifting problems
 \begin{equation*}
@@ -591,179 +888,6 @@ We note that there is a pullback diagram of marked-scaled simplicial subsets of 
   \end{tikzcd}.
 \end{equation}
 
-\begin{lemma}
-  \label{lemma:lower_morphism_equivalence}
-  For all $n \geq 2$, the map $v_{n}$ is marked-scaled anodyne, hence a weak equivalence.
-\end{lemma}
-\begin{proof}
-  In this proof, all simplicial subsets of $\Delta^{2n+1}$ will be assumed to carry the marking $\heartsuit$ and the scaling $\dagger$.
-
-  We can write each $v_{n}$ as a composition
-  \begin{equation*}
-    \Delta^{\{0, \ldots, n, \overline{0}\}} \overset{v''_{n}}{\hookrightarrow} \Delta^{\{0, \ldots, n, \overline{0}\}} \cup \Delta^{\{\overline{n}, \ldots, \overline{0}\}} \overset{v'_{n}}{\hookrightarrow} \Delta^{2n+1}.
-  \end{equation*}
-  Simply put, $v_{n}''$ is a pushout along the inclusion $(\Delta^{\{n\}})^{\sharp}_{\sharp} \hookrightarrow (\Delta^{n})^{\sharp}_{\sharp}$, which is marked-scaled anodyne.
-
-  It remains to show that the for each $n \geq 2$, $v_{n}'$ is marked-scaled anodyne. We actually prove that this result holds for all $n \geq 1$. First, we introduce some notation.
-
-  Let $M^{n}_{0} = \Delta^{\{0, \ldots, n, \overline{0}\}} \cup \Delta^{\{\overline{n}, \ldots \overline{0}\}} \subset \Delta^{2n+1}$, and for $1 \leq k \leq n$, define
-  \begin{equation*}
-    M^{n}_{k} := M^{n}_{0} \cup \left(\bigcup_{\ell = 1}^{k} \Delta^{[2n+1] \smallsetminus \{\ell, \overline{\ell}\}}\right).
-  \end{equation*}
-  There is an obvious filtration
-  \begin{equation}
-    \label{eq:filtration_by_adding_sides}
-    M^{n}_{0} \overset{i^{n}_{0}}{\hookrightarrow} M^{n}_{1} \overset{i^{n}_{1}}{\hookrightarrow} \cdots \overset{i^{n}_{n-1}}{\hookrightarrow} M^{n}_{n} \overset{i^{n}_{n}}{\hookrightarrow} \Delta^{2n+1}.
-  \end{equation}
-
-  Define
-  \begin{equation*}
-    j^{n}_{k} := i^{n}_{n} \circ \cdots \circ i^{n}_{k}\colon M^{n}_{k} \hookrightarrow \Delta^{2n+1},\qquad 0 \leq k \leq n.
-  \end{equation*}
-  In particular, note that $j^{n}_{0} = v_{n}'$.
-
-  We aim to show that each $i^{n}_{k}$ is marked-scaled anodyne for each $n \geq 1$ and $0 \leq i \leq n$. We proceed by induction on $n$. For our base case, we take $n=1$, where we have the filtration
-  \begin{equation*}
-    M^{n}_{0} \overset{i^{1}_{0}}{=} M^{n}_{1} \overset{i^{1}_{1}}{\hookrightarrow} \Delta^{3}.
-  \end{equation*}
-
-  Equalities are certainly marked-scaled anodyne, and the map $i^{1}_{1}$ was proven in \hyperref[lemma:map_u_is_equivalence]{Lemma~\ref*{lemma:map_u_is_equivalence}} to be marked-scaled anodyne (it coincides with the map $v'_{1}$). Thus, the maps $i^{1}_{0}$ and $i^{1}_{1}$ are marked-scaled anodyne; the result holds for $n = 1$.
-
-  We now suppose that the result holds true for $n-1$; that is, that the maps $i^{n-1}_{k}$ are marked-scaled anodyne for all $0 \leq k \leq n-1$. We need to show that each of the maps $i^{n}_{k}$ are marked-scaled anodyne. 
-
-  For $0 \leq k < n$, we can write $i^{n}_{k}$ as the inclusion
-  \begin{equation*}
-    \S^{\mathcal{A}}_{[2n+1]} \hookrightarrow \S^{\mathcal{A}}_{[2n+1]} \cup \Delta^{[2n+1] \smallsetminus \{i, \overline{i}\}},\qquad \mathcal{A}
-    = \left\{ \substack{ \{\overline{n}, \ldots, \overline{1}\} \\ \{0, \ldots n\} \\ \{1, \overline{1}\} \\ \vdots \\ \{k-1, \overline{k-1}\} } \right\}.
-  \end{equation*}
-  By \hyperref[lemma:bicartesian_square]{Lemma~\ref*{lemma:bicartesian_square}}, we have a pushout square
-  \begin{equation*}
-    \begin{tikzcd}
-      \S^{\mathcal{A}|([2n+1] \smallsetminus \{k, \overline{k}\})}_{[2n+1] \smallsetminus \{k, \overline{k}\}}
-      \arrow[r, hook]
-      \arrow[d, hook]
-      & \Delta^{[2n+1] \smallsetminus \{k, \overline{k}\}}
-      \arrow[d, hook]
-      \\
-      \S^{\mathcal{A}}_{[2n+1]}
-      \arrow[r, hook]
-      & \S^{\mathcal{A}}_{[2n+1]} \cup \Delta^{[2n+1] \smallsetminus \{k, \overline{k}\}}.
-    \end{tikzcd}.
-  \end{equation*}
-  Therefore, it suffices to show that the top morphism is marked-scaled anodyne. One checks that this map is of the form $j^{n-1}_{k}$, and is thus marked-scaled anodyne. Therefore, it remains only to show that $i^{n}_{n}$ is marked-scaled anodyne.
-
-  We can write $i^{n}_{n}\colon M^{n}_{n} \hookrightarrow \Delta^{2n+1}$ as a simplicial inclusion
-  \begin{equation*}
-    \S^{\mathcal{A}}_{[2n+1]} \subseteq \Delta^{2n+1},\qquad \mathcal{A} = \left\{ \substack{ \{\overline{n}, \ldots, \overline{1}\} \\ \{0, \ldots n\} \\ \{1, \overline{1}\} \\ \vdots \\ \{n, \overline{n}\} } \right\}.
-  \end{equation*}
-
-  We will express this inclusion as the following composition of fillings:
-  \begin{enumerate}
-    \item We first add the simplices $\Delta^{\{n, \overline{n}, \ldots, \overline{0}\}}$, $\Delta^{\{n-1, n, \overline{n}, \ldots, \overline{0}\}}$, \dots, $\Delta^{\{2, \ldots, n, \overline{n}, \ldots, \overline{0}\}}$.
-
-    \item We next add $\Delta^{\{1, \ldots, n, \overline{n}, \overline{0}\}}$, $\Delta^{\{1, \ldots, n, \overline{n}, \overline{n-1}, \overline{0}\}}$, \dots, $\Delta^{\{1, \ldots, n, \overline{n}, \ldots, \overline{2}, \overline{0}\}}$
-      
-    \item We next add $\Delta^{\{1, \ldots n, \overline{n}, \ldots, \overline{0}\}}$.
-
-    \item We then add $\Delta^{\{0, \ldots, n, \overline{n}, \overline{0}\}}$, $\Delta^{\{0, \ldots, n, \overline{n}, \overline{n-1}, \overline{0}\}}$, \dots, $\Delta^{\{0, \ldots n, \overline{n}, \ldots, \overline{0}\}}$.
-  \end{enumerate}
-  We proceed.
-  \begin{enumerate}
-    \item 
-      \begin{itemize}
-        \item Using \hyperref[lemma:bicartesian_square]{Lemma~\ref*{lemma:bicartesian_square}}, we see that the square
-          \begin{equation*}
-            \begin{tikzcd}
-              \S^{\mathcal{A}|\{n, \overline{n}, \ldots, \overline{0}\}}_{\{n, \overline{n}, \ldots, \overline{0}\}}
-              \arrow[r, hook]
-              \arrow[d, hook]
-              & \Delta^{\{n, \overline{n}, \ldots, \overline{0}\}}
-              \arrow[d, hook]
-              \\
-              \S^{\mathcal{A}}_{[2n+1]}
-              \arrow[r, hook]
-              & \S^{\mathcal{A}}_{[2n+1]} \cup \Delta^{\{n, \overline{n}, \ldots, \overline{0}\}}
-            \end{tikzcd}
-          \end{equation*}
-          is pushout. In order to show that the bottom inclusion is marked-scaled anodyne, it thus suffices to show that the top inclusion is marked-scaled anodyne. We have
-          \begin{equation*}
-            \begin{tikzcd}
-              \mathcal{A}|\{n, \overline{n}, \ldots, \overline{0}\} 
-              = \left\{ \substack{ \{\overline{n}, \ldots, \overline{1}\} \\ \{n\} \\ \{\overline{1}\} \\ \vdots \\ \{\overline{n-1}\} \\ \{n, \overline{n}\} } \right\}
-              \sim \left\{ \substack{ \{n\} \\ \{\overline{n-1}\} \\ \vdots \\ \{\overline{1}\} } \right\} =: \mathcal{A}'
-            \end{tikzcd}.
-          \end{equation*}
-          This is a dull subset of $\{n, \overline{n}, \ldots, \overline{0}\}$ with pivot $\overline{n}$. The only $\mathcal{A}'$-basal set is $\{n, \overline{n-1}, \ldots, \overline{1}\}$. One checks that $\mathcal{A}'$, together with the marking $\heartsuit$ and scaling $\dagger$, satisfies the conditions of the \hyperref[lemma:pivot_trick]{Pivot~Trick}:
-          \begin{itemize}
-            \item For $n = 2$, the only the marked edge not containing the pivot $\overline{2}$ is $\overline{1} \to \overline{0}$, which belongs to $\S^{\mathcal{A}'}_{\{n, \overline{n}, \ldots, \overline{0}\}}$. The only scaled simplex which does not contain $\overline{2}$, and which does not factor through $\S^{\mathcal{A}'}$, is $\sigma = \{2 < \overline{1} < \overline{0}\}$. The simplex $\sigma \cup \{\overline{2}\}$ is fully scaled.
-
-            \item For $n = 3$, each marked edge is contained in $\S^{\mathcal{A}'}$. The only scaled triangle which does not contain the pivot $\overline{3}$, and which does not factor through $\S^{\mathcal{A}'}$, is $\sigma = \{3 < \overline{2} < \overline{1}\}$. The simplex $\sigma \cup \{\overline{3}\}$ is fully scaled.
-
-            \item For $n \geq 4$, all scaled and marked simplices belong to $\S^{\mathcal{A}'}$ by \hyperref[lemma:subset_of_simplex_contains_k_simplices]{Lemma~\ref*{lemma:subset_of_simplex_contains_k_simplices}}.
-          \end{itemize}
-          In each case, the simplex $\{n, \overline{n}, \overline{n-1}\}$ is scaled, so the top inclusion is marked-scaled anodyne by the \hyperref[lemma:pivot_trick]{Pivot Trick}. We can write
-          \begin{equation*}
-            \S^{\mathcal{A}}_{[2n+1]} \cup \Delta^{\{n, \overline{n}, \ldots, \overline{0}\}} = \S^{\mathcal{A} \cup ([2n+1] \smallsetminus \{n, \overline{n}, \ldots, \overline{0}\})}_{[2n+1]},
-          \end{equation*}
-          We see that
-          \begin{equation*}
-            \mathcal{A} \cup ([2n+1] \smallsetminus \{n, \overline{n}, \ldots, \overline{0}\}) \sim \left\{ \substack{ \{\overline{n}, \ldots, \overline{1}\} \\ \{0, \ldots n-1\} \\ \{1, \overline{1}\} \\ \vdots \\ \{n, \overline{n}\} } \right\},
-          \end{equation*}
-          which we denote by $\mathcal{A}_{n-1}$.
-
-        \item We proceed inductively. Suppose we have added the simplices $\Delta^{\{n, \overline{n}, \ldots, \overline{0}\}}$, $\Delta^{\{n-1, n, \overline{n}, \ldots, \overline{0}\}}$, \dots, $\Delta^{\{k+1, \ldots, n, \overline{n}, \ldots, \overline{0}\}}$, for $2 \leq k \leq n-1$. Using \hyperref[lemma:add_a_simplex]{Lemma~\ref*{lemma:add_a_simplex}} and \hyperref[lemma:replace_poset_by_minimal_elements]{Lemma~\ref*{lemma:replace_poset_by_minimal_elements}} can write the result of these additions as
-          \begin{equation*}
-            \S^{\mathcal{A}}_{[2n+1]} \cup \left( \bigcup_{i = k+1}^{n} \Delta^{\{i, \ldots, n, \overline{n}, \ldots, \overline{0}\}}\right) = \S^{\mathcal{A}_{k+1}}_{[2n+1]},
-          \end{equation*}
-          where 
-          \begin{equation*}
-            \mathcal{A}_{k+1} = \left\{ \substack{ \{\overline{n}, \ldots, \overline{1}\} \\ \{0, \ldots, k\} \\ \{1, \overline{1}\} \\ \vdots \\ \{n, \overline{n}\} } \right\}.
-          \end{equation*}
-
-          Using \hyperref[lemma:bicartesian_square]{Lemma~\ref*{lemma:bicartesian_square}}, we see that the square
-          \begin{equation*}
-            \begin{tikzcd}
-              \S^{\mathcal{A}_{k+1}|\{k, \ldots, n, \overline{n}, \ldots, \overline{0}\}}_{\{k, \ldots, n, \overline{n}, \ldots, \overline{0}\}}
-              \arrow[r, hook]
-              \arrow[d, hook]
-              & \Delta^{\{k, \ldots, n, \overline{n}, \ldots, \overline{0}\}}
-              \arrow[d, hook]
-              \\
-              \S^{\mathcal{A}_{k+1}}_{[2n+1]}
-              \arrow[r, hook]
-              & \S^{\mathcal{A}_{k+1}}_{[2n+1]} \cup \Delta^{\{k, \ldots, n, \overline{n}, \ldots, \overline{0}\}}
-            \end{tikzcd}
-          \end{equation*}
-          is pushout, so in order to show that the bottom morphism is marked-scaled anodyne, it suffices to show that the top morphism is. We see that
-          \begin{equation*}
-            \mathcal{A}_{k+1}|\{k, \ldots, n, \overline{n}, \ldots, \overline{0}\} =
-            \left\{ \substack{ \{\overline{n}, \ldots, \overline{1}\} \\ \{k\} \\ \{\overline{1}\} \\ \vdots \\ \{\overline{k-1}\} \\ \{k, \overline{k}\} \\ \vdots \\ \{n, \overline{n}\} } \right\}
-            \sim \left\{ \substack{ \{k\} \\ \{\overline{1}\} \\ \vdots \\ \{\overline{k-1}\} \\ \{k+1, \overline{k+1}\} \\ \vdots \\ \{n, \overline{n}\} } \right\} =: \mathcal{A}_{k+1}'.
-          \end{equation*}
-
-          This is a dull subset of $P(\{k, \ldots, n, \overline{n}, \ldots, \overline{0}\})$ with pivot $\overline{k}$, and one checks that the conditions of the \hyperref[lemma:pivot_trick]{Pivot Trick} are satisfied: 
-          \begin{itemize}
-            \item For $n = 3$, where the only value of $k$ is $k = 2$, each marked edge is contained in $\S^{\mathcal{A}_{k+1}'}$ by \hyperref[lemma:subset_of_simplex_contains_k_simplices]{Lemma~\ref*{lemma:subset_of_simplex_contains_k_simplices}}, and one can check that each scaled triangle factors through $\S^{\mathcal{A}_{k+1}'}$.
-
-            \item For $n \geq 4$, all scaled and marked simplices belong to $\S^{\mathcal{A}'}$ by \hyperref[lemma:subset_of_simplex_contains_k_simplices]{Lemma~\ref*{lemma:subset_of_simplex_contains_k_simplices}}.
-          \end{itemize}
-          The basal sets are of the form
-          \begin{equation*}
-            \{k, a_{1}, \ldots, a_{n-k}, \overline{k-1}, \ldots, \overline{1}\},
-          \end{equation*}
-          where each $a_{1}$, \dots, $a_{n-k}$ is of the form $\ell$ or $\overline{\ell}$ for $k+1 \leq \ell \leq n$. In each case, the simplex $\{a_{n-k}, \overline{k}, \overline{k-1}\}$ is scaled. Thus, the conditions of the \hyperref[lemma:pivot_trick]{Pivot Trick}, the top morphism is marked-scaled anodyne.
-      \end{itemize}
-
-      We have now added the simplices promised in part 1., and are left with the simplicial subset $\S^{\mathcal{A}_{2}}_{[2n+1]}$, where
-      \begin{equation*}
-        \mathcal{A}_{2}
-        = \left\{ \substack{ \{\overline{n}, \ldots, \overline{1}\} \\ \{0, 1\} \\ \{1, \overline{1}\} \\ \vdots \\ \{n, \overline{n}\} } \right\}.
-      \end{equation*}
-
-    \item Each step in this sequence is solved exactly like those above. The calculations are omitted. The end result is the simplicial subset
-      
-  \end{enumerate}
-\end{proof}
 
 \begin{lemma}
   \label{lemma:upper_morphism_equivalence}
@@ -776,65 +900,8 @@ We note that there is a pullback diagram of marked-scaled simplicial subsets of 
       \begin{equation*}
         \Lambda^{n}_{0} \cong \colim_{S \in P_{n}} \Delta^{S}.
       \end{equation*}
-
-    \item We define a cosimplicial object $J\colon \Delta \to \SSetms$ sending
-      \begin{equation*}
-        [n] \mapsto (\Delta^{n} \star \Delta^{\{\overline{0}\}})^{\heartsuit}_{\dagger}.
-      \end{equation*}
-      Denote the extension of this functor by colimits by
-      \begin{equation*}
-        \hat{J}\colon \SSet \to \SSetms.
-      \end{equation*}
-      Note that the inclusions $\Delta^{n} \amalg \Delta^{\{\overline{0}\}} \hookrightarrow \Delta^{n} \star (\Delta^{n})\op$ give, for any simplicial set $K$, a map
-      \begin{equation*}
-        K^{\flat}_{\sharp} \amalg \Delta^{\{\overline{0}\}} \to \hat{J}(K).
-      \end{equation*}
-
-      We can write
-      \begin{equation*}
-        (\Lambda^{\{0, \ldots, n, \overline{0}\}}_{0})^{\heartsuit}_{\dagger} \cong \hat{J}(\Lambda^{n}_{0}) \amalg_{(\Lambda^{n}_{0})^{\sharp}_{\flat}} (\Delta^{n})^{\sharp}_{\flat}.
-      \end{equation*}
-
-    \item We define a cosimplicial object $Q\colon \Delta \to \SSetms$ sending
-      \begin{equation*}
-        [n] \mapsto (\Delta^{n} \star (\Delta^{n})\op)^{\heartsuit}_{\dagger}.
-      \end{equation*}
-      Denote the extension of this functor by colimits by
-      \begin{equation*}
-        \hat{Q}\colon \SSet \to \SSetms.
-      \end{equation*}
-      Note that the inclusions
-      \begin{equation*}
-        \Delta^{n} \amalg (\Delta^{n})\op \hookrightarrow \Delta^{n} \star (\Delta^{n})\op
-      \end{equation*}
-      gives, for any simplicial set $K$, a map
-      \begin{equation*}
-        Q^{\flat}_{\sharp} \amalg (Q\op)^{\sharp}_{\sharp} \hookrightarrow \hat{Q}(K).
-      \end{equation*}
-      We can write
-      \begin{equation*}
-        (K^{n})^{\heartsuit}_{\dagger} \cong \hat{Q}(\Lambda^{n}_{0}) \amalg_{(\Lambda^{n}_{0})^{\flat}_{\sharp} \amalg ((\Lambda^{n}_{0})\op)^{\sharp}_{\sharp}} (\Delta^{n})^{\flat}_{\sharp} \amalg ((\Delta^{n})\op)^{\sharp}_{\sharp}.
-      \end{equation*}
-
-    \item Denote by $\mathring{\Delta}$ the subcategory of $\Delta$ on morphisms $[m] \to [n]$ which send $0 \mapsto 0$. Denote by $I$ the inclusion $\mathring{\Delta} \hookrightarrow \Delta$.
-
-    \item Denote by $v$ the natural transformation
-      \begin{equation*}
-        \begin{tikzcd}[column sep=huge]
-          \mathring{\Delta}
-          \arrow[r, bend left, "J \circ I", ""{name=U, below}]
-          \arrow[r, bend right, "Q \circ I"{swap}, ""{name=D, above}]
-          & \SSetms
-          \arrow[from=U, to=D, Rightarrow, "v"]
-        \end{tikzcd}
-      \end{equation*}
-      with components
-      \begin{equation*}
-        v_{n}\colon J(n) \to Q(n)
-      \end{equation*}
-      given by the obvious inclusions.\footnote{The maps $v_{n}$ are not the components of a natural transformation of functors $\Delta \to \SSetmk$; the naturality squares corresponding to morphisms which do not fix zero do not commute.}
   \end{itemize}
-  In the remainder of this proof, all simplicial subsets of $\Delta^{2n+1}$ will carry the $\heartsuit$ marking and the $\dagger$ scaling. 
+  In the remainder of this proof, all simplicial subsets of $\Delta^{2n+1}$ will carry the $\heartsuit$ marking and the $\dagger$ scaling.
 
 
   Denote by $S^{n}$ the colimit of the upper composition above, and by $T^{n}$ the colimit of the lower composition.
@@ -848,7 +915,7 @@ We note that there is a pullback diagram of marked-scaled simplicial subsets of 
       & \SSetms
     \end{tikzcd}
   \end{equation*}
-  Since the cofibrations of the marked-scaled model structure are precisely those morphisms of marked-scaled simplicial sets whose underlying morphisms of simplicial sets are monomorphisms, the strict colimit of each of these diagrams is a model for the homotopy colimit. We showed in \hyperref[lemma:lower_morphism_equivalence]{Lemma~\ref*{lemma:lower_morphism_equivalence}} that each of the components of the natural transformation $v\colon J \circ I \to Q \circ I$ is a weak equivalence in the model structure on $\SSetms$. Therefore, this natural transformation furnishes a map between the colimits  
+  Since the cofibrations of the marked-scaled model structure are precisely those morphisms of marked-scaled simplicial sets whose underlying morphisms of simplicial sets are monomorphisms, the strict colimit of each of these diagrams is a model for the homotopy colimit. We showed in \hyperref[lemma:lower_morphism_equivalence]{Lemma~\ref*{lemma:lower_morphism_equivalence}} that each of the components of the natural transformation $v\colon J \circ I \to Q \circ I$ is a weak equivalence in the model structure on $\SSetms$. Therefore, this natural transformation furnishes a map between the colimits
 
   We can write the inclusion $u_{n}\colon \Lambda^{\{0, \ldots, n, \overline{0}\}}_{0} \hookrightarrow K^{n}$ as the map between the colimits induced by the diagrams
   \begin{equation*}
