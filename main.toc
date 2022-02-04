@@ -2,31 +2,35 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {1}Introduction and conventions}{2}{section.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.1}The marked-scaled model structure}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.1}General conventions}{2}{subsection.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2}The marked-scaled model structure}{2}{subsection.1.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2}A new Barwick's theorem}{3}{section.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3}Horn filling via left Kan extensions}{4}{section.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}Filling cubes relative to their boundaries}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.1}Filling cubes relative to their boundaries}{7}{subsection.3.1}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2}Adjunct data}{13}{subsection.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}Left Kan implies globally left Kan}{17}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.3}Left Kan implies globally left Kan}{18}{subsection.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4}A few other tricks with Kan extensions}{21}{subsection.3.4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}Local systems}{21}{section.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}The twisted arrow category}{21}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.1}The twisted arrow category}{22}{subsection.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Two lemmas about marked-scaled anodyne morphisms}{23}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.2}Two lemmas about marked-scaled anodyne morphisms}{24}{subsection.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3}Cosimplicial objects surrounding the infinity-category of local systems}{26}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.3}Cosimplicial objects surrounding the infinity-category of local systems}{27}{subsection.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.3.1}The infinity-category of local systems}{26}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.1}The infinity-category of local systems}{27}{subsubsection.4.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.3.2}Cosimplicial objects}{27}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.2}Cosimplicial objects}{28}{subsubsection.4.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4}The map governing local systems is a cocartesian fibration}{33}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.4}The map governing local systems is a cocartesian fibration}{34}{subsection.4.4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5}The non-monoidal construction}{38}{section.5}%
 \defcounter {refsection}{0}\relax 

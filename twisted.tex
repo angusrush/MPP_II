@@ -139,6 +139,7 @@ The inclusion $\Delta^{n} \amalg (\Delta^{n})\op \hookrightarrow \Delta^{n} \sta
 In \cite{garcia2020enhanced}, the following is shown.
 
 \begin{theorem}
+  \label{thm:mainthm_walker_fernando}
   Let $\CC$ be an $\infty$-bicategory (presented as a fibrant scaled simplicial set), and let $\category{C}$ be the underlying $\infty$-category (presented as a quasicategory). Then the map
   \begin{equation*}
     p_{\CC}\colon \Tw(\CC) \to \category{C} \times \category{C}\op.
@@ -418,7 +419,7 @@ We have defined, for each $n \geq 0$, inclusions of marked-scaled simplicial set
 \begin{equation*}
   v_{n}\colon \tilde{J}(n) \to \tilde{R}(n).
 \end{equation*}
-We will show in \hyperref[ssc:the_fibration]{Subsection~\ref*{ssc:the_fibration}} that each $a_{n}$ is an equivalence. However, extreme care is warranted: \emph{the $v_{n}$ are not the components of a natural transformation $u\colon \tilde{J} \Rightarrow \tilde{R}$!} The necessary squares simply do not commute for morphisms $\phi\colon [m] \to [n]$ in $\Delta$ such that $\phi(0) \neq 0$.
+However, extreme care is warranted: \emph{the $v_{n}$ are not the components of a natural transformation $u\colon \tilde{J} \Rightarrow \tilde{R}$!} The necessary squares simply do not commute for morphisms $\phi\colon [m] \to [n]$ in $\Delta$ such that $\phi(0) \neq 0$.
 
 We will simply define this problem away. Denote by $\mathring{\Delta}$ the subcategory of $\Delta$ on morphisms $[m] \to [n]$ which send $0 \mapsto 0$. Denote by $I$ the inclusion $\mathring{\Delta} \hookrightarrow \Delta$. The morphisms $v_{n}$ \emph{do} form a natural transformation $v\colon \tilde{J} \circ I \Rightarrow \tilde{R} \circ I$:
 \begin{equation*}
@@ -489,7 +490,7 @@ Our goal in the remainder of this section is to show that each component $v_{n}$
       & \S^{\mathcal{A}}_{[2n+1]} \cup \Delta^{[2n+1] \smallsetminus \{k, \overline{k}\}}.
     \end{tikzcd}.
   \end{equation*}
-  Therefore, it suffices to show that the top morphism is marked-scaled anodyne. One checks that this map is of the form $j^{n-1}_{k}$, and is thus marked-scaled anodyne. Therefore, it remains only to show that $i^{n}_{n}$ is marked-scaled anodyne.
+  Therefore, it suffices to show that the top morphism is marked-scaled anodyne. One checks that this map is of the form $j^{n-1}_{k}$, and is thus marked-scaled anodyne by the inductive hypothesis. Therefore, it remains only to show that $i^{n}_{n}$ is marked-scaled anodyne.
 
   We treat the case $n = 1$ separately. In this case, $v_{1}'$ takes the form
   \begin{equation*}
@@ -504,7 +505,7 @@ Our goal in the remainder of this section is to show that each component $v_{n}$
     \item Finally, we fill the full simplex $\Delta^{3}$ (together with its marking and scaling) as a pushout along a morphism of type \ref{item:innerms}.
   \end{enumerate}
 
-  Now we may assume that $n \geq 2$. In this case, we can write $i^{n}_{n}\colon M^{n}_{n} \hookrightarrow \Delta^{2n+1}$ as a simplicial inclusion
+  Now we may assume that $n \geq 2$. In this case, we can write $i^{n}_{n}\colon M^{n}_{n} \hookrightarrow \Delta^{2n+1}$ as an inclusion
   \begin{equation*}
     \S^{\mathcal{A}}_{[2n+1]} \subseteq \Delta^{2n+1},\qquad \mathcal{A} = \left\{ \substack{ \{\overline{n}, \ldots, \overline{1}\} \\ \{0, \ldots n\} \\ \{1, \overline{1}\} \\ \vdots \\ \{n, \overline{n}\} } \right\}.
   \end{equation*}
@@ -641,168 +642,133 @@ Our aim is to show that the map of quasicategories $p\colon \LS(\category{C}) \t
     & \ICat \times \ICat\op
   \end{tikzcd},
 \end{equation*}
-where each square is pullback, is a cocartesian fibration, and that the the $p$-cocartesian edges correspond to left Kan extensions. Our plan of attack is as follows.
-\begin{enumerate}
-  \item We will first specify, in \hyperref[eg:left_kan_morphism]{Example~\ref*{eg:left_kan_morphism}}, a class of morphisms in $\LS(\category{C})$, so-called \emph{left Kan morphisms,} which we claim are precisely the $p$-cocartesian morphisms.
 
-  \item We will show that left Kan morphisms are in sufficient supply; that is, that given any morphism $f\colon X \to Y$ in $\S$ and a $\category{C}$-local system $\mathcal{F}\colon X \to \category{C}$, there exists a left Kan morphism $\hat{f}\colon \mathcal{F} \to f_{!}\mathcal{F}$ in $\LS(\category{C})$ whose image under $p$ is $f$.
-
-  \item We will show that left Kan morphisms really are $p$-cocartesian.
-
-  \item This, together with REF will imply that any $p$-cocartesian morphism is left Kan.
-\end{enumerate}
-
-\begin{definition}
-  \label{def:admissible}
-  A $(2n+1)$-simplex $\sigma\colon \Delta^{2n+1}_{\dagger} \to \ICCat$ will be called \defn{admissible} if the following conditions are satisfied.
-  \begin{itemize}
-    \item The objects $\sigma(\Delta^{\{0\}})$, \dots, $\sigma(\Delta^{\{n\}})$ are spaces.
-
-    \item The restriction of $\sigma$ to the $n$-simplex $\Delta^{\{n+1, \ldots, 2n+1\}}$ is the constant functor with value $\category{C} \in \ICCat$.
-  \end{itemize}
-\end{definition}
-
-\begin{note}
-  The admissible $(2n+1)$-simplicies $\Delta^{2n+1}_{\dagger} \to \ICCat$ are precisely those which are adjunct to a map $\Delta^{n} \to \LS(\category{C})$.
-\end{note}
 
 \begin{definition}
   \label{def:left_kan_simplex}
-  A $(2n+1)$-simplex $\sigma\colon \Delta^{2n+1}_{\dagger} \to \ICCat$ is said to be \defn{left Kan} if it has the following characteristies.
-  \begin{enumerate}
-    \item It is admissible; that is, it is adjunct to a simplex $\Delta^{n} \to \LS(\category{C})$.
-
-    \item The restriction of $\sigma$ to the 2-simplex $\Delta^{\{0,1,\overline{0}\}}_{\flat} \subset \Delta^{2n+1}_{\dagger}$ is left Kan.
-  \end{enumerate}
+  A morphism $\Delta^{1} \to \LS(\category{C})$ is said to be \defn{left Kan} if the simplex $\sigma\colon \Delta^{3}_{\dagger} \to \ICCat$ to which it is adjoint has the property that the restriction $\sigma|\Delta^{\{0,1,\overline{0}\}}$ is left Kan in the sense of \hyperref[def:left_kan]{Definition~\ref*{def:left_kan}}.
 \end{definition}
 
-\begin{example}
-  \label{eg:left_kan_morphism}
-  We draw the `front' and `back' of a general admissible $3$-simplex $\sigma\colon \Delta^{3}_{\dagger} \to \ICCat$ corresponding to some morphism $\Delta^{1} \to \LS(\category{C})$.
-  \begin{equation*}
-    \begin{tikzcd}[column sep=large, row sep=large]
-      X
-      \arrow[r, "f"]
-      \arrow[d, "\mathcal{F}"{swap}, ""{name=L}]
-      \arrow[dr, "\mathcal{H}"]
-      & Y
-      \arrow[d, "\mathcal{G}"]
-      \\
-      \category{C}
-      & \category{C}
-      \arrow[l, "\id_{\category{C}}"]
-      \arrow[from=L, Rightarrow, shorten=3ex, "\zeta"{swap}]
-    \end{tikzcd}
-    \qquad\text{and}\qquad
-    \begin{tikzcd}[column sep=large, row sep=large]
-      X
-      \arrow[r, "f"]
-      \arrow[d, "\mathcal{F}"{swap}, ""{name=L}]
-      & Y
-      \arrow[d, "\mathcal{G}"]
-      \arrow[dl, "\mathcal{G}'"]
-      \arrow[from=L, Rightarrow, shorten=3ex, "\eta"]
-      \\
-      \category{C}
-      & \category{C}
-      \arrow[l, "\id_{\category{C}}"]
-    \end{tikzcd}
-  \end{equation*}
-  Here, the $2$-simplices which are notated without natural transformations are constrained by the scaling $\dagger$ to be thin. Such an admissible simplex $\sigma$ is left Kan if and only if $\mathcal{G}'$ is a left Kan extension of $\mathcal{F}$ along $f$, and $\eta$ is a unit map. In this case, we will also call the morphism $\Delta^{1} \to \LS(\category{C})$ to which $\sigma$ is adjunct \emph{left Kan.}
-\end{example}
-
-The fibration $p\colon \LS(\category{C}) \to \S$ has enough left Kan lifts. More concretely, we have the following.
+We draw the `front' and `back' of a general $3$-simplex $\sigma\colon \Delta^{3}_{\dagger} \to \ICCat$ corresponding to some morphism $\Delta^{1} \to \LS(\category{C})$.
+\begin{equation*}
+  \begin{tikzcd}[column sep=large, row sep=large]
+    X
+    \arrow[r, "f"]
+    \arrow[d, "\mathcal{F}"{swap}, ""{name=L}]
+    \arrow[dr, "\mathcal{H}"]
+    & Y
+    \arrow[d, "\mathcal{G}"]
+    \\
+    \category{C}
+    & \category{C}
+    \arrow[l, "\id_{\category{C}}"]
+    \arrow[from=L, Rightarrow, shorten=3ex, "\zeta"{swap}]
+  \end{tikzcd}
+  \qquad\text{and}\qquad
+  \begin{tikzcd}[column sep=large, row sep=large]
+    X
+    \arrow[r, "f"]
+    \arrow[d, "\mathcal{F}"{swap}, ""{name=L}]
+    & Y
+    \arrow[d, "\mathcal{G}"]
+    \arrow[dl, "\mathcal{G}'"]
+    \arrow[from=L, Rightarrow, shorten=3ex, "\eta"]
+    \\
+    \category{C}
+    & \category{C}
+    \arrow[l, "\id_{\category{C}}"]
+  \end{tikzcd}
+\end{equation*}
+Here, the $2$-simplices which are notated without natural transformations are constrained by the scaling $\dagger$ to be thin. Such an admissible simplex $\sigma$ is left Kan if and only if $\mathcal{G}'$ is a left Kan extension of $\mathcal{F}$ along $f$, and $\eta$ is a unit map. In this case, we will also call the morphism $\Delta^{1} \to \LS(\category{C})$ to which $\sigma$ is adjunct \emph{left Kan.}
 
 \begin{notation}
   We endow the quasicategory $\LS(C)$ with the marking $\clubsuit \subseteq \LS(\category{C})_{1}$ consisting of all left Kan edges.
 \end{notation}
 
-\begin{corollary}
-  \label{cor:cocartesian_fibration}
-  The map $p\colon \LS(\category{C}) \to \S$ admits enough left Kan lifts. More precisely, any lifting problem
-  \begin{equation*}
-    \begin{tikzcd}
-      (\Delta^{\{0\}})^{\flat}
-      \arrow[r]
-      \arrow[d, hook]
-      & \LS(\category{C})^{\clubsuit}
-      \arrow[d]
-      \\
-      (\Delta^{1})^{\sharp}
-      \arrow[r]
-      \arrow[ur, dashed]
-      & (\S)^{\sharp}
-    \end{tikzcd}
-  \end{equation*}
-  has a dashed solution. 
-\end{corollary}
-
-\begin{proof}[Proof of Corollary \ref{cor:cocartesian_fibration}]
-  We know that $p$ is a cartesian fibration, hence certainly an inner fibration. We need to show that $p$ has enough cocartesian lifts, i.e.\ that Any such lifting problem is adjunct to a lifting problem of the form
-  \begin{equation}
-    \label{eq:unmarked_lifting_problem}
-    \begin{tikzcd}
-      K_{\dagger}
-      \arrow[r]
-      \arrow[d, hook]
-      & \ICCat
-      \\
-      \Delta^{3}_{\dagger}
-      \arrow[ur, dashed]
-    \end{tikzcd},
-  \end{equation}
-  where $K_{\dagger} \cong (\Delta^{\{0,1\}} \cup \Delta^{\{0,3\}} \cup \Delta^{\{2,3\}}, \dagger)$, and $K_{\dagger} \to \ICCat$ is the restriction of an admissible simplex (this tells us that $\Delta^{\{0\}}$ and $\Delta^{\{1\}}$ are mapped to spaces, and that $\Delta^{\{2,3\}}$ is mapped to $\id_{\category{C}}$). We need to construct a dashed lift which is left Kan.
-
-  It is relatively easy to do this directly, but we take a different approach, which we will generalize in our proof of \hyperref[thm:cocartesian_edges_of_p]{Theorem~\ref*{thm:cocartesian_edges_of_p}}. We endow $\ICCat$ with a marking $\natural$ consisting of all equivalences. We endow $\Delta^{3}_{\dagger}$ with the marking $\heartsuit$ consisting of the simplex $\Delta^{\{2,3\}}$ together with all degenerate 1-simplices. We denote the restriction of this marking to $K$ also by $\heartsuit$. We then note that the lifting problem of \hyperref[eq:unmarked_lifting_problem]{Equation~\ref*{eq:unmarked_lifting_problem}} is equivalent to the marked version
-  \begin{equation*}
-    \begin{tikzcd}
-      (K, \heartsuit, \dagger)
-      \arrow[d, hook, swap, "a"]
-      \arrow[r]
-      & \ICCat^{\natural}
-      \\
-      (\Delta^{3}, \heartsuit, \dagger)
-      \arrow[ur, dashed]
-    \end{tikzcd};
-  \end{equation*}
-  the only condition imposed by the markings we have just added is that the simplex $\Delta^{\{2,3\}} \subset K$ be sent to an equivalence, which is always satisfied for the lifting problem above since $\id_{\category{C}}$ is an equivalence.
-
-  We note that there is a pullback square
-  \begin{equation*}
-    \begin{tikzcd}
-      (\Delta^{\{0,1\}} \cup \Delta^{\{0,3\}}, \flat, \flat)
-      \arrow[r, hook, "u_{1}"]
-      \arrow[d, hook, swap, "b"]
-      & (K, \heartsuit, \dagger)
-      \arrow[d, hook, "a"]
-      \\
-      (\Delta^{\{0,1,3\}}, \flat, \flat)
-      \arrow[r, hook, "v_{1}"]
-      & (\Delta^{3}, \heartsuit, \dagger)
-    \end{tikzcd}.
-  \end{equation*}
-
-    The map $u_{1}$ is a pushout along the map $(\Delta^{\{1\}}, \flat, \flat) \hookrightarrow (\Delta^{1}, \sharp, \flat)$, which is marked-scaled anodyne of type \ref{item:outerms}. It is thus a weak equivalence. The map $v_{1}$ is a weak equivalence by \hyperref[lemma:lower_morphism_equivalence]{Lemma~\ref*{lemma:lower_morphism_equivalence}}. Thus, by \cite[Prop.~A.2.3.1]{highertopostheory}, in order to find a lift as in \hyperref[eq:unmarked_lifting_problem]{Equation~\ref*{eq:unmarked_lifting_problem}} it will suffice to find a lift
-  \begin{equation*}
-    \begin{tikzcd}
-      (\Delta^{\{0,1\}} \cup \Delta^{\{0,3\}}, \flat, \flat)
-      \arrow[r]
-      \arrow[d, hook, swap, "b"]
-      & \ICCat
-      \\
-      (\Delta^{\{0,1,3\}}, \flat, \flat)
-      \arrow[ur, dashed]
-    \end{tikzcd}
-  \end{equation*}
-  which is left Kan. However, the existence of such lifts is precisely the condition that for any functor between spaces $f\colon X \to Y$, and any functor $\mathcal{F}\colon X \to \category{C}$, the left Kan extension $f_{!}\mathcal{F}$ exists. This is true by our assumption that $\category{C}$ be cocomplete.
-\end{proof}
-
-We have thus shown that, should the left Kan edges really turn out to be precisely the $p$-cocartesian edges, then $p$ is a cocartesian fibration. However, it remains to be verified that left Kan edges really are precisely the same as cocartesian edges. We first show one implication: that if an edge is left Kan, it is cocartesian.
-
 \begin{theorem}
   \label{thm:cocartesian_edges_of_p}
-  An edge $\Delta^{1} \to \LS(\category{C})$ is $p$-cocartesian if and only if it is left Kan.
+  The map $p\colon \LS(\category{C}) \to \S$ is a cocartesian fibration, and an edge $\Delta^{1} \to \LS(\category{C})$ is $p$-cocartesian if and only if it is left Kan.
 \end{theorem}
+\begin{proof}
+  By \cite[Prop.~3.1.1.6]{highertopostheory}, it suffices to show that the map $\LS(\category{C})^{\clubsuit} \to \S^{\sharp}$ has the right lifting property with respect to each of the classes of generating marked anodyne morphisms. We check these one-by-one.
+  \begin{enumerate}
+    \item We need to check that all lifting problems
+      \begin{equation*}
+        \begin{tikzcd}
+          (\Lambda^{n}_{i})^{\flat}
+          \arrow[r]
+          \arrow[d]
+          & \LS(\category{C})^{\clubsuit}
+          \arrow[d]
+          \\
+          (\Delta^{n})^{\flat}
+          \arrow[r]
+          \arrow[ur, dashed]
+          & \S^{\sharp}
+        \end{tikzcd},\qquad n \geq 2, \quad 0 < i < n
+      \end{equation*}
+      admit solutions. This follows from \hyperref[thm:mainthm_walker_fernando]{Theorem~\ref*{thm:mainthm_walker_fernando}}.
+
+    \item We need to show that each of the lifting problems
+      \begin{equation*}
+        \begin{tikzcd}
+          (\Lambda^{n}_{0})^{\mathcal{L}}
+          \arrow[r]
+          \arrow[d]
+          & \LS(\category{C})^{\clubsuit}
+          \arrow[d]
+          \\
+          (\Delta^{n})^{\mathcal{L}}
+          \arrow[r]
+          \arrow[ur, dashed]
+          & \S^{\sharp}
+        \end{tikzcd},\qquad n \geq 1.
+      \end{equation*}
+      has a solution. This is the content of REF
+
+    \item We need to show that every lifting problem of the form
+      \begin{equation*}
+        \begin{tikzcd}
+          (\Lambda^{2}_{1})^{\sharp} \amalg_{( \Lambda^{2}_{1} )^{\flat}}(\Delta^{2})^{\sharp}
+          \arrow[r]
+          \arrow[d]
+          & \LS(\category{C})^{\clubsuit}
+          \arrow[d]
+          \\
+          (\Delta^{2})^{\sharp}
+          \arrow[r]
+          \arrow[ur, dashed]
+          & \S^{\sharp}
+        \end{tikzcd}
+      \end{equation*}
+      has a solution. This is the content of REF
+
+    \item We need to show that for all Kan complexes $K$, the lifting problem
+      \begin{equation*}
+        \begin{tikzcd}
+          K^{\flat}
+          \arrow[r]
+          \arrow[d]
+          & \LS(\category{C})^{\clubsuit}
+          \arrow[d]
+          \\
+          K^{\sharp}
+          \arrow[r]
+          \arrow[ur, dashed]
+          & \S^{\sharp}
+        \end{tikzcd}
+      \end{equation*}
+      has a solution. To see this, note that each morphism in $K$ must be mapped to an equivalence in $\LS(\category{C})$, and a morphism $a\colon \mathcal{F} \to \mathcal{G}$ in $\LS(\category{C})$ is an equivalence and only if it is $p$-cartesian, and lies over an equivalence in $\S$.
+      \begin{itemize}
+        \item By \hyperref[thm:mainthm_walker_fernando]{Theorem~\ref*{thm:mainthm_walker_fernando}}, the morphism $a$ is $p$-cartesian if and only if the map $\sigma\colon \Delta^{3}_{\dagger} \to \ICCat$ to which it is adjoint factors through the map $\Delta^{3}_{\dagger} \to \Delta^{3}_{\sharp}$. In particular, the restriction $\sigma|\Delta^{\{0,1,\overline{0}\}}$ is thin.
+
+        \item The image of $a$ in $\S$ is the restriction $\sigma|\Delta^{\{0,1\}}$, which is therefore an equivalence.
+      \end{itemize}
+      It follows from \hyperref[eg:strictly_commuting_left_kan]{Example~\ref*{eg:strictly_commuting_left_kan}} that the morphism $a$ is automatically left Kan. Thus, each morphism in $K$ is mapped to a left Kan morphism in $\LS(\category{C})$, and our lifting problems admit solutions.
+  \end{enumerate}
+\end{proof}
+
+{\color{red}Everything past this point is old, and probably won't survive without major revision.}
 
 
 In order to show that all left Kan edges are cocartesian, we have to show that lifting problems

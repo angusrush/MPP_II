@@ -9,8 +9,10 @@ Kan extensions of $\infty$-categories are usually defined pointwise via the coli
 
 \begin{definition}
   \label{def:left_kan}
-  We will call a $2$-simplex $\tau\colon \Delta^{2}_{\flat} \to \ICCat$ \defn{left Kan} if it is of the form
-  \begin{equation*}
+  We will say that a $2$-simplex $\tau\colon \Delta^{2}_{\flat} \to \ICCat$,
+  \begin{equation}
+    \label{eq:prototypical_left_kan_simplex}
+    \tau =
     \begin{tikzcd}
       X
       \arrow[dr, swap, "f"]
@@ -18,12 +20,24 @@ Kan extensions of $\infty$-categories are usually defined pointwise via the coli
       && \category{C}
       \\
       & Y
-      \arrow[ur, swap, "f_{!}F"]
+      \arrow[ur, swap, "\mathcal{G}"]
       \arrow[from=M, Rightarrow, swap, "\eta"]
     \end{tikzcd},
-  \end{equation*}
-where $\category{C}$ is cocomplete, $X$ is small, $f_{!}F$ is a left Kan extension of $F$ along $f$, and $\eta\colon F \Rightarrow f^{*}f_{!}F$ is the unit map.
+  \end{equation}
+  is \defn{left Kan} if it satisfies the following conditions.
+  \begin{itemize}
+    \item For all objects $y \in Y$, the category $\category{C}$ admits all colimits of shape $X_{/y}$.
+
+    \item The functor $G$ is a left Kan extension of $F$ along $f$.
+
+    \item The natural transformation $\eta$ is a unit map.
+  \end{itemize}
 \end{definition}
+
+\begin{example}
+  \label{eg:strictly_commuting_left_kan}
+  Any commuting simplex $\Delta^{2}_{\sharp} \to \ICCat$ such that $\Delta^{\{0,1\}}$ is mapped to an equivalence is left Kan.
+\end{example}
 
 The goal of this section is to prove the following.
 
@@ -1109,5 +1123,10 @@ commute.
   \end{equation*}
   However, since image of $(0, \ldots 0) \to (0, \ldots, 1)$ is an equivalence, \hyperref[prop:cube_filling]{Proposition~\ref*{prop:cube_filling}} implies that we can solve the lifting problem $(**')$. Again using (the dual to) \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}}, we can transport this filling to a solution to the lifting problem $(*')$. The condition $(\star)$ amounts to demanding that the restriction $\beta|_{C^{n-1}}$ be the image of $\tilde{\beta}|_{C^{n-1}}$ under $f_{1,0}^{*}$, which is true by construction.
 \end{proof}
+
+\subsection{A few other tricks with Kan extensions}
+\label{ssc:a_few_other_tricks_with_kan_extensions}
+
+We end this section with a few miscellaneous tricks which we can play with maps $\Delta^{n} \to \ICCat$ involving Kan extensions.
 
 \end{document}
