@@ -7,6 +7,8 @@
 
 Kan extensions of $\infty$-categories are usually defined pointwise via the colimit formula \cite{highertopostheory} \cite{cisinski2019higher}. In this section, we will show that such pointwise $\infty$-Kan extensions enjoy a horn filling property in $\ICCat$ which generalizes the universal property for Kan extensions of functors between $1$-categories.
 
+We will expand upon the following definition in \hyperref[ssc:basic_facts_about_kan_extensions]{Subsection~\ref*{ssc:basic_facts_about_kan_extensions}}.
+
 \begin{definition}
   \label{def:left_kan}
   We will say that a $2$-simplex $\tau\colon \Delta^{2}_{\flat} \to \ICCat$,
@@ -222,6 +224,28 @@ where the left-hand diagram is a map $LC^{2} \to \Fun(X, C)$, where $LC^{2}$ is 
 \end{enumerate}
 
 The lifting problems which we have to solve in \hyperref[eq:lifting_problems_for_global_kan_extensions]{Equation~\ref*{eq:lifting_problems_for_global_kan_extensions}} for $n > 2$ amount to replacing $\Delta^{1} \times \Delta^{1}$ by $(\Delta^{1})^{n}$, etc; the basic process remains unchanged, but the combinatorics involved in filling the necessary cubes becomes more involved. In \hyperref[ssc:filling_cubes_relative_to_their_boundary]{Subsection~\ref*{ssc:filling_cubes_relative_to_their_boundary}} we explain the combinatorics of filling cubes relative to their boundaries. In \hyperref[ssc:adjunct_data]{Subsection~\ref*{ssc:adjunct_data}}, we give a formalization the concept of adjunct data, and provide a means of for filling partial data to total adjunct data. In \hyperref[ssc:left_kan_implies_globally_left_kan]{Subsection~\ref*{ssc:left_kan_implies_globally_left_kan}}, we show that we can always solve the lifting problems of \hyperref[eq:lifting_problems_for_global_kan_extensions]{Equation~\ref*{eq:lifting_problems_for_global_kan_extensions}}.
+
+\subsection{Basic facts about Kan extensions}
+\label{ssc:basic_facts_about_kan_extensions}
+
+In this section, we recall a few basic facts about Kan extensions. These can be found in Kerodon. Since Kan extensions are defined by the colimit formula, we will start by defining colimits.
+
+\begin{definition}
+  Let $X$, $Y$, and $\category{C}$ be $\infty$-categories, $f\colon X \to Y$, $F\colon X \to \category{C}$ and $G\colon Y \to \category{C}$ functors, and $\eta\colon F \to G \circ f$ a natural transformation.
+  \begin{equation*}
+    \begin{tikzcd}
+      X
+      \arrow[dr, swap, "f"]
+      \arrow[rr, "F", ""{below, name=M}]
+      && \category{C}
+      \\
+      & Y
+      \arrow[ur, swap, "G"]
+      \arrow[from=M, Rightarrow, swap, "\eta"]
+    \end{tikzcd}
+  \end{equation*}
+  We say that $\eta$ \defn{exhibits $G$ as the left Kan extension of $F$ along $f$} if for each object $x \in X$,
+\end{definition}
 
 \subsection{Filling cubes relative to their boundaries}
 \label{ssc:filling_cubes_relative_to_their_boundary}
@@ -568,15 +592,50 @@ We collect our major results from this section in the following proposition.
 \subsection{Adjunct data}
 \label{ssc:adjunct_data}
 
-In this section, we give a formalization of the the notion of adjunct data. Our main result is \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}}, which shows that under certain conditions, we can use data on one side of an adjunction to solve lifting problems on the other side.
+In this section, we give a formalization of the the notion of adjunct data. Our main result is \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}}, which shows that under certain conditions, we can use data on one side of an adjunction to solve lifting problems on the other side. First, we recall somewhat explicitly the definition of an adjunction given in \cite{highertopostheory}.
+
+\begin{definition}
+  \label{def:adjunction}
+  An \defn{adjunction} is a bicartesian fibration $p\colon \mathcal{M} \to \Delta^{1}$. We say that $p$ is \defn{associated} to functors $f\colon \category{C} \to \category{D}$ and $g\colon \category{D} \to \category{C}$ if there exist equivalences $h_{0}\colon \category{C} \to \category{M}_{0}$ and $h_{1}\colon \category{D} \to \category{M}_{1}$, and a commutative diagram
+  \begin{equation*}
+    \begin{tikzcd}
+      \category{C} \times \Delta^{1}
+      \arrow[r, "u"]
+      \arrow[dr, swap, "\pr"]
+      & \mathcal{M}
+      \arrow[d, "p"]
+      & \category{D} \times \Delta^{1}
+      \arrow[l, swap, "v"]
+      \arrow[dl, "\pr"]
+      \\
+      & \Delta^{1}
+    \end{tikzcd}
+  \end{equation*}
+  such that the following conditions are satisfied. 
+  \begin{itemize}
+    \item The map $u$ is associated to the functor $f$: the restriction $u|\category{C} \times \{0\} = h_{0}$, the restriction $u|\category{C} \times \{1\} = f \circ h_{1}$, and for each $c \in \category{C}$, the edge $u|\{c\} \times \Delta^{1}$ is $p$-cocartesian.
+
+    \item The map $v$ is associated to the functor $g$: the restriction $v|\category{D} \times \{0\} = g \circ h_{0}$, the restriction $u|\category{D} \times \{1\} = h_{1}$, and for each $d \in \category{D}$, the edge $u|\{d\} \times \Delta^{1}$ is $p$-cartesian.
+  \end{itemize}
+
+  If $f$ and $g$ are functors to which an adjunction is associated as above, then we say that $f$ is left adjoint to $g$, and equivalently that $g$ is right adjoint to $f$.
+\end{definition}
+
+\begin{note}
+  This terminology is slightly imprecise; it would be more correct to say that $p$ is associated to $f$ and $g$ via the data $(h_{0}, h_{1}, u, v)$.
+\end{note}
+
+\begin{note}
+  It is shown in \cite{highertopostheory} that if $f$ and $g$ are functors such that $f$ is left adjoint to $g$, then we can choose an adjunction $p\colon \mathcal{M} \to \Delta^{1}$ and data $(h_{0}, h_{1}, u, v)$ such that $h_{0}$ and $h_{1}$ are isomorphisms. We can use this to identify $\mathcal{M}_{0}$ with $\category{C}$, and $\mathcal{M}_{1}$ with $\category{D}$. In what follows we will always assume that we have chosen such data, and will thus leave the isomorphisms $h_{0}$ and $h_{1}$ implicit.
+\end{note}
 
 \begin{definition}
   \label{def:adjunct_data}
-  Let $s\colon K \to \Delta^{1}$ be a map of simplicial sets, and let $p\colon \category{M} \to \Delta^{1}$ be a bicartesian fibration associated to the adjunction
+  Let $s\colon K \to \Delta^{1}$ be a map of simplicial sets whose fibers we denote by $K_{0}$ and $K_{1}$, and let $p\colon \category{M} \to \Delta^{1}$ be a bicartesian fibration associated to adjoint functors
   \begin{equation*}
     f : \category{C} \longleftrightarrow \category{D} : g
   \end{equation*}
-  via equivalences $h_{0}\colon \category{C} \to \category{M}_{0}$ and $h_{1}\colon \category{D} \to \category{M}_{1}$. We say that a map $\alpha\colon K \to \category{C}$ is \defn{adjunct} to a map $\tilde{\alpha}\colon K \to \category{D}$ relative to $s$, and equivalently that $\tilde{\alpha}$ is adjunct to $\alpha$ relative to $s$, if there exists a map $A\colon K \times \Delta^{1} \to \category{M}$ such that the diagram
+  via data $(u, v)$. We say that a map $\alpha\colon K \to \category{C}$ is \defn{adjunct} to a map $\tilde{\alpha}\colon K \to \category{D}$ relative to $s$, and equivalently that $\tilde{\alpha}$ is adjunct to $\alpha$ relative to $s$, if there exists a map $A\colon K \times \Delta^{1} \to \category{M}$ such that the diagram
   \begin{equation*}
     \begin{tikzcd}
       K \times \Delta^{1}
@@ -590,23 +649,27 @@ In this section, we give a formalization of the the notion of adjunct data. Our 
   \end{equation*}
   commutes, and such that the following conditions are satisfied.
   \begin{enumerate}
-    \item The restriction $A|_{K \times \{0\}} = h_{0} \circ \alpha$.
+    \item The restriction $A|_{K \times \{0\}} = \alpha$.
 
-    \item The restriction $A|_{K \times \{1\}} = h_{1} \circ \tilde{\alpha}$.
+    \item The restriction $A|_{K \times \{1\}} = \tilde{\alpha}$.
 
-    \item For each vertex $k \in K$ in the fiber $s^{-1}\{0\}$, the image of the edge $\{k\} \times \Delta^{1} \to \category{M}$ is $p$-cocartesian.
+    \item The restriction $A|K_{0} \times \Delta^{1}$ is equal to the composition
+      \begin{equation*}
+        K_{0} \times \Delta^{1} \hookrightarrow K \times \Delta^{1} \overset{\alpha \circ \times \id}{\to} \category{C} \times \Delta^{1} \overset{u}{\to} \mathcal{M}.
+      \end{equation*}
 
-    \item For each vertex $k' \in K$ in the fiber $s^{-1}\{1\}$, the image of the edge $\{k'\} \times \Delta^{1} \to \category{M}$ is $p$-cartesian.
+    \item The restriction $A|K_{1} \times \Delta^{1}$ is equal to the composition
+      \begin{equation*}
+        K_{1} \times \Delta^{1} \hookrightarrow K \times \Delta^{1} \overset{\tilde{\alpha} \times \id}{\to} \category{C} \times \Delta^{1} \overset{v}{\to} \mathcal{M}.
+      \end{equation*}
   \end{enumerate}
 \end{definition}
 
-We often leave the equivalences $h_{0}$ and $h_{1}$ implicit to lighen notation.
-
-In the next examples, fix an adjunction
+In the next examples, fix adjoint functors
 \begin{equation*}
   f : \category{C} \longleftrightarrow \category{D} : g
 \end{equation*}
-corresponding to a bicartesian fibration $p\colon \category{M} \to \Delta^{1}$.
+corresponding to a bicartesian fibration $p\colon \category{M} \to \Delta^{1}$ via data $(u, v)$.
 
 \begin{example}
   Any morphism in $\category{D}$ of the form $fC \to D$ is adjunct to some morphism in $\category{C}$ of the form $C \to gD$, witnessed by any square
@@ -623,12 +686,23 @@ corresponding to a bicartesian fibration $p\colon \category{M} \to \Delta^{1}$.
       & D
     \end{tikzcd}
   \end{equation*}
-  in $\category{M}$ where $a$ is $p$-cocartesian and $b$ is $p$-cartesian. This corresponds to the map $s = \id\colon \Delta^{1} \to \Delta^{1}$.
+  in $\category{M}$ where $a$ is $u|\{c\} \times \Delta^{1}$ and $b$ is $v|\{d\} \times \Delta^{1}$. This corresponds to the map $s = \id\colon \Delta^{1} \to \Delta^{1}$.
 \end{example}
 
 \begin{example}
   Pick some object $D \in \category{D}$, and consider the identity morphism $\id\colon gD \to gD$ in $\category{C}$. This morphism is adjunct to the component of the unit map $\eta_{D}\colon D \to fgD$ relative to $s = \id\colon \Delta^{1} \to \Delta^{1}$.
 \end{example}
+
+We will actually take this to be our working definition of the components of the unit map.
+
+\begin{definition}
+  \label{def:unit_map}
+  Let $f \dashv g$ be adjoint functors. A morphism in $\category{\category{C}}$ is a \defn{component of a unit map} if it is adjunct to an equivalence in $\category{D}$ relative to $s = \id\colon \Delta^{1} \to \Delta^{1}$.
+\end{definition}
+
+\begin{note}
+  In the context of Kan extensions along a functor $f$, with unit natural transformation $\eta\colon \id \Rightarrow f^{*}f_{!}$, one often calls the component of the unit map at a functor $F$, namely $\eta_{F}\colon F \to f^{*}f_{!}F$, simply the \emph{unit map,} dropping any mention of the word `component.' We will adopt this terminology.
+\end{note}
 
 The next example will follow from \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}}.
 
@@ -700,7 +774,7 @@ The next proposition shows the power of adjunctions in lifting problems: given d
 
 \begin{proposition}
   \label{prop:can_transport_adjunct_data}
-  Let $\category{M} \to \Delta^{1}$, $\category{C}$, $\category{D}$, $f$, $g$, $h_{0}$ and $h_{1}$ be as in \hyperref[def:adjunct_data]{Definition~\ref*{def:adjunct_data}}, and let
+  Let $\category{M} \to \Delta^{1}$, $\category{C}$, $\category{D}$, $f$, $g$, $u$ and $v$ be as in \hyperref[def:adjunction]{Definition~\ref*{def:adjunction}}, and let
   \begin{equation*}
     \begin{tikzcd}[column sep=small]
       K'
@@ -712,7 +786,7 @@ The next proposition shows the power of adjunctions in lifting problems: given d
       & \Delta^{1}
     \end{tikzcd},
   \end{equation*}
-  be a commuting triangle of simplicial sets, where $i$ is a cofibration such that $i|_{\{1\}}$ is an isomorphism. Let $\tilde{\alpha}'\colon K' \to \category{D}$ and $\alpha\colon K \to \category{C}$ be maps, and denote $\alpha' = \alpha \circ i$. Suppose that $\tilde{\alpha}'$ is adjunct to $\alpha'$ relative to $s \circ i$. Then there exists a dashed extension
+  be a commuting triangle of simplicial sets, where $i$ is a monomorphim such that $i|_{\{1\}}$ is an isomorphism. Let $\tilde{\alpha}'\colon K' \to \category{D}$ and $\alpha\colon K \to \category{C}$ be maps, and denote $\alpha' = \alpha \circ i$. Suppose that $\tilde{\alpha}'$ is adjunct to $\alpha'$ relative to $s \circ i$. Then there exists a dashed extension
   \begin{equation}
     \label{eq:adjunct_filling_problems}
     \begin{tikzcd}
@@ -735,7 +809,7 @@ The next proposition shows the power of adjunctions in lifting problems: given d
       \arrow[ur, dashed, swap, "\tilde{\alpha}"]
     \end{tikzcd}
   \end{equation}
-  such that $\tilde{\alpha}$ is adjunct to $\alpha$ relative to $s$.
+  such that $\tilde{\alpha}$ is adjunct to $\alpha$ relative to $s$. Furthermore, any two such lifts are equivalent as functors $K \to \category{D}$.
 
   %Furthermore, denoting by
   %\begin{equation*}
@@ -756,12 +830,12 @@ The next proposition shows the power of adjunctions in lifting problems: given d
       & \Delta^{1}
     \end{tikzcd}
   \end{equation*}
-  displaying $\tilde{\alpha}'$ and $\alpha'$ as adjunct. We further consider the map $h_{0} \circ \alpha\colon K \to \category{M}_{0}$. From these two pieces of data we can construct the solid commutative square of cocartesian-marked simplicial sets
+  displaying $\tilde{\alpha}'$ and $\alpha'$ as adjunct. From the map $A$ and the map $\alpha\colon K \to \category{C} \cong \category{M}_{0}$, we can construct the solid commutative square of cocartesian-marked simplicial sets
   \begin{equation*}
     \begin{tikzcd}
       \left(K \times \Delta^{\{0\}} \coprod_{K' \times \Delta^{\{0\}}} K' \times \Delta^{1}\right)^{\heartsuit}
       \arrow[r]
-      \arrow[d]
+      \arrow[d, swap, "w"]
       & \category{M}^{\natural}
       \arrow[d]
       \\
@@ -771,50 +845,49 @@ The next proposition shows the power of adjunctions in lifting problems: given d
       & (\Delta^{1})^{\sharp}
     \end{tikzcd},
   \end{equation*}
-  where $(K \times \Delta^{1})^{\heartsuit}$ is the marked simplicial set where the only nondenerate morphisms marked are those of the form $\{k\} \times \Delta^{1}$, for $k \in K|_{s^{-1}\{0\}}$, and the $\heartsuit$-marked pushout-product denotes the restriction of this marking to the pushout-product. Starting from $K'$ and adjoining one nondegenerate simplex of $K$ at a time, we can write the left-hand map in the above square as a transfinite composition of pushouts of morphisms of the form given in \hyperref[eq:cocartesian_anodyne_morphism]{Equation~\ref*{eq:cocartesian_anodyne_morphism}} (by assumption each simplex $\sigma$ we adjoin is not completely contained in $K'$, so the initial vertex of $\sigma$ must lie in the fiber of $s$ over $0$). Each of these is marked anodyne, so the left-hand map is as well. Thus, a dashed lift $\ell$ exists, giving us a map $h_{1}^{-1} \circ \ell|_{K \times \Delta^{\{1\}}}\colon K \to \category{D}$. This, together with the composition
-  \begin{equation*}
-    K' \times \Delta^{1} \overset{\tilde{\alpha}' \times \id}{\to} \category{D} \times \Delta^{1} \overset{c}{\to} \category{D}
-  \end{equation*}
-  where $c\colon h_{1}^{-1} \circ h_{1} \to \id_{\category{D}}$ is a natural isomorphism, gives a solid diagram
-  \begin{equation*}
-    \begin{tikzcd}
-      K \times \Delta^{\{0\}} \coprod_{K' \times \Delta^{\{0\}}} K' \times (\Delta^{1})^{\sharp}
-      \arrow[r]
-      \arrow[d]
-      & \category{D}^{\natural}
-      \\
-      K \times (\Delta^{1})^{\sharp}
-      \arrow[ur, dashed, swap, "m"]
-    \end{tikzcd},
-  \end{equation*}
-  where $\category{D}^{\natural}$ is the marked simplicial set whose underlying simplicial set is $\category{D}$ and where all equivalences are marked. This admits a dashed lift, and restricting $m|_{K \times \Delta^{\{1\}}}$ gives us a map $\tilde{\alpha}\colon K \to \category{D}$ as in \hyperref[eq:adjunct_filling_problems]{Equation~\ref*{eq:adjunct_filling_problems}}. However, we still need to display this as adjunct to $\alpha$: the lift $\ell$ has $\ell|_{K \times \Delta^{\{0\}}} = h_{0} \circ \alpha$, but only $\ell|_{K \times \Delta^{\{1\}}} \simeq h_{1} \circ \tilde{\alpha}$, not equality as we require.
+  where $(K \times \Delta^{1})^{\heartsuit}$ is the marked simplicial set where the only nondenerate morphisms marked are those of the form $\{k\} \times \Delta^{1}$ for $k \in K|_{s^{-1}\{0\}}$, and the $\heartsuit$-marked pushout-product denotes the restriction of this marking to the pushout-product. We can write the morphism of simplicial sets underlying $w$ as a smash-product $(K' \hookrightarrow K) \wedge (\Delta^{\{0\}} \hookrightarrow \Delta^{1})$. Building $K' \hookrightarrow K$ simplex by simplex, in increasing order of dimension, we can write $w$ as a transfinite composition of pushouts along inclusions of the form given in \hyperref[eq:cocartesian_anodyne_morphism]{Equation~\ref*{eq:cocartesian_anodyne_morphism}} (by assumption each simplex $\sigma$ we adjoin to $K$ is not completely contained in $K'$, so the initial vertex of $\sigma$ must lie in the fiber of $s$ over $0$). We can thus also build our lift $\ell$ by lifting against each of these in turn, and we can always choose each lift so that it is compatible with $v$. We can then take $\tilde{\alpha} = \ell|K \times \{1\}$.
 
-  Our last task is to remedy this. Denote the spine of the $3$-simplex by
-  \begin{equation*}
-    I_{3} := \Delta^{\{0, 1\}} \amalg_{\Delta^{\{1\}}} \Delta^{\{1,2\}} \amalg_{\Delta^{\{2\}}} \Delta^{\{2,3\}} \hookrightarrow \Delta^{3}.
-  \end{equation*}
-  We build a map $I_{3} \times K \overset{b}{\to} \category{M}$ which:
-  \begin{itemize}
-    \item On $\Delta^{\{0, 1\}} \times K$ is given by the lift $\ell$.
+  It is manifest from this technique that the space of lifts is contractible; in particular, any two such lifts are equivalent in $\Map(K \times \Delta^{1}, \category{M})$, so their restrictions to $K \times \{1\}$ are equivalent as functors $K \to \category{D}$.
 
-    \item On $\Delta^{\{1, 2\}} \times K$ is given by the composition
-      \begin{equation*}
-        K \times \Delta^{1} \overset{\ell|_{K \times \Delta^{\{1\}}} \times \id}{\to} \category{M}_{1} \times \Delta^{1} \overset{H}{\to} \category{M}_{1} \hookrightarrow \category{M},
-      \end{equation*}
-      where $H$ is a natural isomorphism $\id_{\category{M}_{1}} \to h_{1} \circ h_{1}^{-1}$.
+  %Each of these is marked anodyne, so the left-hand map is as well. Thus, a dashed lift $\ell$ exists, giving us a map $h_{1}^{-1} \circ \ell|_{K \times \Delta^{\{1\}}}\colon K \to \category{D}$. This, together with the composition
+  %\begin{equation*}
+  %  K' \times \Delta^{1} \overset{\tilde{\alpha}' \times \id}{\to} \category{D} \times \Delta^{1} \overset{c}{\to} \category{D}
+  %\end{equation*}
+  %where $c\colon h_{1}^{-1} \circ h_{1} \to \id_{\category{D}}$ is a natural isomorphism, gives a solid diagram
+  %\begin{equation*}
+  %  \begin{tikzcd}
+  %    K \times \Delta^{\{0\}} \coprod_{K' \times \Delta^{\{0\}}} K' \times (\Delta^{1})^{\sharp}
+  %    \arrow[r]
+  %    \arrow[d]
+  %    & \category{D}^{\natural}
+  %    \\
+  %    K \times (\Delta^{1})^{\sharp}
+  %    \arrow[ur, dashed, swap, "m"]
+  %  \end{tikzcd},
+  %\end{equation*}
+  %where $\category{D}^{\natural}$ is the marked simplicial set whose underlying simplicial set is $\category{D}$ and where all equivalences are marked. This admits a dashed lift, and restricting $m|_{K \times \Delta^{\{1\}}}$ gives us a map $\tilde{\alpha}\colon K \to \category{D}$ as in \hyperref[eq:adjunct_filling_problems]{Equation~\ref*{eq:adjunct_filling_problems}}. However, we still need to display this as adjunct to $\alpha$: the lift $\ell$ has $\ell|_{K \times \Delta^{\{0\}}} = h_{0} \circ \alpha$, but only $\ell|_{K \times \Delta^{\{1\}}} \simeq h_{1} \circ \tilde{\alpha}$, not equality as we require.
 
-    \item On $\Delta^{\{2, 3\}} \times K$ is given by the natural isomorphism
-      \begin{equation*}
-        K \times \Delta^{1} \overset{m}{\to} \category{D} \overset{h_{1}}{\to} \category{M}_{1} \hookrightarrow \category{M}.
-      \end{equation*}
-  \end{itemize}
-  The map $I_{3} \hookrightarrow \Delta^{3}$ is inner anodyne, so there exists a map $\Delta^{3} \times K \to \category{M}$ whose restriction to $I_{3} \times K$ is equal to $b$. The restriction of this filling to $\Delta^{\{0,3\}} \times K$ satisfies the conditions of \hyperref[def:adjunct_data]{Definition~\ref*{def:adjunct_data}} (since the composition of a (co)cartesian morphism with an equivalence is again (co)cartesian), exhibiting $\tilde{\alpha}$ as adjunct to $\alpha$.
+  %Our last task is to remedy this. Denote the spine of the $3$-simplex by
+  %\begin{equation*}
+  %  I_{3} := \Delta^{\{0, 1\}} \amalg_{\Delta^{\{1\}}} \Delta^{\{1,2\}} \amalg_{\Delta^{\{2\}}} \Delta^{\{2,3\}} \hookrightarrow \Delta^{3}.
+  %\end{equation*}
+  %We build a map $I_{3} \times K \overset{b}{\to} \category{M}$ which:
+  %\begin{itemize}
+  %  \item On $\Delta^{\{0, 1\}} \times K$ is given by the lift $\ell$.
+
+  %  \item On $\Delta^{\{1, 2\}} \times K$ is given by the composition
+  %    \begin{equation*}
+  %      K \times \Delta^{1} \overset{\ell|_{K \times \Delta^{\{1\}}} \times \id}{\to} \category{M}_{1} \times \Delta^{1} \overset{H}{\to} \category{M}_{1} \hookrightarrow \category{M},
+  %    \end{equation*}
+  %    where $H$ is a natural isomorphism $\id_{\category{M}_{1}} \to h_{1} \circ h_{1}^{-1}$.
+
+  %  \item On $\Delta^{\{2, 3\}} \times K$ is given by the natural isomorphism
+  %    \begin{equation*}
+  %      K \times \Delta^{1} \overset{m}{\to} \category{D} \overset{h_{1}}{\to} \category{M}_{1} \hookrightarrow \category{M}.
+  %    \end{equation*}
+  %\end{itemize}
+  %The map $I_{3} \hookrightarrow \Delta^{3}$ is inner anodyne, so there exists a map $\Delta^{3} \times K \to \category{M}$ whose restriction to $I_{3} \times K$ is equal to $b$. The restriction of this filling to $\Delta^{\{0,3\}} \times K$ satisfies the conditions of \hyperref[def:adjunct_data]{Definition~\ref*{def:adjunct_data}} (since the composition of a (co)cartesian morphism with an equivalence is again (co)cartesian), exhibiting $\tilde{\alpha}$ as adjunct to $\alpha$.
 \end{proof}
-
-\begin{note}
-  \label{note:can_pick_which_simplex_in_construction_of_adjunct_filling}
-  The filler provided by \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}} is not guaranteed to be unique (even up to equivalence). However, we have some say in how our filler should look. We construct our adjoint filler $\tilde{\alpha}$ by starting with the solid data of \hyperref[eq:adjunct_filling_problems]{Equation~\ref*{eq:adjunct_filling_problems}} and building the dashed extension $\tilde{\alpha}\colon K \to \category{D}$ by filling a simplex at a time relative to its boundary, such that each new simplex making up the map $\tilde{\alpha}$ is adjunct to the corresponding one in $\alpha$. We are free to choose each new adjunct simplex however we like.
-\end{note}
 
 \begin{example}
   Let $f : \category{C} \leftrightarrow \category{D} : g$ be an adjunction of $1$-categories, giving an adjunction between quasicategories upon taking nerves. Consider the diagram
@@ -861,6 +934,7 @@ The next proposition shows the power of adjunctions in lifting problems: given d
   where the solid diagrams in each category are adjunct to one another.
   \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}} implies that the solution to the lifting problem on the left yields one on the right. Similarly, its dual implies the converse. Thus, \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}} implies in particular that such lifting problems are equivalent.
 \end{example}
+
 
 %\begin{proposition}
 %  Let $s\colon K \to \Delta^{1}$, and let $\alpha\colon K \to \category{C}$ and $\tilde{\alpha}\colon K \to \category{D}$ be adjunct diagrams. Then the squares
@@ -1108,7 +1182,7 @@ commute.
   \begin{equation*}
     s\colon \Delta^{0} \ast \partial C^{n-1} \to \Delta^{1}
   \end{equation*}
-  sending $\Delta^{0}$ to $\Delta^{\{0\}}$ and $\partial C^{n-1}$ to $\Delta^{\{1\}}$; by \hyperref[note:can_pick_which_simplex_in_construction_of_adjunct_filling]{Note~\ref*{note:can_pick_which_simplex_in_construction_of_adjunct_filling}}, we can choose $\tilde{\alpha}$ such that the image of the morphism $(0, \ldots, 0) \to (0, \ldots 1)$ is an equivalence. This allows us to replace the lifting problem $(**)$ by the superficially more complicated lifting problem
+  sending $\Delta^{0}$ to $\Delta^{\{0\}}$ and $\partial C^{n-1}$ to $\Delta^{\{1\}}$; in particular, the image of the morphism $(0, \ldots, 0) \to (0, \ldots 1)$ under $\tilde{\alpha}'$ is an equivalence. This allows us to replace the lifting problem $(**)$ by the superficially more complicated lifting problem
   \begin{equation*}
     (**') =
     \begin{tikzcd}
@@ -1128,5 +1202,48 @@ commute.
 \label{ssc:a_few_other_tricks_with_kan_extensions}
 
 We end this section with a few miscellaneous tricks which we can play with maps $\Delta^{n} \to \ICCat$ involving Kan extensions.
+
+\begin{lemma}
+  Denote by $\mathcal{E} \subseteq \Hom(\Delta^{2}, \Delta^{3})$ the subset containing all degenerate $2$-simplices together with the simplices $\Delta^{\{0,2,3\}}$ and $\Delta^{\{1,2,3\}}$. Let $\sigma\colon \Delta^{3}_{\mathcal{E}} \to \ICCat$ such that $\Delta^{\{2,3\}}$ is mapped to an equivalence. Then $\sigma|\Delta^{\{0,1,2\}}$ is left Kan if and only if $\sigma|\Delta^{\{0,1,3\}}$ is left Kan.
+\end{lemma}
+\begin{proof}
+  Denote the image of the object $\Delta^{\{i\}}$ under $\sigma$ by $X_{i}$, the image of $\Delta^{\{i,j\}}$ by $f_{ji}$, and the image of $\Delta^{\{i,j,k\}}$ by $\alpha_{jki}$.
+
+  If either $\sigma|\Delta^{\{0,1,2\}}$ or $\sigma|\Delta^{\{0,1,3\}}$ is left Kan, then we have adjoint functors
+  \begin{equation*}
+    (f_{10})_{!} : \Fun(X_{0}, X_{3}) \leftrightarrow \Fun(X_{1}, X_{3}) : (f_{10})^{*}.
+  \end{equation*}
+
+  We can extract from the data given to us by $\sigma$ a commuting square in $\Fun(X_{0}, X_{3})$
+  \begin{equation*}
+    \begin{tikzcd}[column sep=large, row sep=large]
+      f_{30}
+      \arrow[r, "\alpha_{310}"]
+      \arrow[d, "\alpha_{320}"{swap}, "\simeq"]
+      & f_{31}f_{10}
+      \arrow[d, "\alpha_{321}f_{10}"]
+      \\
+      f_{32}f_{20}
+      \arrow[r, "f_{32}\alpha_{210}"]
+      & f_{32}f_{21}f_{10}
+    \end{tikzcd}
+  \end{equation*}
+  which is adjunct to a commuting square in $\Fun(X_{1}, X_{3})$
+  \begin{equation*}
+    \begin{tikzcd}[column sep=large, row sep=large]
+      (f_{10})_{!}f_{30}
+      \arrow[r, "\eta"]
+      \arrow[d, "(f_{10})!\alpha_{320}"{swap}, "\simeq"]
+      & f_{31}
+      \arrow[d, "\alpha_{321}", "\simeq"{swap}]
+      \\
+      (f_{10})_{!}f_{32}f_{20}
+      \arrow[r, "\eta'"]
+      & f_{32}f_{21}
+    \end{tikzcd}.
+  \end{equation*}
+
+  Note that $\eta$ is an equivalence if and only if $\eta'$ is an equivalence; thus, that $\alpha_{310}$ is a unit map if and only if $f_{32} \alpha_{210}$ is a unit map. But $f_{32}$ is an equivalence, so this in turn is true if and only if $\alpha_{210}$ is a unit map.
+\end{proof}
 
 \end{document}
