@@ -22,7 +22,7 @@ We will expand upon the following definition in \hyperref[ssc:basic_facts_about_
       && \category{C}
       \\
       & Y
-      \arrow[ur, swap, "\mathcal{G}"]
+      \arrow[ur, swap, "G"]
       \arrow[from=M, Rightarrow, swap, "\eta"]
     \end{tikzcd},
   \end{equation}
@@ -30,16 +30,13 @@ We will expand upon the following definition in \hyperref[ssc:basic_facts_about_
   \begin{itemize}
     \item For all objects $y \in Y$, the category $\category{C}$ admits all colimits of shape $X_{/y}$.
 
-    \item The functor $G$ is a left Kan extension of $F$ along $f$.
-
-    \item The natural transformation $\eta$ is a unit map.
+    \item The natural transformation $\eta$ exhibits $G$ as a left Kan extension of $F$ along $f$ (\hyperref[def:left_box]{Definition~\ref*{def:left_box}})
   \end{itemize}
 \end{definition}
 
-\begin{example}
-  \label{eg:strictly_commuting_left_kan}
-  Any commuting simplex $\Delta^{2}_{\sharp} \to \ICCat$ such that $\Delta^{\{0,1\}}$ is mapped to an equivalence is left Kan.
-\end{example}
+\begin{note}
+  Note that the first condition guarantees that \emph{all} functors $X \to \category{C}$ admit left Kan extensions along $f$, not only $G$. This assumption is probably superfluous, but in the situations we are interested in, $\category{C}$ will be cocomplete and $X$ and $Y$ will be small, so this will not concern us.
+\end{note}
 
 The goal of this section is to prove the following.
 
@@ -231,7 +228,42 @@ The lifting problems which we have to solve in \hyperref[eq:lifting_problems_for
 In this section, we recall a few basic facts about Kan extensions. These can be found in Kerodon. Since Kan extensions are defined by the colimit formula, we will start by defining colimits.
 
 \begin{definition}
-  Let $X$, $Y$, and $\category{C}$ be $\infty$-categories, $f\colon X \to Y$, $F\colon X \to \category{C}$ and $G\colon Y \to \category{C}$ functors, and $\eta\colon F \to G \circ f$ a natural transformation.
+  Let $f\colon K \to \category{C}$ be a map between simplicial sets, where $\category{C}$ is an $\infty$-category. Let $c \in \category{C}$ be an object, and denote by $\underline{c}$ the constant functor $K \to \category{C}$ with value $c$. A natural transformation $f \Rightarrow \underline{c}$ \defn{exhibits $c$ as the colimit of $f$} if it is an initial object in the quasicategory $(f \downarrow \category{C})$ defined by the pullback diagram
+  \begin{equation*}
+    \begin{tikzcd}
+      (f \downarrow \category{C})
+      \arrow[r]
+      \arrow[d]
+      & \Fun(\Delta^{1} \times K, \category{C})
+      \arrow[d]
+      \\
+      \{f\} \times \category{C}
+      \arrow[r]
+      & \Fun(K, \category{C}) \times \Fun(K, \category{C})
+    \end{tikzcd},
+  \end{equation*}
+  where the bottom functor is the inclusion $\{f\} \hookrightarrow \Fun(K, \category{C})$ on the first factor, and the functor $\category{C} \to \Fun(K, \category{C})$ assigning $c \to \underline{c}$ on the second.
+\end{definition}
+
+\begin{notation}
+  Let $f\colon X \to Y$ be a map of simplicial sets, and $y \in Y$ an object. We will use the following notation.
+  \begin{itemize}
+    \item Denote by $X_{/y}$ the fiber product $X \times_{Y} Y_{/y}$. 
+
+    \item Denote by $\pi\colon X_{/y} \to X$ the projection map.
+
+    \item Denote by $\alpha\colon f \circ \pi \Rightarrow \underline{y}$ the natural transformation which is adjunct to the map
+      \begin{equation*}
+        X^{/y} \to X_{/y} \overset{\pi}{\to} X \overset{f}{\to} Y,
+      \end{equation*}
+      where $X^{/y}$ is the overcategory modelled on the fat join, and $X^{/y} \to X_{/y}$ is the usual comparison map.
+  \end{itemize}
+\end{notation}
+
+Kerodon 7.3.1.5
+\begin{definition}
+  \label{def:nat_xfo_exhibiting_left_kan_ext}
+  Let $X$, $Y$, and $\category{C}$ be $\infty$-categories, $f\colon X \to Y$, $F\colon X \to \category{C}$ and $G\colon Y \to \category{C}$ functors, and $\eta\colon F \Rightarrow G \circ f$ a natural transformation.
   \begin{equation*}
     \begin{tikzcd}
       X
@@ -244,8 +276,100 @@ In this section, we recall a few basic facts about Kan extensions. These can be 
       \arrow[from=M, Rightarrow, swap, "\eta"]
     \end{tikzcd}
   \end{equation*}
-  We say that $\eta$ \defn{exhibits $G$ as the left Kan extension of $F$ along $f$} if for each object $x \in X$,
+  We say that $\eta$ \defn{exhibits $G$ as the left Kan extension of $F$ along $f$} if for each object $y \in Y$, the natural transformation $F \circ \pi \Rightarrow \underline{G(y)}$ furnished by the pasting diagram
+  \begin{equation*}
+    \begin{tikzcd}
+      X_{/y}
+      \arrow[r, "\pi", ""{name=LU, swap}]
+      \arrow[drr, bend right, "\underline{y}"{swap}, ""{name=LD}]
+      & X
+      \arrow[dr, swap, "f"]
+      \arrow[rr, "F", ""{below, name=M}]
+      \arrow[d, Rightarrow, shorten=1ex, swap, "\alpha"]
+      && \category{C}
+      \\
+      & \ 
+      & Y
+      \arrow[ur, swap, "G"]
+      \arrow[from=M, Rightarrow, swap, "\eta"]
+    \end{tikzcd}
+  \end{equation*}
+  exhibits $G(y)$ as the colimit of the functor $F \circ \pi$.
 \end{definition}
+
+The following is Kerodon 7.3.5.1.
+\begin{theorem}[Existence of local left Kan extensions]
+  \label{thm:existence_local_left_kan_exts}
+  Suppose that $f\colon X \to Y$ is a map of simplicial sets, and suppose $F\colon X \to \category{C}$ is a map of simplicial sets such that $\category{C}$ is a quasicategory. The functor $F$ admits a left Kan extension along $f$ if and only if for all objects $x \in X$, the colimit of the functor
+  \begin{equation*}
+    X_{/y} \overset{\pi}{\to} X \overset{F}{\to} \category{C}
+  \end{equation*}
+  exists in $\category{C}$.
+\end{theorem}
+
+The following is a combination of special cases of 7.3.1.15 and 7.3.1.16.
+\begin{example}
+  \label{eg:strictly_commuting_left_kan}
+  For any homotopy-commuting diagram of simplicial sets
+  \begin{equation*}
+    \begin{tikzcd}
+      X
+      \arrow[dr, swap, "f"]
+      \arrow[rr, "F", ""{below, name=M}]
+      && \category{C}
+      \\
+      & Y
+      \arrow[ur, swap, "G"]
+      \arrow[from=M, Rightarrow, "\simeq", "\eta"{swap}]
+    \end{tikzcd}
+  \end{equation*}
+  where $X$, $Y$, and $\category{C}$ are $\infty$-categories and $f\colon X \to Y$ is a categorical equivalence, $\eta$ exhibits $G$ as a left Kan extension of $F$ along $f$.
+\end{example}
+
+The following is Kerodon 7.3.6.3
+\begin{theorem}[Existence of global left Kan extensions]
+  \label{thm:existence_global_left_kan_exts}
+  Let $f\colon X \to Y$ be a map of simplicial sets, and suppose that $\category{C}$ is a quasicategory which admits $X_{/y}$-shaped colimits for all $y \in Y$. Then the restriction functor $f^{*}\colon \Fun(Y, \category{C}) \to \Fun(X, \category{C})$ admits a left adjoint $f_{!}$, sending a functor $F\colon X \to \category{C}$ to its left Kan extension along $f$.
+\end{theorem}
+
+The following is an easy consequence of 7.3.1.11.
+\begin{proposition}
+  Let $f\colon X \to Y$ be a map of simplicial sets, and let $\category{C}$ be a category such that all functors $X \to \category{C}$ admit left Kan extensions along $f$, so that we have an adjunction $f_{!} \vdash f^{*}$. Let $G\colon Y \to \category{C}$ and $\eta\colon F \Rightarrow G \circ f$. The natural transformation $\eta$ exhibits $G$ as a left Kan extension of $F$ along $f$ if and only if it is adjunct (in the sense of \hyperref[def:adjunct_data]{Definition~\ref*{def:adjunct_data}}) to an equivalence in $\Fun(Y, \category{C})$ relative to $s = \id_{\Delta^{1}}$.
+\end{proposition}
+
+The following is Kerodon 7.3.7.18
+\begin{proposition}
+  \label{prop:kan_extend_along_composition}
+  Consider $\infty$-categories and functors
+  \begin{equation*}
+    \begin{tikzcd}
+      X
+      \arrow[dr, swap, "f"]
+      \arrow[rrrr, "F"]
+      &&&& \category{C}
+      \\
+      & Y
+      \arrow[urrr, "G"]
+      \arrow[dr, swap, "g"]
+      \\
+      && Z
+      \arrow[uurr, swap, "H"]
+    \end{tikzcd},
+  \end{equation*}
+  and natural transformations $\alpha\colon F \Rightarrow G \circ f$ and $\beta\colon H \circ g \Rightarrow G$, and suppose that $\alpha$ exhibits $G$ as the left Kan extension of $F$ along $f$. Then $\beta$ exhibits $H$ as the left Kan extension of $G$ along $g$ if and only if $\beta f \circ \alpha$ exhibits $H$ as the left Kan extension of $F$ along $g \circ f$.
+\end{proposition}
+
+The following is Kerodon 7.3.1.12.
+\begin{proposition}
+  \label{prop:kan_ext_invariance_of_target}
+  Suppose $H\colon \category{C} \to \category{D}$ is an equivalence of categories, $f\colon X \to Y$ is a map of simplicial sets, $G\colon Y \to \category{C}$ is a functor, and $\eta\colon F \Rightarrow G \circ f$ is a natural transformation. Then $\eta$ exhibits $G$ as a left Kan extension of $F$ along $f$ if and only if $H\eta\colon H \circ F \Rightarrow H \circ G \circ f$ exhibits $H \circ G$ as a left Kan extension of $H \circ F$ along $f$.
+\end{proposition}
+
+This is Kerodon 7.3.1.9.
+\begin{proposition}
+  \label{prop:homotopy_invariance_of_witness}
+  The property that $\eta$ exhibits $G$ as a left Kan extension of $F$ along $f$ is homotopy-invariant; any homotopic $\eta$ will do just as well. 
+\end{proposition}
 
 \subsection{Filling cubes relative to their boundaries}
 \label{ssc:filling_cubes_relative_to_their_boundary}
@@ -693,17 +817,6 @@ corresponding to a bicartesian fibration $p\colon \category{M} \to \Delta^{1}$ v
   Pick some object $D \in \category{D}$, and consider the identity morphism $\id\colon gD \to gD$ in $\category{C}$. This morphism is adjunct to the component of the unit map $\eta_{D}\colon D \to fgD$ relative to $s = \id\colon \Delta^{1} \to \Delta^{1}$.
 \end{example}
 
-We will actually take this to be our working definition of the components of the unit map.
-
-\begin{definition}
-  \label{def:unit_map}
-  Let $f \dashv g$ be adjoint functors. A morphism in $\category{\category{C}}$ is a \defn{component of a unit map} if it is adjunct to an equivalence in $\category{D}$ relative to $s = \id\colon \Delta^{1} \to \Delta^{1}$.
-\end{definition}
-
-\begin{note}
-  In the context of Kan extensions along a functor $f$, with unit natural transformation $\eta\colon \id \Rightarrow f^{*}f_{!}$, one often calls the component of the unit map at a functor $F$, namely $\eta_{F}\colon F \to f^{*}f_{!}F$, simply the \emph{unit map,} dropping any mention of the word `component.' We will adopt this terminology.
-\end{note}
-
 The next example will follow from \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}}.
 
 \begin{example}
@@ -721,56 +834,6 @@ The next example will follow from \hyperref[prop:can_transport_adjunct_data]{Pro
 \end{lemma}
 
 The next proposition shows the power of adjunctions in lifting problems: given data on either side of an adjunction, we can fill in adjunct data on the other side.
-
-% This is obviously bullshit
-%\begin{lemma}
-%  Let $f\colon \category{C} \to \category{D}$ be a equivalence of quasicategories with homotopy inverse $f^{-1}$ (and natural isomorphism $c\colon f \circ f^{-1} \to \id_{\category{D}}$). Let $i\colon K' \hookrightarrow K$ be an inclusion of simplicial sets, $\alpha\colon K \to \category{C}$ and $\tilde{\alpha}'\colon K' \to \category{D}$ be maps, and denote $\alpha' = \alpha \circ i$. Suppose that $f^{-1} \circ \tilde{\alpha}' = \alpha'$. Then there exists a dashed extension
-%  \begin{equation*}
-%    \begin{tikzcd}
-%      K'
-%      \arrow[r, "\alpha'"]
-%      \arrow[d, swap, hook, "i"]
-%      & \category{C}
-%      \\
-%      K
-%      \arrow[ur, swap, "\alpha"]
-%    \end{tikzcd}
-%    \quad \rightsquigarrow \quad
-%    \begin{tikzcd}
-%      K'
-%      \arrow[r, "\tilde{\alpha}'"]
-%      \arrow[d, swap, hook, "i"]
-%      & \category{D}
-%      \\
-%      K
-%      \arrow[ur, dashed, swap, "\tilde{\alpha}"]
-%    \end{tikzcd}
-%  \end{equation*}
-%  such that $f \circ \alpha = \tilde{\alpha}$.
-%\end{lemma}
-%\begin{proof}
-%  Using the maps
-%  \begin{equation*}
-%    K \overset{\alpha}{\to} \category{C} \overset{f}{\to} \category{D}
-%  \end{equation*}
-%  and
-%  \begin{equation*}
-%    K' \times \Delta^{1} \to \category{D} \times \Delta^{1} \to \category{D},
-%  \end{equation*}
-%  we can construct the solid filling problem
-%  \begin{equation*}
-%    \begin{tikzcd}
-%      K \times \Delta^{\{0\}} \coprod_{K' \times \Delta^{\{0\}}} K' \times \Delta^{1}
-%      \arrow[r]
-%      \arrow[d, hook]
-%      & \category{D}
-%      \\
-%      K \times \Delta^{1}
-%      \arrow[ur, dashed]
-%    \end{tikzcd},
-%  \end{equation*}
-%  which has a dashed solution such that for each $k \in K$, $\{k\} \times \Delta^{1}$ is mapped to an equivalence in $\category{D}$. The restriction to $K \times \Delta^{\{1\}}$ gives us the extension we want.
-%\end{proof}
 
 \begin{proposition}
   \label{prop:can_transport_adjunct_data}
@@ -1082,11 +1145,13 @@ commute.
   \end{equation*}
   admits a dashed filler.
 \end{theorem}
-\begin{proof}
-  We need to solve the lifting problems of \hyperref[eq:lifting_problem_1]{Equation~\ref*{eq:lifting_problem_1}} and \hyperref[eq:lifting_problem_2]{Equation~\ref*{eq:lifting_problem_2}}, and check that our solutions satisfy the condition of \hyperref[eq:lifting_problem_compatibility_condition]{Equation~\ref*{eq:lifting_problem_compatibility_condition}}. We note the following useful pieces of information.
 
+The author would like to offer the friendly recommendation that in trying to understand the proof below, it is helpful to follow along with the explanation given at the beginning of \hyperref[sec:horn_filling_via_left_kan_extensions]{Section~\ref*{sec:horn_filling_via_left_kan_extensions}}.
+
+\begin{proof}
+  We need to solve the lifting problems of \hyperref[eq:lifting_problem_1]{Equation~\ref*{eq:lifting_problem_1}} and \hyperref[eq:lifting_problem_2]{Equation~\ref*{eq:lifting_problem_2}}, and check that our solutions satisfy the condition of \hyperref[eq:lifting_problem_compatibility_condition]{Equation~\ref*{eq:lifting_problem_compatibility_condition}}. We note that the information that the simplex $\tau\colon \Delta^{\{0,1,n+1\}}_{\flat} \to \ICCat$ is left Kan tells us the following useful facts.
   \begin{itemize}
-    \item The information that the simplex $\tau\colon \Delta^{\{0,1,n+1\}}_{\flat} \to \ICCat$ is left Kan tells us that $f_{n,1}$ is the left Kan extension of $f_{n, 0}$ along $f_{1, 0}$, and that $\alpha_{\{0,n+1\}}^{\{0,1,n+1\}}\colon f_{n+1,0} \to f_{n+1, 1} \circ f_{1, 0} $ is the unit map.
+    \item  The map $f_{n,1}$ is the left Kan extension of $f_{n, 0}$ along $f_{1, 0}$, and that $\alpha_{\{0,n+1\}}^{\{0,1,n+1\}}\colon f_{n+1,0} \to f_{n+1, 1} \circ f_{1, 0} $ is the unit map.
 
     \item We have an adjunction
   \begin{equation*}
@@ -1178,7 +1243,7 @@ commute.
       \arrow[ur, dashed]
     \end{tikzcd}.
   \end{equation*}
-  The image of the 1-simplex $(0, \ldots, 0) \to (0, \ldots, 1)$ of $\Delta^{0} \ast \partial C^{n-1} \subseteq C^{n}$ under $\alpha$ is the unit map $\alpha^{\{0, 1, n+1\}}_{\{0, n+1\}}\colon f_{n+1, 0} \to f_{n+1, 1} \circ f_{1, 0}$. This is not in general an equivalence, so we cannot use \hyperref[prop:cube_filling]{Proposition~\ref*{prop:cube_filling}} to solve the lifting problem $(*')$ directly. However, the unit map is adjunct to the identity map $\id_{f_{n+1,1}}$ in $\Fun(X_{1}, X_{n+1})$ relative to $s = \id_{\Delta^{1}}$. Furthermore, the restriction of $\alpha$ to $\partial C^{n-1}$ is in the image of $f^{*}_{1,0}$, so by \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}} we can augment the map $\tilde{\alpha}'$ to a map $\tilde{\alpha}\colon \Delta^{0} \ast \partial C^{n-1} \to \Fun(X_{1}, X_{n-1})$ which is adjunct to $\alpha$ relative to the map
+  The image of the 1-simplex $(0, \ldots, 0) \to (0, \ldots, 1)$ of $\Delta^{0} \ast \partial C^{n-1} \subseteq C^{n}$ under $\alpha$ is the unit map $\alpha^{\{0, 1, n+1\}}_{\{0, n+1\}}\colon f_{n+1, 0} \to f_{n+1, 1} \circ f_{1, 0}$. This is not in general an equivalence, so we cannot use \hyperref[prop:cube_filling]{Proposition~\ref*{prop:cube_filling}} to solve the lifting problem $(*')$ directly. However, the unit map is adjunct to an equivalence in $\Fun(X_{1}, X_{n+1})$ relative to $s = \id_{\Delta^{1}}$. Furthermore, the restriction of $\alpha$ to $\partial C^{n-1}$ is in the image of $f^{*}_{1,0}$, so by \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}} we can augment the map $\tilde{\alpha}'$ to a map $\tilde{\alpha}\colon \Delta^{0} \ast \partial C^{n-1} \to \Fun(X_{1}, X_{n-1})$ which is adjunct to $\alpha$ relative to the map
   \begin{equation*}
     s\colon \Delta^{0} \ast \partial C^{n-1} \to \Delta^{1}
   \end{equation*}
@@ -1201,49 +1266,22 @@ commute.
 \subsection{A few other tricks with Kan extensions}
 \label{ssc:a_few_other_tricks_with_kan_extensions}
 
-We end this section with a few miscellaneous tricks which we can play with maps $\Delta^{n} \to \ICCat$ involving Kan extensions.
+We end this section with a few miscellaneous tricks which we can play with maps $\Delta^{n} \to \ICCat$ involving left Kan simplices.
 
 \begin{lemma}
+  \label{lemma:transport_left_kan_simplices}
   Denote by $\mathcal{E} \subseteq \Hom(\Delta^{2}, \Delta^{3})$ the subset containing all degenerate $2$-simplices together with the simplices $\Delta^{\{0,2,3\}}$ and $\Delta^{\{1,2,3\}}$. Let $\sigma\colon \Delta^{3}_{\mathcal{E}} \to \ICCat$ such that $\Delta^{\{2,3\}}$ is mapped to an equivalence. Then $\sigma|\Delta^{\{0,1,2\}}$ is left Kan if and only if $\sigma|\Delta^{\{0,1,3\}}$ is left Kan.
 \end{lemma}
 \begin{proof}
-  Denote the image of the object $\Delta^{\{i\}}$ under $\sigma$ by $X_{i}$, the image of $\Delta^{\{i,j\}}$ by $f_{ji}$, and the image of $\Delta^{\{i,j,k\}}$ by $\alpha_{jki}$.
+  Replacing thin simplices by strict compositions using \hyperref[prop:homotopy_invariance_of_witness]{Proposition~\ref*{prop:homotopy_invariance_of_witness}}, this statement reduces to that of \hyperref[prop:kan_ext_invariance_of_target]{Proposition~\ref*{prop:kan_ext_invariance_of_target}}.
+\end{proof}
 
-  If either $\sigma|\Delta^{\{0,1,2\}}$ or $\sigma|\Delta^{\{0,1,3\}}$ is left Kan, then we have adjoint functors
-  \begin{equation*}
-    (f_{10})_{!} : \Fun(X_{0}, X_{3}) \leftrightarrow \Fun(X_{1}, X_{3}) : (f_{10})^{*}.
-  \end{equation*}
-
-  We can extract from the data given to us by $\sigma$ a commuting square in $\Fun(X_{0}, X_{3})$
-  \begin{equation*}
-    \begin{tikzcd}[column sep=large, row sep=large]
-      f_{30}
-      \arrow[r, "\alpha_{310}"]
-      \arrow[d, "\alpha_{320}"{swap}, "\simeq"]
-      & f_{31}f_{10}
-      \arrow[d, "\alpha_{321}f_{10}"]
-      \\
-      f_{32}f_{20}
-      \arrow[r, "f_{32}\alpha_{210}"]
-      & f_{32}f_{21}f_{10}
-    \end{tikzcd}
-  \end{equation*}
-  which is adjunct to a commuting square in $\Fun(X_{1}, X_{3})$
-  \begin{equation*}
-    \begin{tikzcd}[column sep=large, row sep=large]
-      (f_{10})_{!}f_{30}
-      \arrow[r, "\eta"]
-      \arrow[d, "(f_{10})!\alpha_{320}"{swap}, "\simeq"]
-      & f_{31}
-      \arrow[d, "\alpha_{321}", "\simeq"{swap}]
-      \\
-      (f_{10})_{!}f_{32}f_{20}
-      \arrow[r, "\eta'"]
-      & f_{32}f_{21}
-    \end{tikzcd}.
-  \end{equation*}
-
-  Note that $\eta$ is an equivalence if and only if $\eta'$ is an equivalence; thus, that $\alpha_{310}$ is a unit map if and only if $f_{32} \alpha_{210}$ is a unit map. But $f_{32}$ is an equivalence, so this in turn is true if and only if $\alpha_{210}$ is a unit map.
+\begin{lemma}
+  \label{lemma:compose_left_kan_simplices}
+  Denote by $\mathcal{F} \subseteq \Hom(\Delta^{2}, \Delta^{3})$ the subset containing all degenerate $2$-simplices, together with the simplex $\Delta^{\{0,1,2\}}$. Let $\sigma\colon \Delta^{3}_{\mathcal{F}} \to \ICCat$ such that $\sigma|\Delta^{\{0,1,3\}}$ is left Kan. Then $\sigma|\Delta^{\{0,2,3\}}$ is left Kan if and only if $\sigma|\Delta^{\{1,2,3\}}$ is left Kan.
+\end{lemma}
+\begin{proof}
+  Replacing thin simplices by strict compositions using \hyperref[prop:homotopy_invariance_of_witness]{Proposition~\ref*{prop:homotopy_invariance_of_witness}}, this reduces to \hyperref[prop:kan_extend_along_composition]{Propsition~\ref*{prop:kan_extend_along_composition}}.
 \end{proof}
 
 \end{document}
