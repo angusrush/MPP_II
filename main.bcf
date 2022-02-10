@@ -2190,15 +2190,16 @@
     <bcf:citekey order="6">garcia2020enhanced</bcf:citekey>
     <bcf:citekey order="7">garcia2020enhanced</bcf:citekey>
     <bcf:citekey order="8">garcia2020enhanced</bcf:citekey>
-    <bcf:citekey order="9">garcia2cartesianfibrationsii</bcf:citekey>
+    <bcf:citekey order="9">garcia2020enhanced</bcf:citekey>
     <bcf:citekey order="10">garcia2cartesianfibrationsii</bcf:citekey>
     <bcf:citekey order="11">garcia2cartesianfibrationsii</bcf:citekey>
     <bcf:citekey order="12">garcia2cartesianfibrationsii</bcf:citekey>
-    <bcf:citekey order="13">garcia2020enhanced</bcf:citekey>
-    <bcf:citekey order="14">garcia2cartesianfibrationsii</bcf:citekey>
-    <bcf:citekey order="15">garcia2020enhanced</bcf:citekey>
-    <bcf:citekey order="16">highertopostheory</bcf:citekey>
+    <bcf:citekey order="13">garcia2cartesianfibrationsii</bcf:citekey>
+    <bcf:citekey order="14">garcia2020enhanced</bcf:citekey>
+    <bcf:citekey order="15">garcia2cartesianfibrationsii</bcf:citekey>
+    <bcf:citekey order="16">garcia2020enhanced</bcf:citekey>
     <bcf:citekey order="17">highertopostheory</bcf:citekey>
+    <bcf:citekey order="18">highertopostheory</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

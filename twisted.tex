@@ -5,9 +5,43 @@
 \section{Local systems}
 \label{sec:local_systems}
 
-In \cite{garcia2020enhanced}, the twisted arrow category of an $\infty$-bicategory is defined.
+For any $\infty$-category $\category{C}$, a $\category{C}$-local system on some space $X$ is simply a functor $X \to \category{C}$. Thus, the $\infty$-category of $\category{C}$-local systems on $X$ should simply be $\LS(\category{C})_{X}:=\Fun(X, \category{C})$. Our goal is to consider local systems on all spaces $X$ simultaneously, defining an $\infty$-category of $\category{C}$-local systems.
 
-\subsection{The twisted arrow category}
+There is a more or less obvious way of doing this. We will consider a cartesian fibration $p'\colon\int\Fun(-, -) \to \ICat \times \ICat\op$ which classifies the functor
+\begin{equation*}
+  \ICat \times \ICat\op \to \ICat;\qquad (\category{C}, \category{D}) \mapsto \Fun(\category{C}, \category{D}).
+\end{equation*}
+The strict pullback $p$ of $p'$ in the diagram
+\begin{equation*}
+  \begin{tikzcd}
+    \LS(\category{C})
+    \arrow[r]
+    \arrow[d, swap, "p"]
+    & \int\Fun(-, -)
+    \arrow[d]
+    \\
+    \S \times \{\category{C}\}
+    \arrow[r]
+    & \ICat \times \ICat\op
+  \end{tikzcd}
+\end{equation*}
+will then classify the functor
+\begin{equation*}
+  \S \to \ICat;\qquad X \mapsto \LS(\category{C})_{X}.
+\end{equation*}
+The total space $\LS(\category{C})$ of $p$ will thus be our candidate for our $\infty$-category of local systems.
+
+In \cite{garcia2020enhanced}, a suitable model for $\int\Fun(-, -)$ is given: the so-called \emph{enhanced twisted arrow category} $\Tw(\ICCat)$. In \hyperref[ssc:the_twisted_arrow_category]{Subsection~\ref*{ssc:the_twisted_arrow_category}}, we reproduce the salient points of \cite{garcia2020enhanced}, defining the enhanced twisted arrow category. In \hyperref[ssc:the_infinity_category_of_local_systems]{Subsection~\ref*{ssc:the_infinity_category_of_local_systems}}, we use the enhanced twisted arrow category to define the category $\LS(\category{C})$ of local systems, together with a cartesian fibration $p\colon \LS(\category{C}) \to \S$ classifying the functor
+\begin{equation*}
+  \S\op \to \ICat;\qquad X \to \Fun(X, \category{C}).
+\end{equation*}
+We note that this functor sends a map of spaces $f\colon X \to Y$ to the pullback functor
+\begin{equation*}
+  f^{*}\colon \Fun(Y, \category{C}) \to \Fun(X, \category{C}).
+\end{equation*}
+If $\category{C}$ is cocomplete, each functor $f^{*}$ has a left adjoint $f_{!}$ given by left Kan extension. By abstract nonsense, the cartesian fibration $p$ is also a cocartesian fibration, whose cocartesian edges correspond to left Kan extension. In \hyperref[ssc:the_fibration]{Subsection~\ref*{ssc:the_fibration}} we will show this explicitly.
+
+\subsection{The enhanced twisted arrow category}
 \label{ssc:the_twisted_arrow_category}
 
 For a 2-category $\mathsf{C}$, the twisted arrow 1-category $\Tw(\mathsf{C})$ has the following description.
@@ -129,7 +163,7 @@ where the functor $Q$ is the extension by colimits of the functor $\tilde{Q}$, a
 \end{equation*}
 
 \begin{notation}
-  For any simplicial set $X$, $Q(X)$ carries the scaling given simplex-wise by that described above. We will denote this scaling by $\dagger_{X}$, or simply by $\dagger$ if the simplicial set $X$ is clear from context. It will sometimes pay to notate the scaling $\dagger$ on $Q(X)$ explicitly, writing $Q(X) = Q(X)_{\dagger}$. We can thus write $Q(\Delta^{n})$ explicitly and compactly as $\Delta^{2n+1}_{\dagger}$, which we will often do.
+  For any simplicial set $X$, $Q(X)$ carries the scaling given simplex-wise by that described above. We will denote this scaling by $\dagger_{X}$, or simply by $\dagger$ if the simplicial set $X$ is clear from context. It will sometimes pay to notate the scaling $\dagger$ on $Q(X)$ explicitly, writing $Q(X) = Q(X)_{\dagger}$. Using the identification $\Delta^{n} \star (\Delta^{n})\op \cong \Delta^{2n+1}$, we can write $Q(\Delta^{n})$ explicitly and compactly as $\Delta^{2n+1}_{\dagger}$, which we will often do.
 \end{notation}
 
 The inclusion $\Delta^{n} \amalg (\Delta^{n})\op \hookrightarrow \Delta^{n} \star (\Delta^{n})\op$ provides, for any $\infty$-bicategory $\CC$ with underlying $\infty$-category $\category{C}$, a morphism of simplicial sets
@@ -299,22 +333,20 @@ In the remainder of this section we reproduce two lemmas from \cite{garcia2carte
     \item For all $S \in \mathcal{A}$, we have $n \notin S$.
 
     \item For every $S$, $T \in \mathcal{A}$, it follows that $S \cap T = \emptyset$.
-
-    \item For all $S \in \Bas(\mathcal{A})$, there exist $u$, $v \in [n]$ such that $u \leq \min(S) \leq \max(S) \leq v < n$.
   \end{itemize}
 
   In this case, we will refer to $n$ as the pivot point.
 \end{definition}
 
-\begin{lemma}
+\begin{lemma}[Right-anodyne pivot trick]
   \label{lemma:right-anodyne_pivot_trick}
   Let $\mathcal{A} \subset P([n])$ be a right dull subset (whose pivot point is by definition $n$), and let $(\Delta^{n}, E, T)$ be a marked-scaled simplex. Further suppose that the following conditions hold:
   \begin{itemize}
-    \item For all Z in  $\Bas(\category{A})$, For all $r$, $s \in [n]$ with $r \leq \min(Z) \leq \max(Z) \leq s < n$, the triangle $\Delta^{\{r, s, n\}}$ is scaled, and the simplex $\Delta^{\{s, n\}}$ is marked.
-
     \item Every marked edge $e \in E$ which does not contain $n$ factors through $\S^{\mathcal{A}}$.
 
     \item Let $\sigma = \{a < b < c\}$ be a scaled simplex not containing $n$. Then either $\sigma$ factors through $\S^{\mathcal{A}}$, or $\sigma \cup \{n\}$ is fully scaled, and $c \to n$ is marked.
+
+    \item For all Z in  $\Bas(\category{A})$, For all $r$, $s \in [n]$ with $r \leq \min(Z) \leq \max(Z) \leq s < n$, the triangle $\Delta^{\{r, s, n\}}$ is scaled, and the simplex $\Delta^{\{s, n\}}$ is marked.
   \end{itemize}
 
   Then the inclusion $(\mathcal{S}^{\mathcal{A}}, E, T) \hookrightarrow (\Delta^{n}, E, T)$ is marked-scaled anodyne.
@@ -326,7 +358,6 @@ In the remainder of this section we reproduce two lemmas from \cite{garcia2carte
 \subsubsection{The infinity-category of local systems}
 \label{sss:the_infinity_category_of_local_systems}
 
-For any $\infty$-category $\category{C}$, a $\category{C}$-local system on some space $X$ is simply a functor $X \to \category{C}$. Thus, the $\infty$-category of $\category{C}$-local systems on $X$ should simply be $\LS(\category{C}, X):=\Fun(X, \category{C})$. We now allow $X$ to vary, defining the category $\LS(\category{C})$ of $\category{C}$-local systems.
 
 \begin{definition}
   For any cocomplete $\infty$-category $\category{C}$, we define the $\infty$-category of $\category{C}$-local systems $\LS(\category{C})$ together with a map of simplicial sets $p\colon \LS(\category{C}) \to \S$ by the following pullback diagram.
@@ -476,7 +507,7 @@ It is easy to check the following.
       &\SSetms
     \end{tikzcd},
   \end{equation*}
-  where $(\Delta \downarrow \Lambda^{n}_{0})^{\mathrm{nd}}$ is the category of nondegenerate simplices of $\Lambda^{n}_{0}$. Denote by $P_{n}$ the poset of proper subsets of $S \in [n]$ such that $0 \in S$. There is an obvious inclusion $P_{n} \hookrightarrow (\Delta \downarrow \Lambda^{n}_{0})^{\mathrm{nd}}$, and one readily checks using Quillen's Theorem A that this inclusion is cofinal. Further note that the functor $P_{n} \to (\Delta \downarrow \Lambda^{n}_{0}) \to \Delta$ factors through $\mathring{\Delta}$ via a map $a\colon P_{n} \to \mathring{\Delta}$. Thus, we can equally express $J(\Lambda^{n}_{0})$ as the colimit of the functor $\tilde{J} \circ I \circ a$. Precisely the same reasoning tells us that we can express $R(\Lambda^{n}_{0})$ as the colimit of $\tilde{R} \circ I \circ a$. The result now follows from \hyperref[lemma:restricted_natural_transformation]{Lemma~\ref*{lemma:restricted_natural_transformation}}, and the fact that each strict colimit is the model for the homotopy colimit.
+  where $(\Delta \downarrow \Lambda^{n}_{0})^{\mathrm{nd}}$ is the category of nondegenerate simplices of $\Lambda^{n}_{0}$. Denote by $P_{n}$ the poset of proper subsets of $[n]$ such that $0 \in S$. There is an obvious inclusion $P_{n} \hookrightarrow (\Delta \downarrow \Lambda^{n}_{0})^{\mathrm{nd}}$, and one readily checks using Quillen's Theorem A that this inclusion is cofinal. Further note that the functor $P_{n} \to (\Delta \downarrow \Lambda^{n}_{0}) \to \Delta$ factors through $\mathring{\Delta}$ via a map $a\colon P_{n} \to \mathring{\Delta}$. Thus, we can equally express $J(\Lambda^{n}_{0})$ as the colimit of the functor $\tilde{J} \circ I \circ a$. Precisely the same reasoning tells us that we can express $R(\Lambda^{n}_{0})$ as the colimit of $\tilde{R} \circ I \circ a$. The result now follows from \hyperref[lemma:restricted_natural_transformation]{Lemma~\ref*{lemma:restricted_natural_transformation}}, and the fact that each strict colimit is the model for the homotopy colimit.
 \end{proof}
 
 \begin{proof}[Proof of Lemma \ref{lemma:lower_morphism_equivalence}]
@@ -539,7 +570,7 @@ It is easy to check the following.
   \end{equation*}
   which we construct in the following way.
   \begin{enumerate}
-    \item Then we fill the simplex $\Delta^{\{1,\overline{1},\overline{0}\}}$ (together with its marking and scaling) as a pushout along a morphism of type \ref{item:outerms}.
+    \item First we fill the simplex $\Delta^{\{1,\overline{1},\overline{0}\}}$ (together with its marking and scaling) as a pushout along a morphism of type \ref{item:outerms}.
 
     \item Then we fill the simplex $\Delta^{\{0,1,\overline{1}\}}$ (together with its marking and scaling) as a pushout along a morphism of type \ref{item:innerms}.
 
@@ -556,11 +587,11 @@ It is easy to check the following.
   \begin{enumerate}
     \item We first add the simplices $\Delta^{\{n, \overline{n}, \ldots, \overline{0}\}}$, $\Delta^{\{n-1, n, \overline{n}, \ldots, \overline{0}\}}$, \dots, $\Delta^{\{2, \ldots, n, \overline{n}, \ldots, \overline{0}\}}$.
 
-    \item We next add $\Delta^{\{1, \ldots, n, \overline{n}, \overline{0}\}}$, $\Delta^{\{1, \ldots, n, \overline{n}, \overline{n-1}, \overline{0}\}}$, \dots, $\Delta^{\{1, \ldots, n, \overline{n}, \ldots, \overline{2}, \overline{0}\}}$
+    \item We next add $\Delta^{\{0, \ldots, n, \overline{n}, \overline{0}\}}$, $\Delta^{\{0, \ldots, n, \overline{n}, \overline{n-1}, \overline{0}\}}$, \dots, $\Delta^{\{0, \ldots, n, \overline{n}, \ldots, \overline{2}, \overline{0}\}}$
 
     \item We next add $\Delta^{\{1, \ldots n, \overline{n}, \ldots, \overline{0}\}}$.
 
-    \item We then add $\Delta^{\{0, \ldots, n, \overline{n}, \overline{0}\}}$, $\Delta^{\{0, \ldots, n, \overline{n}, \overline{n-1}, \overline{0}\}}$, \dots, $\Delta^{\{0, \ldots n, \overline{n}, \ldots, \overline{0}\}}$.
+    \item We finally add $\Delta^{\{0, \ldots n, \overline{n}, \ldots, \overline{0}\}}$.
   \end{enumerate}
   We proceed.
   \begin{enumerate}
@@ -656,7 +687,34 @@ It is easy to check the following.
       \end{equation*}
 
     \item Each step in this sequence is solved exactly like those above. The calculations are omitted. The end result is the simplicial subset
+      \begin{equation*}
+        \mathcal{B}_{2} = 
+        \left\{ \substack{ \{\overline{1}\} \\ \{0, 1\} \\ \{2, \overline{2}\} \\ \vdots \\ \{n, \overline{n}\} } \right\}.
+      \end{equation*}
 
+
+    \item Using \hyperref[lemma:bicartesian_square]{Lemma~\ref*{lemma:bicartesian_square}}, we see that the square
+      \begin{equation*}
+        \begin{tikzcd}
+          \S^{\mathcal{B}_{2}|\{1, \ldots, n, \overline{n}, \ldots, \overline{0}\}}_{\{1, \ldots, n, \overline{n}, \ldots, \overline{0}\}}
+          \arrow[r, hook]
+          \arrow[d, hook]
+          & \Delta^{\{1, \ldots, n, \overline{n}, \ldots, \overline{0}\}}
+          \arrow[d, hook]
+          \\
+          \S^{\mathcal{B}_{2}}_{[2n+1]}
+          \arrow[r, hook]
+          & \S^{\mathcal{B}_{2}}_{[2n+1]} \cup \Delta^{\{1, \ldots, n, \overline{n}, \ldots, \overline{0}\}}
+        \end{tikzcd}
+      \end{equation*}
+      is pushout. We thus have to show that the top morphism is marked-scaled anodyne. We have
+      \begin{equation*}
+        \mathcal{B}_{2}|\{1, \ldots, n, \overline{n}, \ldots, \overline{0}\} \sim
+        \left\{ \substack{ \{\overline{1}\} \\ \{2, \overline{2}\} \\ \vdots \\ \{n, \overline{n}\} \\ \{\overline{1}\} } \right\}.
+      \end{equation*}
+      One readily sees that this is a right-dull subset, and that the conditions of the \hyperref[lemma:right-anodyne_pivot_trick]{Right-Anodyne Pivot Trick} are satisfied.
+
+    \item One solves this as before, checking that the conditions of the \hyperref[lemma:pivot_trick]{Pivot Trick} are satisfied, with pivot point $2$.
   \end{enumerate}
 \end{proof}
 
