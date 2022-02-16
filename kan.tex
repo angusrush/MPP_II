@@ -30,13 +30,9 @@ We will expand upon the following definition in \hyperref[ssc:basic_facts_about_
   \begin{itemize}
     \item For all objects $y \in Y$, the $\infty$-category $\category{C}$ admits all colimits of shape $X_{/y}$.
 
-    \item The natural transformation $\eta$ exhibits $G$ as a left Kan extension of $F$ along $f$ (\hyperref[def:left_box]{Definition~\ref*{def:left_box}})
+    \item The natural transformation $\eta$ exhibits $G$ as the left Kan extension of $F$ along $f$.
   \end{itemize}
 \end{definition}
-
-\begin{note}
-  Note that the first condition guarantees that \emph{all} functors $X \to \category{C}$ admit left Kan extensions along $f$, not only $G$. This assumption is probably superfluous, but in the situations we are interested in, $\category{C}$ will be cocomplete and $X$ and $Y$ will be small, so this will not concern us.
-\end{note}
 
 The goal of this section is to prove the following.
 
@@ -225,38 +221,39 @@ The lifting problems which we have to solve in \hyperref[eq:lifting_problems_for
 \subsection{Basic facts about Kan extensions}
 \label{ssc:basic_facts_about_kan_extensions}
 
-In this section, we recall a few basic facts about Kan extensions. These can be found in Kerodon. Since Kan extensions are defined by the colimit formula, we will start by defining colimits.
+In this section, we recall a few basic facts about Kan extensions. These can be found in Kerodon. Since Kan extensions are defined by the colimit formula, we will start by defining colimits. Clasically, colimits in $\infty$-categories are defined using colimit cones.
 
 \begin{definition}
-  Let $f\colon K \to \category{C}$ be a map between simplicial sets, where $\category{C}$ is an $\infty$-category. Let $c \in \category{C}$ be an object, and denote by $\underline{c}$ the constant functor $K \to \category{C}$ with value $c$. A natural transformation $f \Rightarrow \underline{c}$ \defn{exhibits $c$ as the colimit of $f$} if it is an initial object in the quasicategory $(f \downarrow \category{C})$ defined by the pullback diagram
-  \begin{equation*}
-    \begin{tikzcd}
-      (f \downarrow \category{C})
-      \arrow[r]
-      \arrow[d]
-      & \Fun(\Delta^{1} \times K, \category{C})
-      \arrow[d]
-      \\
-      \{f\} \times \category{C}
-      \arrow[r]
-      & \Fun(K, \category{C}) \times \Fun(K, \category{C})
-    \end{tikzcd},
-  \end{equation*}
-  where the bottom functor is the inclusion $\{f\} \hookrightarrow \Fun(K, \category{C})$ on the first factor, and the functor $\category{C} \to \Fun(K, \category{C})$ assigning $c \to \underline{c}$ on the second.
+  \label{def:colimit_via_cocones}
+  Let $F\colon K \to \category{C}$ be a diagram, where $\category{C}$ is an $\infty$-category. A cocone $\tilde{F}\colon K^{\triangleright} \to \category{C}$ is a \defn{colimit cone} if it is an initial object in the $\infty$-category $\category{C}_{F/}$.
 \end{definition}
 
+It is sometimes more convenient to define colimits via natural transformation.
+
+\begin{definition}
+  Let $f\colon K \to \category{C}$ be a map between simplicial sets, where $\category{C}$ is an $\infty$-category. Let $c \in \category{C}$ be an object, and denote by $\underline{c}$ the constant functor $K \to \category{C}$ with value $c$. A natural transformation $f \Rightarrow \underline{c}$ \defn{exhibits $c$ as the colimit of $f$} if it is an initial object in the $\infty$-category $\category{C}^{F/}$.
+\end{definition}
+
+Fortunately, these definitions are compatible: an object $K^{\triangleright} \to \category{C}$ in $\category{C}_{/F}$ is a colimit cone with cone tip $c$ if and only if the composite map
+\begin{equation}
+  \label{eq:natural_transformation_from_colimit_cone}
+  K \times \Delta^{1} \to K \times \Delta^{1} \amalg_{K \times \{1\}} \Delta^{0} \to K \star \Delta^{0} \to \category{C}
+\end{equation}
+exhibits $c$ as a colimit of $F$. This follows from the fact that for any $\infty$-category $\category{C}$ and any functor $F\colon K \to \category{C}$, the comparison map $\category{C}_{/F} \to \category{C}^{/F}$ constructed analogously to that above is a categorical equivalence.
+
+\begin{note}
+  If a natural transformation $\eta$ exhibits some object as a colimit of some diagram, than any natural transformation $\eta'$ which is homotopic to $\eta$ will do just as well.
+\end{note}
+
 \begin{notation}
+  \label{notation:rund_um_undercategories}
   Let $f\colon X \to Y$ be a map of simplicial sets, and $y \in Y$ an object. We will use the following notation.
   \begin{itemize}
-    \item Denote by $X_{/y}$ the fiber product $X \times_{Y} Y_{/y}$. 
+    \item Denote by $X_{/y}$ the fiber product $X \times_{Y} Y_{/y}$.
 
     \item Denote by $\pi\colon X_{/y} \to X$ the projection map.
 
-    \item Denote by $\alpha\colon f \circ \pi \Rightarrow \underline{y}$ the natural transformation which is adjunct to the map
-      \begin{equation*}
-        X^{/y} \to X_{/y} \overset{\pi}{\to} X \overset{f}{\to} Y,
-      \end{equation*}
-      where $X^{/y}$ is the overcategory modelled on the fat join, and $X^{/y} \to X_{/y}$ is the usual comparison map.
+    \item Denote by $\alpha\colon f \circ \pi \Rightarrow \underline{y}$ the natural transformation $X_{/y} \times \Delta^{1} \to X$ coming from the comparison map $X_{/y} \to X^{/y}$.
   \end{itemize}
 \end{notation}
 
@@ -278,20 +275,21 @@ Kerodon 7.3.1.5
   \end{equation*}
   We say that $\eta$ \defn{exhibits $G$ as the left Kan extension of $F$ along $f$} if for each object $y \in Y$, the natural transformation $F \circ \pi \Rightarrow \underline{G(y)}$ furnished by the pasting diagram
   \begin{equation*}
-    \begin{tikzcd}
+    \begin{tikzcd}[row sep=large, column sep=large]
       X_{/y}
-      \arrow[r, "\pi", ""{name=LU, swap}]
-      \arrow[drr, bend right, "\underline{y}"{swap}, ""{name=LD}]
+      \arrow[r, "\pi", ""{name=LA, swap}]
+      \arrow[d, "\underline{y}"{swap}, ""{name=LD}]
       & X
-      \arrow[dr, swap, "f"]
-      \arrow[rr, "F", ""{below, name=M}]
-      \arrow[d, Rightarrow, shorten=1ex, swap, "\alpha"]
-      && \category{C}
+      \arrow[d, swap, "f"]
+      \arrow[r, "F", ""{below, name=M}]
+      & \category{C}
       \\
-      & \ 
+      \{y\}
+      \arrow[r, hook, ""{name=LB}]
       & Y
       \arrow[ur, swap, "G"]
-      \arrow[from=M, Rightarrow, swap, "\eta"]
+      \arrow[from=M, Rightarrow, shorten=2ex, swap, "\eta"]
+      \arrow[from=LA, to=LB, Rightarrow, shorten=1ex, "\alpha"]
     \end{tikzcd}
   \end{equation*}
   exhibits $G(y)$ as the colimit of the functor $F \circ \pi$.
@@ -329,7 +327,7 @@ The following is a combination of special cases of 7.3.1.15 and 7.3.1.16.
 The following is Kerodon 7.3.6.3
 \begin{theorem}[Existence of global left Kan extensions]
   \label{thm:existence_global_left_kan_exts}
-  Let $f\colon X \to Y$ be a map of simplicial sets, and suppose that $\category{C}$ is a quasicategory which admits $X_{/y}$-shaped colimits for all $y \in Y$. Then the restriction functor $f^{*}\colon \Fun(Y, \category{C}) \to \Fun(X, \category{C})$ admits a left adjoint $f_{!}$, sending a functor $F\colon X \to \category{C}$ to its left Kan extension along $f$.
+  Let $f\colon X \to Y$ be a map of simplicial sets, and suppose that $\category{C}$ is a quasicategory which admits $X_{/y}$-shaped colimits for all $y \in Y$. Then the restriction functor $f^{*}\colon \Fun(Y, \category{C}) \to \Fun(X, \category{C})$ admits a left adjoint $f_{!}$, sending a functor $F\colon X \to \category{C}$ to $f_{!}F\colon Y \to \category{C}$, its left Kan extension along $f$.
 \end{theorem}
 
 The following is an easy consequence of 7.3.1.11.
@@ -368,7 +366,7 @@ The following is Kerodon 7.3.1.12.
 This is Kerodon 7.3.1.9.
 \begin{proposition}
   \label{prop:homotopy_invariance_of_witness}
-  The property that $\eta$ exhibits $G$ as a left Kan extension of $F$ along $f$ is homotopy-invariant; any homotopic $\eta$ will do just as well. 
+  The property that $\eta$ exhibits $G$ as a left Kan extension of $F$ along $f$ is homotopy-invariant; any homotopic $\eta$ will do just as well.
 \end{proposition}
 
 \subsection{Filling cubes relative to their boundaries}
@@ -735,7 +733,7 @@ In this section, we give a formalization of the the notion of adjunct data. Our 
       & \Delta^{1}
     \end{tikzcd}
   \end{equation*}
-  such that the following conditions are satisfied. 
+  such that the following conditions are satisfied.
   \begin{itemize}
     \item The map $u$ is associated to the functor $f$: the restriction $u|\category{C} \times \{0\} = h_{0}$, the restriction $u|\category{C} \times \{1\} = f \circ h_{1}$, and for each $c \in \category{C}$, the edge $u|\{c\} \times \Delta^{1}$ is $p$-cocartesian.
 
@@ -1276,12 +1274,19 @@ We end this section with a few miscellaneous tricks which we can play with maps 
   Replacing thin simplices by strict compositions using \hyperref[prop:homotopy_invariance_of_witness]{Proposition~\ref*{prop:homotopy_invariance_of_witness}}, this statement reduces to that of \hyperref[prop:kan_ext_invariance_of_target]{Proposition~\ref*{prop:kan_ext_invariance_of_target}}.
 \end{proof}
 
+The next lemma is similar but easier.
+\begin{lemma}
+  \label{lemma:transport_thin_simplices}
+  Denote by $\mathcal{E} \subseteq \Hom(\Delta^{2}, \Delta^{3})$ the subset containing all degenerate $2$-simplices together with the simplices $\Delta^{\{0,2,3\}}$ and $\Delta^{\{1,2,3\}}$. Let $\sigma\colon \Delta^{3}_{\mathcal{E}} \to \ICCat$ such that $\Delta^{\{2,3\}}$ is mapped to an equivalence. Then $\sigma|\Delta^{\{0,1,2\}}$ is thin if and only if $\sigma|\Delta^{\{0,1,3\}}$ is thin.
+\end{lemma}
+
 \begin{lemma}
   \label{lemma:compose_left_kan_simplices}
-  Denote by $\mathcal{F} \subseteq \Hom(\Delta^{2}, \Delta^{3})$ the subset containing all degenerate $2$-simplices, together with the simplex $\Delta^{\{0,1,2\}}$. Let $\sigma\colon \Delta^{3}_{\mathcal{F}} \to \ICCat$ such that $\sigma|\Delta^{\{0,1,3\}}$ is left Kan. Then $\sigma|\Delta^{\{0,2,3\}}$ is left Kan if and only if $\sigma|\Delta^{\{1,2,3\}}$ is left Kan.
+  Denote by $\mathcal{E}' \subseteq \Hom(\Delta^{2}, \Delta^{3})$ the subset containing all degenerate $2$-simplices, together with the simplex $\Delta^{\{0,1,2\}}$. Let $\sigma\colon \Delta^{3}_{\mathcal{F}} \to \ICCat$ such that $\sigma|\Delta^{\{0,1,3\}}$ is left Kan. Then $\sigma|\Delta^{\{0,2,3\}}$ is left Kan if and only if $\sigma|\Delta^{\{1,2,3\}}$ is left Kan.
 \end{lemma}
 \begin{proof}
   Replacing thin simplices by strict compositions using \hyperref[prop:homotopy_invariance_of_witness]{Proposition~\ref*{prop:homotopy_invariance_of_witness}}, this reduces to \hyperref[prop:kan_extend_along_composition]{Propsition~\ref*{prop:kan_extend_along_composition}}.
 \end{proof}
+
 
 \end{document}

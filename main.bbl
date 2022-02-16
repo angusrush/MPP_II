@@ -137,6 +137,36 @@
       \field{title}{Enhanced twisted arrow categories}
       \field{year}{2020}
     \endentry
+    \entry{luriehopkins2013ambidexterity}{article}{}
+      \name{author}{2}{}{%
+        {{hash=9300e0ba51675850e1ed006a6b0fe0ff}{%
+           family={Hopkins},
+           familyi={H\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=760ea879284b1a6eeaad87a82be8d1d7}{%
+           family={Lurie},
+           familyi={L\bibinitperiod},
+           given={Jacob},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Citeseer}%
+      }
+      \strng{namehash}{8c62c922dc6258e2c0ddee082ca9afec}
+      \strng{fullhash}{8c62c922dc6258e2c0ddee082ca9afec}
+      \strng{bibnamehash}{8c62c922dc6258e2c0ddee082ca9afec}
+      \strng{authorbibnamehash}{8c62c922dc6258e2c0ddee082ca9afec}
+      \strng{authornamehash}{8c62c922dc6258e2c0ddee082ca9afec}
+      \strng{authorfullhash}{8c62c922dc6258e2c0ddee082ca9afec}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{preprint}
+      \field{title}{Ambidexterity in K (n)-local stable homotopy theory}
+      \field{year}{2013}
+    \endentry
     \entry{highertopostheory}{book}{}
       \name{author}{1}{}{%
         {{hash=760ea879284b1a6eeaad87a82be8d1d7}{%

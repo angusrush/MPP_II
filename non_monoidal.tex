@@ -5,202 +5,199 @@
 \section{The non-monoidal construction}
 \label{sec:the_non_monoidal_construction}
 
-\subsection{The bare functor}
-\label{ssc:the_bare_functor}
+This is a classical definition, here more or less lifted from \cite{luriehopkins2013ambidexterity}.
 
-Let $\category{C}$ be a category admitting small colimits. We consider the pullback
-\begin{equation*}
-  \begin{tikzcd}
-    \LS(\category{C})
-    \arrow[r]
-    \arrow[d, swap, "r"]
-    & \Tw(\ICCat)
-    \arrow[d]
-    \\
-    \S \times \{\category{C}\}
-    \arrow[r, hook]
-    & \ICat \times \ICat\op
-  \end{tikzcd}.
-\end{equation*}
+\begin{definition}
+  \label{def:beck_chevalley_fibration}
+  A bicartesian fibration of quasicategories $p\colon \category{X} \to \category{T}$ such that $\category{X}$ admits pullbacks is a \defn{Beck-Chevalley fibration} if it has the following property.
+  \begin{itemize}
+    \item[(BC)]\label{item:beck_chevalley_condition} For any commuting square in
+      \begin{equation*}
+        \begin{tikzcd}
+          x'
+          \arrow[r, "f'"]
+          \arrow[d, swap, "g'"]
+          & y'
+          \arrow[d, "g"]
+          \\
+          x
+          \arrow[r, "f"]
+          & y
+        \end{tikzcd}
+      \end{equation*}
+      lying over a pullback square in $\category{T}$, if the morphism $f$ is $p$-cocartesian, and the morphisms $g$ and $g'$ are $p$-cartesian, then the morphism $f'$ is $p$-cocartesian.
+  \end{itemize}
+\end{definition}
 
-A general morphism in $\LS(\category{C})$ is a 3-simplex of the form
-\begin{equation}
-  \label{eq:general_morphism_of_local_systems_explicit}
-  \begin{tikzcd}[column sep=large, row sep=large]
-    X
-    \arrow[r]
-    \arrow[d, ""{name=L, right}]
-    \arrow[dr]
-    & Y
-    \arrow[d, ""{name=R, left}]
-    \arrow[from=l, to=R, phantom, near end, "\circlearrowleft"{description}]
-    \\
-    \category{C}
-    & \category{C}
-    \arrow[l, "\id_{\category{C}}"]
-    \arrow[from=L, Rightarrow, shorten=3ex]
-  \end{tikzcd}
-  \qquad
-  \begin{tikzcd}[column sep=large, row sep=large]
-    X
-    \arrow[r]
-    \arrow[d, ""{name=L, right}]
-    & Y
-    \arrow[d, ""{name=R, left}]
-    \arrow[dl]
-    \\
-    \category{C}
-    \arrow[from=R, phantom, near start, "\circlearrowleft"{description}]
-    & \category{C}
-    \arrow[l, "\id_{\category{C}}"]
-    \arrow[from=L, to=u, shorten=3ex, Rightarrow]
-  \end{tikzcd},
-\end{equation}
-To save on notation, we will generally denote such a morphism as follows.
-\begin{equation}
-  \label{eq:general_morphism_of_local_systems_short}
-  \begin{tikzcd}
-    X
-    \arrow[r]
-    \arrow[d, ""{name=L, right}]
-    & Y
-    \arrow[d, ""{name=R, left}]
-    \\
-    \category{C}
-    & \category{C}
-    \arrow[l, equals]
-    \arrow[Rightarrow, from=L, to=R, shorten=1.5ex]
-  \end{tikzcd}.
-\end{equation}
+The proof of the following proposition will come at the end of this section.
 
-There is a potential for confusion here. The natural transformation notated in \hyperref[eq:general_morphism_of_local_systems_short]{Diagram~\ref*{eq:general_morphism_of_local_systems_short}} above does not correspond to a single natural transformation in \hyperref[eq:general_morphism_of_local_systems_explicit]{Diagram~\ref*{eq:general_morphism_of_local_systems_explicit}}, but rather to both natural transformations simultaneously. However, both of these natural transformations agree up to a homotopy provided by the interior of the 3-simplex.
-
-A morphism $\Delta^{1} \to \LS(\category{C})$ is $r$-cartesian if and only if all 2-simplices forming the faces of the corresponding map $Q(1) \to \ICCat$ are thin; that is, if the 3-simplex making up the twisted square weakly commutes. We will use the symbol $\circlearrowleft$ to denote a weakly commuting twisted morphism, and call such morphisms \emph{thin:}
-\begin{equation*}
-  \begin{tikzcd}
-    X
-    \arrow[r]
-    \arrow[d, ""{name=L, right}]
-    & Y
-    \arrow[d, ""{name=R, left}]
-    \\
-    \category{C}
-    & \category{C}
-    \arrow[l, equals]
-    \arrow[Rightarrow, from=L, to=R, shorten=1.5ex, phantom, "\circlearrowleft"]
-  \end{tikzcd}.
-\end{equation*}
-
-The functor $r\colon \LS(\category{C}) \to \ICat$ thus classifies the functor
-\begin{equation*}
-  \S\op \to \ICat;\qquad X \mapsto \Fun(X, \category{C}),
-\end{equation*}
-which sends a map $f\colon X \to Y$ to the pullback
-\begin{equation*}
-  f^{*}\colon \Fun(Y, \category{C}) \to \Fun(X, \category{C}).
-\end{equation*}
-Under the assumption that $\category{C}$ admits colimits, each of these functors admit a left adjoint $f_{!}$ given by left Kan extension. More explicitly, we have the following.
 \begin{proposition}
-  A morphism $\Delta^{1} \to \LS(\category{C})$ is $r$-cocartesian if and only the 3-simplex $\sigma\colon Q(1) \to \ICCat$ to which it corresponds has the property that $d_{3}\sigma$ is left Kan. More explicitly, the morphism is left Kan if and only if $\sigma$ the form
+  \label{prop:local_systems_are_beck_chevalley}
+  The functor $p\colon \LS(\category{C}) \to \S$ is a Beck-Chevalley fibration.
+\end{proposition}
+
+The importance of Beck-Chevalley fibrations is the following.
+
+\begin{proposition}
+  Let $p\colon \category{X} \to \category{T}$ be a Beck-Chevalley fibration. Then there is a cocartesian fibration
   \begin{equation*}
-    \begin{tikzcd}[column sep=large, row sep=large]
-      X
-      \arrow[r]
-      \arrow[d, ""{name=L, right}]
-      \arrow[dr]
-      & Y
-      \arrow[d, ""{name=R, left}]
-      \arrow[from=l, to=R, phantom, near end, "\circlearrowleft"{description}]
-      \\
-      \category{C}
-      & \category{C}
-      \arrow[l, equals]
-      \arrow[from=L, Rightarrow, shorten=3ex]
-    \end{tikzcd}
-    \qquad
-    \begin{tikzcd}[column sep=large, row sep=large]
-      X
-      \arrow[r, "f"]
-      \arrow[d, "\mathcal{F}"{swap}, ""{name=L, right}]
-      & Y
-      \arrow[d, ""{name=R, left}]
-      \arrow[dl, near end, "f_{!}\mathcal{F}"]
-      \\
-      \category{C}
-      \arrow[from=R, phantom, near start, "\circlearrowleft"{description}]
-      & \category{C}
-      \arrow[l, equals]
-      \arrow[from=L, to=u, shorten=3ex, Rightarrow, "\eta"]
-    \end{tikzcd},
+    \tilde{p}\colon \Span^{\mathrm{cart}}(\category{X}) \to \Span(\category{T}),
   \end{equation*}
-  where $f_{!}\mathcal{F}$ is a left Kan extensions of $\mathcal{F}$ along $f$, and $\eta$ is the counit map. Note that the data of the second diagram determines both the data of the first and the filling 3-simplex up to contractible choice.
+  where $\Span^{\mathrm{cart}}$ denotes the category of spans whose backwards-facing legs are constrained to be $p$-cartesian; that is, $\category{X}^{\dagger} = \category{X}^{\mathrm{cart}}$.
 \end{proposition}
 \begin{proof}
-  First we show that morphisms of the promised form really are $r$-cocartesian. Since by assumption $p\colon \LS(\category{C}) \to \S$ is a cartesian fibration (hence an isofibration) whose source and target are quasicategories, it suffices to show that we can solve the lifting problem
-  \begin{equation*}
-    \begin{tikzcd}
-      \Delta^{\{0,1\}}
-      \arrow[d, hook]
-      \arrow[dr, "a"]
-      \\
-      \Lambda^{2}_{0}
-      \arrow[r]
-      \arrow[d]
-      & \LS(\category{C})
-      \arrow[d]
-      \\
-      \Delta^{2}
-      \arrow[r]
-      \arrow[ur, dashed]
-      & \S
-    \end{tikzcd}
-  \end{equation*}
-  where $a$ is of the promised form, and that the space of such fillings is contractible.
+  Follows immediately from \hyperref[thm:new_barwick]{Theorem~\ref*{thm:new_barwick}}.
 \end{proof}
 
-For short, we will denote $r$-cocartesian morphisms with an exclamation mark:
-\begin{equation*}
-  \begin{tikzcd}
-    X
-    \arrow[r, "f"]
-    \arrow[d, ""{name=L, right}, "\mathcal{F}"{left}]
-    & X'
-    \arrow[d, ""{name=R, left}, "\Lan_{f}\mathcal{F}"{right}]
-    \\
-    \category{C}
-    & \category{C}
-    \arrow[l, equals]
-    \arrow[Rightarrow, from=L, to=R, shorten=1.5ex, "!"{description}]
-  \end{tikzcd}.
-\end{equation*}
+The following is simply a reformulation of the definition of a left Kan extension (\hyperref[def:nat_xfo_exhibiting_left_kan_ext]{Definition~\ref*{def:nat_xfo_exhibiting_left_kan_ext}}) in the special case that we consider left Kan extensions along maps of Kan complexes.
+\begin{lemma}
+  Let $f\colon X \to Y$ be a map between Kan complexes, let $F\colon X \to \category{C}$ and $G\colon Y \to \category{C}$ be functors, and let $\eta\colon F \to G \circ y$ be a natural transformation. Then $\eta$ exhibits $G$ as a left Kan extension of $F$ along $f$ if and only if, for all $y \in Y$, the natural transformatin $F \circ \pi \Rightarrow \underline{G(y)}$ defined by the pasting diagram
+  \begin{equation*}
+    \begin{tikzcd}[row sep=large, column sep=large]
+      X_{/y}
+      \arrow[r, "\pi", ""{name=LA, swap}]
+      \arrow[d, ""{name=LD}]
+      & X
+      \arrow[d, swap, "f"]
+      \arrow[r, "F", ""{below, name=M}]
+      & \category{C}
+      \\
+      \{y\}
+      \arrow[r, hook, ""{name=LB}]
+      & Y
+      \arrow[ur, swap, "G"]
+      \arrow[from=M, Rightarrow, shorten=2ex, swap, "\eta"]
+    \end{tikzcd},
+  \end{equation*}
+  exhibits $G(y)$ as the colimit of $F \circ \pi$, where the left-hand square is (homotopy) pullback.
+\end{lemma}
+\begin{proof}
+  We note that we can factor the above square into three squares
+  \begin{equation*}
+    \begin{tikzcd}
+      X_{/y}
+      \arrow[r, "\simeq"]
+      \arrow[d]
+      & X^{/y}
+      \arrow[r]
+      \arrow[d]
+      & Y^{\Delta^{1}} \times_{Y} X
+      \arrow[r, "\simeq"]
+      \arrow[d]
+      & X
+      \arrow[d, "f"]
+      \\
+      \{y\}
+      \arrow[r, equals]
+      & \{y\}
+      \arrow[r]
+      & Y
+      \arrow[r, equals]
+      & Y
+    \end{tikzcd},
+  \end{equation*}
+  where the middle square is a strict pullback. Since the map $Y^{\Delta^{1}} \times_{Y}X \to Y$ is a Kan fibration, the middle square is also a homotopy pullback. We note that the left and right squares are also homotopy pullbacks, since the horizontal morphisms are weak equivalences. Thus, the outer square is a homotopy pullback; one easily checks that the natural equivalence $f \circ \pi \Rightarrow \underline{y}$ defined by pasting the three squares agrees with the natural transformation $\alpha$ defined in \hyperref[notation:rund_um_undercategories]{Notation~\ref*{notation:rund_um_undercategories}}.
+\end{proof}
+
+
+\begin{proof}[Proof of Theorem \ref{prop:local_systems_are_beck_chevalley}]
+  We have already shown that $p$ is a bicartesian fibration, and we know that $\S$ admits pullbacks. Therefore, it suffices to show that $p$ has \hyperref[item:beck_chevalley_condition]{Property~(BC)}.
+
+  We consider a square $\sigma\colon \Delta^{1} \times \Delta^{1} \cong \Delta^{\{0,1,2\}} \amalg_{\Delta^{\{0,2\}}}\Delta^{\{0,1',2\}} \to \LS(\category{C})$ with the following properties.
+  \begin{enumerate}
+    \item The restriction $\sigma|\Delta^{\{0,1\}}$ is $p$-cartesian.
+
+    \item The restriction $\sigma|\Delta^{\{1',2\}}$ is $p$-cartesian.
+
+    \item The restriction $\sigma|\Delta^{\{1,2\}}$ is $p$-cocartesian.
+
+    \item The map $\sigma$ lies over a pullback square
+      \begin{equation*}
+        p(\sigma) =
+        \begin{tikzcd}
+          X_{0}
+          \arrow[r, "f'"]
+          \arrow[d, swap, "g'"]
+          & X_{1'}
+          \arrow[d, "g"]
+          \\
+          X_{1}
+          \arrow[r, "f"]
+          & X_{2}
+        \end{tikzcd}
+      \end{equation*}
+      in $\S$.
+  \end{enumerate}
+  We need to show that $\sigma|\Delta^{\{0,1'\}}$ is $p$-cocartesian.
+
+  The map $\sigma$ adjunct to a map
+  \begin{equation*}
+    \tau\colon \Delta^{\{0,1,2,\overline{2}, \overline{1}, \overline{0}\}}_{\dagger}\amalg_{\Delta^{\{0,2,\overline{2}, \overline{0}\}}_{\dagger}} \Delta^{\{0,1',2,\overline{2}, \overline{1}', \overline{0}\}}_{\dagger} \to \ICCat
+  \end{equation*}
+  such that $\tau|\Delta^{\{\overline{2}, \overline{1}, \overline{0}\}} \amalg_{\Delta^{\{\overline{2},\overline{0}\}}} \Delta^{\{\overline{2}, \overline{1}', \overline{0}\}}$ is the constant functor with value $\category{C}$. We can read off the following further properties of $\tau$, corresponding to the properties of $\sigma$ above.
+  \begin{enumerate}
+    \item The simplices $\tau|\Delta^{\{0,1,\overline{0}\}}$ and $\tau|\Delta^{\{0,\overline{1},\overline{0}\}}$ are thin.
+
+    \item The simplices $\tau|\Delta^{\{1',2,\overline{1}'\}}$ and $\tau|\Delta^{\{1',\overline{2},\overline{1}'\}}$ are thin.
+
+    \item The simplex $\tau|\Delta^{\{1,2,\overline{1}\}}$ is left Kan.
+
+    \item The restriction $\tau|\Delta^{\{0,1,2\}} \amalg_{\Delta^{\{0,2\}}}\Delta^{\{0,1',2\}}$ is equal to $p(\sigma)$.
+  \end{enumerate}
+  The condition that $\sigma|\Delta^{\{0, 1'\}}$ is $p$-cocartesian corresponds to the condition that the simplex $\tau|\Delta^{\{0,1,\overline{0}\}}$ is left Kan.
+
+  Applying \hyperref[lemma:transport_left_kan_simplices]{Lemma~\ref*{lemma:transport_left_kan_simplices}} to the simplex $\tau|\Delta^{\{1,2,\overline{1}, \overline{0}\}}$, we see that $\tau|\Delta^{\{1,2,\overline{0}\}}$ is left Kan. Applying \hyperref[lemma:transport_thin_simplices]{Lemma~\ref*{lemma:transport_thin_simplices}} to the simplex $\tau|\Delta^{\{1',2, \overline{1}', \overline{0}\}}$, we see that $\tau|\Delta^{\{1',\overline{2}, \overline{0}\}}$ is thin.
+
+  We study the restriction
+  \begin{equation*}
+    \tau|\Delta^{\{0,1,2,\overline{0}\}} \amalg_{\Delta\{0,2,\overline{0}\}} \Delta^{\{0,1',2,\overline{0'}\}}.
+  \end{equation*}
+  This is determined, up to specific choices of compositions, by the diagram
+  \begin{equation*}
+    \begin{tikzcd}[row sep=large, column sep=large]
+      X_{0}
+      \arrow[r, "f'"]
+      \arrow[d, swap, "g'"]
+      & X_{1'}
+      \arrow[d, swap, "g"]
+      \arrow[r, "F", ""{swap, name=M}]
+      & \category{C}
+      \\
+      X_{1}
+      \arrow[r, "f"]
+      & X_{2}
+      \arrow[ur, swap, "G"]
+      \arrow[from=M, Rightarrow, shorten=2ex, swap, "\eta"]
+    \end{tikzcd}.
+  \end{equation*}
+  In particular, $\tau|\Delta^{\{0,1,\overline{0}\}}$ is homotopic to the pasting of the square and the triangle above. Thus, it suffices to show that for all $x \in X_{1}$, the pasting diagram
+  \begin{equation*}
+    \begin{tikzcd}[row sep=large, column sep=large]
+      (X_{0})_{/x}
+      \arrow[r, "\pi"]
+      \arrow[d]
+      & X_{0}
+      \arrow[r, "f'"]
+      \arrow[d, swap, "g'"]
+      & X_{1'}
+      \arrow[d, swap, "g"]
+      \arrow[r, "F", ""{swap, name=M}]
+      & \category{C}
+      \\
+      \{x\}
+      \arrow[r, hook]
+      & X_{1}
+      \arrow[r, "f"]
+      & X_{2}
+      \arrow[ur, swap, "G"]
+      \arrow[from=M, Rightarrow, shorten=2ex, swap, "\eta"]
+    \end{tikzcd}
+  \end{equation*}
+  exhibits $G(f(x))$ as the colimit of $F \circ f' \circ \pi$. But applying the pasting law for homotopy pullbacks, this follows directly from the assumption that $\eta$ exhibits $G$ as a left Kan extension of $F$ along $f$.
+\end{proof}
 
 \subsection{The triple structures}
 \label{ssc:the_triple_structures_bare}
-
-\subsubsection{The triple structure on finite pointed sets}
-\label{sss:the_triple_structure_on_finite_pointed_sets_bare}
-
-We're not gonna notationally distinguish between $\Finp$ and $N\Finp$. Who has time for that these days?
-
-We define a triple structure $\triple{F}$ on $\Finp\op$, where
-\begin{itemize}
-  \item $\category{F} = \Finp\op$
-
-  \item $\category{F}\downdag = (\Finp\op)^{\simeq}$
-
-  \item $\category{F}\updag = \Finp\op$
-\end{itemize}
-
-\begin{proposition}
-  This is an adequate triple structure.
-\end{proposition}
-\begin{proof}
-  Trivial.
-\end{proof}
-
-\begin{proposition}
-  There is a Joyal equivalence $\Finp \to \Span\triple{F}$.
-\end{proposition}
 
 \subsubsection{The triple structure on local systems}
 \label{sss:the_triple_structure_on_local_systems}

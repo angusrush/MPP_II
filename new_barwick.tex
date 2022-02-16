@@ -7,6 +7,7 @@
 It turns out Barwick's construction can be obviously modified. Here is a form which is more useful to us. Little to no effort has been made to make this as general as possible, as long as it works. It is relatively clear from the proof that there are many sets of conditions that suffice, and probably no unique weakest one.
 
 \begin{theorem}
+  \label{thm:new_barwick}
   Let $p\colon \triple{C} \to \triple{D}$ be a functor between adequate triples such that $p\colon \category{C} \to \category{D}$ is an inner fibration which satisfies the following conditions.
   \begin{enumerate}
     \item A morphism in $\category{C}$ is egressive if and only if it is $p$-cartesian (hence also $p\updag$-cartesian).
@@ -43,7 +44,7 @@ It turns out Barwick's construction can be obviously modified. Here is a form wh
           & px
         \end{tikzcd}
       \end{equation*}
-      in $\category{D}$. Then $\sigma$ is pullback, and $f'$ is ingressive, $p$-cocartesian, and and $p\downdag$-cocartesian.
+      in $\category{D}$. Then  $f'$ is ingressive, $p$-cocartesian, and and $p\downdag$-cocartesian.
   \end{enumerate}
   Then spans of the form
   \begin{equation*}
@@ -59,7 +60,9 @@ It turns out Barwick's construction can be obviously modified. Here is a form wh
   are cocartesian, where $g$ is $p\updag$-cartesian and $f$ is $p$-cocartesian.
 \end{theorem}
 \begin{proof}
-  Even simpler than the proof in my thesis of the ordinary Barwick's theorem. The square that we have to show is homotopy pullback factors as before, but this time we don't have to take the final homotopy pullback to find path components corresponding to cartesian 2-simplices, since our 2-simplices are automatically cartesian.
+  We first note that $\sigma$ is automatically pullback; since the sides are $p$-cartesian, it is automatically a relative pullback, and it lies over a pullback square.
+
+  The rest is even simpler than the proof in my thesis of the ordinary Barwick's theorem. The square that we have to show is homotopy pullback factors as before, but this time we don't have to take the final homotopy pullback to find path components corresponding to cartesian 2-simplices, since our 2-simplices are automatically cartesian.
 \end{proof}
 
 
