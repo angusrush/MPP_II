@@ -5,29 +5,166 @@
 \section{The non-monoidal construction}
 \label{sec:the_non_monoidal_construction}
 
-This is a classical definition, here more or less lifted from \cite{luriehopkins2013ambidexterity}.
+For any cocomplete $\infty$-category $\category{C}$, we have constructed an $\infty$-category $\LS(\category{C})$ of local systems on $\category{C}$, together with a map $p\colon \LS(\category{C}) \to \S$. We have shown that this map is a bicartesian fibration.
+\begin{itemize}
+  \item As a cartesian fibration, it classifies the pullback functor $(-)^{*}\colon \S\op \to \ICat$; for any morphism $X \to Y$ in $\S$, this functoriality gives us a map
+    \begin{equation*}
+      \begin{tikzcd}
+        f^{*}\colon \Fun(Y, \category{C}) \to \Fun(X, \category{C}).
+      \end{tikzcd}
+    \end{equation*}
+
+  \item As a cocartesian fibration, it classifies the left Kan extension functor $(-)_{!}\colon \S \to \ICat$; for any morphism $X \to Y$, in $\S$, this functoriality gives us a map
+    \begin{equation*}
+      f_{!}\colon \Fun(X, \category{C}) \to \Fun(Y, \category{C}).
+    \end{equation*}
+\end{itemize}
+
+We might wonder if we can combine these functorialities. Given a \emph{span} of morphisms in $\S$, i.e.\ a diagram in $\S$ of the form
+\begin{equation}
+  \label{eq:span_of_spaces}
+  \begin{tikzcd}
+    & Y
+    \arrow[dl, swap, "g"]
+    \arrow[dr, "f"]
+    \\
+    X
+    && X'
+  \end{tikzcd},
+\end{equation}
+we can pull back along $g$ and push forward along $f$, giving a map $\Fun(X, \category{C}) \to \Fun(X', \category{C})$ via the composition
+\begin{equation*}
+  \begin{tikzcd}[column sep=tiny]
+    & \Fun(Y, \category{C})
+    \arrow[dr, "f_{!}"]
+    \\
+    \Fun(X, \category{C})
+    \arrow[rr, dashed, swap, "f_{!} \circ g^{*}"]
+    \arrow[ur, "g^{*}"]
+    && \Fun(X', \category{C})
+  \end{tikzcd}.
+\end{equation*}
+More concretely, we would like to upgrade this construction to a functor $\hat{r}\colon \Span(\S) \to \ICat$, where $\Span(\S)$ is an $\infty$-category with the following rough description.
+\begin{itemize}
+  \item The objects of $\Span(\S)$ are the same as the objects of $\S$, i.e.\ spaces $X$, $Y$, etc.
+
+  \item The morphisms from $X$ to $X'$ are given by spans in $\S$, i.e.\ diagrams of the form given in \hyperref[eq:span_of_spaces]{Equation~\ref*{eq:span_of_spaces}}.
+
+  \item The $2$-simplices witnessing the composition of two morphisms 
+    \begin{equation*}
+      X \overset{h}{\leftarrow} Y \overset{f}{\rightarrow} X' \quad\text{and}\quad X' \overset{g}{\leftarrow} Y \overset{j}{\rightarrow} X''
+    \end{equation*}
+    are diagrams of the form
+    \begin{equation}
+      \label{eq:diagram_witnessing_composition}
+      \begin{tikzcd}
+        && Z
+        \arrow[dl, swap, "g'"]
+        \arrow[dr, "f'"]
+        \\
+        & Y
+        \arrow[dl, swap, "h"]
+        \arrow[dr, "f"]
+        && Y'
+        \arrow[dl, swap, "g"]
+        \arrow[dr, "j"]
+        \\
+        X
+        && X'
+        && X''
+      \end{tikzcd},
+    \end{equation}
+    where the square formed is pullback. The corresponding composition is then given by the span
+    \begin{equation*}
+      \begin{tikzcd}
+        & Z
+        \arrow[dl, swap, "h \circ g'"]
+        \arrow[dr, "j \circ f'"]
+        \\
+        X
+        && X''
+      \end{tikzcd}.
+    \end{equation*}
+\end{itemize}
+The non-trivial part of constructing such a functor $\hat{r}$ will be showing that it respects composition; we need that for any diagram of the form given in \hyperref[eq:diagram_witnessing_composition]{Equation~\ref*{eq:diagram_witnessing_composition}}, both ways of composing morphisms from left to right in the diagram
+\begin{equation*}
+  \begin{tikzcd}[column sep=tiny]
+    && \Fun(Z, \category{C})
+    \arrow[dr, "(f')_{!}"]
+    \\
+    & \Fun(Y, \category{C})
+    \arrow[ur, "(g')^{*}"]
+    \arrow[dr, "f_{!}"]
+    && \Fun(Y', \category{C})
+    \arrow[dr, "j_{!}"]
+    \\
+    \Fun(X, \category{C})
+    \arrow[ur, "h^{*}"]
+    && \Fun(X', \category{C})
+    \arrow[ur, "g^{*}"]
+    && \Fun(X'', \category{C})
+  \end{tikzcd},
+\end{equation*}
+agree up to a specified natural equivalence. This condition can be distilled down to the so-called \emph{Beck-Chevalley condition:}
+\begin{itemize}
+  \item For any pullback square in $\S$
+    \begin{equation*}
+      \begin{tikzcd}
+        Z
+        \arrow[r, "f'"]
+        \arrow[d, swap, "g'"]
+        & Y'
+        \arrow[d, "g"]
+        \\
+        Y
+        \arrow[r, "f"]
+        & X
+      \end{tikzcd},
+    \end{equation*}
+    the comparison map
+    \begin{equation*}
+      f_{!} \circ g^{*} \overset{\eta}{\Rightarrow} f_{!} \circ g^{*} \circ (f')^{*} \circ (f')_{!} \overset{\simeq}{\Rightarrow} f_{!} \circ f^{*} \circ (g')^{*} \circ (f')_{!} \overset{\epsilon}{\Rightarrow} (g')^{*} \circ (f')_{!}
+    \end{equation*}
+    is an equivalence.
+\end{itemize}
+
+One can phrase the Beck-Chevalley condition at the level of fibrations rather than functors into $\ICat$. This is a classical definition, here more or less lifted from \cite{luriehopkins2013ambidexterity}.
 
 \begin{definition}
   \label{def:beck_chevalley_fibration}
-  A bicartesian fibration of quasicategories $p\colon \category{X} \to \category{T}$ such that $\category{X}$ admits pullbacks is a \defn{Beck-Chevalley fibration} if it has the following property.
+  A bicartesian fibration of quasicategories $p\colon \category{X} \to \category{T}$ such that $\category{T}$ admits pullbacks is called a \defn{Beck-Chevalley fibration} if it has the following property.
   \begin{itemize}
-    \item[(BC)]\label{item:beck_chevalley_condition} For any commuting square in
+    \item[(BC)]\label{item:beck_chevalley_condition} For any commuting square in $\category{X}$
       \begin{equation*}
         \begin{tikzcd}
-          x'
+          z
           \arrow[r, "f'"]
           \arrow[d, swap, "g'"]
-          & y'
+          & y
           \arrow[d, "g"]
           \\
-          x
+          y'
           \arrow[r, "f"]
-          & y
+          & x
         \end{tikzcd}
       \end{equation*}
-      lying over a pullback square in $\category{T}$, if the morphism $f$ is $p$-cocartesian, and the morphisms $g$ and $g'$ are $p$-cartesian, then the morphism $f'$ is $p$-cocartesian.
+      lying over a pullback square in $\category{T}$, if the morphism $f$ is $p$-cocartesian and the morphisms $g$ and $g'$ are $p$-cartesian, then the morphism $f'$ is $p$-cocartesian.
   \end{itemize}
 \end{definition}
+
+In fact, it turns out that this condition is sufficient to guarantee that the the push-pull procedure is functorial.
+
+\begin{proposition}
+  Let $p\colon \category{X} \to \category{T}$ be a Beck-Chevalley fibration. Then there is a functor $\Span(\category{T}) \to \ICat$ sending an object $t \in \Span(\category{T})$ to the fiber $\category{X}_{t}$, and a span $t \overset{b}{\leftarrow} s \overset{a}{\rightarrow} t'$ to the composition $a_{!} \circ b^{*}\colon \category{X}_{t} \to \category{X}_{t'}$.
+\end{proposition}
+\begin{proof}
+  It follows immediately from \hyperref[thm:new_barwick]{Theorem~\ref*{thm:new_barwick}} that there is a cocartesian fibration
+  \begin{equation*}
+    \tilde{p}\colon \Span^{\mathrm{cart}}(\category{X}) \to \Span(\category{T}),
+  \end{equation*}
+  where $\Span^{\mathrm{cart}}$ denotes the category of spans whose backwards-facing legs are constrained to be $p$-cartesian; that is, $\category{X}^{\dagger} = \category{X}^{\mathrm{cart}}$. Straightening gives the result that we want.
+\end{proof}
+
 
 The proof of the following proposition will come at the end of this section.
 
@@ -36,21 +173,9 @@ The proof of the following proposition will come at the end of this section.
   The functor $p\colon \LS(\category{C}) \to \S$ is a Beck-Chevalley fibration.
 \end{proposition}
 
-The importance of Beck-Chevalley fibrations is the following.
-
-\begin{proposition}
-  Let $p\colon \category{X} \to \category{T}$ be a Beck-Chevalley fibration. Then there is a cocartesian fibration
-  \begin{equation*}
-    \tilde{p}\colon \Span^{\mathrm{cart}}(\category{X}) \to \Span(\category{T}),
-  \end{equation*}
-  where $\Span^{\mathrm{cart}}$ denotes the category of spans whose backwards-facing legs are constrained to be $p$-cartesian; that is, $\category{X}^{\dagger} = \category{X}^{\mathrm{cart}}$.
-\end{proposition}
-\begin{proof}
-  Follows immediately from \hyperref[thm:new_barwick]{Theorem~\ref*{thm:new_barwick}}.
-\end{proof}
-
 The following is simply a reformulation of the definition of a left Kan extension (\hyperref[def:nat_xfo_exhibiting_left_kan_ext]{Definition~\ref*{def:nat_xfo_exhibiting_left_kan_ext}}) in the special case that we consider left Kan extensions along maps of Kan complexes.
 \begin{lemma}
+  \label{lemma:left_kan_ext_along_kan_complexes}
   Let $f\colon X \to Y$ be a map between Kan complexes, let $F\colon X \to \category{C}$ and $G\colon Y \to \category{C}$ be functors, and let $\eta\colon F \to G \circ y$ be a natural transformation. Then $\eta$ exhibits $G$ as a left Kan extension of $F$ along $f$ if and only if, for all $y \in Y$, the natural transformatin $F \circ \pi \Rightarrow \underline{G(y)}$ defined by the pasting diagram
   \begin{equation*}
     \begin{tikzcd}[row sep=large, column sep=large]
@@ -111,7 +236,7 @@ The following is simply a reformulation of the definition of a left Kan extensio
 
     \item The restriction $\sigma|\Delta^{\{1,2\}}$ is $p$-cocartesian.
 
-    \item The map $\sigma$ lies over a pullback square
+    \item The square $\sigma$ lies over a pullback square
       \begin{equation*}
         p(\sigma) =
         \begin{tikzcd}
@@ -146,9 +271,9 @@ The following is simply a reformulation of the definition of a left Kan extensio
   \end{enumerate}
   The condition that $\sigma|\Delta^{\{0, 1'\}}$ is $p$-cocartesian corresponds to the condition that the simplex $\tau|\Delta^{\{0,1,\overline{0}\}}$ is left Kan.
 
-  Applying \hyperref[lemma:transport_left_kan_simplices]{Lemma~\ref*{lemma:transport_left_kan_simplices}} to the simplex $\tau|\Delta^{\{1,2,\overline{1}, \overline{0}\}}$, we see that $\tau|\Delta^{\{1,2,\overline{0}\}}$ is left Kan. Applying \hyperref[lemma:transport_thin_simplices]{Lemma~\ref*{lemma:transport_thin_simplices}} to the simplex $\tau|\Delta^{\{1',2, \overline{1}', \overline{0}\}}$, we see that $\tau|\Delta^{\{1',\overline{2}, \overline{0}\}}$ is thin.
+  The diagram $\tau$ contains a lot of redundant data, which we would now like to consolidate. We first shuffle some data around our diagram. Applying \hyperref[lemma:transport_left_kan_simplices]{Lemma~\ref*{lemma:transport_left_kan_simplices}} to the simplex $\tau|\Delta^{\{1,2,\overline{1}, \overline{0}\}}$, we see that $\tau|\Delta^{\{1,2,\overline{0}\}}$ is left Kan. Applying \hyperref[lemma:transport_thin_simplices]{Lemma~\ref*{lemma:transport_thin_simplices}} to the simplex $\tau|\Delta^{\{1',2, \overline{1}', \overline{0}\}}$, we see that $\tau|\Delta^{\{1',2, \overline{0}\}}$ is thin.
 
-  We study the restriction
+  We can now study a subdiagram which contains all the information we need. We consider the restriction
   \begin{equation*}
     \tau|\Delta^{\{0,1,2,\overline{0}\}} \amalg_{\Delta\{0,2,\overline{0}\}} \Delta^{\{0,1',2,\overline{0'}\}}.
   \end{equation*}
@@ -170,7 +295,9 @@ The following is simply a reformulation of the definition of a left Kan extensio
       \arrow[from=M, Rightarrow, shorten=2ex, swap, "\eta"]
     \end{tikzcd}.
   \end{equation*}
-  In particular, $\tau|\Delta^{\{0,1,\overline{0}\}}$ is homotopic to the pasting of the square and the triangle above. Thus, it suffices to show that for all $x \in X_{1}$, the pasting diagram
+  Here, the square pictured is $\sigma$, and the triangle is $\tau|\Delta^{\{1',2,\overline{0}\}}$.
+
+  Since the simplices $\tau|\Delta^{\{0,1,\overline{0}\}}$ and $\tau|\Delta^{\{1,2, \overline{0}\}}$ are thin, the pasting of the square and the triangle above is homotopic to the restriction $\tau|\Delta^{\{0,1,\overline{0}\}}$. This is the triangle which we wish to show is left Kan. According to \hyperref[lemma:left_kan_ext_along_kan_complexes]{Lemma~\ref*{lemma:left_kan_ext_along_kan_complexes}} it suffices to show that for all $x \in X_{1}$, the pasting diagram
   \begin{equation*}
     \begin{tikzcd}[row sep=large, column sep=large]
       (X_{0})_{/x}
@@ -194,273 +321,6 @@ The following is simply a reformulation of the definition of a left Kan extensio
     \end{tikzcd}
   \end{equation*}
   exhibits $G(f(x))$ as the colimit of $F \circ f' \circ \pi$. But applying the pasting law for homotopy pullbacks, this follows directly from the assumption that $\eta$ exhibits $G$ as a left Kan extension of $F$ along $f$.
-\end{proof}
-
-\subsection{The triple structures}
-\label{ssc:the_triple_structures_bare}
-
-\subsubsection{The triple structure on local systems}
-\label{sss:the_triple_structure_on_local_systems}
-
-We define a triple structure $\triple{Q}$ on $\LS(\category{C})$ as follows.
-\begin{itemize}
-  \item $\category{Q} = \LS(\category{C})$.
-
-  \item $\category{Q}\downdag = \LS(\category{C})$.
-
-  \item $\category{Q}\updag$ consists only of cartesian morphisms.
-\end{itemize}
-
-This corresponds to spans of the form
-\begin{equation*}
-  \begin{tikzcd}
-    \category{D}'
-    \arrow[d, ""{name=L, right}]
-    & \category{D}
-    \arrow[d, ""{name=ML, left}, ""{name=MR, right}]
-    \arrow[l, swap]
-    \arrow[r]
-    & \category{D}''
-    \arrow[d, ""{name=R, left}]
-    \\
-    \category{C}
-    \arrow[r, equals]
-    &\category{C}
-    & \category{C}
-    \arrow[l, equals]
-    \arrow[Rightarrow, from=MR, to=R, shorten=2ex]
-    \arrow[Rightarrow, from=ML, to=L, phantom, "\circlearrowleft"{description}]
-  \end{tikzcd}
-\end{equation*}
-
-Such a span will correspond to a cocartesian morphism if it is of the form
-\begin{equation*}
-  \begin{tikzcd}
-    \category{D}'
-    \arrow[d, "\mathcal{F}"{left}, ""{name=L, right}]
-    & \category{D}
-    \arrow[d, "g^{*}\mathcal{F}"{description}, ""{name=ML, left}, ""{name=MR, right}]
-    \arrow[l, swap, "g"]
-    \arrow[r, "f"]
-    & \category{D}''
-    \arrow[d, ""{name=R, left}, "f_{!}g^{*}\mathcal{F}"{right}]
-    \\
-    \category{C}
-    \arrow[r, equals]
-    &\category{C}
-    & \category{C}
-    \arrow[l, equals]
-    \arrow[Rightarrow, from=MR, to=R, shorten=2ex, "!"{description}]
-    \arrow[from=ML, to=L, phantom, "\circlearrowleft"{description}]
-  \end{tikzcd}
-\end{equation*}
-
-\begin{proposition}
-  \label{prop:q_triple_is_adequate}
-  The triple $\triple{Q}$ is adequate.
-\end{proposition}
-
-To do this, we need to prove:
-\begin{lemma}
-  \label{lemma:pullbacks_in_ttw}
-  Let $\CC$ be an $\infty$-bicategory such that the underlying quasicategory $\category{C}$ has pullbacks and pushouts. Consider a square
-  \begin{equation*}
-    \sigma =\quad
-    \begin{tikzcd}
-      A
-      \arrow[r]
-      \arrow[d, swap, "a"]
-      & B
-      \arrow[d, "b"]
-      \\
-      B'
-      \arrow[r]
-      & C
-    \end{tikzcd}
-  \end{equation*}
-  in $\Tw(\CC)$ corresponding to a twisted cube
-  \begin{equation*}
-    \begin{tikzcd}
-      a
-      \arrow[rrr]
-      \arrow[dr, ""{name=TL, right}]
-      \arrow[ddd, ""{name=R1, right}]
-      &&& b
-      \arrow[ddd, ""{name=L2, left}, ""{name=R2, right}]
-      \arrow[dr, ""{name=TR, left}]
-      \arrow[from=R1, to=L2, Rightarrow, shorten=7ex]
-      \\
-      & b'
-      \arrow[rrr, crossing over]
-      &&& c
-      \arrow[ddd, ""{name=L4, left}"]
-      \\
-      \\
-      \bar{a}
-      &&& \bar{b}
-      \arrow[lll]
-      \\
-      & \bar{b}'
-      \arrow[from=uuu, crossing over, ""{name=L3, left}, ""{name=R3, right}]
-      \arrow[ul]
-      &&& \bar{c}
-      \arrow[lll]
-      \arrow[ul]
-      \arrow[from=R1, to=L3, Rightarrow, shorten=3ex, "\alpha"]
-      \arrow[from=R3, to=L4, Rightarrow, crossing over, shorten=7ex]
-      \arrow[from=R2, to=L4, Rightarrow, shorten=3ex, "\beta"]
-    \end{tikzcd}
-  \end{equation*}
-  in $\CC$.\footnote{Note that the top and bottom faces of any such diagram in $\Tw(\CC)$ belong to $\category{C}$, and hence must weakly commute by definition.} Suppose the right face is thin, the top face is a pullback, and the bottom face is a pushout. Then the square $\sigma$ is pullback if and only if the left face is thin.
-\end{lemma}
-\begin{proof}
-  This corresponds to a square $\sigma$ in $\Tw(\CC)$ lying over a pullback square in $\category{C} \times \category{C}\op$, such that $b$ is $p$-cartesian. It is then classically known that $\sigma$ is pullback if and only if $a$ is $p$-cartesian.
-\end{proof}
-
-\begin{proof}[Proof of Proposition~\ref*{prop:q_triple_is_adequate}]
-  We need to show that we can form pullbacks in $\Tw(\CC)$ of cospans one of whose legs is a cartesian morphism. Mapping the cospan to $\category{C} \times \category{C}\op$ using $r$, We can form the pullback, then fill to a relative pullback by finding a cartesian lift $a$, then filling an inner and an outer horn. This diagram is pullback by \hyperref[lemma:pullbacks_in_ttw]{Lemma~\ref*{lemma:pullbacks_in_ttw}}
-
-  We also need to show that any such pullback is of this form. This also follows from \hyperref[lemma:pullbacks_in_ttw]{Lemma~\ref*{lemma:pullbacks_in_ttw}}.
-\end{proof}
-
-\subsection{Building categories of spans}
-\label{ssc:building_categories_of_spans_bare}
-
-\begin{lemma}
-  \label{lemma:homotopy_pullbacks_and_overcategories}
-  Let
-  \begin{equation*}
-    \begin{tikzcd}
-      X \times_{Y}^{h} Y'
-      \arrow[r]
-      \arrow[d]
-      & Y'
-      \arrow[d]
-      \\
-      X
-      \arrow[r]
-      & Y
-    \end{tikzcd}
-  \end{equation*}
-  be a homotopy pullback diagram of Kan complexes, and let $y' \in Y'$. Then
-  \begin{equation}
-    \label{eq:overcategory_commutes_with_homotopy_pullback}
-    (X \times_{Y}^{h}Y')_{/y'} \simeq X \times_{Y}^{h} (Y'_{/y'})
-  \end{equation}
-\end{lemma}
-\begin{proof}
-  We can model the homotopy pullback $X \times^{h}_{Y}Y'$ as the strict pullback
-  \begin{equation*}
-    Y^{\Delta^{1}} \times_{Y \times Y} (X \times Y').
-  \end{equation*}
-  The left-hand side of \hyperref[eq:overcategory_commutes_with_homotopy_pullback]{Equation~\ref*{eq:overcategory_commutes_with_homotopy_pullback}} is then given by the pullback
-  \begin{equation*}
-    \left(Y^{\Delta^{1}} \times_{Y \times Y}(X \times Y')\right) \times_{Y'} Y'_{/y'}.
-  \end{equation*}
-  But this is isomorphic to
-  \begin{equation*}
-    Y^{\Delta^{1}} \times_{Y \times Y} (X \times Y^{'}_{/y'}),
-  \end{equation*}
-  which is a model for the right-hand side.
-\end{proof}
-
-\begin{proposition}
-  The map $p\colon \triple{P} \to \triple{Q}$ of triples whose underlying map is $p\colon \LS(\category{C}) \to \S$ is adequate, i.e.\ satisfies the conditions of our modified version of Barwick's theorem.
-\end{proposition}
-\begin{proof}
-  We need to show that for any square
-  \begin{equation*}
-    \sigma =\quad
-    \begin{tikzcd}
-      x'
-      \arrow[r, "f'"]
-      \arrow[d, swap, "g'"]
-      & y'
-      \arrow[d, "g"]
-      \\
-      x
-      \arrow[r, "f"]
-      & y
-    \end{tikzcd}
-  \end{equation*}
-  in $\LS(\category{C})$ lying over a pullback square
-  \begin{equation*}
-    \begin{tikzcd}
-      X'
-      \arrow[r, "f'"]
-      \arrow[d, swap, "g'"]
-      & Y'
-      \arrow[d, "g"]
-      \\
-      X
-      \arrow[r, "f"]
-      & Y
-    \end{tikzcd}
-  \end{equation*}
-  in $\S$ (corresponding to a \emph{homotopy} pullback of Kan complexes), such that $g$ and $g'$ are $p$-cartesian and $f$ is $p$-cocartesian, $f'$ is $p$-cocartesian. The square $\sigma$ corresponds to a twisted cube
-  \begin{equation*}
-    \begin{tikzcd}
-      X'
-      \arrow[rrr, "f'"]
-      \arrow[dr, ""{name=TL, below}, "g'"{swap}]
-      \arrow[ddd, ""{name=R1, below}]
-      &&& Y'
-      \arrow[ddd, ""{name=L2, below}, ""{name=R2, above}]
-      \arrow[dr, ""{name=TR, below}, "g"]
-      \arrow[from=R1, to=L2, Rightarrow, shorten=6ex]
-      \\
-      & X
-      \arrow[rrr, crossing over, "f"]
-      &&& Y
-      \arrow[ddd, ""{name=L4, below}"]
-      \\
-      \\
-      \category{C}
-      &&& \category{C}
-      \arrow[lll, equals]
-      \\
-      & \category{C}
-      \arrow[from=uuu, crossing over, ""{name=L3, below}, ""{name=R3, above}]
-      \arrow[ul, equals]
-      &&& \category{C}
-      \arrow[lll, equals]
-      \arrow[ul, equals]
-      \arrow[from=R1, to=L3, phantom, "\circlearrowleft"{description}]
-      \arrow[from=R3, to=L4, Rightarrow, crossing over, shorten=6ex]
-      \arrow[from=R2, to=L4, phantom, "\circlearrowleft"{description}]
-    \end{tikzcd}
-  \end{equation*}
-  in which the left and right faces are thin, the top face is a pullback, the bottom face is a pushout, and the front face corresponds to a left Kan extension. We need to show that the back face corresponds to a left Kan extension. For ease of notation, we flatten this out and add some more labels.
-  \begin{equation*}
-    \begin{tikzcd}
-      X'
-      \arrow[rr, "f'"]
-      \arrow[dd, swap, "g'"]
-      \arrow[dr, "g'^{*}\mathcal{F}"]
-      && Y'
-      \arrow[dd, "g"]
-      \arrow[dl, "\mathcal{G}"]
-      \\
-      & \category{C}
-      \\
-      X
-      \arrow[ur, "\mathcal{F}"]
-      \arrow[rr, swap, "f"]
-      && Y
-      \arrow[ul, "f_{!}\mathcal{F}"]
-    \end{tikzcd}
-  \end{equation*}
-  We need to show that $\mathcal{G}$ is a left Kan extension of $g'^{*}\mathcal{F}$ along $f'$, i.e.\ that for all $y' \in Y'$,
-  \begin{align*}
-    \mathcal{G}(y') &\simeq \colim\left[ X'_{/y'} \to X \to \category{C} \right] \\
-    &\simeq \colim\left[ X \times_{Y} (Y'_{/y'}) \to X \to \category{C} \right],
-  \end{align*}
-  where here we mean by $X' \simeq X \times_{Y} Y'$ the homotopy pullback, and we have used \hyperref[lemma:homotopy_pullbacks_and_overcategories]{Lemma~\ref*{lemma:homotopy_pullbacks_and_overcategories}}. We know that $\mathcal{G}$ is the pullback along $g$ of $f_{!}\mathcal{F}$, i.e.\ that
-  \begin{align*}
-    \mathcal{G}(y') &\simeq \colim\left[ X_{/g(y')} \to X \to \category{C} \right] \\
-    &\simeq \colim \left[ X \times_{Y} (Y_{/g(y')}) \to X \to \category{C} \right].
-  \end{align*}
-  The map $X \times_{Y} (Y'_{/y'}) \to X$ factors through $X \times_{Y} (Y_{/g(y')})$ thanks to the map $s\colon Y'_{/y'} \to Y_{/g(y')}$. The map $s$ is a weak equivalence between contractible Kan complexes (because both $Y'_{/y'}$ and $Y_{/g(y')}$ are Kan complexes with terminal objects). Thus, the map $X \times_{Y}(Y'_{/y'}) \to X \times_{Y}(Y_{/g(y')})$ is also a weak homotopy equivalence between Kan complexes, thus cofinal.
 \end{proof}
 
 
