@@ -1,0 +1,548 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\section{Miscellaneous stuff to be deleted or absorbed}
+\label{sec:miscellaneous_stuff_to_be_deleted_or_absorbed}
+
+\subsection{Lax monoidal Beck-Chevalley fibrations}
+\label{ssc:lax_monoidal_beck_chevalley_fibrations}
+
+Consider a Beck-Chevalley fibration $r\colon \category{X} \to \category{T}$ such that $\category{T}$ has a terminal object, and hence has finite products. Suppose that $\category{X}$ carries a symmetric monoidal structure $(\otimes, I)$ with the following property: suppose $r(x) = t$ and $r(y) = t'$. Then $r(x \otimes y) = t \times t'$. In other words, suppose the tensor product restricts, for each pair $(t, t') \in \category{T} \times \category{T}$, to a functor $\mu_{tt'}\colon \category{X}_{t} \times \category{X}_{t'} \to \category{X}_{t \times t'}$.
+
+The 
+
+We can express symmetric monoidal categories as cartesian rather than cocartesian fibrations.
+
+\begin{note}
+  For this to work out, I think we probably need to modify the second condition to be an adequate triple so that we only need to consider pullbacks of the type given in the first condition.
+\end{note}
+
+\begin{lemma}
+  The category $\Finp$ admits finite colimits.
+\end{lemma}
+\begin{proof}
+  A diagram $K^{\triangleright} \to \Finp$ is a colimit diagram if and only if the corresponding diagram $\{\ast\} \star (K^{\triangleright}) \to \Fin$ is a colimit diagram.
+\end{proof}
+
+\begin{definition}
+  A \defn{CSMC} (contravariantly-presented symmetric monoidal $\infty$-category) is a cocartesian fibration $p\colon \category{O}_{\otimes} \to \Finp\op$ such that the pullback maps $(\rho_{i})^{*}\colon (\category{O}_{ \otimes})_{\langle n \rangle} \to (\category{O}_{ \otimes})_{\langle 1 \rangle}$ are the canonical projections exhibiting $(\category{O}_{ \otimes})_{\langle n \rangle}$ as an $n$-fold product.
+\end{definition}
+
+\begin{definition}
+  Let 
+  \begin{equation*}
+    \begin{tikzcd}
+      \category{C}_{\otimes} 
+      \arrow[rr, "r"]
+      \arrow[dr, swap, "q"]
+      && \category{O}_{\otimes} 
+      \arrow[dl, "p"]
+      \\
+      & \Finp\op
+    \end{tikzcd}
+  \end{equation*}
+  be a map between CSMC. The map $r$ is a \defn{monoidal functor} if it sends $q$-cartesian morphisms to $p$-cartesian morphisms.
+\end{definition}
+
+\begin{lemma}
+  If
+  \begin{equation*}
+    \begin{tikzcd}
+      \category{C}_{\otimes} 
+      \arrow[rr, "r"]
+      \arrow[dr, swap, "q"]
+      && \category{O}_{\otimes} 
+      \arrow[dl, "p"]
+      \\
+      & \Finp\op
+    \end{tikzcd}
+  \end{equation*}
+  is a map between CSMC such that $r$ is a cartesian fibration, then $r$ is monoidal.
+\end{lemma}
+
+\begin{definition}
+  A \defn{CSMC} is \defn{cartesian} if for all objects $X$ and $Y$, the canonical maps $X \otimes I \leftarrow X \otimes Y \to I \otimes Y$ exhibit $X \otimes Y$ as the product of $X$ and $Y$.
+\end{definition}
+
+\begin{proposition}
+  Suppose $\category{T}$ is an $\infty$-category with pullbacks and a terminal object. Then $\category{T}$ is adequate, and there exists a symmetric monoidal category $\Span(\category{T})^{\times} \to \Finp$.
+\end{proposition}
+
+\begin{definition}
+  A \defn{lax monoidal Beck-Chevalley fibration} is a commutative diagram
+  \begin{equation*}
+    \begin{tikzcd}
+      \category{X}_{\otimes}
+      \arrow[rr, "r"]
+      \arrow[dr, swap, "q"]
+      && \category{T}_{\times}
+      \arrow[dl, "p"]
+      \\
+      & \Finp\op
+    \end{tikzcd}
+  \end{equation*}
+  with the following characteristics.
+  \begin{itemize}
+    \item The map $p$ is a cartesian CSMC.
+
+    \item The category $\category{T}$ underlying $\category{T}_{\times}$ admits pullbacks.
+
+    \item The map $q$ is a CSMC.
+
+    \item The map $r$ is a cartesian fibration (hence monoidal).
+
+    \item The functor $r|\langle 1 \rangle$ is a cocartesian fibration, and a morphism in $r|\langle n \rangle$ is $r$-cocartesian if and only if each component is $r$-cartesian.
+
+    \item The functor $r$ obeys the following interchange law: for any diagram
+      \begin{equation*}
+        \begin{tikzcd}
+          \vec{z}
+          \arrow[r, "f'"]
+          \arrow[d, swap, "g'"]
+          & \vec{y}
+          \arrow[d, "g"]
+          \\
+          \vec{y}'
+          \arrow[r, "f"]
+          & \vec{x}
+        \end{tikzcd}
+      \end{equation*}
+      in $\category{X}_{\otimes}$ whose image in $\category{T}_{\otimes}$ is pullback, and which lies over a square
+      \begin{equation*}
+        \begin{tikzcd}
+          \langle n \rangle
+          & \langle n \rangle
+          \arrow[l, equals]
+          \\
+          \langle m \rangle
+          \arrow[u, "\phi"]
+          & \langle m \rangle
+          \arrow[l, equals]
+          \arrow[u, swap, "\psi"]
+        \end{tikzcd},
+      \end{equation*}
+      in $\Finp\op$, if $g$ and $g'$ are $r$-cartesian and $f$ is $r$-cocartesian, then $f'$ is $r$-cocartesian.
+  \end{itemize}
+\end{definition}
+
+\begin{proposition}
+  For any lax monoidal Beck-Chevalley fibration as in DEF, there is a diagram
+  \begin{equation*}
+    \begin{tikzcd}
+      \Span'(\category{X})^{\otimes}
+      \arrow[rr, "\rho"]
+      \arrow[dr, swap, "\varpi"]
+      && \Span(\category{T})^{\otimes}
+      \arrow[dl, "\pi"]
+      \\
+      & \Finp
+    \end{tikzcd}
+  \end{equation*}
+  where $\pi$ and $\varpi$ are symmetric monoidal categories and $\rho$ exhibits $\Span'(\category{X})^{\otimes}$ as a $\Span(\category{T})^{\otimes}$-monoidal category. Straightening, one finds a lax monoidal functor
+  \begin{equation*}
+    \hat{r}\colon (\Span(\category{T}), \widetilde{\times}) \to (\ICat, \times)
+  \end{equation*}
+  with the following description up to equivalence.
+  \begin{itemize}
+    \item On objects, the functor $\hat{r}$ sends $t \in \Span(\category{T})$ to the fiber $\category{X}_{t} \in \ICat$
+    \item On morphisms, $\hat{r}$ sends a span $t \overset{g}{\leftarrow} s \overset{f}{\to} t'$ to the composition $g^{*} \circ f_{!}\colon \category{X}_{t} \to \category{X}_{t'}$.
+  \end{itemize}
+\end{proposition}
+\begin{proof}
+  We will consider the following triples.
+
+  \begin{itemize}
+    \item We define a triple structure $\triple{F}$ on $\Finp\op$, where
+      \begin{itemize}
+        \item $\category{F} = \Finp\op$
+
+        \item $\category{F}\downdag = (\Finp\op)^{\simeq}$
+
+        \item $\category{F}\updag = \Finp\op$
+      \end{itemize}
+
+      This is obviously adequate. We note that $\Finp\op$ has pullbacks, and finite limits in general, which is more than we need in this case, but will be useful later.
+
+    \item We define a triple $\triple{T}$ as follows.
+      \begin{itemize}
+        \item $\category{T} = \category{T}_{\times}$
+
+        \item $\category{T}\downdag = \category{T}_{\times} \times_{\Finp\op}(\Finp\op)^{\simeq}$
+
+        \item $\category{T}\updag = \category{T}_{\times}$
+      \end{itemize}
+
+      To see that this is adequate, we first note that $p$ admits relative pullbacks; each fiber admits pullbacks by virtue our assumption that $\category{T}$ admits pullbacks, and the identifications $( \category{T}_{\times} )_{\langle n \rangle} \simeq \category{T}^{n}$. The functoriality coming from $p$ implements products, and therefore commute with pullbacks. Thus, $\category{T}_{\times}$ admits pullbacks, and $p$ preserves pullbacks. This immediately implies that $\triple{T}$ is adequate:
+      \begin{enumerate}
+        \item Pushouts of this form are simply squares with horizontal morphisms given by equivalences.
+
+        \item Any pullback square lies over a pullback square in $\Finp\op$, so this reduces to the lemma about cartesian morphisms.
+      \end{enumerate}
+
+    \item We define a triple structure $\triple{X}$ as follows.
+      \begin{itemize}
+        \item $\category{X} = \category{X}_{\otimes}$.
+
+        \item $\category{X}\downdag = (\category{X}_{\otimes})_{\Finp\op}(\Finp\op)^{\simeq}$.
+
+        \item $\category{X}\updag$ consists only of $r$-cartesian morphisms.
+      \end{itemize}
+
+      One sees that this is adequate, since pullbacks of the necessary form exist by the usual procedure:
+      \begin{itemize}
+        \item Map the diagram down to $\Finp\op$, take the pullback there.
+
+        \item Take a relative pullback in $\category{T}_{\times}$.
+
+        \item Take an $r$-cartesian lift to produce an $r$-relative pullback in $\category{X}_{\times}$. This lies over a pullback in $\category{T}_{\times}$, hence is a pullback.
+      \end{itemize}
+  \end{itemize}
+
+  Thus, we have maps of adequate triples
+  \begin{equation*}
+    \begin{tikzcd}
+      \triple{X}
+      \arrow[rr]
+      \arrow[dr]
+      && \triple{T}
+      \arrow[dl]
+      \\
+      & \triple{F}
+    \end{tikzcd}
+  \end{equation*}
+  giving us maps
+  \begin{equation*}
+    \begin{tikzcd}
+      \Span\triple{X}
+      \arrow[rr]
+      \arrow[dr]
+      && \Span\triple{T}
+      \arrow[dl]
+      \\
+      & \Span\triple{F}
+    \end{tikzcd}.
+  \end{equation*}
+  Pulling back along the map $\Finp \to \Span\triple{F}$,
+\end{proof}
+
+\section{Partial adjunctions}
+\label{sec:partial_adjunctions}
+
+\section{What does Barwick mean?}
+\label{sec:what_does_barwick_mean_}
+
+A few bits of terminology we'll refer to again and again:
+\begin{itemize}
+  \item An $\infty$-category is \defn{disjunctive} if it admits all limits and finite coproducts, and if finite coproducts are:
+    \begin{itemize}
+      \item \textbf{Disjoint:} Pushout diagrams
+        \begin{equation*}
+          \begin{tikzcd}
+            \emptyset
+            \arrow[r]
+            \arrow[d]
+            & A
+            \arrow[d]
+            \\
+            B
+            \arrow[r]
+            & A \amalg B
+          \end{tikzcd}
+        \end{equation*}
+        where $\emptyset$ is an initial object are also pullback.
+
+      \item \textbf{Universal:} We have natural equivalences
+        \begin{equation*}
+          (X \amalg Y) \times_{B} C \cong \left( X \times_{B} C \right) \amalg \left( Y \times_{B} C \right)
+        \end{equation*}
+    \end{itemize}
+    This looks like topos stuff. It is certainly satisfied for $\S$.
+\end{itemize}
+
+In section 1, Barwick defines some monadic generalization of CSMCs. In the first part of section 2, Barwick shows in some generality that for any $\infty$-category $\category{T}$ with some cartesian-like product, a monoidal structure is induced on $\Span(\category{T})$.
+
+\subsection{The triple structures}
+\label{ssc:the_triple_structures_bare}
+
+\subsubsection{The triple structure on local systems}
+\label{sss:the_triple_structure_on_local_systems}
+
+
+We define a triple structure $\triple{Q}$ on $\LS(\category{C})$ as follows.
+\begin{itemize}
+  \item $\category{Q} = \LS(\category{C})$.
+
+  \item $\category{Q}\downdag = \LS(\category{C})$.
+
+  \item $\category{Q}\updag$ consists only of cartesian morphisms.
+\end{itemize}
+
+This corresponds to spans of the form
+\begin{equation*}
+  \begin{tikzcd}
+    \category{D}'
+    \arrow[d, ""{name=L, right}]
+    & \category{D}
+    \arrow[d, ""{name=ML, left}, ""{name=MR, right}]
+    \arrow[l, swap]
+    \arrow[r]
+    & \category{D}''
+    \arrow[d, ""{name=R, left}]
+    \\
+    \category{C}
+    \arrow[r, equals]
+    &\category{C}
+    & \category{C}
+    \arrow[l, equals]
+    \arrow[Rightarrow, from=MR, to=R, shorten=2ex]
+    \arrow[Rightarrow, from=ML, to=L, phantom, "\circlearrowleft"{description}]
+  \end{tikzcd}
+\end{equation*}
+
+Such a span will correspond to a cocartesian morphism if it is of the form
+\begin{equation*}
+  \begin{tikzcd}
+    \category{D}'
+    \arrow[d, "\mathcal{F}"{left}, ""{name=L, right}]
+    & \category{D}
+    \arrow[d, "g^{*}\mathcal{F}"{description}, ""{name=ML, left}, ""{name=MR, right}]
+    \arrow[l, swap, "g"]
+    \arrow[r, "f"]
+    & \category{D}''
+    \arrow[d, ""{name=R, left}, "f_{!}g^{*}\mathcal{F}"{right}]
+    \\
+    \category{C}
+    \arrow[r, equals]
+    &\category{C}
+    & \category{C}
+    \arrow[l, equals]
+    \arrow[Rightarrow, from=MR, to=R, shorten=2ex, "!"{description}]
+    \arrow[from=ML, to=L, phantom, "\circlearrowleft"{description}]
+  \end{tikzcd}
+\end{equation*}
+
+\begin{proposition}
+  \label{prop:q_triple_is_adequate}
+  The triple $\triple{Q}$ is adequate.
+\end{proposition}
+
+To do this, we need to prove:
+\begin{lemma}
+  \label{lemma:pullbacks_in_ttw}
+  Let $\CC$ be an $\infty$-bicategory such that the underlying quasicategory $\category{C}$ has pullbacks and pushouts. Consider a square
+  \begin{equation*}
+    \sigma =\quad
+    \begin{tikzcd}
+      A
+      \arrow[r]
+      \arrow[d, swap, "a"]
+      & B
+      \arrow[d, "b"]
+      \\
+      B'
+      \arrow[r]
+      & C
+    \end{tikzcd}
+  \end{equation*}
+  in $\Tw(\CC)$ corresponding to a twisted cube
+  \begin{equation*}
+    \begin{tikzcd}
+      a
+      \arrow[rrr]
+      \arrow[dr, ""{name=TL, right}]
+      \arrow[ddd, ""{name=R1, right}]
+      &&& b
+      \arrow[ddd, ""{name=L2, left}, ""{name=R2, right}]
+      \arrow[dr, ""{name=TR, left}]
+      \arrow[from=R1, to=L2, Rightarrow, shorten=7ex]
+      \\
+      & b'
+      \arrow[rrr, crossing over]
+      &&& c
+      \arrow[ddd, ""{name=L4, left}"]
+      \\
+      \\
+      \bar{a}
+      &&& \bar{b}
+      \arrow[lll]
+      \\
+      & \bar{b}'
+      \arrow[from=uuu, crossing over, ""{name=L3, left}, ""{name=R3, right}]
+      \arrow[ul]
+      &&& \bar{c}
+      \arrow[lll]
+      \arrow[ul]
+      \arrow[from=R1, to=L3, Rightarrow, shorten=3ex, "\alpha"]
+      \arrow[from=R3, to=L4, Rightarrow, crossing over, shorten=7ex]
+      \arrow[from=R2, to=L4, Rightarrow, shorten=3ex, "\beta"]
+    \end{tikzcd}
+  \end{equation*}
+  in $\CC$.\footnote{Note that the top and bottom faces of any such diagram in $\Tw(\CC)$ belong to $\category{C}$, and hence must weakly commute by definition.} Suppose the right face is thin, the top face is a pullback, and the bottom face is a pushout. Then the square $\sigma$ is pullback if and only if the left face is thin.
+\end{lemma}
+\begin{proof}
+  This corresponds to a square $\sigma$ in $\Tw(\CC)$ lying over a pullback square in $\category{C} \times \category{C}\op$, such that $b$ is $p$-cartesian. It is then classically known that $\sigma$ is pullback if and only if $a$ is $p$-cartesian.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref*{prop:q_triple_is_adequate}]
+  We need to show that we can form pullbacks in $\Tw(\CC)$ of cospans one of whose legs is a cartesian morphism. Mapping the cospan to $\category{C} \times \category{C}\op$ using $r$, We can form the pullback, then fill to a relative pullback by finding a cartesian lift $a$, then filling an inner and an outer horn. This diagram is pullback by \hyperref[lemma:pullbacks_in_ttw]{Lemma~\ref*{lemma:pullbacks_in_ttw}}
+
+  We also need to show that any such pullback is of this form. This also follows from \hyperref[lemma:pullbacks_in_ttw]{Lemma~\ref*{lemma:pullbacks_in_ttw}}.
+\end{proof}
+
+\subsection{Building categories of spans}
+\label{ssc:building_categories_of_spans_bare}
+
+\begin{lemma}
+  \label{lemma:homotopy_pullbacks_and_overcategories}
+  Let
+  \begin{equation*}
+    \begin{tikzcd}
+      X \times_{Y}^{h} Y'
+      \arrow[r]
+      \arrow[d]
+      & Y'
+      \arrow[d]
+      \\
+      X
+      \arrow[r]
+      & Y
+    \end{tikzcd}
+  \end{equation*}
+  be a homotopy pullback diagram of Kan complexes, and let $y' \in Y'$. Then
+  \begin{equation}
+    \label{eq:overcategory_commutes_with_homotopy_pullback}
+    (X \times_{Y}^{h}Y')_{/y'} \simeq X \times_{Y}^{h} (Y'_{/y'})
+  \end{equation}
+\end{lemma}
+\begin{proof}
+  We can model the homotopy pullback $X \times^{h}_{Y}Y'$ as the strict pullback
+  \begin{equation*}
+    Y^{\Delta^{1}} \times_{Y \times Y} (X \times Y').
+  \end{equation*}
+  The left-hand side of \hyperref[eq:overcategory_commutes_with_homotopy_pullback]{Equation~\ref*{eq:overcategory_commutes_with_homotopy_pullback}} is then given by the pullback
+  \begin{equation*}
+    \left(Y^{\Delta^{1}} \times_{Y \times Y}(X \times Y')\right) \times_{Y'} Y'_{/y'}.
+  \end{equation*}
+  But this is isomorphic to
+  \begin{equation*}
+    Y^{\Delta^{1}} \times_{Y \times Y} (X \times Y^{'}_{/y'}),
+  \end{equation*}
+  which is a model for the right-hand side.
+\end{proof}
+
+\begin{proposition}
+  The map $p\colon \triple{P} \to \triple{Q}$ of triples whose underlying map is $p\colon \LS(\category{C}) \to \S$ is adequate, i.e.\ satisfies the conditions of our modified version of Barwick's theorem.
+\end{proposition}
+\begin{proof}
+  We need to show that for any square
+  \begin{equation*}
+    \sigma =\quad
+    \begin{tikzcd}
+      x'
+      \arrow[r, "f'"]
+      \arrow[d, swap, "g'"]
+      & y'
+      \arrow[d, "g"]
+      \\
+      x
+      \arrow[r, "f"]
+      & y
+    \end{tikzcd}
+  \end{equation*}
+  in $\LS(\category{C})$ lying over a pullback square
+  \begin{equation*}
+    \begin{tikzcd}
+      X'
+      \arrow[r, "f'"]
+      \arrow[d, swap, "g'"]
+      & Y'
+      \arrow[d, "g"]
+      \\
+      X
+      \arrow[r, "f"]
+      & Y
+    \end{tikzcd}
+  \end{equation*}
+  in $\S$ (corresponding to a \emph{homotopy} pullback of Kan complexes), such that $g$ and $g'$ are $p$-cartesian and $f$ is $p$-cocartesian, $f'$ is $p$-cocartesian. The square $\sigma$ corresponds to a twisted cube
+  \begin{equation*}
+    \begin{tikzcd}
+      X'
+      \arrow[rrr, "f'"]
+      \arrow[dr, ""{name=TL, below}, "g'"{swap}]
+      \arrow[ddd, ""{name=R1, below}]
+      &&& Y'
+      \arrow[ddd, ""{name=L2, below}, ""{name=R2, above}]
+      \arrow[dr, ""{name=TR, below}, "g"]
+      \arrow[from=R1, to=L2, Rightarrow, shorten=6ex]
+      \\
+      & X
+      \arrow[rrr, crossing over, "f"]
+      &&& Y
+      \arrow[ddd, ""{name=L4, below}"]
+      \\
+      \\
+      \category{C}
+      &&& \category{C}
+      \arrow[lll, equals]
+      \\
+      & \category{C}
+      \arrow[from=uuu, crossing over, ""{name=L3, below}, ""{name=R3, above}]
+      \arrow[ul, equals]
+      &&& \category{C}
+      \arrow[lll, equals]
+      \arrow[ul, equals]
+      \arrow[from=R1, to=L3, phantom, "\circlearrowleft"{description}]
+      \arrow[from=R3, to=L4, Rightarrow, crossing over, shorten=6ex]
+      \arrow[from=R2, to=L4, phantom, "\circlearrowleft"{description}]
+    \end{tikzcd}
+  \end{equation*}
+  in which the left and right faces are thin, the top face is a pullback, the bottom face is a pushout, and the front face corresponds to a left Kan extension. We need to show that the back face corresponds to a left Kan extension. For ease of notation, we flatten this out and add some more labels.
+  \begin{equation*}
+    \begin{tikzcd}
+      X'
+      \arrow[rr, "f'"]
+      \arrow[dd, swap, "g'"]
+      \arrow[dr, "g'^{*}\mathcal{F}"]
+      && Y'
+      \arrow[dd, "g"]
+      \arrow[dl, "\mathcal{G}"]
+      \\
+      & \category{C}
+      \\
+      X
+      \arrow[ur, "\mathcal{F}"]
+      \arrow[rr, swap, "f"]
+      && Y
+      \arrow[ul, "f_{!}\mathcal{F}"]
+    \end{tikzcd}
+  \end{equation*}
+  We need to show that $\mathcal{G}$ is a left Kan extension of $g'^{*}\mathcal{F}$ along $f'$, i.e.\ that for all $y' \in Y'$,
+  \begin{align*}
+    \mathcal{G}(y') &\simeq \colim\left[ X'_{/y'} \to X \to \category{C} \right] \\
+    &\simeq \colim\left[ X \times_{Y} (Y'_{/y'}) \to X \to \category{C} \right],
+  \end{align*}
+  where here we mean by $X' \simeq X \times_{Y} Y'$ the homotopy pullback, and we have used \hyperref[lemma:homotopy_pullbacks_and_overcategories]{Lemma~\ref*{lemma:homotopy_pullbacks_and_overcategories}}. We know that $\mathcal{G}$ is the pullback along $g$ of $f_{!}\mathcal{F}$, i.e.\ that
+  \begin{align*}
+    \mathcal{G}(y') &\simeq \colim\left[ X_{/g(y')} \to X \to \category{C} \right] \\
+    &\simeq \colim \left[ X \times_{Y} (Y_{/g(y')}) \to X \to \category{C} \right].
+  \end{align*}
+  The map $X \times_{Y} (Y'_{/y'}) \to X$ factors through $X \times_{Y} (Y_{/g(y')})$ thanks to the map $s\colon Y'_{/y'} \to Y_{/g(y')}$. The map $s$ is a weak equivalence between contractible Kan complexes (because both $Y'_{/y'}$ and $Y_{/g(y')}$ are Kan complexes with terminal objects). Thus, the map $X \times_{Y}(Y'_{/y'}) \to X \times_{Y}(Y_{/g(y')})$ is also a weak homotopy equivalence between Kan complexes, thus cofinal.
+\end{proof}
+
+\section{Monoidal categories as cartesian fibrations}
+\label{sec:monoidal_categories_as_cartesian_fibrations}
+
+\begin{definition}[contravariantly presented monoidal category]
+  \label{def:contravariantly_presented_monoidal_category}
+  A \defn{contravariantly presented monoidal category} is a cartesian fibration
+  \begin{equation*}
+    \category{C}_{\otimes} \to \Finp\op
+  \end{equation*}
+  such that the pullback maps lying over the inert maps $\langle 1 \rangle \leftarrow \langle n \rangle$ exhibit $(\category{C}_{\otimes})_{\langle n \rangle}$ as the $n$-fold product of $(\category{C}_{\otimes})_{\langle 1 \rangle}$.
+\end{definition}
+
+\begin{example}
+  The $\infty$-category $\ICat$ has a cartesian product, giving us a monoid
+\end{example}
+
+\end{document}
