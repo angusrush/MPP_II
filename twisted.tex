@@ -7,9 +7,13 @@
 
 For any $\infty$-category $\category{C}$, a $\category{C}$-local system on some space $X$ is simply a functor $X \to \category{C}$. Thus, the $\infty$-category of $\category{C}$-local systems on $X$ should simply be $\LS(\category{C})_{X}:=\Fun(X, \category{C})$. Our goal is to consider local systems on all spaces $X$ simultaneously, defining an $\infty$-category of $\category{C}$-local systems.
 
-We follow the general strategy laid out in \cite{luriehopkins2013ambidexterity}. We will consider a cartesian fibration $p'\colon\int\Fun(-, -) \to \ICat \times \ICat\op$ which classifies the functor
+We follow the general strategy laid out in \cite{luriehopkins2013ambidexterity}. We will consider a cartesian fibration 
 \begin{equation*}
-  \ICat \times \ICat\op \to \ICat;\qquad (\category{C}, \category{D}) \mapsto \Fun(\category{C}, \category{D}).
+  p'\colon\smallint\Fun(-, -) \to \ICat \times \ICat\op
+\end{equation*}
+which classifies the functor
+\begin{equation*}
+  \ICat\op \times \ICat \to \ICat;\qquad (\category{C}, \category{D}) \mapsto \Fun(\category{C}, \category{D}).
 \end{equation*}
 The strict pullback $p$ of $p'$ in the diagram
 \begin{equation*}
@@ -509,7 +513,7 @@ It is easy to check the following.
       &\SSetms
     \end{tikzcd},
   \end{equation*}
-  where $(\Delta \downarrow \Lambda^{n}_{0})^{\mathrm{nd}}$ is the category of simplices of $\Lambda^{n}_{0}$. Denote by $P_{n}$ the poset of proper subsets of $[n]$ such that $0 \in S$. There is an obvious inclusion $P_{n} \hookrightarrow (\Delta \downarrow \Lambda^{n}_{0})^{\mathrm{nd}}$, and one readily checks using Quillen's Theorem A that this inclusion is cofinal. Further note that the functor $P_{n} \to (\Delta \downarrow \Lambda^{n}_{0}) \to \Delta$ factors through $\mathring{\Delta}$ via a map $a\colon P_{n} \to \mathring{\Delta}$. Thus, we can equally express $J(\Lambda^{n}_{0})$ as the colimit of the functor $\tilde{J} \circ I \circ a$. Precisely the same reasoning tells us that we can express $R(\Lambda^{n}_{0})$ as the colimit of $\tilde{R} \circ I \circ a$. The result now follows from \hyperref[lemma:restricted_natural_transformation]{Lemma~\ref*{lemma:restricted_natural_transformation}}, and the fact that each strict colimit is the model for the homotopy colimit.
+  where $(\Delta \downarrow \Lambda^{n}_{0})^{\mathrm{nd}}$ is the category of nondegenerate simplices of $\Lambda^{n}_{0}$. Denote by $P_{n}$ the poset of proper subsets of $[n]$ such that $0 \in S$. There is an obvious inclusion $P_{n} \hookrightarrow (\Delta \downarrow \Lambda^{n}_{0})^{\mathrm{nd}}$, and one readily checks using Quillen's Theorem A that this inclusion is cofinal. Further note that the functor $P_{n} \to (\Delta \downarrow \Lambda^{n}_{0}) \to \Delta$ factors through $\mathring{\Delta}$ via a map $a\colon P_{n} \to \mathring{\Delta}$. Thus, we can equally express $J(\Lambda^{n}_{0})$ as the colimit of the functor $\tilde{J} \circ I \circ a$. Precisely the same reasoning tells us that we can express $R(\Lambda^{n}_{0})$ as the colimit of $\tilde{R} \circ I \circ a$. The result now follows from \hyperref[lemma:restricted_natural_transformation]{Lemma~\ref*{lemma:restricted_natural_transformation}}, and the fact that each strict colimit is the model for the homotopy colimit.
 \end{proof}
 
 \begin{proof}[Proof of Lemma \ref{lemma:lower_morphism_equivalence}]
@@ -547,7 +551,7 @@ It is easy to check the following.
 
   For $0 \leq k < n$, we can write $i^{n}_{k}$ as the inclusion
   \begin{equation*}
-    \S^{\mathcal{A}}_{[2n+1]} \hookrightarrow \S^{\mathcal{A}}_{[2n+1]} \cup \Delta^{[2n+1] \smallsetminus \{i, \overline{i}\}},\qquad \mathcal{A}
+    \S^{\mathcal{A}}_{[2n+1]} \hookrightarrow \S^{\mathcal{A}}_{[2n+1]} \cup \Delta^{[2n+1] \smallsetminus \{k, \overline{k}\}},\qquad \mathcal{A}
     = \left\{ \substack{ \{\overline{n}, \ldots, \overline{1}\} \\ \{0, \ldots n\} \\ \{1, \overline{1}\} \\ \vdots \\ \{k-1, \overline{k-1}\} } \right\}.
   \end{equation*}
   By \hyperref[lemma:bicartesian_square]{Lemma~\ref*{lemma:bicartesian_square}}, we have a pushout square
@@ -746,7 +750,7 @@ where both squares are pullback, is a cocartesian fibration. We now define the c
 
 \begin{definition}
   \label{def:left_kan_simplex}
-  A morphism $\Delta^{1} \to \LS(\category{C})$ is said to be \defn{left Kan} if the simplex $\sigma\colon \Delta^{3}_{\dagger} \to \ICCat$ to which it is adjoint has the property that the restriction $\sigma|\Delta^{\{0,1,\overline{0}\}}$ is left Kan in the sense of \hyperref[def:left_kan]{Definition~\ref*{def:left_kan}}.
+  A morphism $\tilde{\sigma}\colon \Delta^{1} \to \LS(\category{C})$ is said to be \defn{left Kan} if the simplex $\sigma\colon \Delta^{3}_{\dagger} \to \ICCat$ to which it is adjoint has the property that the restriction $\sigma|\Delta^{\{0,1,\overline{0}\}}$ is left Kan in the sense of \hyperref[def:left_kan]{Definition~\ref*{def:left_kan}}.
 \end{definition}
 
 We draw the `front' and `back' of a general $3$-simplex $\sigma\colon \Delta^{3}_{\dagger} \to \ICCat$ corresponding to some morphism $\Delta^{1} \to \LS(\category{C})$.
@@ -779,7 +783,7 @@ We draw the `front' and `back' of a general $3$-simplex $\sigma\colon \Delta^{3}
     \arrow[l, "\id_{\category{C}}"]
   \end{tikzcd}
 \end{equation*}
-Here, the $2$-simplices which are notated without natural transformations are constrained by the scaling $\dagger$ to be thin. Such an admissible simplex $\sigma$ is left Kan if and only if $\mathcal{G}'$ is a left Kan extension of $\mathcal{F}$ along $f$, and $\eta$ is a unit map. In this case, we will also call the morphism $\Delta^{1} \to \LS(\category{C})$ to which $\sigma$ is adjunct \emph{left Kan.}
+Here, the $2$-simplices which are notated without natural transformations are constrained by the scaling $\dagger$ to be thin. The morphism $\tilde{\sigma}$ is left Kan if and only if $\mathcal{G}'$ is a left Kan extension of $\mathcal{F}$ along $f$, and $\eta$ is a unit map.
 
 \begin{notation}
   We endow the quasicategory $\LS(\category{C})$ with the marking $\clubsuit \subseteq \LS(\category{C})_{1}$ consisting of all left Kan edges.

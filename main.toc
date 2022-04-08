@@ -14,54 +14,54 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2}Filling cubes relative to their boundaries}{10}{subsection.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}Adjunct data}{17}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.3}Adjunct data}{16}{subsection.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4}Left Kan implies globally left Kan}{21}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.4}Left Kan implies globally left Kan}{22}{subsection.3.4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.5}A few other tricks with Kan extensions}{25}{subsection.3.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Local systems}{25}{section.4}%
+\contentsline {section}{\numberline {4}Local systems}{26}{section.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}The enhanced twisted arrow category}{26}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.1}The enhanced twisted arrow category}{27}{subsection.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Two lemmas about marked-scaled anodyne morphisms}{28}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.2}Two lemmas about marked-scaled anodyne morphisms}{29}{subsection.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3}The infinity-category of local systems}{31}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.3}The infinity-category of local systems}{32}{subsection.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.3.1}The basic idea}{31}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.1}The basic idea}{32}{subsubsection.4.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.3.2}Cosimplicial objects}{32}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.2}Cosimplicial objects}{33}{subsubsection.4.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4}The map governing local systems is a cocartesian fibration}{39}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.4}The map governing local systems is a cocartesian fibration}{40}{subsection.4.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}The non-monoidal construction}{43}{section.5}%
+\contentsline {section}{\numberline {5}Push-pull of local systesms}{44}{section.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}The monoidal construction}{48}{section.6}%
+\contentsline {section}{\numberline {6}Monoidal push-pull of local systems}{49}{section.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1}The monoidal twisted arrow category}{48}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.1}Monoidal Beck-Chevalley fibrations}{50}{subsection.6.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2}The triple structures}{53}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.2}The monoidal twisted arrow category}{54}{subsection.6.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {6.2.1}The triple structure on finite pointed sets}{53}{subsubsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.3}The triple structures}{59}{subsection.6.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {6.2.2}The triple structure on infinity-categories}{53}{subsubsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.3.1}The triple structure on finite pointed sets}{59}{subsubsection.6.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {6.2.3}The triple structure on the twisted arrow category}{54}{subsubsection.6.2.3}%
+\contentsline {subsubsection}{\numberline {6.3.2}The triple structure on infinity-categories}{59}{subsubsection.6.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.3}Building categories of spans}{55}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.3}The triple structure on the twisted arrow category}{60}{subsubsection.6.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}Constructing the symmetric monoidal functor}{57}{section.7}%
+\contentsline {subsection}{\numberline {6.4}Building categories of spans}{61}{subsection.6.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}Miscellaneous stuff to be deleted or absorbed}{58}{section.8}%
+\contentsline {section}{\numberline {7}Constructing the symmetric monoidal functor}{63}{section.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.1}Lax monoidal Beck-Chevalley fibrations}{58}{subsection.8.1}%
+\contentsline {section}{\numberline {8}Miscellaneous stuff to be deleted or absorbed}{64}{section.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}What does Barwick mean?}{61}{section.9}%
+\contentsline {section}{\numberline {9}What does Barwick mean?}{64}{section.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.1}The triple structures}{62}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.1}The triple structures}{64}{subsection.9.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {9.1.1}The triple structure on local systems}{62}{subsubsection.9.1.1}%
+\contentsline {subsubsection}{\numberline {9.1.1}The triple structure on local systems}{64}{subsubsection.9.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.2}Building categories of spans}{64}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.2}Building categories of spans}{66}{subsection.9.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10}Monoidal categories as cartesian fibrations}{66}{section.10}%
+\contentsline {section}{\numberline {10}Monoidal categories as cartesian fibrations}{68}{section.10}%

@@ -2,7 +2,7 @@
 
 \begin{document}
 
-\section{The non-monoidal construction}
+\section{Push-pull of local systesms}
 \label{sec:the_non_monoidal_construction}
 
 For any cocomplete $\infty$-category $\category{C}$, we have constructed an $\infty$-category $\LS(\category{C})$ of local systems on $\category{C}$, together with a map $p\colon \LS(\category{C}) \to \S$. We have shown that this map is a bicartesian fibration.
@@ -32,7 +32,7 @@ We might wonder if we can combine these functorialities. Given a \emph{span} of 
     && X'
   \end{tikzcd},
 \end{equation}
-we can pull back along $g$ and push forward along $f$, giving a map $\Fun(X, \category{C}) \to \Fun(X', \category{C})$ via the composition
+we can pull back along $g$ and push forward along $f$, giving a map $f_{!} \circ g^{*}\colon \Fun(X, \category{C}) \to \Fun(X', \category{C})$ via the composition
 \begin{equation*}
   \begin{tikzcd}[column sep=tiny]
     & \Fun(Y, \category{C})
@@ -173,6 +173,8 @@ The proof of the following proposition will come at the end of this section.
   The functor $p\colon \LS(\category{C}) \to \S$ is a Beck-Chevalley fibration.
 \end{proposition}
 
+We next prove a few lemmata which will help us in our proof.
+
 The following is simply a reformulation of the definition of a left Kan extension (\hyperref[def:nat_xfo_exhibiting_left_kan_ext]{Definition~\ref*{def:nat_xfo_exhibiting_left_kan_ext}}) in the special case that we consider left Kan extensions along maps of Kan complexes.
 \begin{lemma}
   \label{lemma:left_kan_ext_along_kan_complexes}
@@ -194,7 +196,7 @@ The following is simply a reformulation of the definition of a left Kan extensio
       \arrow[from=M, Rightarrow, shorten=2ex, swap, "\eta"]
     \end{tikzcd},
   \end{equation*}
-  exhibits $G(y)$ as the colimit of $F \circ \pi$, where the left-hand square is (homotopy) pullback.
+  exhibits $G(y)$ as the colimit of $F \circ \pi$, where the left-hand square is homotopy pullback.
 \end{lemma}
 \begin{proof}
   We note that we can factor the above square into three squares

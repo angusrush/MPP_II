@@ -26,12 +26,7 @@ We will expand upon the following definition in \hyperref[ssc:basic_facts_about_
       \arrow[from=M, Rightarrow, swap, "\eta"]
     \end{tikzcd},
   \end{equation}
-  is \defn{left Kan} if it satisfies the following conditions.
-  \begin{itemize}
-    \item For all objects $y \in Y$, the $\infty$-category $\category{C}$ admits all colimits of shape $X_{/y}$.
-
-    \item The natural transformation $\eta$ exhibits $G$ as the left Kan extension of $F$ along $f$.
-  \end{itemize}
+  is \defn{left Kan} if the natural transformation $\eta$ exhibits $G$ as the left Kan extension of $F$ along $f$.
 \end{definition}
 
 The goal of this section is to prove the following.
@@ -167,7 +162,7 @@ where the left-hand diagram is a map $LC^{2} \to \Fun(X, C)$, where $LC^{2}$ is 
       \end{tikzcd}}^{\text{ in }\Fun(Y, \category{C})}.
     \end{equation*}
 
-  \item We note that we can extend the diagram on the right to a diagram which is adjunct to the diagram on the left under the adjunction $f_{!} \dashv f^{*}$:
+  \item We note that we can extend the diagram on the right to a diagram which is adjunct to the diagram on the left (in the sense to be described in \hyperref[ssc:adjunct_data]{Subsection~\ref*{ssc:adjunct_data}}):
     \begin{equation*}
       \overbrace{
       \begin{tikzcd}[ampersand replacement=\&]
@@ -278,7 +273,7 @@ Kerodon 7.3.1.5
     \begin{tikzcd}[row sep=large, column sep=large]
       X_{/y}
       \arrow[r, "\pi", ""{name=LA, swap}]
-      \arrow[d, "\underline{y}"{swap}, ""{name=LD}]
+      \arrow[d, ""{name=LD}]
       & X
       \arrow[d, swap, "f"]
       \arrow[r, "F", ""{below, name=M}]
@@ -782,7 +777,7 @@ In this section, we give a formalization of the the notion of adjunct data. Our 
 
     \item The restriction $A|K_{1} \times \Delta^{1}$ is equal to the composition
       \begin{equation*}
-        K_{1} \times \Delta^{1} \hookrightarrow K \times \Delta^{1} \overset{\tilde{\alpha} \times \id}{\to} \category{C} \times \Delta^{1} \overset{v}{\to} \mathcal{M}.
+        K_{1} \times \Delta^{1} \hookrightarrow K \times \Delta^{1} \overset{\tilde{\alpha} \times \id}{\to} \category{D} \times \Delta^{1} \overset{v}{\to} \mathcal{M}.
       \end{equation*}
   \end{enumerate}
 \end{definition}
@@ -1030,6 +1025,90 @@ The next proposition shows the power of adjunctions in lifting problems: given d
 %  One sees equally easily that 2.\ implies 3.
 %\end{proof}
 
+We note that in the proof of \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}}, we did not need to use the full power of the statement that $f$ was left adjoint to $g$ (i.e.\ that $p\colon \category{M} \to \Delta^{1}$ was a bicartesian fibration), only that $f$ was \emph{locally} left adjoint to $g$, (i.e.\ that $p$ admitted cocartesian lifts at certain objects). This allows us to generalize \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}} somewhat.
+
+\begin{definition}
+  \label{def:partial_adjunction}
+  Let $g\colon \category{D} \to \category{C}$ be a functor between quasicategories, and pick some cartesian fibration $p\colon \category{M} \to \Delta^{1}$ which classifies it. We assume without loss of generality that $h_{0}\colon \category{M}_{0} \cong \category{C}$ and  $h_{1}\colon \category{M}_{1} \cong \category{D}$ are isomorphisms, and we will notationally suppress them.
+
+  We say that $g$ \defn{admits a left adjoint at $c \in \category{C}$} if $p$ admits a cocartesian lift at $c$.
+\end{definition}
+
+\begin{definition}
+  \label{def:adjunct_local}
+  Let $s\colon K \to \Delta^{1}$ be a map of simplicial sets whose fibers we denote by $K_{0}$ and $K_{1}$, and let $p\colon \category{M} \to \Delta^{1}$ be a cartesian fibration associated to $f\colon \category{D} \to \category{C}$ via a map $v\colon \category{D} \times \Delta^{1} \to \category{M}$. We say that a map $\alpha\colon K \to \category{C}$ is \defn{adjunct} to a map $\tilde{\alpha}\colon K \to \category{D}$ relative to $s$, and equivalently that $\tilde{\alpha}$ is adjunct to $\alpha$ relative to $s$, if there exists a map $A\colon K \times \Delta^{1} \to \category{M}$ such that the diagram
+  \begin{equation*}
+    \begin{tikzcd}
+      K \times \Delta^{1}
+      \arrow[r, "A"]
+      \arrow[dr, swap, "\pr_{\Delta^{1}}"]
+      & \category{M}
+      \arrow[d, "p"]
+      \\
+      & \Delta^{1}
+    \end{tikzcd}
+  \end{equation*}
+  commutes, and such that the following conditions are satisfied.
+  \begin{enumerate}
+    \item The restriction $A|_{K \times \{0\}} = \alpha$.
+
+    \item The restriction $A|_{K \times \{1\}} = \tilde{\alpha}$.
+
+    \item For each vertex $k \in K_{0}$, the image of $\{k\} \times \Delta^{1}$ under $A$ in $\category{M}$ is $p$-cartesian.
+
+    \item The restriction $A|K_{1} \times \Delta^{1}$ is equal to the composition
+      \begin{equation*}
+        K_{1} \times \Delta^{1} \hookrightarrow K \times \Delta^{1} \overset{\tilde{\alpha} \times \id}{\to} \category{D} \times \Delta^{1} \overset{v}{\to} \mathcal{M}.
+      \end{equation*}
+  \end{enumerate}
+\end{definition}
+
+\begin{example}
+  \label{eg:partial_adjunctions_and_kan_extensions}
+  Suppose $f\colon \category{C} \to \category{C}'$ and $F\colon \category{C} \to \category{D}$ are functors. The statement that the left Kan extension $f_{!}F\colon \category{C'} \to \category{D}$ exists is equivalent to the statement that $f^{*}$ admits a left adjoint at $F$.
+\end{example}
+
+\begin{proposition}
+  \label{prop:can_transport_adjunct_data_partial}
+  Let $p\colon \category{M} \to \Delta^{1}$ classify $g\colon \category{D} \to \category{C}$ via $v\colon \category{D} \times\Delta^{1} \to \category{M}$, and let
+  \begin{equation*}
+    \begin{tikzcd}[column sep=small]
+      K'
+      \arrow[rr, hook, "i"]
+      \arrow[dr, swap, "s \circ i"]
+      && K
+      \arrow[dl, "s"]
+      \\
+      & \Delta^{1}
+    \end{tikzcd},
+  \end{equation*}
+  be a commuting triangle of simplicial sets, where $i$ is a monomorphim such that $i|_{\{1\}}$ is an isomorphism. Let $\tilde{\alpha}'\colon K' \to \category{D}$ and $\alpha\colon K \to \category{C}$ be maps, and denote $\alpha' = \alpha \circ i$. Suppose that $\tilde{\alpha}'$ is adjunct to $\alpha'$ relative to $s \circ i$. Further suppose that $g$ admits a left adjoint at all vertices belonging to the image $\alpha(K_{0}) \subseteq \category{C}$.
+
+  Then there exists a dashed extension
+  \begin{equation}
+    \label{eq:adjunct_filling_problems_partial}
+    \begin{tikzcd}
+      K'
+      \arrow[r, "\alpha'"]
+      \arrow[d, swap, hook, "i"]
+      & \category{C}
+      \\
+      K
+      \arrow[ur, swap, "\alpha"]
+    \end{tikzcd}
+    \quad \rightsquigarrow \quad
+    \begin{tikzcd}
+      K'
+      \arrow[r, "\tilde{\alpha}'"]
+      \arrow[d, swap, hook, "i"]
+      & \category{D}
+      \\
+      K
+      \arrow[ur, dashed, swap, "\tilde{\alpha}"]
+    \end{tikzcd}
+  \end{equation}
+  such that $\tilde{\alpha}$ is adjunct to $\alpha$ relative to $s$. Furthermore, any two such lifts are equivalent as functors $K \to \category{D}$.
+\end{proposition}
 
 
 \subsection{Left Kan implies globally left Kan}
@@ -1144,17 +1223,14 @@ commute.
   admits a dashed filler.
 \end{theorem}
 
-The author would like to offer the friendly recommendation that in trying to understand the proof below, it is helpful to follow along with the explanation given at the beginning of \hyperref[sec:horn_filling_via_left_kan_extensions]{Section~\ref*{sec:horn_filling_via_left_kan_extensions}}.
+The author would like to offer the friendly recommendation that in reading the proof below, it is helpful to follow along with the explanation given at the beginning of \hyperref[sec:horn_filling_via_left_kan_extensions]{Section~\ref*{sec:horn_filling_via_left_kan_extensions}}.
 
 \begin{proof}
-  We need to solve the lifting problems of \hyperref[eq:lifting_problem_1]{Equation~\ref*{eq:lifting_problem_1}} and \hyperref[eq:lifting_problem_2]{Equation~\ref*{eq:lifting_problem_2}}, and check that our solutions satisfy the condition of \hyperref[eq:lifting_problem_compatibility_condition]{Equation~\ref*{eq:lifting_problem_compatibility_condition}}. We note that the information that the simplex $\tau\colon \Delta^{\{0,1,n+1\}}_{\flat} \to \ICCat$ is left Kan tells us the following useful facts.
+  We need to solve the lifting problems of \hyperref[eq:lifting_problem_1]{Equation~\ref*{eq:lifting_problem_1}} and \hyperref[eq:lifting_problem_2]{Equation~\ref*{eq:lifting_problem_2}}, and check that our solutions satisfy the condition of \hyperref[eq:lifting_problem_compatibility_condition]{Equation~\ref*{eq:lifting_problem_compatibility_condition}}. We note that the information that the simplex $\tau\colon \Delta^{\{0,1,n+1\}}_{\flat} \to \ICCat$ is left Kan tells us the following.
   \begin{itemize}
-    \item  The map $f_{n,1}$ is the left Kan extension of $f_{n, 0}$ along $f_{1, 0}$, and that $\alpha_{\{0,n+1\}}^{\{0,1,n+1\}}\colon f_{n+1,0} \to f_{n+1, 1} \circ f_{1, 0} $ is the unit map.
+    \item  Concretely, it tells us that the map $f_{n,1}$ is the left Kan extension of $f_{n, 0}$ along $f_{1, 0}$, and that $\alpha_{\{0,n+1\}}^{\{0,1,n+1\}}\colon f_{n+1,0} \to f_{n+1, 1} \circ f_{1, 0} $ is the unit map.
 
-    \item We have an adjunction
-  \begin{equation*}
-    (f_{1,0})_{!} : \Fun(X_{0}, X_{n+1}) \longleftrightarrow \Fun(X_{1}, X_{n+1}) : f_{1,0}^{*}.
-  \end{equation*}
+    \item In particular, \hyperref[eg:partial_adjunctions_and_kan_extensions]{Example~\ref*{eg:partial_adjunctions_and_kan_extensions}} then tells us that the map $f_{1,0}^{*}$ admits a left adjoint at $f_{n+1,0}$.
   \end{itemize}
 
   It is easy to see that we have the following succinct descriptions of the inclusions of \hyperref[eq:lifting_problem_1]{Equation~\ref*{eq:lifting_problem_1}} and \hyperref[eq:lifting_problem_2]{Equation~\ref*{eq:lifting_problem_2}} along which we have to extend.
@@ -1241,7 +1317,7 @@ The author would like to offer the friendly recommendation that in trying to und
       \arrow[ur, dashed]
     \end{tikzcd}.
   \end{equation*}
-  The image of the 1-simplex $(0, \ldots, 0) \to (0, \ldots, 1)$ of $\Delta^{0} \ast \partial C^{n-1} \subseteq C^{n}$ under $\alpha$ is the unit map $\alpha^{\{0, 1, n+1\}}_{\{0, n+1\}}\colon f_{n+1, 0} \to f_{n+1, 1} \circ f_{1, 0}$. This is not in general an equivalence, so we cannot use \hyperref[prop:cube_filling]{Proposition~\ref*{prop:cube_filling}} to solve the lifting problem $(*')$ directly. However, the unit map is adjunct to an equivalence in $\Fun(X_{1}, X_{n+1})$ relative to $s = \id_{\Delta^{1}}$. Furthermore, the restriction of $\alpha$ to $\partial C^{n-1}$ is in the image of $f^{*}_{1,0}$, so by \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}} we can augment the map $\tilde{\alpha}'$ to a map $\tilde{\alpha}\colon \Delta^{0} \ast \partial C^{n-1} \to \Fun(X_{1}, X_{n-1})$ which is adjunct to $\alpha$ relative to the map
+  The image of the 1-simplex $(0, \ldots, 0) \to (0, \ldots, 1)$ of $\Delta^{0} \ast \partial C^{n-1} \subseteq C^{n}$ under $\alpha$ is the unit map $\alpha^{\{0, 1, n+1\}}_{\{0, n+1\}}\colon f_{n+1, 0} \to f_{n+1, 1} \circ f_{1, 0}$. This is not in general an equivalence, so we cannot use \hyperref[prop:cube_filling]{Proposition~\ref*{prop:cube_filling}} to solve the lifting problem $(*')$ directly. However, the unit map is adjunct to an equivalence in $\Fun(X_{1}, X_{n+1})$ relative to $s = \id_{\Delta^{1}}$. Furthermore, the restriction of $\alpha$ to $\partial C^{n-1}$ is in the image of $f^{*}_{1,0}$, so by \hyperref[prop:can_transport_adjunct_data_partial]{Proposition~\ref*{prop:can_transport_adjunct_data_partial}} and our assumption that $f_{10}^{*}$ admits a left adjoint at $f_{n+1,0}$, we can augment the map $\tilde{\alpha}'$ to a map $\tilde{\alpha}\colon \Delta^{0} \ast \partial C^{n-1} \to \Fun(X_{1}, X_{n-1})$ which is adjunct to $\alpha$ relative to the map
   \begin{equation*}
     s\colon \Delta^{0} \ast \partial C^{n-1} \to \Delta^{1}
   \end{equation*}
