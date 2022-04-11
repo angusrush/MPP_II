@@ -11,7 +11,7 @@ Suppose $p\colon \category{C} \to \category{D}$ is a cartesian fibration of 1-ca
 
   \item The category $\category{D}$ carries a symmetric monoidal structure $\boxtimes$.
 
-  \item The functor $p$ is strong monoidal: for $x$, $y \in \category{C}$, $p(x \otimes y) = p(x) \boxtimes p(y)$.\footnote{The reason for the strict equality in this condition is that we have chosen specific monoidal functors $\otimes$ and $\times$. Later, we will replace these functors by fibrations, and the condition of strict equality will be replaced by a more usual one.}
+  \item The functor $p$ is strong monoidal: for $x$, $y \in \category{C}$, $p(x \otimes y) = p(x) \boxtimes p(y)$.\footnote{The reason for the strict equality in this condition is that we have chosen specific monoidal functors $\otimes$ and $\times$. Later, we will replace these functors by fibrations, and the condition of strict equality will be replaced by homotopy coherence.}
 
   \item The monoidal product $\otimes$ preserves $p$-cartesian morphisms: if $f$ and $g$ are $p$-cartesian morphisms, then $f \otimes g$ is also $p$-cartesian.
 \end{itemize}
@@ -21,9 +21,9 @@ Under these conditions, the pseudofunctor $\hat{p}$ carries a lax monoidal struc
     \hat{p}(d) \times \hat{p}(d') \to \hat{p}(d \boxtimes d')
   \end{tikzcd}
 \end{equation*}
-are given by restricting the tensor product $\otimes$ to the fibers over $d$ and $d'$. That these structure maps form a pseudonatural transformation, i.e.\ that the necessary squares commute up to specified homotopy, follows from the assumption that the monoidal product preserves $p$-cartesian morphisms in each slot.
+are given by restricting the tensor product $\otimes$ to the fibers of $p$ over $d$ and $d'$. That these structure maps form a pseudonatural transformation, i.e.\ that the necessary squares commute up to specified homotopy, follows from the assumption that the monoidal product preserves $p$-cartesian morphisms in each slot.
 
-If we want to study covariant rather than contravariant pseudofunctors, we should replace cartesian fibrations by cocartesian fibrations; of course, now we must assume that $\otimes$ preserves cocartesian edges rather than cartesian.
+If we want to study covariant rather than contravariant pseudofunctors, we should replace cartesian fibrations by cocartesian fibrations; of course, now we must assume that $\otimes$ preserves cocartesian edges rather than cartesian. The rest of the theory remains unchanged.
 
 As we saw in the last chapter, we can combine both cartesian and cocartesian functorialities into pull-push functoriality by upgrading our (co)cartesian fibrations to Beck-Chevalley fibrations. Consider a Beck-Chevalley fibration $r\colon \category{X} \to \category{T}$ such that $\category{X}$ carries a symmetric monoidal structure $\otimes$, and $\category{T}$ carries a symmetric monoidal structure $\boxtimes$.\footnote{It turns out that the only monoidal structure that is compatible with the creation of the category of spans is the cartesian monoidal structure, so we may assume without loss of generality that $\boxtimes$ is the cartesian product.} Our first purpose in this chapter is to show that under the assumption that $r$ is strong monoidal, and that $\otimes$ preserves both cartesian and cocartesian edges, one finds that the functor
 \begin{equation*}

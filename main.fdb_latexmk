@@ -1,11 +1,11 @@
 # Fdb version 3
-["biber main"] 1649170229 "main.bcf" "main.bbl" "main" 1649332783
-  "main.bcf" 1649332783 103098 019ae75240eb94533a9a6d1bfc115082 "pdflatex"
+["biber main"] 1649170229 "main.bcf" "main.bbl" "main" 1649407514
+  "main.bcf" 1649407513 103098 019ae75240eb94533a9a6d1bfc115082 "pdflatex"
   "sources.bib" 1649071233 5578 14c6d3e7c77a144c70226b5adff7623f ""
   (generated)
-  "main.blg"
   "main.bbl"
-["pdflatex"] 1649332778 "main.tex" "main.pdf" "main" 1649332783
+  "main.blg"
+["pdflatex"] 1649407509 "main.tex" "main.pdf" "main" 1649407514
   "/etc/texmf/web2c/texmf.cnf" 1587737152 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_3dk467.enc" 1558472472 2823 9669300fd867bc8e1e320d5385959bec ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_edcawa.enc" 1490131464 2833 ab571e969b0d4b8e87f8f63627b1db02 ""
@@ -333,14 +333,14 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1587738400 4770781 1ed1abab22da9c3e2cc82e4db562318b ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1587738447 8256112 56887e7f446669621017b87bba68046c ""
   "background.tex" 1644400385 3214 59984e036e8823a53616223e69e42e7a ""
-  "base_fibrations.tex" 1649332778 40128 f2b630ee32d1381a217c363a56e93cae ""
+  "base_fibrations.tex" 1649407508 40179 7f2f1a3ff0eada4564157137eeeadbcf ""
   "kan.tex" 1649319197 69225 27c689638fb7d577d3532aa1738957da ""
-  "main.aux" 1649332783 25417 80323dfdd7f460fbb0961dbe977eab2f "pdflatex"
+  "main.aux" 1649407513 25417 80323dfdd7f460fbb0961dbe977eab2f "pdflatex"
   "main.bbl" 1649170230 11059 fe0c3d07911e2bcd02ad4498efa5fed2 "biber main"
-  "main.out" 1649332779 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.run.xml" 1649332783 2302 6afcbad28ff1017e083805aa0b6cae48 "pdflatex"
+  "main.out" 1649407509 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.run.xml" 1649407513 2302 6afcbad28ff1017e083805aa0b6cae48 "pdflatex"
   "main.tex" 1648036445 540 92ecbc23f2e82bfab41ce50d9eb7ed8e ""
-  "main.toc" 1649332783 4505 56a85616e8453e5016c0d42c0c4aadab "pdflatex"
+  "main.toc" 1649407513 4505 56a85616e8453e5016c0d42c0c4aadab "pdflatex"
   "misc.tex" 1649079307 11891 c6fe65c68443124bd6eea691e099c516 ""
   "mystyle.sty" 1648625333 6529 d0f3e6c8b46c0e32fd57ef588ea1acfc ""
   "new_barwick.tex" 1644590483 2853 ab25b441e500649492f8079ab96ef757 ""
@@ -348,9 +348,9 @@
   "twisted.tex" 1649319901 62404 5ee012d4b3bfa80ecf88564ca1da6653 ""
   (generated)
   "main.bcf"
-  "main.pdf"
   "main.out"
+  "main.log"
+  "main.pdf"
   "main.aux"
   "main.toc"
   "main.run.xml"
-  "main.log"
