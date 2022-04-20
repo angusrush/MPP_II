@@ -23,7 +23,7 @@ Under these conditions, the pseudofunctor $\hat{p}$ carries a lax monoidal struc
 \end{equation*}
 are given by restricting the tensor product $\otimes$ to the fibers of $p$ over $d$ and $d'$. That these structure maps form a pseudonatural transformation, i.e.\ that the necessary squares commute up to specified homotopy, follows from the assumption that the monoidal product preserves $p$-cartesian morphisms in each slot.
 
-If we want to study covariant rather than contravariant pseudofunctors, we should replace cartesian fibrations by cocartesian fibrations; of course, now we must assume that $\otimes$ preserves cocartesian edges rather than cartesian. The rest of the theory remains unchanged.
+If we want to study covariant rather than contravariant pseudofunctors, we should replace cartesian fibrations by cocartesian fibrations; of course, now we must assume that $\otimes$ preserves cocartesian edges rather than cartesian. The rest of the theory remains unchanged. These results also remain true in the $\infty$-categorical case, as we will show.
 
 As we saw in the last chapter, we can combine both cartesian and cocartesian functorialities into pull-push functoriality by upgrading our (co)cartesian fibrations to Beck-Chevalley fibrations. Consider a Beck-Chevalley fibration $r\colon \category{X} \to \category{T}$ such that $\category{X}$ carries a symmetric monoidal structure $\otimes$, and $\category{T}$ carries a symmetric monoidal structure $\boxtimes$.\footnote{It turns out that the only monoidal structure that is compatible with the creation of the category of spans is the cartesian monoidal structure, so we may assume without loss of generality that $\boxtimes$ is the cartesian product.} Our first purpose in this chapter is to show that under the assumption that $r$ is strong monoidal, and that $\otimes$ preserves both cartesian and cocartesian edges, one finds that the functor
 \begin{equation*}
@@ -31,21 +31,33 @@ As we saw in the last chapter, we can combine both cartesian and cocartesian fun
 \end{equation*}
 constructed in the previous chapter carries a lax monoidal structure. Note that this statement is by no means original. A generalized version of it is proved in \cite{spectralmackeyfunctors2}. We provide an elementary account of the portions of the theory which we will need.
 
-Like Barwick et al., we will prove a somewhat adapted version of this statement. Note that in the above discussion, we were carrying a conceptual difficulty with us by modelling monoidal categories as tuples, $(\category{C}, \otimes, \dots)$; we have chosen a specific functor $\otimes$, together with specific choices of coherent data surrounding it. It is often preferable to model a symmetric monoidal category as a fibration, leaving these choices unmade, and this is what we will do. As our aim will be to build categories of spans (where we must have good control over pullback squares), we will model our symmetric monoidal categories as cartesian fibrations, rather than the more usual cocartesian fibrations. In \hyperref[ssc:monoidal_beck_chevalley_fibrations]{Subsection~\ref*{ssc:monoidal_beck_chevalley_fibrations}}, we give the basic definitions we will need, culminating in the definition of a monoidal Beck-Chevalley fibration.
+We will then apply our results to local systems. We will show that if $\category{C}$ is a symmetric monoidal $\infty$-category, then the category of $\category{C}$-local systems carries a symmetric monoidal structure, which sends
+\begin{equation*}
+  (X \to \category{C}) \otimes (Y \to \category{C}) = X \times Y \to \category{C} \times \category{C} \to \category{C}
+\end{equation*}
+and that the functor $\LS(\category{C}) \to \S$ is a monoidal Beck-Chevalley fibration, thus classifying a lax monoidal functor
+\begin{equation*}
+  (\Span(\S), \tilde{\times}) \to (\ICat, \times).
+\end{equation*}
 
+%Like Barwick et al., we will prove a somewhat adapted version of this statement. Note that in the above discussion, we were carrying a conceptual difficulty with us by modelling monoidal categories as tuples, $(\category{C}, \otimes, \dots)$; we have chosen a specific functor $\otimes$, together with specific choices of coherent data surrounding it. It is often preferable to model a symmetric monoidal category as a fibration, leaving these choices unmade, and this is what we will do. As our aim will be to build categories of spans (where we must have good control over pullback squares), we will model our symmetric monoidal categories as cartesian fibrations, rather than the more usual cocartesian fibrations. In \hyperref[ssc:monoidal_beck_chevalley_fibrations]{Subsection~\ref*{ssc:monoidal_beck_chevalley_fibrations}}, we give the basic definitions we will need, culminating in the $\infty$-categorical version of the statement above.
 
-\subsection{Monoidal Beck-Chevalley fibrations}
-\label{ssc:monoidal_beck_chevalley_fibrations}
-
-\begin{note}
-  For this to work out, I think we probably need to modify the second condition to be an adequate triple so that we only need to consider pullbacks of the type given in the first condition.
-\end{note}
+\subsection{The lax monoidal Grothendieck construction}
+\label{ssc:the_lax_monoidal_grothendieck_construction}
 
 Our theory of symmetric monoidal $\infty$-categories exactly mirrors Lurie's \cite{luriehigheralgebra}, except that we will use cartesian rather than cocartesian fibrations.
 
+\begin{notation}
+  Denote by $\rho_{i}\colon \langle n \rangle \to \langle 1 \rangle$ the map sending $i \mapsto 1$ and everything else to $\ast$.
+\end{notation}
+
 \begin{definition}
-  A \defn{CSMC} (contravariantly-presented symmetric monoidal $\infty$-category) is a cocartesian fibration $p\colon \category{O}_{\otimes} \to \Finp\op$ such that the pullback maps $(\rho_{i})^{*}\colon (\category{O}_{ \otimes})_{\langle n \rangle} \to (\category{O}_{ \otimes})_{\langle 1 \rangle}$ are the canonical projections exhibiting $(\category{O}_{ \otimes})_{\langle n \rangle}$ as an $n$-fold product.
+  A \defn{CSMC} (contravariantly-presented symmetric monoidal $\infty$-category) is a cocartesian fibration $p\colon \category{O}_{\otimes} \to \Finp\op$ such that the pullback maps $\rho_{i}^{*}\colon (\category{O}_{ \otimes})_{\langle n \rangle} \to (\category{O}_{ \otimes})_{\langle 1 \rangle}$ are the canonical projections exhibiting $(\category{O}_{ \otimes})_{\langle n \rangle}$ as an $n$-fold product.
 \end{definition}
+
+\begin{note}
+  This means, among other things, that for any simplicial set $K$ and diagrams $a_{i}\colon K \to (\category{C}_{\otimes})_{\langle 1 \rangle}$ for $1 \leq i \leq n$, we can find a diagram $a\colon K \to (\category{C}_{\otimes})_{\langle n \rangle}$ such that $\rho_{i}^{*}(a) = a_{i}$ for all $i$, and furthermore, that the space of all such $a$ is contractible (and in particular any two are equivalent).
+\end{note}
 
 \begin{definition}
   A \defn{map} between CSMCs $\category{C}_{\otimes} \to \Fin\op$ and $\category{D}_{\otimes} \to \Finp\op$ is a functor $r$ making the diagram
@@ -62,14 +74,35 @@ Our theory of symmetric monoidal $\infty$-categories exactly mirrors Lurie's \ci
   \end{equation*}
   commute. We will further make use of the following terminology.
   \begin{itemize}
-    \item The map $r$ is a \defn{monoidal functor} if it sends $q$-cartesian morphisms to $p$-cartesian morphisms.
+    \item The map $r$ is a \defn{monoidal functor} if it sends $q$-cartesian morphisms to $p$-cartesian morphisms. 
 
-    \item The tensor product $\otimes$ \defn{preserves cartesian (resp.\ cocartesian) edges} if for all $\phi\colon \langle n \rangle \leftarrow \langle m \rangle \in \Finp\op$, the associated functor $\phi^{*}\colon (\category{C}_{\otimes})_{\langle m \rangle} \to (\category{C}_{\otimes})_{\langle n \rangle}$ sends $r$-cartesian (resp.\ cocartesian) morphisms contained in the fiber $(\category{C})_{\langle m \rangle}$ to $r$-cartesian (resp.\ cocartesian) morphisms contained in the fiber $(\category{C}_{\otimes})_{\langle n \rangle}$.
+      \textit{This implies, for example, that $r(x \otimes y) \simeq r(x) \boxtimes r(y)$.}
+
+    \item An edge $f$ in $(\category{C}_{\otimes})_{\langle n \rangle}$ is \defn{componentwise-cartesian (resp.\ componentwise cocartesian)} if for all inert $\rho_{i}\colon \langle 1 \rangle \leftarrow \langle n \rangle$ in $\Finp\op$, $\rho_{i}^{*}(f)$ is $r|\langle 1 \rangle$-cartesian (resp.\ cocartesian). 
+
+      \textit{We can think of a morphism $f$ in $(\category{C}_{\otimes})_{\langle n \rangle}$ as an $n$-tuple of morphisms $f_{i}$ in $\category{C}$. We say that $f$ is componentwise (co)cartesian if each component $f_{i}$ is (co)cartesian.}
+
+    \item The tensor product $\otimes$ \defn{strongly preserves cartesian (resp.\ cocartesian) edges} if an edge $f$ in the fiber $(\category{C}_{\otimes})_{\langle n \rangle}$ is $p$-cartesian (resp.\ cocartesian) if and only if it is componentwise $p$-cartesian, and if for all $\phi\colon \langle n \rangle \leftarrow \langle m \rangle \in \Finp\op$, the associated functor $\phi^{*}\colon (\category{C}_{\otimes})_{\langle m \rangle} \to (\category{C}_{\otimes})_{\langle n \rangle}$ sends componentwise $r$-cartesian (resp.\ componentwise cocartesian) morphisms contained in the fiber $(\category{C})_{\langle m \rangle}$ to componentwise $r$-cartesian (resp.\ componentwise cocartesian) morphisms contained in the fiber $(\category{C}_{\otimes})_{\langle n \rangle}$.
+
+      \textit{This implies in particular that if $f$ and $g$ are (co)cartesian, then $f \otimes g$ is as well.}
   \end{itemize}
 \end{definition}
 
 \begin{lemma}
-  Let $p$ and $q$ be CSMCs as below, and let $r$ be an inner fibration such that the diagram
+  \label{lemma:right_horn_smash_delta_1}
+  The inclusion of marked simplicial sets
+  \begin{equation}
+    \label{eq:right_horn_anodyne_morphism}
+    \left( \Delta^{n} \times \Delta^{\{0\}} \coprod_{\Lambda^{n}_{n} \times \Delta^{\{0\}}} \Lambda^{n}_{n} \times \Delta^{\{0\}}, \mathcal{E} \right) \hookrightarrow (\Delta^{n} \times \Delta^{1}, \mathcal{F})
+  \end{equation}
+  where the marking $\mathcal{F}$ is the flat marking together with the edge $\Delta^{\{0\}} \times \Delta^{1}$, and $\mathcal{E}$ is the restriction of this marking, is marked (cocartesian) anodyne.
+\end{lemma}
+\begin{proof}
+  We can write the inclusion $\Lambda^{n}_{n} \hookrightarrow \Delta^{n}$ as a composition $\Lambda^{n}_{n} \hookrightarrow \partial \Delta^{n} \hookrightarrow \Delta^{n}$, where first morphism is a pushout along $\partial \Delta^{n-1} \hookrightarrow \Delta^{n-1}$. This factorization allows us to apply \hyperref[lemma:right_horn_smash_delta_1]{Lemma~\ref*{lemma:right_horn_smash_delta_1}} twice.
+\end{proof}
+
+\begin{lemma}
+  Let $q\colon \category{C}_{\otimes} \to \Fin\op$ and $p\colon \category{D}_{\otimes} \to \Finp\op$ be CSMCs as below, and let $r$ be an inner fibration $\category{C}_{\otimes} \to \category{D}_{\boxtimes}$ such that the diagram
   \begin{equation*}
     \begin{tikzcd}
       \category{C}_{\otimes}
@@ -91,35 +124,83 @@ Our theory of symmetric monoidal $\infty$-categories exactly mirrors Lurie's \ci
 
         \item The map $r$ is a monoidal functor.
 
-        \item The tensor product $\otimes$ preserves cartesian edges.
+        \item The tensor product $\otimes$ strongly preserves cartesian edges.
       \end{enumerate}
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  Suppose that $r$ is a cartesian fibration. Then $r|\langle 1 \rangle$ is a cartesian fibration because the pullback of a cartesian fibration is again a cartesian fibration. The map $r$ sends $p$-cartesian morphisms to $q$-cartesian morphisms by TODO.
+  Suppose that 1.\ holds, i.e.\ that $r$ is a cartesian fibration. Then a) holds: $r|\langle 1 \rangle$ is a cartesian fibration because the pullback of a cartesian fibration is again a cartesian fibration. 
 
-  We now show that c) holds. Consider the following diagram of pullback squares.
+  We now show that b) holds, i.e.\ that the map $r$ sends $q$-cartesian morphisms to $p$-cartesian morphisms. To this end, let $f\colon c \to c' \in \category{C}_{\otimes}$ be a $q$-cartesian morphism, and consider the image $p(f)\colon r(c) \to r(c')$ in $\category{D}_{\otimes}$. Let $g\colon \tilde{d} \to r(c')$ be a $p$-cartesian lift of $q(f) \in \Finp\op$, and $\hat{g}\colon \hat{d} \to c'$ a $r$-cartesian lift of $g$. By \cite[Prop.~2.4.1.3]{highertopostheory}, $\hat{g}$ is a $q$-cartesian lift of $q(f)$, so $f$ and $\hat{g}$ are equivalent as morphisms in $\category{C}_{\otimes}$. Thus $r(f)$ and $g$ are equivalent as morphisms in $\category{D}_{\otimes}$, so $r(f)$ is $p$-cartesian since $g$ is.
+
+  We now show that c) holds. We prove this in two steps. First, we show that if some morphism $f$ in $(\category{C}_{\otimes})_{\langle n \rangle}$ is $r$-cartesian, then for all $\phi\colon \langle n \rangle \to \langle m \rangle$, the morphism $\phi^{*}(f)$ is $r$-cartesian. This follows from the fact that for a square
   \begin{equation*}
     \begin{tikzcd}
-    (\category{C}_{\otimes})_{\langle n \rangle}
-    \arrow[r]
-    \arrow[d, swap, "r|\langle n \rangle"]
-    & \category{C}_{\otimes}
-    \arrow[d, "r"]
-    \\
-    (\category{D}_{\otimes})_{\langle n \rangle}
-    \arrow[r]
-    \arrow[d, swap, "p|\langle n \rangle"]
-    & \category{D}_{\otimes}
-    \arrow[d, "p"]
-    \\
-    \{\langle n \rangle\}
-    \arrow[r]
-    & \Finp\op
+      c_{0}'
+      \arrow[r, "\phi^{*}(f)"]
+      \arrow[d, swap, "u"]
+      & c_{1}'
+      \arrow[d, "v"]
+      \\
+      c_{0}
+      \arrow[r, "f"]
+      & c_{1}
     \end{tikzcd}
   \end{equation*}
-  It follows from the dual to \cite[Cor.~4.3.1.15]{highertopostheory}\footnote{Note an unfortunate notational clash: our maps $p$, $q$, and $r$ do not agree with Lurie's.} that a morphism in $(\category{C}_{\otimes})_{\langle n \rangle}$ is $r|\langle n \rangle$-cartesian if and only if its image in $\category{C}_{\otimes}$ is $r$-cartesian.
+  in which $u$ and $v$ are $q$-cartesian (and hence $r$-cartesian) and $f$ is $r$-cartesian, $\phi^{*}(f)$ is also $r$-cartesian. Note that applying c) to the inert maps $\langle n \rangle \to \langle 1 \rangle$ implies that if a morphism $f$ in $(\category{C}_{\otimes})_{\langle n \rangle}$ is $r$-cartesian, then the components $f_{i}$ are $r$-cartesian, hence also $r|\langle 1 \rangle$-cartesian.
 
+  We next note that, under the assumption that $r$ is a cartesian fibration, the converse is also the case: a morphism in $(\category{C}_{\otimes})_{\langle n \rangle}$ is $r$-cartesian if and only if it is componentwise $r$-cartesian. To see this, let $f_{i}$ be $r|\langle 1 \rangle$-cartesian morphisms, $1 \leq i \leq n$. We can find a morphism $f \in (\category{C}_{\otimes})_{\langle n \rangle}$ with components $f_{i}$. We would like to show that $f$ is $r$-cartesian. To this end, consider the morphisms $r(f_{i}) = \overline{f}_{i}$. We can find a morphism $\overline{f}$ in $(\category{D}_{\boxtimes})_{\langle n \rangle}$ with components $\overline{f}_{i}$, and can take a $r$-cartesian lift $\hat{f}$ of $\overline{f}$. The components of $\hat{f}$ are equivalent to the $f_{i}$, and are hence $r$-cartesian. But then $f$ is equivalent to $\hat{f}$, so $f$ is $r$-cartesian as promised. 
+
+  We have now shown that under the assumption that 1.\ holds, a the pushforward maps preserve $r$-cartesian morphisms, and that a component in $(\category{C}_{\otimes})_{\langle n \rangle}$ is $r$-cartesian if and only if it is $r$-cocartesian. This proves c).
+
+  Now, suppose that 2.\ holds.
+\end{proof}
+
+\subsection{Monoidal Beck-Chevalley fibrations}
+\label{ssc:monoidal_beck_chevalley_fibrations}
+
+\begin{note}
+  For this to work out, I think we probably need to modify the second condition to be an adequate triple so that we only need to consider pullbacks of the type given in the first condition.
+\end{note}
+
+\begin{lemma}
+  \label{lemma:cocartesian_iff_componentwise_cocartesian}
+  Let $p$ and $q$ be CSMCs as below, and let $r$ be a monoidal functor.
+  \begin{equation*}
+    \begin{tikzcd}
+      \category{C}_{\otimes}
+      \arrow[rr, "r"]
+      \arrow[dr, swap, "q"]
+      && \category{D}_{\boxtimes}
+      \arrow[dl, "p"]
+      \\
+      & \Finp\op
+    \end{tikzcd}
+  \end{equation*}
+  A morphism in $(\category{C}_{\otimes})_{\langle n \rangle}$ is $r$-cocartesian if and only if it is componentwise $r$-cocartesian.
+\end{lemma}
+\begin{proof}
+  Consider the following diagram of pullback squares.
+  \begin{equation*}
+    \begin{tikzcd}
+      (\category{C}_{\otimes})_{\langle n \rangle}
+      \arrow[r]
+      \arrow[d, swap, "r|\langle n \rangle"]
+      & \category{C}_{\otimes}
+      \arrow[d, "r"]
+      \\
+      (\category{D}_{\otimes})_{\langle n \rangle}
+      \arrow[r]
+      \arrow[d, swap, "p|\langle n \rangle"]
+      & \category{D}_{\otimes}
+      \arrow[d, "p"]
+      \\
+      \{\langle n \rangle\}
+      \arrow[r]
+      & \Finp\op
+    \end{tikzcd}
+  \end{equation*}
+  It follows from the dual to \cite[Cor.~4.3.1.15]{highertopostheory}\footnote{Note an unfortunate notational clash: our maps $p$, $q$, and $r$ do not agree with Lurie's.} that a morphism in $(\category{C}_{\otimes})_{\langle n \rangle}$ is $r|\langle n \rangle$-cocartesian if and only if its image in $\category{C}_{\otimes}$ is $r$-cocartesian. But a morphism is $r|\langle n \rangle$-cocartesian if and only if each component is $r|\langle 1 \rangle$-cocartesian.
 \end{proof}
 
 \begin{definition}
@@ -131,7 +212,7 @@ Our theory of symmetric monoidal $\infty$-categories exactly mirrors Lurie's \ci
 \end{proposition}
 
 \begin{definition}
-  A \defn{monoidal Beck-Chevalley fibration} is a commutative diagram
+  A \defn{monoidal Beck-Chevalley fibration} is a functor $r$ of CSMCs
   \begin{equation*}
     \begin{tikzcd}
       \category{X}_{\otimes}
@@ -142,50 +223,62 @@ Our theory of symmetric monoidal $\infty$-categories exactly mirrors Lurie's \ci
       \\
       & \Finp\op
     \end{tikzcd}
-  \end{equation*}
-  with the following characteristics.
+  \end{equation*},
+  where $\category{T}_{\times}$ is a cartesian CSMC, with the following characteristics.
   \begin{itemize}
-    \item The map $p$ is a cartesian CSMC.
+    \item The map $r|\langle 1 \rangle$ is a Beck-Chevalley fibration.
 
-    \item The category $\category{T}$ underlying $\category{T}_{\times}$ admits pullbacks.
+    \item The map $r$ is monoidal.
 
-    \item The map $q$ is a CSMC.
+    \item The tensor product $\otimes$ strongly preserves $r$-cartesian morphisms.
 
-    \item The map $r$ is a cartesian fibration (hence monoidal).
+    \item The tensor product $\otimes$ strongly preserves $r$-cocartesian morphisms.
 
-    \item The functor $r|\langle 1 \rangle$ is a cocartesian fibration.
+    %\item The map $p$ is a cartesian CSMC.
 
-    \item The functor $r$ obeys the following interchange law: for any diagram
-      \begin{equation*}
-        \begin{tikzcd}
-          \vec{z}
-          \arrow[r, "f'"]
-          \arrow[d, swap, "g'"]
-          & \vec{y}
-          \arrow[d, "g"]
-          \\
-          \vec{y}'
-          \arrow[r, "f"]
-          & \vec{x}
-        \end{tikzcd}
-      \end{equation*}
-      in $\category{X}_{\otimes}$ whose image in $\category{T}_{\otimes}$ is pullback, and which lies over a square
-      \begin{equation*}
-        \begin{tikzcd}
-          \langle n \rangle
-          & \langle n \rangle
-          \arrow[l, equals]
-          \\
-          \langle m \rangle
-          \arrow[u, "\phi"]
-          & \langle m \rangle
-          \arrow[l, equals]
-          \arrow[u, swap, "\psi"]
-        \end{tikzcd},
-      \end{equation*}
-      in $\Finp\op$, if $g$ and $g'$ are $r$-cartesian and $f$ is $r$-cocartesian, then $f'$ is $r$-cocartesian.
+    %\item The category $\category{T}$ underlying $\category{T}_{\times}$ admits pullbacks.
+
+    %\item The map $q$ is a CSMC.
+
+    %\item The map $r$ is a cartesian fibration (hence monoidal).
+
+    %\item The functor $r|\langle 1 \rangle$ is a cocartesian fibration.
+
+    %\item The functor $r$ obeys the following interchange law: for any diagram
+    %  \begin{equation*}
+    %    \begin{tikzcd}
+    %      \vec{z}
+    %      \arrow[r, "f'"]
+    %      \arrow[d, swap, "g'"]
+    %      & \vec{y}
+    %      \arrow[d, "g"]
+    %      \\
+    %      \vec{y}'
+    %      \arrow[r, "f"]
+    %      & \vec{x}
+    %    \end{tikzcd}
+    %  \end{equation*}
+    %  in $\category{X}_{\otimes}$ whose image in $\category{T}_{\otimes}$ is pullback, and which lies over a square
+    %  \begin{equation*}
+    %    \begin{tikzcd}
+    %      \langle n \rangle
+    %      & \langle n \rangle
+    %      \arrow[l, equals]
+    %      \\
+    %      \langle m \rangle
+    %      \arrow[u, "\phi"]
+    %      & \langle m \rangle
+    %      \arrow[l, equals]
+    %      \arrow[u, swap, "\psi"]
+    %    \end{tikzcd},
+    %  \end{equation*}
+    %  in $\Finp\op$, if $g$ and $g'$ are $r$-cartesian and $f$ is $r$-cocartesian, then $f'$ is $r$-cocartesian.
   \end{itemize}
 \end{definition}
+
+\begin{lemma}
+  Let
+\end{lemma}
 
 \begin{lemma}
   The category $\Finp$ admits finite limits and colimits.
@@ -294,7 +387,7 @@ Our theory of symmetric monoidal $\infty$-categories exactly mirrors Lurie's \ci
       & \Span\triple{F}
     \end{tikzcd}.
   \end{equation*}
-  Pulling back along the map $\Finp \to \Span\triple{F}$,
+  Pulling back along the map $\Finp \to \Span\triple{F}$, one finds a
 \end{proof}
 
 

@@ -2206,6 +2206,7 @@
     <bcf:citekey order="22">spectralmackeyfunctors2</bcf:citekey>
     <bcf:citekey order="23">luriehigheralgebra</bcf:citekey>
     <bcf:citekey order="24">highertopostheory</bcf:citekey>
+    <bcf:citekey order="25">highertopostheory</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

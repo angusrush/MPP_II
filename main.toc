@@ -38,30 +38,32 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {6}Monoidal push-pull of local systems}{49}{section.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1}Monoidal Beck-Chevalley fibrations}{50}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.1}The lax monoidal Grothendieck construction}{50}{subsection.6.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2}The monoidal twisted arrow category}{54}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.2}Monoidal Beck-Chevalley fibrations}{53}{subsection.6.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.3}The triple structures}{59}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.3}The monoidal twisted arrow category}{56}{subsection.6.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {6.3.1}The triple structure on finite pointed sets}{59}{subsubsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.4}The triple structures}{60}{subsection.6.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {6.3.2}The triple structure on infinity-categories}{59}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.4.1}The triple structure on finite pointed sets}{60}{subsubsection.6.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {6.3.3}The triple structure on the twisted arrow category}{60}{subsubsection.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.4.2}The triple structure on infinity-categories}{60}{subsubsection.6.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.4}Building categories of spans}{61}{subsection.6.4}%
+\contentsline {subsubsection}{\numberline {6.4.3}The triple structure on the twisted arrow category}{61}{subsubsection.6.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}Constructing the symmetric monoidal functor}{63}{section.7}%
+\contentsline {subsection}{\numberline {6.5}Building categories of spans}{62}{subsection.6.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}Miscellaneous stuff to be deleted or absorbed}{64}{section.8}%
+\contentsline {section}{\numberline {7}Constructing the symmetric monoidal functor}{65}{section.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}What does Barwick mean?}{64}{section.9}%
+\contentsline {section}{\numberline {8}Miscellaneous stuff to be deleted or absorbed}{65}{section.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.1}The triple structures}{64}{subsection.9.1}%
+\contentsline {section}{\numberline {9}What does Barwick mean?}{65}{section.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {9.1.1}The triple structure on local systems}{64}{subsubsection.9.1.1}%
+\contentsline {subsection}{\numberline {9.1}The triple structures}{66}{subsection.9.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.2}Building categories of spans}{66}{subsection.9.2}%
+\contentsline {subsubsection}{\numberline {9.1.1}The triple structure on local systems}{66}{subsubsection.9.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10}Monoidal categories as cartesian fibrations}{68}{section.10}%
+\contentsline {subsection}{\numberline {9.2}Building categories of spans}{67}{subsection.9.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {10}Monoidal categories as cartesian fibrations}{70}{section.10}%
