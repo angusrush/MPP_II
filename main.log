@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.4.24)  20 APR 2022 11:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.4.24)  21 APR 2022 12:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1254,6 +1254,7 @@ Overfull \hbox (5.42111pt too wide) in paragraph at lines 29--30
 [2]) (./new_barwick.tex [3]) (./kan.tex [4]
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/it' will be
 (Font)              scaled to size 10.95pt on input line 29.
+ [5]
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 9.0pt on input line 119.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
@@ -1266,7 +1267,7 @@ LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
 (Font)              scaled to size 7.3pt on input line 119.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
 (Font)              scaled to size 5.5pt on input line 119.
- [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15]
+ [6] [7] [8] [9] [10] [11] [12] [13] [14] [15]
 Overfull \hbox (10.87334pt too wide) in paragraph at lines 684--686
 \OT1/LinuxLibertineT-TLF/m/n/10.95 where the mark-ing $\U/eus/m/n/10.95 G$ \OT1/LinuxLibertineT-TLF/m/n/10.95 con-tains all de-gen-er-ate mor-phisms to-gether with the mor-phism $\LMS/ntxsy/m/n/10.95 ¹\OT1/LinuxLibertineT-TLF/m/n/10.95 0\OML/nxlmi/m/it/10.95 ; [] ; \OT1/LinuxLibertineT-TLF/m/n/10.95 0\LMS/ntxsy/m/n/10.95 º !
  []
@@ -1291,24 +1292,24 @@ Overfull \hbox (9.39438pt too wide) in paragraph at lines 646--647
 []\OT1/LinuxLibertineT-TLF/m/n/10.95 We pro-ceed in-duc-tively. Sup-pose we have added the sim-plices $\U/ntxmia/m/it/10.95 ^^A[]$\OT1/LinuxLibertineT-TLF/m/n/10.95 , $\U/ntxmia/m/it/10.95 ^^A[]$\OT1/LinuxLibertineT-TLF/m/n/10.95 ,
  []
 
-[38] [39] [40]
+[38] [39] [40] [41]
 Overfull \hbox (2.39302pt too wide) in paragraph at lines 879--882
 \OT1/LinuxLibertineT-TLF/m/n/10.95 where $\OML/nxlmi/m/it/10.95 J$ \OT1/LinuxLibertineT-TLF/m/n/10.95 is the func-tor de-fined in [][]Def-i-ni-tion 4.3.4[][][]. Here, $\OML/nxlmi/m/it/10.95 v[]$ \OT1/LinuxLibertineT-TLF/m/n/10.95 is the mor-phism of [][]Lemma 4.3.5[][][].
  []
 
-[41] [42] [43]) (./non_monoidal.tex [44] [45]
+[42] [43]) (./non_monoidal.tex [44] [45] [46]
 Overfull \hbox (0.40036pt too wide) in paragraph at lines 178--179
 []\OT1/LinuxLibertineT-TLF/m/n/10.95 The fol-low-ing is sim-ply a re-for-mu-la-tion of the def-i-ni-tion of a left Kan ex-ten-sion ([][]Def-i-ni-tion 3.1.5[][][])
  []
 
-[46] [47] [48]) (./base_fibrations.tex
+[47] [48]) (./base_fibrations.tex
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 9.0pt on input line 14.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 7.3pt on input line 14.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 5.5pt on input line 14.
- [49] [50] [51] [52] [53] [54] [55] [56] [57] [58] [59] [60] [61] [62] [63] [64]) (./misc.tex [65] [66] [67] [68] [69])
+ [49] [50] [51] [52] [53] [54] [55] [56] [57] [58] [59] [60] [61] [62] [63] [64] [65]) (./misc.tex [66] [67] [68] [69] [70])
 LaTeX Font Info:    Trying to load font information for OT1+LinuxLibertineMonoT-TLF on input line 29.
  (/usr/share/texlive/texmf-dist/tex/latex/libertine/OT1LinuxLibertineMonoT-TLF.fd
 File: OT1LinuxLibertineMonoT-TLF.fd 2019/05/20 (autoinst) Font definitions for OT1/LinuxLibertineMonoT-TLF.
@@ -1329,7 +1330,7 @@ Overfull \hbox (4.5746pt too wide) in paragraph at lines 30--30
 []\OT1/LinuxLibertineT-TLF/m/n/10.95 Joe Moeller and Christina Vasi-lakopoulou. ``Monoidal grothendieck con-struc-tion''. In: \OT1/LinuxLibertineT-TLF/m/it/10.95 arXiv
  []
 
-[70]
+[71]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 31.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 31.
  (./main.aux)
@@ -1342,10 +1343,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 40996 strings out of 481239
- 829694 string characters out of 5920377
- 1389800 words of memory out of 5000000
- 55192 multiletter control sequences out of 15000+600000
+ 41183 strings out of 481239
+ 834519 string characters out of 5920377
+ 1388825 words of memory out of 5000000
+ 55377 multiletter control sequences out of 15000+600000
  632070 words of font info for 225 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  73i,24n,115p,10099b,1651s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1365,10 +1366,10 @@ pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist,
 
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_n3gv2c.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_3dk467.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_edcawa.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ks2ukx.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_fygcup.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_lyu3x3.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_kijugd.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/newtx/LibertineMathMI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/LibertineMathMI5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/LibertineMathMI7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/LibertineMathRM.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineMT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTBI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTZ.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/NewTXMI5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/bbold-type1/bbold7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/euler/eusm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txexas.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsya.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txsys.pfb>
-Output written on main.pdf (70 pages, 840084 bytes).
+Output written on main.pdf (71 pages, 843832 bytes).
 PDF statistics:
- 1058 PDF objects out of 1200 (max. 8388607)
- 949 compressed objects within 10 object streams
- 339 named destinations out of 1000 (max. 500000)
+ 1064 PDF objects out of 1200 (max. 8388607)
+ 954 compressed objects within 10 object streams
+ 341 named destinations out of 1000 (max. 500000)
  285 words of extra memory for PDF output out of 10000 (max. 10000000)
 

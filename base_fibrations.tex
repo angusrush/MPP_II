@@ -82,26 +82,29 @@ Our theory of symmetric monoidal $\infty$-categories exactly mirrors Lurie's \ci
 
       \textit{We can think of a morphism $f$ in $(\category{C}_{\otimes})_{\langle n \rangle}$ as an $n$-tuple of morphisms $f_{i}$ in $\category{C}$. We say that $f$ is componentwise (co)cartesian if each component $f_{i}$ is (co)cartesian.}
 
+    \item The monoidal
+
     \item The tensor product $\otimes$ \defn{strongly preserves cartesian (resp.\ cocartesian) edges} if an edge $f$ in the fiber $(\category{C}_{\otimes})_{\langle n \rangle}$ is $p$-cartesian (resp.\ cocartesian) if and only if it is componentwise $p$-cartesian, and if for all $\phi\colon \langle n \rangle \leftarrow \langle m \rangle \in \Finp\op$, the associated functor $\phi^{*}\colon (\category{C}_{\otimes})_{\langle m \rangle} \to (\category{C}_{\otimes})_{\langle n \rangle}$ sends componentwise $r$-cartesian (resp.\ componentwise cocartesian) morphisms contained in the fiber $(\category{C})_{\langle m \rangle}$ to componentwise $r$-cartesian (resp.\ componentwise cocartesian) morphisms contained in the fiber $(\category{C}_{\otimes})_{\langle n \rangle}$.
 
       \textit{This implies in particular that if $f$ and $g$ are (co)cartesian, then $f \otimes g$ is as well.}
   \end{itemize}
 \end{definition}
 
-\begin{lemma}
-  \label{lemma:right_horn_smash_delta_1}
-  The inclusion of marked simplicial sets
-  \begin{equation}
-    \label{eq:right_horn_anodyne_morphism}
-    \left( \Delta^{n} \times \Delta^{\{0\}} \coprod_{\Lambda^{n}_{n} \times \Delta^{\{0\}}} \Lambda^{n}_{n} \times \Delta^{\{0\}}, \mathcal{E} \right) \hookrightarrow (\Delta^{n} \times \Delta^{1}, \mathcal{F})
-  \end{equation}
-  where the marking $\mathcal{F}$ is the flat marking together with the edge $\Delta^{\{0\}} \times \Delta^{1}$, and $\mathcal{E}$ is the restriction of this marking, is marked (cocartesian) anodyne.
-\end{lemma}
-\begin{proof}
-  We can write the inclusion $\Lambda^{n}_{n} \hookrightarrow \Delta^{n}$ as a composition $\Lambda^{n}_{n} \hookrightarrow \partial \Delta^{n} \hookrightarrow \Delta^{n}$, where first morphism is a pushout along $\partial \Delta^{n-1} \hookrightarrow \Delta^{n-1}$. This factorization allows us to apply \hyperref[lemma:right_horn_smash_delta_1]{Lemma~\ref*{lemma:right_horn_smash_delta_1}} twice.
-\end{proof}
+%\begin{lemma}
+%  \label{lemma:right_horn_smash_delta_1}
+%  The inclusion of marked simplicial sets
+%  \begin{equation}
+%    \label{eq:right_horn_anodyne_morphism}
+%    \left( \Delta^{n} \times \Delta^{\{0\}} \coprod_{\Lambda^{n}_{n} \times \Delta^{\{0\}}} \Lambda^{n}_{n} \times \Delta^{\{0\}}, \mathcal{E} \right) \hookrightarrow (\Delta^{n} \times \Delta^{1}, \mathcal{F})
+%  \end{equation}
+%  where the marking $\mathcal{F}$ is the flat marking together with the edge $\Delta^{\{0\}} \times \Delta^{1}$, and $\mathcal{E}$ is the restriction of this marking, is marked (cocartesian) anodyne.
+%\end{lemma}
+%\begin{proof}
+%  We can write the inclusion $\Lambda^{n}_{n} \hookrightarrow \Delta^{n}$ as a composition $\Lambda^{n}_{n} \hookrightarrow \partial \Delta^{n} \hookrightarrow \Delta^{n}$, where first morphism is a pushout along $\partial \Delta^{n-1} \hookrightarrow \Delta^{n-1}$. This factorization allows us to apply \hyperref[lemma:right_horn_smash_delta_1]{Lemma~\ref*{lemma:right_horn_smash_delta_1}} twice.
+%\end{proof}
 
 \begin{lemma}
+  \label{lemma:equivalent_conditions_to_be_cartesan}
   Let $q\colon \category{C}_{\otimes} \to \Fin\op$ and $p\colon \category{D}_{\otimes} \to \Finp\op$ be CSMCs as below, and let $r$ be an inner fibration $\category{C}_{\otimes} \to \category{D}_{\boxtimes}$ such that the diagram
   \begin{equation*}
     \begin{tikzcd}
@@ -153,14 +156,80 @@ Our theory of symmetric monoidal $\infty$-categories exactly mirrors Lurie's \ci
 
   We have now shown that under the assumption that 1.\ holds, a the pushforward maps preserve $r$-cartesian morphisms, and that a component in $(\category{C}_{\otimes})_{\langle n \rangle}$ is $r$-cartesian if and only if it is $r$-cocartesian. This proves c).
 
-  Now, suppose that 2.\ holds.
+  Now, suppose that 2.\ holds. We immediately note that c) implies that for each $\langle n \rangle \in \Finp\op$, the restriction $r|\langle n \rangle$ is a cartesian fibration, and an edge is $r|\langle n \rangle$-cartesian if and only if it is $r$-cartesian.
+
+  We now show that $r$ admits cartesian lifts. Let $f\colon d \to d'$ be an edge in $\category{D}_{\boxtimes}$ lying over an edge $\phi\colon \langle n \rangle \leftarrow \langle m \rangle$ in $\Finp\op$, and let $c'$ be a lift of $d'$ to $\category{C}_{\otimes}$. We can take a $q$-cartesian lift $g\colon c'' \to c$ of $f$, whose image in $\category{D}_{\boxtimes}$ is by b) a $p$-cartesian map $h\colon d'' \to d'$. This gives us the solid data
+  \begin{equation*}
+    \begin{tikzcd}
+      & c''
+      \arrow[dr, "g"]
+      \\
+      c
+      \arrow[ur, dashed, "k"]
+      \arrow[rr, dashed, swap, "\ell"]
+      && c'
+      \\
+      & d''
+      \arrow[dr, "h"]
+      \\
+      d
+      \arrow[ur, dashed, "j"]
+      \arrow[rr, swap, "f"]
+      && d'
+      \\
+      & \langle n \rangle
+      \arrow[dl, equals]
+      \\
+      \langle n \rangle
+      && \langle m \rangle
+      \arrow[ul, swap, "\phi"]
+      \arrow[ll, "\phi"]
+    \end{tikzcd}.
+  \end{equation*}
+  Using the fact that $h$ is $p$-cartesian, we can fill the $2$-simplex in $\category{D}_{\boxtimes}$ as above, giving us in particular a map $j\colon d \to d''$. We can lift $j$ to an $r|\langle n \rangle$-cartesian morphism $k\colon c \to c''$, which is therefore also $r$-cartesian. Using that $r$ is an inner fibration, we can compose $g$ and $k$ relative to the simplex in $\category{D}_{\boxtimes}$, giving us a lift $\ell$ of $f$. But $\ell$ is the composition of two $r$-cartesian morphisms, and hence itself $r$-cartesian.
 \end{proof}
+
+\hyperref[lemma:equivalent_conditions_to_be_cartesan]{Lemma~\ref*{lemma:equivalent_conditions_to_be_cartesan}} gives us an $\infty$-categorical version of
 
 \subsection{Monoidal Beck-Chevalley fibrations}
 \label{ssc:monoidal_beck_chevalley_fibrations}
 
 \begin{note}
-  For this to work out, I think we probably need to modify the second condition to be an adequate triple so that we only need to consider pullbacks of the type given in the first condition.
+  For this to work out, I think we probably need to modify the second condition to be an adequate triple so that we only need to consider pullbacks of the type given in the first condition, i.e:
+
+  For any pullback square
+  \begin{equation*}
+    \begin{tikzcd}
+      y'
+      \arrow[r,  "f'"]
+      \arrow[d, swap, "g'"]
+      & x'
+      \arrow[d, "g"]
+      \\
+      y
+      \arrow[r, "f"]
+      & x
+    \end{tikzcd}
+  \end{equation*}
+  where $f \in \category{C}\downdag$ and $g \in \category{C}\updag$, we have that $f' \in \category{C}\downdag$ and $g' \in \category{C}\updag$.
+
+  This means we also need to add the condition:
+
+  For any square
+  \begin{equation*}
+    \begin{tikzcd}
+      y'
+      \arrow[r,  "f'"]
+      \arrow[d, swap, "g'"]
+      & x'
+      \arrow[d, "g"]
+      \\
+      y
+      \arrow[r, "f"]
+      & x
+    \end{tikzcd}
+  \end{equation*}
+  where $g$ and $g'$ are equivalences, if $f \in \category{C}\downdag$  (resp.\ $\category{C}\updag$), then $f' \in \category{C}\downdag$ (resp.\ $\category{C}\updag$).
 \end{note}
 
 \begin{lemma}
@@ -337,7 +406,7 @@ Our theory of symmetric monoidal $\infty$-categories exactly mirrors Lurie's \ci
         \item $\category{T}\updag = \category{T}_{\times}$
       \end{itemize}
 
-      To see that this is adequate, we first note that $p$ admits relative pullbacks; each fiber admits pullbacks by virtue our assumption that $\category{T}$ admits pullbacks, and the identifications $( \category{T}_{\times} )_{\langle n \rangle} \simeq \category{T}^{n}$. The functoriality coming from $p$ implements products, and therefore commute with pullbacks. Thus, $\category{T}_{\times}$ admits pullbacks, and $p$ preserves pullbacks. This immediately implies that $\triple{T}$ is adequate:
+      To see that this is adequate, we first note that $p$ admits relative pullbacks. To see this, note that each fiber admits pullbacks by virtue our assumption that $\category{T}$ admits pullbacks, and the identifications $( \category{T}_{\times} )_{\langle n \rangle} \simeq \category{T}^{n}$. The functoriality coming from $p$ implements products, and therefore commute with pullbacks. Thus, $\category{T}_{\times}$ admits pullbacks, and $p$ preserves pullbacks. This immediately implies that $\triple{T}$ is adequate:
       \begin{enumerate}
         \item Pushouts of this form are simply squares with horizontal morphisms given by equivalences.
 
@@ -379,15 +448,15 @@ Our theory of symmetric monoidal $\infty$-categories exactly mirrors Lurie's \ci
   \begin{equation*}
     \begin{tikzcd}
       \Span\triple{X}
-      \arrow[rr]
-      \arrow[dr]
+      \arrow[rr, "\rho"]
+      \arrow[dr, swap, "\varpi"]
       && \Span\triple{T}
-      \arrow[dl]
+      \arrow[dl, "\pi"]
       \\
       & \Span\triple{F}
     \end{tikzcd}.
   \end{equation*}
-  Pulling back along the map $\Finp \to \Span\triple{F}$, one finds a
+  One readily checks that $\pi$ satisfies the conditions of \hyperref[thm:old_barwick]{Theorem~\ref*{thm:old_barwick}}.
 \end{proof}
 
 
