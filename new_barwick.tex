@@ -10,7 +10,7 @@ It turns out Barwick's construction can be obviously modified. Here is a form wh
   \label{thm:old_barwick}
   Let $p\colon \triple{C} \to \triple{D}$ be a functor between adequate triples such that $p\colon \category{C} \to \category{D}$ is an inner fibration which satisfies the following conditions.
   \begin{enumerate}
-    \item Each morphism $g \in \category{D}\updag$ admits a lift to a morphism in $\category{C}\updag$ (given a lift of the source) which is both $p$-cocartesian and $p\updag$-cocartesian.
+    \item Each morphism $g \in \category{D}\downdag$ admits a lift to a morphism in $\category{C}\downdag$ (given a lift of the source) which is both $p$-cocartesian and $p\downdag$-cocartesian.
 
     \item Consider a commutative square
       \begin{equation*}
@@ -18,7 +18,7 @@ It turns out Barwick's construction can be obviously modified. Here is a form wh
         \begin{tikzcd}
           y'
           \arrow[r, rightarrowtail, "f'"]
-          \arrow[d, two heads, swap]
+          \arrow[d, two heads, swap, "g'"]
           & x'
           \arrow[d, "g"]
           \\
@@ -27,7 +27,7 @@ It turns out Barwick's construction can be obviously modified. Here is a form wh
           & x
         \end{tikzcd}
       \end{equation*}
-      in $\category{C}$ where $g$ belongs to $\category{C}\updag$, and $f$ and $f'$ belong to $\category{C}\downdag$. Suppose that $f$ is $p$-cocartesian. Then $f'$ is $p'$-cocartesian if and only if $\sigma$ is an ambigressive pullback square (and in particular $g \in \category{C}\updag$).
+      in $\category{C}$ where $g'$ belongs to $\category{C}\updag$, and $f$ and $f'$ belong to $\category{C}\downdag$. Suppose that $f$ is $p$-cocartesian. Then $f'$ is $p'$-cocartesian if and only if $\sigma$ is an ambigressive pullback square (and in particular $g \in \category{C}\updag$).
   \end{enumerate}
 \end{theorem}
 

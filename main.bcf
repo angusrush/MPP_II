@@ -2206,7 +2206,13 @@
     <bcf:citekey order="22">spectralmackeyfunctors2</bcf:citekey>
     <bcf:citekey order="23">luriehigheralgebra</bcf:citekey>
     <bcf:citekey order="24">highertopostheory</bcf:citekey>
-    <bcf:citekey order="25">highertopostheory</bcf:citekey>
+    <bcf:citekey order="25">moeller2018monoidal</bcf:citekey>
+    <bcf:citekey order="26">moeller2018monoidal</bcf:citekey>
+    <bcf:citekey order="27">luriehigheralgebra</bcf:citekey>
+    <bcf:citekey order="28">luriehigheralgebra</bcf:citekey>
+    <bcf:citekey order="29">highertopostheory</bcf:citekey>
+    <bcf:citekey order="30">highertopostheory</bcf:citekey>
+    <bcf:citekey order="31">highertopostheory</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
