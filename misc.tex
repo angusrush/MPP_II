@@ -4,6 +4,428 @@
 \section{Miscellaneous stuff to be deleted or absorbed}
 \label{sec:miscellaneous_stuff_to_be_deleted_or_absorbed}
 
+\subsection{The triple structures}
+\label{ssc:the_triple_structures}
+
+\subsubsection{The triple structure on finite pointed sets}
+\label{sss:the_triple_structure_on_finite_pointed_sets}
+
+We define a triple structure $\triple{F}$ on $\Finp\op$, where
+\begin{itemize}
+  \item $\category{F} = \Finp\op$
+
+  \item $\category{F}\downdag = (\Finp\op)^{\simeq}$
+
+  \item $\category{F}\updag = \Finp\op$
+\end{itemize}
+
+\begin{proposition}
+  This is an adequate triple structure.
+\end{proposition}
+\begin{proof}
+  Trivial.
+\end{proof}
+
+\begin{proposition}
+  There is a Joyal equivalence $\Finp \to \Span\triple{F}$.
+\end{proposition}
+
+\subsubsection{The triple structure on infinity-categories}
+\label{sss:the_triple_structure_on_categories}
+
+We define a triple $\triple{P}$ as follows.
+\begin{itemize}
+  \item $\category{P} = \TSCart$
+
+  \item $\category{P}\downdag = \TSCart \times_{\Finp\op}(\Finp\op)^{\simeq}$
+
+  \item $\category{P}\updag = \TSCart$
+\end{itemize}
+
+\begin{proposition}
+  The cartesian fibration $\TSCart \to \Finp\op$ admits relative pullbacks.
+\end{proposition}
+\begin{proof}
+  The fibers clearly admit pullbacks, and the pullback maps commute with pullbacks because products commute with pullbacks.
+\end{proof}
+
+\begin{proposition}
+  This is an adequate triple structure.
+\end{proposition}
+\begin{proof}
+  It suffices to show that $\TSCart$ admits pullbacks, and that for any pullback square in $\TSCart$ lying over a square
+  \begin{equation*}
+    \begin{tikzcd}
+      \langle n \rangle
+      & \langle m \rangle
+      \arrow[l]
+      \\
+      \langle n' \rangle
+      \arrow[u, "\phi"]
+      & \langle m' \rangle
+      \arrow[l]
+      \arrow[u, swap, "\simeq"]
+    \end{tikzcd}
+  \end{equation*}
+  in $\TSCart$, the morphism $\phi$ is an isomorphism in $\Finp$. But $\TSCart$ admits relative pullbacks and $\Finp\op$ admits pullbacks, so $p$ preserves pullbacks. (Just take the proof from my thesis!)
+\end{proof}
+
+\subsubsection{The triple structure on the twisted arrow category}
+\label{sss:the_triple_structure_on_the_twisted_arrow_category}
+
+We define a triple $\triple{Q}$ as follows:
+\begin{itemize}
+  \item $\category{Q} = \LS(\category{C})_{\otimes}$
+
+  \item $\category{Q}\downdag = \LS(\category{C})_{\otimes} \times_{\Finp\op}(\Finp\op)^{\simeq}$
+
+  \item $\category{Q}\updag$ consists of the subcategory of $\LS(\category{C})_{\otimes}$ of $r$-cartesian morphisms, i.e.\ thin morphisms.
+\end{itemize}
+
+These triple constructions correspond to spans of the following form.
+\begin{equation*}
+  \begin{tikzcd}
+    \vec{X}
+    \arrow[d, ""{name=L, right}]
+    & \vec{Z}
+    \arrow[d, ""{name=ML, left}, ""{name=MR, right}]
+    \arrow[r]
+    \arrow[l]
+    & \vec{Y}
+    \arrow[d, ""{name=R, right}]
+    \\
+    \category{C}^{n}
+    \arrow[d, no head, dotted, bend left]
+    \arrow[r]
+    & \category{C}^{m}
+    \arrow[d, no head, dotted, bend left]
+    & \category{C}^{m}
+    \arrow[l, swap, "\simeq"]
+    \arrow[d, no head, dotted, bend left]
+    \\
+    \vec{X}
+    \arrow[d, no head, dotted, bend left]
+    & \vec{Z}
+    \arrow[d, no head, dotted, bend left]
+    \arrow[r]
+    \arrow[l]
+    & \vec{Y}
+    \arrow[d, no head, dotted, bend left]
+    \\
+    \langle n \rangle
+    \arrow[r]
+    & \langle m \rangle
+    & \langle m \rangle
+    \arrow[l, swap, "\cong"]
+    \arrow[from=ML, to=L, phantom, shorten=1.5ex, "\circlearrowleft"{description}]
+    \arrow[from=MR, to=R, Rightarrow, shorten=2ex]
+  \end{tikzcd}
+\end{equation*}
+
+According to the modified Barwick's theorem, such a span will correspond to a cocartesian morphism in $\Span\triple{P}$ if it is of the form
+\begin{equation*}
+  \begin{tikzcd}
+    \vec{X}
+    \arrow[d, "\mathcal{F}"{left}, ""{name=L, right}]
+    & \vec{Z}
+    \arrow[d, "g^{*}t \circ \mathcal{F}"{description}, ""{name=ML, left}, ""{name=MR, right}]
+    \arrow[r, "f"]
+    \arrow[l, swap, "g"]
+    & \vec{Y}
+    \arrow[d, ""{name=R, right}, "f_{!}(g^{*}t\mathcal{F})"]
+    \\
+    \category{C}^{n}
+    \arrow[r]
+    & \category{C}^{m}
+    & \category{C}^{m}
+    \arrow[l, swap, "\cong"]
+    \arrow[from=ML, to=L, phantom, shorten=1.5ex, "\circlearrowleft"{description}]
+    \arrow[from=MR, to=R, Rightarrow, shorten=2ex]
+  \end{tikzcd}.
+\end{equation*}
+In particular, in the fiber over $\langle 1 \rangle \in \Finp\op$, this is simply pull-push.
+
+%\begin{lemma}
+%  Given a square
+%  \begin{equation*}
+%    \begin{tikzcd}
+%      \langle n \rangle
+%      & \langle n \rangle
+%      \arrow[l, swap, "\simeq"]
+%      \\
+%      \langle m \rangle
+%      \arrow[u]
+%      & \langle m \rangle
+%      \arrow[l, swap, "\simeq"]
+%      \arrow[u]
+%    \end{tikzcd}
+%  \end{equation*}
+%  in $\Finp\op$ and a solid cospan
+%  \begin{equation*}
+%    \begin{tikzcd}
+%      y
+%      \arrow[r, dashed]
+%      \arrow[d, dashed]
+%      & y'
+%      \arrow[d, "g"]
+%      \\
+%      x
+%      \arrow[r]
+%      & y
+%    \end{tikzcd}
+%  \end{equation*}
+%  lying over it, where $g$ is cartesian, a relative pullback always exists.
+%\end{lemma}
+%\begin{proof}
+%  The fiber of $q$ over $\langle n \rangle \in \Finp\op$ is equivalent to $\LS(\category{C})^{n}$, which admits pullbacks by
+%\end{proof}
+
+\begin{proposition}
+  The triple $\triple{Q}$ is adequate.
+\end{proposition}
+\begin{proof}
+  We need to show that for any solid diagram in $\LS(\category{C})_{\otimes}$ of the form
+  \begin{equation*}
+    \begin{tikzcd}
+      y
+      \arrow[r, dashed, "f'"]
+      \arrow[d, swap, dashed, "g'"]
+      & y'
+      \arrow[d, "g"]
+      \\
+      x
+      \arrow[r, "f"]
+      & y
+    \end{tikzcd},
+  \end{equation*}
+  where $g$ is cartesian and $f$ lies over an isomorphism in $\Finp\op$, a dashed pullback exists, and for each such dashed pullback, $g'$ is cartesian and $f'$ lies over an isomorphism in $\Finp\op$. The existence of such a pullback is easy; one takes a pullback in $\Finp\op$, takes a $q$-cartesian lift $g'$, then fills an inner and an outer horn. That this is pullback is immediate because $g$ and $g'$ are $q$-cartesian. That any other pullback square has the necessary properties follows from the existence of a comparison equivalence.
+\end{proof}
+
+\subsection{Building categories of spans}
+\label{ssc:building_categories_of_spans}
+
+\begin{proposition}
+  The map $p$ satisfies the conditions of the original Barwick's Theorem.
+\end{proposition}
+\begin{proof}
+  See thesis.
+\end{proof}
+
+\begin{proposition}
+  The map $r$ satisifes the conditions of the modified Barwick's Theorem.
+\end{proposition}
+\begin{proof}
+  The first condition is obvious since $r$ is a cartesian fibration. In order to check the second condition, we fix a square $\sigma$ in $\Tw(\category{C})_{\otimes}$, lying over a square $r(\sigma)$ in $\TSCart$ and a square $q(\sigma)$ in $\Finp\op$. Fixing notation, we will let $q(\sigma)$ be the square
+  \begin{equation*}
+    \begin{tikzcd}
+      \langle n \rangle
+      & \langle n \rangle
+      \arrow[l, swap, "\gamma'"]
+      \\
+      \langle m \rangle
+      \arrow[u, "\tau'"]
+      & \langle m \rangle
+      \arrow[u, swap, "\tau"]
+      \arrow[l, swap, "\gamma"]
+    \end{tikzcd},
+  \end{equation*}
+  where $\gamma$ and $\gamma'$ are isomorphisms.
+
+  The square $r(\sigma)$ thus has the form
+  \begin{equation*}
+    \begin{tikzcd}
+      \vec{X}'
+      \arrow[r, "f'"]
+      \arrow[d, swap, "g'"]
+      & \vec{Y}'
+      \arrow[d, "g"]
+      \\
+      \vec{X}
+      \arrow[r, "f"]
+      & \vec{Y}
+    \end{tikzcd},
+  \end{equation*}
+  where $f$ has components
+  \begin{equation*}
+    f_{i}\colon X_{i} \to Y_{\gamma^{-1}(i)},\qquad i \in \langle m \rangle^{\circ},
+  \end{equation*}
+  $f'$ has components
+  \begin{equation*}
+    f'_{j}\colon X'_{j} \to Y'_{\gamma'^{-1}(j)},\qquad j \in \langle n \rangle^{\circ},
+  \end{equation*}
+  $g$ has components
+  \begin{equation*}
+    g_{j}\colon Y'_{j} \to \prod_{\tau(i) = j} Y_{i},\qquad j \in \langle n \rangle^{\circ},
+  \end{equation*}
+  and $g'$ has components
+  \begin{equation*}
+    g'_{j}\colon X'_{j} \to \prod_{\tau'(i) = j} X_{i},\qquad j \in \langle n \rangle^{\circ}.
+  \end{equation*}
+
+  Note that the condition that $r(\sigma)$ be pullback is the condition that
+  \begin{equation*}
+    X'_{j} \simeq Y'_{j} \times_{\left( \prod_{\tau'(i) = j} Y_{i} \right)} \left( \prod_{\tau'(i) = j} X_{i} \right),
+  \end{equation*}
+  and that the maps $f'_{j}$ and $g'_{j}$ be the canonical projections.
+
+  The data of the square $\sigma$ is thus given by a diagram of the form
+  \begin{equation*}
+    \begin{tikzcd}
+      \vec{X}'
+      \arrow[rrr, "f'"]
+      \arrow[dr, "g'"]
+      \arrow[ddd, swap, "\mathcal{F}'"]
+      &&& \vec{Y}'
+      \arrow[ddd, near end, "\mathcal{G}'"]
+      \arrow[dr, "g"]
+      %\arrow[from=R1, to=L2, Rightarrow, shorten=6ex]
+      \\
+      & \vec{X}
+      \arrow[rrr, crossing over, "f"]
+      &&& \vec{Y}
+      \arrow[ddd, "\mathcal{G}"]
+      \\
+      \\
+      \category{C}^{(n)}
+      &&& \category{C}^{(n)}
+      \arrow[lll, near start, "\gamma'_{\otimes}"]
+      \\
+      & \category{C}^{(m)}
+      \arrow[ul, "\tau'_{\otimes}"]
+      \arrow[from=uuu, crossing over, near start, "\mathcal{F}"]
+      &&& \category{C}^{(m)}
+      \arrow[lll, "\gamma_{\otimes}"]
+      \arrow[ul, "\tau_{\otimes}"]
+      %\arrow[from=R1, to=L3, phantom, "\circlearrowleft"{description}]
+      %\arrow[from=R3, to=L4, Rightarrow, crossing over, shorten=6ex]
+      %\arrow[from=R2, to=L4, phantom, "\circlearrowleft"{description}]
+    \end{tikzcd},
+  \end{equation*}
+  where the left and right faces are thin, the top face is a pullback, the bottom face is a pushout, and the front face is a left Kan extension (i.e.\ each component is a left Kan extension). We need to show that the back face is a left Kan extension, i.e.\ that for each $j \in \langle n \rangle^{\circ}$, the square
+  \begin{equation*}
+    \begin{tikzcd}
+      X'_{j}
+      \arrow[r, "f'_{j}"]
+      \arrow[d, swap, "\mathcal{F}'_{i}"]
+      & Y'_{\gamma^{-1}(j)}
+      \arrow[d, "\mathcal{G}'_{\gamma^{-1}(i)}"]
+      \\
+      \category{C}
+      & \category{C}
+      \arrow[l, equals]
+    \end{tikzcd}
+  \end{equation*}
+  is left Kan.
+
+  Using HTT 4.3.1.9, we can choose cartesian edges, transporting the pullback square in $\LS(\category{C})_{\otimes}$ above to a pullback square entirely in the fiber over $\langle n \rangle \in \Finp\op$. Since $(\LS(\category{C})_{\otimes})_{\langle n \rangle} \cong (\LS(\category{C}))^{n}$, this diagram consists of $n$ diagrams in $\LS(\category{C})$, one for each $j \in \langle n \rangle^{\circ}$, of the form
+  \begin{equation*}
+    \begin{tikzcd}
+      X'_{j}
+      \arrow[rrr, "f'_{j}"]
+      \arrow[dr]
+      \arrow[ddd, swap, "\mathcal{F}_{i}'"]
+      &&& Y'_{\gamma'^{-1}(j)}
+      \arrow[ddd, near end, "\mathcal{G}_{\gamma^{-1}(i)}'"]
+      \arrow[dr]
+      %\arrow[from=R1, to=L2, Rightarrow, shorten=6ex]
+      \\
+      & \prod_{\tau'(i) = j} X_{i}
+      \arrow[rrr, crossing over]
+      &&& \prod_{\tau(i) = j} Y_{i}
+      \arrow[ddd, "\mathcal{B}"]
+      \\
+      \\
+      \category{C}
+      &&& \category{C}
+      \arrow[lll, equals]
+      \\
+      & \category{C}
+      \arrow[ul, equals]
+      \arrow[from=uuu, crossing over, near start, "\mathcal{A}"]
+      &&& \category{C}
+      \arrow[lll, equals]
+      \arrow[ul, equals]
+      %\arrow[from=R1, to=L3, phantom, "\circlearrowleft"{description}]
+      %\arrow[from=R3, to=L4, Rightarrow, crossing over, shorten=6ex]
+      %\arrow[from=R2, to=L4, phantom, "\circlearrowleft"{description}]
+    \end{tikzcd},
+  \end{equation*}
+  where the top face is pullback, the bottom face is trivially a pushout, and the left and right faces are thin. We want to show that the back face of each of these diagrams is a left Kan extension. If we can show that the front face is a left Kan extension, we will be done. The map $\mathcal{A}$ is the composition of the product of each of the maps $\mathcal{F}_{i}\colon X_{i} \to \category{C}$ with the tensor product $\category{C}^{\abs{\{\tau'(i) = j\}}} \to \category{C}$, and similarly for $\mathcal{B}$. Unravelling the conditions, one finds that the condition that $\category{B}$ be a pointwise left Kan extension of $\category{A}$ along the front-top-horizontal map above is precisely the condition that the tensor product commute with colimits.
+
+  %OLD STUFF HERE
+
+  %Here $\mathcal{F}$ has components
+  %\begin{equation*}
+  %  \mathcal{F}_{i}\colon X_{i} \to \category{C}_{i}\colon i \in \langle m \rangle^{\otimes}.
+  %\end{equation*}
+
+  %Kan extending $\mathcal{F}$ along $f$ we find a map $f_{!}\mathcal{F}\colon \vec{Y} \to \category{C}^{(m)}$, with components
+  %\begin{equation*}
+  %  (f_{!}\mathcal{F})_{i} \simeq (f_{\gamma(i)})_{!}\mathcal{F}_{\gamma(i)}\colon Y_{i} \to \category{C}_{i}.
+  %\end{equation*}
+  %Thus, we find that
+  %\begin{equation*}
+  %  \mathcal{G} \simeq \tau_{\otimes} \circ g^{*}f_{!}\mathcal{F},
+  %\end{equation*}
+  %with components given by the composition
+  %\begin{equation*}
+  %  \mathcal{G}_{j}\colon Y'_{j} \to \prod_{\tau(i) = j} Y_{j} \to \prod_{\tau(i) = j} \category{C}_{i} \to \category{C}_{j}.
+  %\end{equation*}
+
+  %Alternatively, starting from $\mathcal{F}$ and pulling back along the left face gives a map
+  %\begin{equation*}
+  %  \tau'_{\otimes} \circ g'^{*}\mathcal{F}
+  %\end{equation*}
+  %with components
+  %\begin{equation*}
+  %  (\tau'_{\otimes} \circ g'^{*}\mathcal{F})_{j}\colon X'_{j} \to \prod_{\tau'(i) = j} X_{j} \to \prod_{\tau'(i) = j} \category{C}_{i} \to \category{C}_{j}.
+  %\end{equation*}
+
+  %We need to show that
+  %\begin{equation*}
+  %  \mathcal{G} \simeq f'_{!}(\tau'_{\otimes} \circ g'^{*}\mathcal{F})
+  %\end{equation*}
+  %or equivalently, componentwise, that
+  %\begin{equation*}
+  %  \mathcal{G}_{j} \simeq (f'_{\gamma'(j)})_{!}(\tau'_{\otimes} \circ g'^{*}\mathcal{F})_{\gamma'(j)}
+  %\end{equation*}
+\end{proof}
+
+\section{Constructing the symmetric monoidal functor}
+\label{sec:constructing_the_symmetric_monoidal_functor}
+
+The rest of the work follows my thesis pretty much exactly. We are now justified in building
+\begin{equation*}
+  \begin{tikzcd}
+    \Span\triple{Q}
+    \arrow[rr]
+    \arrow[dr]
+    && \Span\triple{P}
+    \arrow[dl]
+    \\
+    & \Span\triple{F}
+  \end{tikzcd}.
+\end{equation*}
+
+We pull back along $\Finp \overset{\simeq}{\to} \Span\triple{F}$, giving us isofibrations
+\begin{equation*}
+  \begin{tikzcd}
+    P
+    \arrow[rr]
+    \arrow[dr]
+    && Q
+    \arrow[dl]
+    \\
+    & \Finp
+  \end{tikzcd},
+\end{equation*}
+and it is easy to check that each of these maps has enough cocartesian lifts. The functor we are interested is the component of $P \to Q$ lying over $\langle 1 \rangle$; this classifies the functor
+\begin{equation*}
+  \Span(\S) \to \ICat
+\end{equation*}
+sending a span of spaces to push-pull, up to an $\op$. Composing with $\op\colon \ICat \to \ICat$ gives precisely the map we want. General abstract nonsense implies that this functor is lax monoidal.
+
+
 \section{What does Barwick mean?}
 \label{sec:what_does_barwick_mean_}
 
