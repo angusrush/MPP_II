@@ -11,7 +11,7 @@ Suppose $p\colon \category{C} \to \category{D}$ is a cartesian fibration of 1-ca
 
   \item The category $\category{D}$ carries a symmetric monoidal structure $(\boxtimes, I_{\category{D}}, \ldots)$.
 
-  \item The functor $p$ is strong monoidal: for $x$, $y \in \category{C}$, $p(x \otimes y) = p(x) \boxtimes p(y)$, and $p(I_{\category{C}}) = I_{\category{D}}$.\footnote{The reason for the strict equality in this condition is that we have chosen specific monoidal functors $\otimes$ and $\boxtimes$. Later, we will replace these functors by fibrations, and the condition of strict equality will be replaced by the more familiar condition of homotopy coherence.}
+  \item The functor $p$ is strong monoidal: for objects $x$, $y \in \category{C}$, we have that $p(x \otimes y) = p(x) \boxtimes p(y)$, and $p(I_{\category{C}}) = I_{\category{D}}$.\footnote{The reason for the strict equality in this condition is that we have chosen specific monoidal functors $\otimes$ and $\boxtimes$. Later, we will replace these functors by fibrations, and the condition of strict equality will be replaced by the more familiar condition of homotopy coherence.}
 
   \item The monoidal product $\otimes$ preserves $p$-cartesian morphisms in the sense that if $f$ and $g$ are $p$-cartesian morphisms, then $f \otimes g$ is also $p$-cartesian.
 \end{itemize}
@@ -27,16 +27,16 @@ Under these conditions, the pseudofunctor $\hat{p}$ carries a lax monoidal struc
     \end{equation*}
     That these structure maps form a pseudonatural transformation, i.e.\ that the necessary squares commute up to specified homotopy, follows from the assumption that the monoidal product preserves $p$-cartesian morphisms in each slot.
 
-  \item The requirement that $p(I_{\category{C}}) = I_{\category{D}}$ can be rephrased to say that $I_{\category{C}} \in \hat{p}(I_{\category{D}})$. This gives us the structure map $\ast \to \hat{p}(I_{\category{D}})$, where $\ast$ is the unit object in $\Cat$.
+  \item The requirement that $p(I_{\category{C}}) = I_{\category{D}}$ can be rephrased to say that $I_{\category{D}} \in \hat{p}(I_{\category{C}})$. This gives us the structure map $\ast \to \hat{p}(I_{\category{D}})$, where $\ast$ is the unit object in $\Cat$.
 \end{itemize}
 
-If we want to study covariant rather than contravariant pseudofunctors, we should replace cartesian fibrations by cocartesian fibrations; of course, now we must assume that $\otimes$ preserves cocartesian edges rather than cartesian. The rest of the theory remains unchanged. These results also remain true in the $\infty$-categorical case, as we will show.
+If we want to study covariant rather than contravariant pseudofunctors, we should replace cartesian fibrations by cocartesian fibrations; of course, now we must assume that $\otimes$ preserves cocartesian edges rather than cartesian. The rest of the theory remains unchanged. These results also remain true in the $\infty$-categorical case, as we will show in \hyperref[ssc:the_lax_monoidal_grothendieck_construction]{Subsection~\ref*{ssc:the_lax_monoidal_grothendieck_construction}}.
 
-As we saw in the last chapter, if we have a bicartesian fibration subject which satisfies the Beck-Chevalley condition (i.e.\ a Beck-Chevalley fibration), we can combine both cartesian and cocartesian functorialities into pull-push functoriality. Our aim is to show that the theory of Beck-Chevalley fibrations admits a monoidal generalization. Consider a Beck-Chevalley fibration $r\colon \category{X} \to \category{T}$ such that $\category{X}$ carries a symmetric monoidal structure $\otimes$, and $\category{T}$ carries a symmetric monoidal structure $\boxtimes$. Our first purpose in this chapter is to show that under the assumption that $r$ is strong monoidal, and that $\otimes$ preserves both cartesian and cocartesian edges, the functor
+As we saw in the last chapter, if we have a bicartesian fibration subject which satisfies the Beck-Chevalley condition (i.e.\ a Beck-Chevalley fibration), we can combine both cartesian and cocartesian functorialities into pull-push functoriality. Our aim in \hyperref[ssc:monoidal_beck_chevalley_fibrations]{Subsection~\ref*{ssc:monoidal_beck_chevalley_fibrations}} will be to show that the theory of Beck-Chevalley fibrations admits a monoidal generalization. More specifically, we will show the following. Consider a Beck-Chevalley fibration $r\colon \category{X} \to \category{T}$ such that $\category{X}$ carries a symmetric monoidal structure $\otimes$, and $\category{T}$ carries a symmetric monoidal structure $\boxtimes$. Under the assumption that $r$ is strong monoidal, and that $\otimes$ preserves both cartesian and cocartesian edges, the functor
 \begin{equation*}
   \Span(\category{T}) \to \ICat
 \end{equation*}
-constructed in the previous chapter carries a lax monoidal structure. Note that this statement is not entirely original. A generalized version in a somewhat different context is proved in \cite{spectralmackeyfunctors2}. We provide an elementary account of the portions of the theory which we will need.
+constructed in the previous chapter carries a lax monoidal structure. Note that this statement is not entirely original. A similar result in a somewhat different context is proved in \cite{spectralmackeyfunctors2}.
 
 We will then apply our results to local systems. We will show that if $\category{C}$ is a symmetric monoidal $\infty$-category, then the $\infty$-category of $\category{C}$-local systems carries a symmetric monoidal structure, defined on objects by
 \begin{equation*}
@@ -71,7 +71,7 @@ Our aim in this section will be an $\infty$-categorical version of the statement
   For any CSMC $\category{C}_{\otimes} \to \Finp\op$, we will denote the fiber $(\category{C}_{\otimes})_{\langle 1 \rangle}$ simply by $\category{C}$.
 \end{notation}
 
-The equivalence $(\category{C}_{\otimes})_{\langle n \rangle} \to \category{C}^{n}$ allow us to trade a diagram in $(\category{C}_{\otimes})_{\langle n \rangle}$ for $n$ diagrams in $\category{C}$, well-defined up to equivalence. Given a diagram $a\colon K \to (\category{C}_{\otimes})_{\langle n \rangle}$, we will often abuse this terminology by calling any such corresponding diagrams $a_{i}\colon K \to \category{C}$ `the' components of $a$ when we are making reference only to properties of these components which are well-defined under equivalence.
+The equivalence $(\category{C}_{\otimes})_{\langle n \rangle} \simeq \category{C}^{n}$ allow us to trade a diagram in $(\category{C}_{\otimes})_{\langle n \rangle}$ for $n$ diagrams in $\category{C}$, well-defined up to equivalence. Given a diagram $a\colon K \to (\category{C}_{\otimes})_{\langle n \rangle}$, we will often abuse this terminology by calling any such corresponding diagrams $a_{i}\colon K \to \category{C}$ `the' components of $a$, when we are making reference only to properties of these components which are well-defined under equivalence.
 
 \begin{definition}
   A \defn{map} between CSMCs $\category{C}_{\otimes} \to \Fin\op$ and $\category{D}_{\boxtimes} \to \Finp\op$ is a functor $r$ making the diagram
@@ -90,7 +90,7 @@ The equivalence $(\category{C}_{\otimes})_{\langle n \rangle} \to \category{C}^{
   \begin{itemize}
     \item The map $r$ is a \defn{monoidal functor} if it sends $q$-cartesian morphisms to $p$-cartesian morphisms.
 
-      \textit{This implies, for example, that $r(x \otimes y) \simeq r(x) \boxtimes r(y)$.}
+      \textit{This implies, for example, that $r(x \otimes y) \simeq r(x) \boxtimes r(y)$, and that $r(I_{\category{C}}) \simeq I_{\category{D}}$. It also automatically implies that the diagrams encoding associativity, etc.,\ commute up to coherent homotopy.}
 
     \item An edge $f$ in $(\category{C}_{\otimes})_{\langle n \rangle}$ is \defn{componentwise cartesian (resp.\ componentwise cocartesian)} if for each $1 \leq i \leq n$, the transport $\rho_{i}^{*}(f)$ is $r|\langle 1 \rangle$-cartesian (resp.\ cocartesian).
 
@@ -477,7 +477,7 @@ We now construct the monoidal structure on this category of spans explicitly, st
 
     \item[(M4)] The tensor product $\otimes$ preserves $r$-cocartesian morphisms.
 
-    \item[(M5)] The CSMC $q$ is cartesian-compatible.\footnote{By \hyperref[lemma:cocartesian_iff_componentwise_cocartesian]{Lemma~\ref*{lemma:cocartesian_iff_componentwise_cocartesian}}, $q$ is automatically cocartesian-compatible, so we mustn't add this as a separate condition.}
+    \item[(M5)] The CSMC $q$ is cartesian-compatible.\footnote{By \hyperref[lemma:cocartesian_iff_componentwise_cocartesian]{Lemma~\ref*{lemma:cocartesian_iff_componentwise_cocartesian}}, $q$ is automatically cocartesian-compatible, so we needn't add this as a separate condition.}
 
     %\item The map $p$ is a cartesian CSMC.
 
@@ -674,7 +674,7 @@ The above conditions are more or less to do with the properties of the functor $
     \end{tikzcd}
     \qquad \text{in }\category{T}_{\times}
   \end{equation*}
-  lying over the cube in $\Finp\op$, whose diagonal morphisms are $p$-cartesian, and whose front face is pullback by assumption. The bottom face is pullback since it lies over a pullback square in $\Finp\op$ and the diagonal morphsims are $p$-cartesian, and the top face is pullback because the diagonal morphisms are equivalences. The cube lemma thus implies that the back square is pullback. Note that the back square is entirely contained in the fiber over $\langle n \rangle$, and thus can be thought of as consisting of $n$ component squares in $\category{T}$; the equivalence $(\category{T}_{\otimes})_{\langle n \rangle} \simeq (\category{T})^{n}$ these component squares are themselves pullback.
+  lying over the cube in $\Finp\op$, whose diagonal morphisms are $p$-cartesian, and whose front face is pullback by assumption. The bottom face is pullback since it lies over a pullback square in $\Finp\op$ and the diagonal morphsims are $p$-cartesian, and the top face is pullback because the diagonal morphisms are equivalences. The cube lemma thus implies that the back square is pullback. Note that the back square is entirely contained in the fiber over $\langle n \rangle$, and thus can be thought of as consisting of $n$ component squares in $\category{T}$; by the equivalence $(\category{T}_{\otimes})_{\langle n \rangle} \simeq (\category{T})^{n}$, these component squares are themselves pullback.
 
   We now return our attention to the diagram in $\category{X}_{\otimes}$. The morphism $f$ is $r$-cocartesian by assumption. That the tensor product $\otimes$ preserves $r$-cocartesian morphisms implies that $h$ is $r$-cocartesian. Applying the Beck-Chevalley condition componentwise to the back face yields that $h'$ is componentwise cocartesian, hence $r$-cocartesian. Since $f'$ is equivalent to $h'$, $f'$ is also $r$-cocartesian. Thus, d) holds.
 
@@ -793,6 +793,18 @@ The above conditions are more or less to do with the properties of the functor $
 
 \subsection{The monoidal twisted arrow category}
 \label{ssc:the_monoidal_twisted_arrow_category}
+
+We have seen that for any $\infty$-bicategory $\CC$ (presented as a fibrant scaled simplicial set), there is an $\infty$-category $\Tw(\CC)$, the \emph{twisted arrow category} of $\CC$. We would like to upgrade this construction to a functor $\Tw\colon \ITCat \to \ICat$, where $\ITCat$ is the quasicategory of $\infty$-bicategories.
+
+To this end, we note that we can certainly express the twisted arrow category as a functor
+\begin{equation*}
+  \Tw\colon \SSetmk \to \SSetsc
+\end{equation*}
+of normal categories.
+
+\begin{lemma}
+  The functor $\Tw\colon \SSetmk \to \SSetsc$ takes weak equivalences between bicategories in $\SSetmk$ to weak equivalences in $\SSetsc$.
+\end{lemma}
 
 The starting point of our construction is the functor
 \begin{equation*}

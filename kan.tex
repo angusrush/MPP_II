@@ -1226,14 +1226,14 @@ commute.
 The author would like to offer the friendly recommendation that in reading the proof below, it is helpful to follow along with the explanation given at the beginning of \hyperref[sec:horn_filling_via_left_kan_extensions]{Section~\ref*{sec:horn_filling_via_left_kan_extensions}}.
 
 \begin{proof}
-  We need to solve the lifting problems of \hyperref[eq:lifting_problem_1]{Equation~\ref*{eq:lifting_problem_1}} and \hyperref[eq:lifting_problem_2]{Equation~\ref*{eq:lifting_problem_2}}, and check that our solutions satisfy the condition of \hyperref[eq:lifting_problem_compatibility_condition]{Equation~\ref*{eq:lifting_problem_compatibility_condition}}. We note that the information that the simplex $\tau\colon \Delta^{\{0,1,n+1\}}_{\flat} \to \ICCat$ is left Kan tells us the following.
+  We need to solve the lifting problems of \hyperref[eq:lifting_problem_1]{Equation~\ref*{eq:lifting_problem_1}} and \hyperref[eq:lifting_problem_2]{Equation~\ref*{eq:lifting_problem_2}}, and check that our solutions satisfy the condition of \hyperref[eq:lifting_problem_compatibility_condition]{Equation~\ref*{eq:lifting_problem_compatibility_condition}}. In the discussuion surrounding these equations, we ignored that the simplex $\tau\colon \Delta^{\{0,1,n+1\}}_{\flat} \to \ICCat$ was left Kan. We now reintroduce this information. The information that the simplex $\tau\colon \Delta^{\{0,1,n+1\}}_{\flat} \to \ICCat$ is left Kan tells us the following.
   \begin{itemize}
     \item  Concretely, it tells us that the map $f_{n,1}$ is the left Kan extension of $f_{n, 0}$ along $f_{1, 0}$, and that $\alpha_{\{0,n+1\}}^{\{0,1,n+1\}}\colon f_{n+1,0} \to f_{n+1, 1} \circ f_{1, 0} $ is the unit map.
 
     \item In particular, \hyperref[eg:partial_adjunctions_and_kan_extensions]{Example~\ref*{eg:partial_adjunctions_and_kan_extensions}} then tells us that the map $f_{1,0}^{*}$ admits a left adjoint at $f_{n+1,0}$.
   \end{itemize}
 
-  It is easy to see that we have the following succinct descriptions of the inclusions of \hyperref[eq:lifting_problem_1]{Equation~\ref*{eq:lifting_problem_1}} and \hyperref[eq:lifting_problem_2]{Equation~\ref*{eq:lifting_problem_2}} along which we have to extend.
+  The lifting problems as described above are somewhat unwieldy, given in terms of mapping spaces of simplicial categories $\C[\Delta^{n+1}]$ and $\C[\Lambda^{n+1}_{0}]$. It will be useful to give them more down-to-earth descriptions. We have the following succinct descriptions of the inclusions of \hyperref[eq:lifting_problem_1]{Equation~\ref*{eq:lifting_problem_1}} and \hyperref[eq:lifting_problem_2]{Equation~\ref*{eq:lifting_problem_2}} along which we have to extend.
   \begin{itemize}
     \item There is an isomorphism of simplicial sets
       \begin{equation*}
