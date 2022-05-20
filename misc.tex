@@ -727,20 +727,26 @@ To do this, we need to prove:
   The map $X \times_{Y} (Y'_{/y'}) \to X$ factors through $X \times_{Y} (Y_{/g(y')})$ thanks to the map $s\colon Y'_{/y'} \to Y_{/g(y')}$. The map $s$ is a weak equivalence between contractible Kan complexes (because both $Y'_{/y'}$ and $Y_{/g(y')}$ are Kan complexes with terminal objects). Thus, the map $X \times_{Y}(Y'_{/y'}) \to X \times_{Y}(Y_{/g(y')})$ is also a weak homotopy equivalence between Kan complexes, thus cofinal.
 \end{proof}
 
-\section{Monoidal categories as cartesian fibrations}
-\label{sec:monoidal_categories_as_cartesian_fibrations}
+\section{Extensions in infinity-bicategories}
+\label{sec:extensions_in_infinity_bicategories}
 
-\begin{definition}[contravariantly presented monoidal category]
-  \label{def:contravariantly_presented_monoidal_category}
-  A \defn{contravariantly presented monoidal category} is a cartesian fibration
+\begin{definition}
+  Let $p\colon \CC \to \DD$ be a functor between $\infty$-bicategories. We will call an edge $e\colon \Delta^{1} \to \CC$ \defn{outer locally cocartesian} if it is a cocartesian edge in the map $\category{M} \to \Delta^{1}$ defined by the pullback
   \begin{equation*}
-    \category{C}_{\otimes} \to \Finp\op
+    \begin{tikzcd}
+      \category{M}
+      \arrow[r]
+      \arrow[d]
+      & \CC
+      \arrow[d]
+      \\
+      \Delta^{1}
+      \arrow[r]
+      & \DD
+    \end{tikzcd}.
   \end{equation*}
-  such that the pullback maps lying over the inert maps $\langle 1 \rangle \leftarrow \langle n \rangle$ exhibit $(\category{C}_{\otimes})_{\langle n \rangle}$ as the $n$-fold product of $(\category{C}_{\otimes})_{\langle 1 \rangle}$.
 \end{definition}
 
-\begin{example}
-  The $\infty$-category $\ICat$ has a cartesian product, giving us a monoid
-\end{example}
+Note that if an edge in $\CC$ is outer $p$-cocartesian, then it is
 
 \end{document}

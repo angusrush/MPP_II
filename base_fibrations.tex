@@ -798,12 +798,21 @@ We have seen that for any $\infty$-bicategory $\CC$ (presented as a fibrant scal
 
 To this end, we note that we can certainly express the twisted arrow category as a functor
 \begin{equation*}
-  \Tw\colon \SSetmk \to \SSetsc
+  \Tw\colon \SSetsc \to \SSetmk
 \end{equation*}
 of normal categories.
 
 \begin{lemma}
-  The functor $\Tw\colon \SSetmk \to \SSetsc$ takes weak equivalences between bicategories in $\SSetmk$ to weak equivalences in $\SSetsc$.
+  The above functor preserves weak equivalences between fibrant objects.
+\end{lemma}
+\begin{proof}
+  Let $f\colon \CC \to \DD$ be a weak equivalence between fibrant scaled simplicial sets. Thus, $f$ is a bicategorical equivalence between $\infty$-bicategories.
+\end{proof}
+
+By composing with
+
+\begin{lemma}
+  The functor $\Tw\colon \SSetsc \to \SSetmk$ takes weak equivalences between fibrant objects in $\SSetsc$ to weak equivalences between fibrant objects in $\SSetmk$.
 \end{lemma}
 
 The starting point of our construction is the functor

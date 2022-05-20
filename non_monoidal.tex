@@ -50,7 +50,7 @@ Our goal in this section is to upgrade this construction to a functor $\hat{r}\c
 
   \item The morphisms from $X$ to $X'$ are given by spans in $\S$, i.e.\ diagrams of the form given in \hyperref[eq:span_of_spaces]{Equation~\ref*{eq:span_of_spaces}}.
 
-  \item The $2$-simplices witnessing the composition of two morphisms 
+  \item The $2$-simplices witnessing the composition of two morphisms
     \begin{equation*}
       X \overset{h}{\leftarrow} Y \overset{f}{\rightarrow} X' \quad\text{and}\quad X' \overset{g}{\leftarrow} Y \overset{j}{\rightarrow} X''
     \end{equation*}
@@ -173,9 +173,7 @@ The proof of the following proposition will come at the end of this section.
   The functor $p\colon \LS(\category{C}) \to \S$ is a Beck-Chevalley fibration.
 \end{proposition}
 
-We next prove a few lemmata which will help us in our proof.
-
-The following is simply a reformulation of the definition of a left Kan extension (\hyperref[def:nat_xfo_exhibiting_left_kan_ext]{Definition~\ref*{def:nat_xfo_exhibiting_left_kan_ext}}) in the special case that we consider left Kan extensions along maps of Kan complexes.
+We first prove a helpful lemma. This is simply a reformulation of the definition of a left Kan extension (\hyperref[def:nat_xfo_exhibiting_left_kan_ext]{Definition~\ref*{def:nat_xfo_exhibiting_left_kan_ext}}) in the special case that we consider left Kan extensions along maps of Kan complexes.
 \begin{lemma}
   \label{lemma:left_kan_ext_along_kan_complexes}
   Let $f\colon X \to Y$ be a map between Kan complexes, let $F\colon X \to \category{C}$ and $G\colon Y \to \category{C}$ be functors, and let $\eta\colon F \to G \circ y$ be a natural transformation. Then $\eta$ exhibits $G$ as a left Kan extension of $F$ along $f$ if and only if, for all $y \in Y$, the natural transformatin $F \circ \pi \Rightarrow \underline{G(y)}$ defined by the pasting diagram
