@@ -731,7 +731,7 @@ To do this, we need to prove:
 \label{sec:extensions_in_infinity_bicategories}
 
 \begin{definition}
-  Let $p\colon \CC \to \DD$ be a functor between $\infty$-bicategories. We will call an edge $e\colon \Delta^{1} \to \CC$ \defn{outer locally cocartesian} if it is a cocartesian edge in the map $\category{M} \to \Delta^{1}$ defined by the pullback
+  Let $p\colon \CC \to \DD$ be a functor between $\infty$-bicategories. We will call an edge $e\colon \Delta^{1} \to \CC$ \defn{locally outer cocartesian} if it is a cocartesian edge in the total space of the map $\category{M} \to \Delta^{1}$ defined by the pullback
   \begin{equation*}
     \begin{tikzcd}
       \category{M}
@@ -747,6 +747,10 @@ To do this, we need to prove:
   \end{equation*}
 \end{definition}
 
-Note that if an edge in $\CC$ is outer $p$-cocartesian, then it is
+Note that if an edge in $\CC$ is outer $p$-cocartesian, then it is locally outer $p$-cocartesian.
+
+\begin{lemma}
+  Suppose $p\colon \CC \to \DD$ is an outer cartesian fibration.
+\end{lemma}
 
 \end{document}

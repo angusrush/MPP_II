@@ -12,7 +12,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1}Basic facts about Kan extensions}{5}{subsection.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Filling cubes relative to their boundaries}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.2}Filling cubes relative to their boundaries}{8}{subsection.3.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.3}Adjunct data}{12}{subsection.3.3}%
 \defcounter {refsection}{0}\relax 
@@ -44,26 +44,26 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {6.3}The monoidal twisted arrow category}{46}{subsection.6.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}Miscellaneous stuff to be deleted or absorbed}{49}{section.7}%
+\contentsline {section}{\numberline {7}Miscellaneous stuff to be deleted or absorbed}{50}{section.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.1}The triple structures}{49}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.1}The triple structures}{50}{subsection.7.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {7.1.1}The triple structure on finite pointed sets}{49}{subsubsection.7.1.1}%
+\contentsline {subsubsection}{\numberline {7.1.1}The triple structure on finite pointed sets}{50}{subsubsection.7.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {7.1.2}The triple structure on infinity-categories}{49}{subsubsection.7.1.2}%
+\contentsline {subsubsection}{\numberline {7.1.2}The triple structure on infinity-categories}{50}{subsubsection.7.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {7.1.3}The triple structure on the twisted arrow category}{50}{subsubsection.7.1.3}%
+\contentsline {subsubsection}{\numberline {7.1.3}The triple structure on the twisted arrow category}{51}{subsubsection.7.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.2}Building categories of spans}{51}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.2}Building categories of spans}{52}{subsection.7.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}Constructing the symmetric monoidal functor}{52}{section.8}%
+\contentsline {section}{\numberline {8}Constructing the symmetric monoidal functor}{54}{section.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}What does Barwick mean?}{53}{section.9}%
+\contentsline {section}{\numberline {9}What does Barwick mean?}{54}{section.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.1}The triple structures}{53}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.1}The triple structures}{54}{subsection.9.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {9.1.1}The triple structure on local systems}{53}{subsubsection.9.1.1}%
+\contentsline {subsubsection}{\numberline {9.1.1}The triple structure on local systems}{54}{subsubsection.9.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.2}Building categories of spans}{54}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.2}Building categories of spans}{56}{subsection.9.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10}Extensions in infinity-bicategories}{56}{section.10}%
+\contentsline {section}{\numberline {10}Extensions in infinity-bicategories}{57}{section.10}%

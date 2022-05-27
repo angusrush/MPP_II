@@ -240,6 +240,30 @@ exhibits $c$ as a colimit of $F$. This follows from the fact that for any $\inft
   If a natural transformation $\eta$ exhibits some object as a colimit of some diagram, than any natural transformation $\eta'$ which is homotopic to $\eta$ will do just as well.
 \end{note}
 
+We take a moment to record a definition, which we will need later.
+
+\begin{definition}
+  \label{def:preserve_colimits_in_each_slot}
+  Let $\category{C}$ and $\category{C}$ be $\infty$-categories, and let $F\colon \category{C} \times \category{C} \to \category{C}$ be a functor. We say that \defn{$F$ preserves colimits in each slot} if and only if the following condition is satisfed:
+  \begin{itemize}
+    \item Let $G\colon K \to \category{C}$ and $G'\colon K' \to \category{C}$ be functors; and suppose $\eta\colon G \Rightarrow \underline{c}$ exhibits $c$ as the colimit of $G$, and $\eta'\colon G' \Rightarrow \underline{c'}$ exhibits $c'$ as the colimit of $G'$. Then $F(\eta \times \eta')\colon F \circ (G \times G') \Rightarrow \underline{F(c, c')}$ exhibits $F(c, c')$ as the colimit of $F \circ (G \times G')$.
+  \end{itemize}
+  %\begin{equation*}
+  %  \begin{tikzcd}[row sep=huge, column sep=large]
+  %    K \times K'
+  %    \arrow[d]
+  %    \arrow[r, "G \times G'"]
+  %    & \category{C} \times \category{C}
+  %    \arrow[r, "F"]
+  %    \arrow[dl, Rightarrow, shorten=2ex, swap, "F(\eta \times \eta')"{description}]
+  %    & \category{C}
+  %    \\
+  %    *
+  %    \arrow[urr, swap, "\underline{F(c, c')}"]
+  %  \end{tikzcd}
+  %\end{equation*}
+\end{definition}
+
 \begin{notation}
   \label{notation:rund_um_undercategories}
   Let $f\colon X \to Y$ be a map of simplicial sets, and $y \in Y$ an object. We will use the following notation.

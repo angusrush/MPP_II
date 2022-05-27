@@ -11,7 +11,7 @@ Suppose $p\colon \category{C} \to \category{D}$ is a cartesian fibration of 1-ca
 
   \item The category $\category{D}$ carries a symmetric monoidal structure $(\boxtimes, I_{\category{D}}, \ldots)$.
 
-  \item The functor $p$ is strong monoidal: for objects $x$, $y \in \category{C}$, we have that $p(x \otimes y) = p(x) \boxtimes p(y)$, and $p(I_{\category{C}}) = I_{\category{D}}$.\footnote{The reason for the strict equality in this condition is that we have chosen specific monoidal functors $\otimes$ and $\boxtimes$. Later, we will replace these functors by fibrations, and the condition of strict equality will be replaced by the more familiar condition of homotopy coherence.}
+  \item The functor $p$ is strong monoidal: for objects $x$, $y \in \category{C}$, we have that $p(x \otimes y) = p(x) \boxtimes p(y)$, and $p(I_{\category{C}}) = I_{\category{D}}$.\footnote{The reason for the strict equality in this condition is that we have chosen specific monoidal functors $\otimes$ and $\boxtimes$, and specific unit objects $I_{\category{C}}$ and $I_{\category{D}}$. Later, we will replace these strict choices by fibrations which give the same data up to coherent homotopy.}
 
   \item The monoidal product $\otimes$ preserves $p$-cartesian morphisms in the sense that if $f$ and $g$ are $p$-cartesian morphisms, then $f \otimes g$ is also $p$-cartesian.
 \end{itemize}
@@ -794,71 +794,110 @@ The above conditions are more or less to do with the properties of the functor $
 \subsection{The monoidal twisted arrow category}
 \label{ssc:the_monoidal_twisted_arrow_category}
 
-We have seen that for any $\infty$-bicategory $\CC$ (presented as a fibrant scaled simplicial set), there is an $\infty$-category $\Tw(\CC)$, the \emph{twisted arrow category} of $\CC$. We would like to upgrade this construction to a functor $\Tw\colon \ITCat \to \ICat$, where $\ITCat$ is the quasicategory of $\infty$-bicategories.
+We have seen that for any $\infty$-bicategory $\CC$ (presented as a fibrant scaled simplicial set), there is an $\infty$-category $\Tw(\CC)$, the \emph{twisted arrow category} of $\CC$. We would like to upgrade this construction to a functor $\Tw\colon \ITCat \to \ICat$, where $\ITCat$ is the $\infty$-category of $\infty$-bicategories.
 
-To this end, we note that we can certainly express the twisted arrow category as a functor
+To this end, we note that we can certainly express the twisted arrow category as an ordinary functor
 \begin{equation*}
-  \Tw\colon \SSetsc \to \SSetmk
+  \Tw'\colon \SSetsc \to \SSetmk.
 \end{equation*}
-of normal categories.
+Here we take $\SSetsc$ and $\SSetmk$ to carry their standard model structures.
 
 \begin{lemma}
-  The above functor preserves weak equivalences between fibrant objects.
+  The functor $\Tw'$ preserves weak equivalences between fibrant objects.
 \end{lemma}
 \begin{proof}
-  Let $f\colon \CC \to \DD$ be a weak equivalence between fibrant scaled simplicial sets. Thus, $f$ is a bicategorical equivalence between $\infty$-bicategories.
+  Let $f\colon \CC \to \DD$ be a weak equivalence between fibrant objects in the scaled model structure. Thus, $f$ is a bicategorical equivalence between $\infty$-bicategories. Denote the map on the underlying quasicategories by $\mathring{f}\colon \category{C} \to \category{D}$. We note that $\mathring{f}$ is an equivalence of quasicategories.
+
+  We consider the diagram
+  \begin{equation*}
+    \begin{tikzcd}[row sep=large, column sep=large]
+      \Tw'(\CC)
+      \arrow[drr, bend left=20, "\Tw'(f)"]
+      \arrow[ddr, bend right=20, swap, "q"]
+      \arrow[dr, dashed, "h"]
+      \\
+      & \mathcal{P}
+      \arrow[r, "g"]
+      \arrow[d, "r"]
+      & \Tw'(\DD)
+      \arrow[d, "p"]
+      \\
+      & \category{C} \times \category{C}\op
+      \arrow[r, "\mathring{f} \times \mathring{f}\op"]
+      & \category{D} \times \category{D}\op
+    \end{tikzcd}
+  \end{equation*}
+  where the square formed is pullback, and $h$ is the map guaranteed us by the universal property of the pullback. We note that since $p$ is a cartesian fibration, $g$ is a weak equivalence since $\mathring{f} \times \mathring{f}\op$ is. Thus, in order to show that $\Tw'(f)$ is a weak equivalence, it suffices to show that $h$ is.
+
+  Since $h$ is a morphism $q \to r$ of cartesian fibrations, in order to show that it is an equivalence it suffices to check that it is a fiberwise equivalence. Fix some object $C = (c, c') \in \category{C} \times \category{C}\op$. The restriction of $h$ to the fibers of $\Tw'(\CC)$ and $\category{P}$ over $C$ is the map
+  \begin{equation*}
+    \Map_{\CC}(c, c') \to \Map_{\DD}(f(c), f(c')).
+  \end{equation*}
+  This is a weak equivalence for all $C$ because $f$ is an equivalence of $\infty$-bicategories.
 \end{proof}
 
-By composing with
+By \hyperref[thm:quillen_equiv_ms_and_scaled]{Theorem~\ref*{thm:quillen_equiv_ms_and_scaled}}, there is a right Quillen equivalence $Q\colon \SSetms \to \SSetsc$. Composing this with the functor $\Tw'$ above gives us a functor
+\begin{equation*}
+  \Tw' \circ Q\colon \SSetms \to \SSetmk.
+\end{equation*}
+Since $Q$ is a right Quillen functor, it preserves weak equivalences between fibrant objects. Thus, the composite $\Tw' \circ Q$ does as well. Restricting to fibrant objects and taking the simplicial localizations yields a functor
+\begin{equation*}
+  \SSetms[W^{-1}] \to \SSetmk[W^{-1}].
+\end{equation*}
 
-\begin{lemma}
-  The functor $\Tw\colon \SSetsc \to \SSetmk$ takes weak equivalences between fibrant objects in $\SSetsc$ to weak equivalences between fibrant objects in $\SSetmk$.
-\end{lemma}
+By \cite[Example~1.3.4.8]{luriehigheralgebra}, we have equivalences of $\infty$-categories $\SSetms[W^{-1}] \simeq \ITCat$ and $\SSetmk[W^{-1}] \simeq \ICat$, giving us our functor
+\begin{equation*}
+  \Tw\colon \ITCat \to \ICat.
+\end{equation*}
 
-The starting point of our construction is the functor
-\begin{equation*}
-  \begin{tikzcd}
-    \Finp
-    \arrow[r, "\ICat^{\times}"]
-    & \Cat_{(\infty, 2)}
-    \arrow[r, "\Tw"]
-    & \ICat
-  \end{tikzcd}
-\end{equation*}
-Note that this composition yields a commutative monoid in $\ICat$ since the functor $\Tw$ preserves products. The relative nerve of this composition is a Cartesian fibration $\Tw(\ICat)_{\otimes} \to \Finp\op$ with the following description: an $n$-simplex $\sigma$ corresponding to a diagram
-\begin{equation*}
-  \begin{tikzcd}
-    \Delta^{n}
-    \arrow[rr, "\sigma"]
-    \arrow[dr, swap, "\phi"]
-    && \Tw(\ICat)_{\otimes}
-    \arrow[dl, "p'"]
-    \\
-    & \Finp\op
-  \end{tikzcd}
-\end{equation*}
-corresponds to the data of, for each subset $I \subseteq [n]$ having minimal element $i$, a map
-\begin{equation*}
-  \tau(I)\colon \Delta^{I} \to \Tw(\ICat)^{i}
-\end{equation*}
-such that For nonempty subsets $I' \subseteq I \subseteq [n]$, the diagram
-\begin{equation*}
-  \begin{tikzcd}
-    \Delta^{I'}
-    \arrow[r]
-    \arrow[d, hook]
-    & \Tw(\ICat)^{i'}
-    \arrow[d]
-    \\
-    \Delta^{I}
-    \arrow[r]
-    & \Tw(\ICat)^{i}
-  \end{tikzcd}
-\end{equation*}
-commutes.
+We are now ready to construct a model for the monoidal twisted arrow category.
+
+\begin{construction}
+  The category $\ICat$ admits a Cartesian monoidal structure, which can be expressed as a commutative monoid $\ICatCocart\colon \Finp \to \ITCat$. The starting point of our construction is the composition
+  \begin{equation*}
+    \begin{tikzcd}
+      \Finp
+      \arrow[r, "\ICat^{\times}"]
+      & \Cat_{(\infty, 2)}
+      \arrow[r, "\Tw"]
+      & \ICat
+    \end{tikzcd}.
+  \end{equation*}
+  Note that this composition yields a commutative monoid in $\ICat$ since the functor $\Tw$ preserves products. The relative nerve of this composition is a CSMC $\Tw(\ICat)_{\otimes} \to \Finp\op$ with the following description: an $n$-simplex $\sigma$ corresponding to a diagram
+  \begin{equation*}
+    \begin{tikzcd}
+      \Delta^{n}
+      \arrow[rr, "\sigma"]
+      \arrow[dr, swap, "\phi"]
+      && \Tw(\ICat)_{\otimes}
+      \arrow[dl, "p'"]
+      \\
+      & \Finp\op
+    \end{tikzcd}
+  \end{equation*}
+  corresponds to the data of, for each subset $I \subseteq [n]$ having minimal element $i$, a map
+  \begin{equation*}
+    \tau(I)\colon \Delta^{I} \to \Tw(\ICat)^{i}
+  \end{equation*}
+  such that For nonempty subsets $I' \subseteq I \subseteq [n]$, the diagram
+  \begin{equation*}
+    \begin{tikzcd}
+      \Delta^{I'}
+      \arrow[r]
+      \arrow[d, hook]
+      & \Tw(\ICat)^{i'}
+      \arrow[d]
+      \\
+      \Delta^{I}
+      \arrow[r]
+      & \Tw(\ICat)^{i}
+    \end{tikzcd}
+  \end{equation*}
+  commutes.
+\end{construction}
 
 \begin{example}
-  An object of $\Tw(\ICat)_{\otimes}$ lying over $\langle n \rangle$ corresponds to a collection of functors $\category{C}_{i} \to \category{D}_{i}$, $i \in \langle n \rangle^{\circ}$. We will denote this $\vec{\category{C}} \to \vec{\category{D}}$.
+  An object of $\Tw(\ICat)_{\otimes}$ lying over $\langle n \rangle$ corresponds to a collection of functors $\category{C}_{i} \to \category{D}_{i}$, $i \in \langle n \rangle^{\circ}$.
 \end{example}
 
 \begin{example}
@@ -868,25 +907,37 @@ commutes.
 
     \item A pair of `target' objects $G_{i}\colon \category{D}_{i} \to \category{D}'_{i}$, $i = 1$, $2$.
 
-    \item A morphism
+    \item A morphism $\Tw(\ICat)$ corresponding to a diagram $\Delta^{3}_{\dagger} \to \ICat$ with front and back
       \begin{equation*}
         \begin{tikzcd}
           \category{C}
           \arrow[r, "\alpha"]
           \arrow[d, ""{name=L, right}, "F"{left}]
+          \arrow[dr]
           & \category{D}_{1} \times D_{2}
           \arrow[d, ""{name=R, left}, "G_{1} \times G_{2}"{right}]
           \\
           \category{C}'
           & \category{D}'_{1} \times \category{D}'_{2}
           \arrow[l, "\beta"]
-          \arrow[Rightarrow, from=L, to=R, shorten=2ex]
         \end{tikzcd}
-        \qquad\text{in }\Tw(\ICat).
+        \qquad\text{and}\qquad
+        \begin{tikzcd}
+          \category{C}
+          \arrow[r, "\alpha"]
+          \arrow[d, ""{name=L, right}, "F"{left}]
+          & \category{D}_{1} \times D_{2}
+          \arrow[d, ""{name=R, left}, "G_{1} \times G_{2}"{right}]
+          \arrow[dl]
+          \\
+          \category{C}'
+          & \category{D}'_{1} \times \category{D}'_{2}
+          \arrow[l, "\beta"]
+        \end{tikzcd}.
       \end{equation*}
   \end{itemize}
 
-  A morphism of the above form is cartesian if and only if the corresponding simplex $\Delta^{3}_{\dagger} \to \ICat$ it is thin.
+  A morphism of the above form is cartesian if and only if the corresponding simplex $\Delta^{3}_{\dagger} \to \ICat$ is thin.
 \end{example}
 
 \begin{lemma}
@@ -915,12 +966,10 @@ commutes.
     \item The maps $\Phi$, $\Gamma$, and $\rho$ are all cartesian fibrations.
 
     \item The $\rho$-cartesian morphisms in $N_{F}(\category{C})$ admit the following description: a morphism in $N(F)(\category{C})$ lying over a morphim $f\colon d \leftarrow c$ in $\category{C}\op$ consists of a triple $(x, y, \phi)$, where $x \in F(d)$, $y \in F(c)$, and $\phi\colon x \to Ff(y)$. Such a morphism is $\rho$-cartesian if the morphism $\phi$ is $\alpha_{d}$-cartesian.
-
-    \item The map $\rho$ sends $\Phi$-cartesian morphisms in $N_{F}(\category{C})$ to $\Gamma$-cartesian morphisms in $N_{G}(\category{C})$.
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  We first prove 2. We already know (HTT 3.2.5.11) that $\rho$ is an inner fibration, so in order to prove 2., we need to show that we can solve lifting problems
+  We first prove 2. We already know \cite[Lemma~3.2.5.11]{highertopostheory} that $\rho$ is an inner fibration, so it remains only to show that we can solve lifting problems
   \begin{equation*}
     \begin{tikzcd}
       \Lambda^{n}_{n}
@@ -956,105 +1005,188 @@ commutes.
   \end{equation*}
   where $\Lambda^{n}_{n}$ is $F(\gamma_{n-1, 0})(\phi)$. But by assumption $F(\gamma_{n-1, 0})(\phi)$ is $\alpha_{\gamma(0)}$-cartesian, so this lifting problem has a solution.
 
-  Now we show Claim 1. The assumption that each $\alpha_{c}$ is a cartesian fibration guarantees that we have enough cartesian lifts, so $\rho$ is indeed a cartesian fibration. The maps $\Phi$ and $\Gamma$ are cartesian fibrations by definition.
-
-  Now we show Claim 3. The $\rho$-cartesian morphisms in $N_{F}(\category{C})$ are pairs $(x, y, \phi)$ as above, where $\phi$ is an equivalence. Claim 3.\ then follows because the functors $\alpha_{c}$ functors map equivalences to equivalences.
+  Now we show 1. The assumption that each $\alpha_{c}$ is a cartesian fibration guarantees that we have enough cartesian lifts, so $\rho$ is indeed a cartesian fibration. The maps $\Phi$ and $\Gamma$ are cartesian fibrations by definition.
 \end{proof}
 
 
-Note that for each $\langle n \rangle \in \Finp\op$ there is a cartesian fibration $\Tw(\ICCat)^{n} \to (\ICat^{n})\op \times \ICat^{n}$, which taken together give a natural transformation $\alpha$ from the functor
+Since the category $\ICat$ admits products, it admits a cartesian monoidal structure, which we can write as a commutative monoid $G_{1}\colon \Finp \to \ICat$. We can equally view the cartesian monoidal structure as a cocartesian monoidal structure on $\ICat\op$, giving us a commutative monoid $G_{0}\colon \Finp \to \ICat$. Taking these together gives a commutative monoid
+\begin{equation*}
+  G = G_{0} \times G_{1}\colon \Finp \to \ICat;\qquad \langle n \rangle \mapsto ( \ICat\op )^{n} \times \ICat^{n}.
+\end{equation*}
+For each $\langle n \rangle \in \Finp\op$ there is a cartesian fibration $\alpha_{n}\colon \Tw(\ICCat)^{n} \to (\ICat^{n})\op \times \ICat^{n}$, which form the components of a natural transformation $\alpha$ from the functor
 \begin{equation*}
   F\colon \Finp \to \ICat;\qquad \langle n \rangle \mapsto \Tw(\ICCat)^{n}
 \end{equation*}
-to the functor
-\begin{equation*}
-  G\colon \Finp \to \ICat;\qquad \langle n \rangle \mapsto ( \ICat^{n} )\op \times \ICat^{n}.
-\end{equation*}
+to the functor $G$.
 
-Because the pointwise product of any number of thin 1-simplices in $\Tw(\ICCat)$ is again a thin 1-simplex in $\Tw(\ICCat)$, the conditions of \hyperref[lemma:triangle_of_cartesian_fibrations]{Lemma~\ref*{lemma:triangle_of_cartesian_fibrations}} are satisfied. Unrolling, we find that $\Tw(\ICCat)_{\otimes}$ admits a forgetful functor to $\TICatCart \times (\TICatCocart)\op$, where
-\begin{itemize}
-  \item $\TICatCart$ is the relative nerve (as a cartesian fibration) of the functor $\Finp \to \ICat$ giving the cartesian monoidal structure on $\ICat$
-
-  \item $\TICatCocart$ is the \emph{cocartesian} relative nerve of the same,
-\end{itemize}
-such that each map in the commuting triangle
+Because the pointwise product of any number of thin 1-simplices in $\Tw(\ICCat)$ is again a thin 1-simplex in $\Tw(\ICCat)$, the conditions of \hyperref[lemma:triangle_of_cartesian_fibrations]{Lemma~\ref*{lemma:triangle_of_cartesian_fibrations}} are satisfied. Unrolling, we find a commuting triangle of cartesian fibrations
 \begin{equation}
   \label{eq:base_triangle}
   \begin{tikzcd}
     \Tw(\ICat)_{\otimes}
-    \arrow[rr]
-    \arrow[dr]
+    \arrow[rr, "r'"]
+    \arrow[dr, swap, "q'"]
     && \TICatCart \times (\TICatCocart)\op
-    \arrow[dl]
+    \arrow[dl, "p'"]
     \\
     & \Finp\op
-  \end{tikzcd}
+  \end{tikzcd},
 \end{equation}
-is a cartesian fibration.
+where
+\begin{itemize}
+  \item $\TICatCart \to \Finp\op$ is the relative nerve (as a cartesian fibration) of the functor $F_{0}$
 
-Because both $\TICatCocart \to \Finp$ and $\ICatCocart \to \Finp$ classify the same functor $\Finp \to \ICat$, they are related by an equivalence. Composing a monoidal $\infty$-category $\Finp \to \ICatCocart$ with this symmetric monoidal equivalence gives:
+  \item $(\TICatCocart) \to \Finp$ is the relative nerve (as a \emph{cocartesian} fibration) of the same.
+\end{itemize}
 
-Fix some monoidal $\infty$-category $\category{C}$ which admits colimits, and such that the monoidal structure preserves colimits in each slot. We can thus define a functor
-\begin{equation*}
-  \TSCart \to \TICatCart \times (\TICatCocart)\op
-\end{equation*}
-which is induced by the inclusion $\S \hookrightarrow \ICat$ on the first component, and given by the composition
-\begin{equation*}
-  \TSCart \to \Finp\op \overset{(\category{C}^{\otimes})\op}{\to} (\TICatCocart)\op.
-\end{equation*}
+Because both $\TICatCocart \to \Finp$ and $\ICatCocart \to \Finp$ classify the same functor $\Finp \to \ICat$, they are related by a fiberwise equivalence. Composing a commutative monoid $\Finp \to \ICatCocart$ with this equivalence allows us to express symmetric monoidal $\infty$-categories as commutative monoids in $\TICatCocart$.
 
-Forming the pullback
-\begin{equation*}
-  \begin{tikzcd}
-    \LS(\category{C})_{\otimes}
-    \arrow[r]
-    \arrow[d, swap, "r"]
-    & \Tw(\ICat)_{\otimes}
-    \arrow[d]
-    \\
-    \TSCart
-    \arrow[r]
-    & \TICatCart \times (\TICatCocart)\op
-  \end{tikzcd}
-\end{equation*}
-gives us a commutative triangle
-\begin{equation*}
-  \begin{tikzcd}
-    \LS(\category{C})_{\otimes}
-    \arrow[rr, "r"]
-    \arrow[dr, swap, "q"]
-    && \TSCart
-    \arrow[dl, "p"]
-    \\
-    & \Finp\op
-  \end{tikzcd}.
-\end{equation*}
+\begin{construction}
+  We will denote the full subcategory of $\TICatCart$ on those objects $[\category{D}_{1}, \ldots, \category{D}_{n}]$ such that $\category{D}_{i}$ is an $\infty$-groupoid for all $1 \leq i \leq n$ by $\TSCart$. Note that $\TSCart \to \Finp$ can be understood as the relative nerve (as a cartesian fibration) of a commutative monoid $\Finp \to \ICat$ giving the cartesian monoidal structure on $\S$.
 
-By definition, one sees that the map $p$ is a cartesian fibration, and the $p$-cartesian morphisms in $\TSCart$ are precisely those representing products. Furthermore, because the map $r$ is a pullback of the horizontal map in \hyperref[eq:base_triangle]{Diagram~\ref*{eq:base_triangle}}, we have the following.
-
-\begin{proposition}
-  The maps $q$ and $r$ are cartesian fibrations, and a generic morphism
+  Fix some monoidal $\infty$-category $\category{C}$ which admits colimits, and such that the tensor product $\otimes\colon \category{C} \to \category{C}$ preserves colimits in each slot. We express this monoidal $\infty$-category as a commutative monoid $\category{C}^{\otimes}\colon \Finp \to \TICatCocart$. Using this, we define a functor
+  \begin{equation*}
+    \TSCart \to \TICatCart \times (\TICatCocart)\op
+  \end{equation*}
+  which is induced by the inclusion $\S \hookrightarrow \ICat$ on the first component of the product, and given by the composition
+  \begin{equation*}
+    \TSCart \to \Finp\op \overset{(\category{C}^{\otimes})\op}{\to} (\TICatCocart)\op
+  \end{equation*}
+  on the second. Forming the pullback square
   \begin{equation*}
     \begin{tikzcd}
-      \vec{X}
-      \arrow[r, "\vec{f}"]
-      \arrow[d, ""{name=L, right}, "\vec{\mathcal{F}}"{left}]
-      & \vec{Y}
-      \arrow[d, ""{name=R, left}, "\vec{\mathcal{G}}"{right}]
+      \LS(\category{C})_{\otimes}
+      \arrow[r]
+      \arrow[d, swap, "r"]
+      & \Tw(\ICat)_{\otimes}
+      \arrow[d]
       \\
-      \vec{\category{C}}
-      & \vec{\category{C}}
-      \arrow[l, "\otimes"]
-      \arrow[Rightarrow, from=L, to=R, shorten=1.5ex]
+      \TSCart
+      \arrow[r]
+      & \TICatCart \times (\TICatCocart)\op
     \end{tikzcd}
   \end{equation*}
-  in $\LS(\category{C})$ is
-  \begin{itemize}
-    \item $r$-cartesian if each $2$-simplex making up the above diagram is thin.
+  gives us a commutative triangle
+  \begin{equation*}
+    \begin{tikzcd}
+      \LS(\category{C})_{\otimes}
+      \arrow[rr, "r"]
+      \arrow[dr, swap, "q"]
+      && \TSCart
+      \arrow[dl, "p"]
+      \\
+      & \Finp\op
+    \end{tikzcd}.
+  \end{equation*}
 
-    \item $q$-cartesian if $\vec{f}$ exhibits the $Y_{i}$ as products of the $X_{i}$, and each $2$-simplex making up the above diagram is thin.
+  Since the (cartesian) relative nerve construction produces a cartesian fibration by definition, the map $p$ is a cartesian fibration. Furthermore, because the map $r$ is a pullback of the horizontal map in \hyperref[eq:base_triangle]{Diagram~\ref*{eq:base_triangle}}, it is a cartesian fibration. Hence $q$ is also a $p$-cartesian fibration. It remains only to show that $q$ is a CSMC. It suffices to show that $r$ is a cartesian fibration of $\infty$-operads. Note that because both $p'$ and $q'$ are CSMCs, $r'$ is a cartesian fibration of $\infty$-operads. The claim follows because $r$ is a pullback of $r'$.
+\end{construction}
+
+\begin{example}
+  An object of $\LS(\category{C})_{\otimes}$ lying over $\langle n \rangle$ corresponds to a collection of functors $X \to \category{C}$, $i \in \langle n \rangle^{\circ}$.
+\end{example}
+
+\begin{example}
+  A morphism in $\Tw(\ICat)_{\otimes}$ lying over the active map $\langle 1 \rangle \leftarrow \langle 2 \rangle$ in $\Finp\op$ consists of
+  \begin{itemize}
+    \item A `source' object $F\colon X \to \category{C}$
+
+    \item A pair of `target' objects $G_{i}\colon Y_{i} \to \category{C}$, $i = 1$, $2$.
+
+    \item A morphism $\Tw(\ICat)$ corresponding to a diagram $\Delta^{3}_{\dagger} \to \ICat$ with front and back
+      \begin{equation*}
+        \begin{tikzcd}
+          X
+          \arrow[r, "\alpha"]
+          \arrow[d, ""{name=L, right}, "F"{left}]
+          \arrow[dr]
+          & Y_{1} \times Y_{2}
+          \arrow[d, ""{name=R, left}, "G_{1} \times G_{2}"{right}]
+          \\
+          \category{C}
+          & \category{C} \times \category{C}
+          \arrow[l, "\otimes"]
+        \end{tikzcd}
+        \qquad\text{and}\qquad
+        \begin{tikzcd}
+          X
+          \arrow[r, "\alpha"]
+          \arrow[d, ""{name=L, right}, "F"{left}]
+          & Y_{1} \times Y_{2}
+          \arrow[d, ""{name=R, left}, "G_{1} \times G_{2}"{right}]
+          \arrow[dl]
+          \\
+          \category{C}
+          & \category{C} \times \category{C}
+          \arrow[l, "\otimes"]
+        \end{tikzcd}.
+      \end{equation*}
   \end{itemize}
+
+  A morphism of the above form is $r$-cartesian if and only if the corresponding simplex $\Delta^{3}_{\dagger} \to \ICat$ is thin, and $q$-cartesian if and only if the corresponding simplex is thin, and $\alpha$ is an equivalence.
+\end{example}
+
+\begin{example}
+  The tensor product of two local systems $F\colon X \to \category{C}$ and $G\colon Y \to \category{C}$ is $F \otimes G\colon X \times Y \to \category{C} \times \category{C} \overset{\otimes}{\to} \category{C}$.
+\end{example}
+
+\begin{lemma}
+  \label{lemma:tensor_product_of_local_systems_preserves_cocart_edges}
+  Let $e\colon F \to G$ and $e'\colon F' \to G'$ be $r|\langle 1 \rangle$-cocartesian edges of $\LS(\category{C})_{\otimes}$. Then $e \otimes e'$ is $r|\langle 1 \rangle$-cocartesian.
+  %\begin{equation*}
+  %  e =
+  %  \begin{tikzcd}
+  %    X
+  %    \arrow[r]
+  %    \arrow[d, swap, "F"]
+  %    & Y
+  %    \arrow[d, "G"]
+  %    \\
+  %    \category{C}
+  %    & \category{C}
+  %    \arrow[l, "\id"]
+  %  \end{tikzcd},\qquad e' =
+  %  \begin{tikzcd}
+  %    X'
+  %    \arrow[r]
+  %    \arrow[d, swap, "F'"]
+  %    & Y'
+  %    \arrow[d, "G'"]
+  %    \\
+  %    \category{C}
+  %    & \category{C}
+  %    \arrow[l, "\id"]
+  %  \end{tikzcd}.
+  %\end{equation*}
+  %Then $e \otimes e'\colon F \otimes F' \to G \otimes G'$ is also $r$-cocartesian.
+\end{lemma}
+\begin{proof}
+  The tensor product $e \otimes e'$ is given, up to homotopy, by the pasting diagram
+  
+  In order to show that this map is $r$-cocartesian, we need to show that the triangle
+  \begin{equation*}
+    \begin{tikzcd}[row sep=large]
+      X \times X'
+      \arrow[rr, "F \times F'", ""{below, name=M}]
+      \arrow[dr, swap, "f \times f'"]
+      && \category{C} \times \category{C}
+      \arrow[r, "\otimes"]
+      & \category{C}
+      \\
+      & Y \times Y'
+      \arrow[urr, bend right, swap, "\otimes \circ (G \times G')"]
+      \arrow[ur, swap, "G \times G'"]
+      \arrow[from=M, Rightarrow, shorten=1ex]
+    \end{tikzcd}
+  \end{equation*}
+  exhibits $\otimes \circ (G \times G')$ as the left Kan extension of $\otimes \circ (F \times F')$ along $f \times f'$. But this follows from the fact that $\otimes$ preserves colimits in both slots.
+\end{proof}
+
+\begin{proposition}
+  The map $r$ above is a monoidal Beck-Chevalley fibration.
 \end{proposition}
-One sees immediately that $r$ sends $q$-cartesian morphisms in $\LS(\category{C})_{\otimes}$ to $p$-cartesian morphisms in $\TSCart$, and has the sanity check that for any morphism $f$ in $\LS(\category{C})_{\otimes}$ whose image in $\ICatCart$ is $p$-cartesian, $f$ is $q$-cartesian if and only if it is $r$-cartesian.
+\begin{proof}
+  We need to check the conditions (M1)--(M5) of \hyperref[def:monoidal_beck_chevalley_fibration]{Definition~\ref*{def:monoidal_beck_chevalley_fibration}}. The condition (M1) is the content of \hyperref[prop:local_systems_are_beck_chevalley]{Proposition~\ref*{prop:local_systems_are_beck_chevalley}}. Conditions (M2), (M3), and (M5) follow immediately from \hyperref[lemma:equivalent_conditions_to_be_cartesan]{Lemma~\ref*{lemma:equivalent_conditions_to_be_cartesan}}, using the fact that $r$ is a cartesian fibration. In order to show that (M4) holds, it suffices by \hyperref[lemma:co_cartesian_preservation_determined_by_bifunctor]{Lemma~\ref*{lemma:co_cartesian_preservation_determined_by_bifunctor}} to check that the tensor product of two $r|\langle 1 \rangle$-cocartesian edges is again $r|\langle 1 \rangle$-cocartesian. But this is the content of \hyperref[lemma:tensor_product_of_local_systems_preserves_cocart_edges]{Lemma~\ref*{lemma:tensor_product_of_local_systems_preserves_cocart_edges}}.
+\end{proof}
 
 \end{document}
