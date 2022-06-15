@@ -753,4 +753,81 @@ Note that if an edge in $\CC$ is outer $p$-cocartesian, then it is locally outer
   Suppose $p\colon \CC \to \DD$ is an outer cartesian fibration.
 \end{lemma}
 
+\begin{definition}
+  \label{def:left_extension}
+  Let $\DD$ be an $\infty$-bicategory, expressed as a fibrant scaled simplicial set. A triangle $\tau\colon \Delta^{2}_{\flat} \to \DD$ is a \defn{(left) universal extension} if each lifting problem
+  \begin{equation*}
+    \begin{tikzcd}
+      \Delta_{\flat}^{\{0,1,n\}}
+      \arrow[d]
+      \arrow[dr, "\tau"]
+      \\
+      (\Lambda^{n}_{0})_{\flat}
+      \arrow[r]
+      \arrow[d, hook]
+      & \DD
+      \\
+      \Delta^{n}
+      \arrow[ur, dashed]
+    \end{tikzcd},\qquad
+    n \geq 3,
+  \end{equation*}
+  admits a solution.
+\end{definition}
+
+\begin{note}
+  We are restricted to considering \emph{left} universal extensions because, by convention, the data of a triangle $\Delta^{2}_{\flat} \to \DD$ consists of morphisms $f$, $g$, and $h$, and a 2-morphism $h \Rightarrow g \circ f$. To treat right universal extensions we need to consider the opposite convention for the direction of the 2-morphism.
+\end{note}
+
+Let $\DD$ be an $\infty$-bicategory, let $f\colon d \to d'$ be a morphism in $\DD$, and let $d''$ be an object in $\DD$. The restriction map $f^{*}\colon \Map_{\DD}(d', d'') \to \Map_{\DD}(d, d'')$ can be constructed as map classified by the cartesian fibration $p'$ in the pullback diagram
+\begin{equation*}
+  \begin{tikzcd}
+    \category{M}
+    \arrow[r]
+    \arrow[d, swap, "p'"]
+    & \DD_{\nearrow d''}
+    \arrow[d, "p"]
+    \\
+    \Delta^{1}
+    \arrow[r, "f"]
+    & \DD
+  \end{tikzcd}.
+\end{equation*}
+
+\begin{lemma}
+  An edge $e\colon \Delta^{1} \to \DD_{\nearrow d''}$ lying over $f\colon d \to d'$ in $\DD$ is $p$-cocartesian if and only if the corresponding triangle $\tau_{e}\colon \Delta^{2}_{\flat} \to \DD$ is a universal extension.
+\end{lemma}
+
+\begin{lemma}
+  An edge in $\category{M}$ lying over $\id_{\Delta^{1}}$ is $p'$-cocartesian if and only if the corresponsing triangle $\tau_{e}\colon \Delta^{2}_{\flat} \to \DD$ is a universal extension.
+\end{lemma}
+\begin{proof}
+  By LEMMA, an edge $e\colon \Delta^{1} \to \category{M}$ is $p'$-cocartesian if and only if it is $p$-cocartesian.
+\end{proof}
+
+\begin{corollary}
+  Let $\DD$ be an $\infty$-bicategory, let $f\colon d \to d'$ be a morphism in $\DD$, and let $d''$ be an object in $\DD$. The following are equivalent.
+  \begin{itemize}
+    \item The functor $F\colon d \to d''$ admits a universal extension
+      \begin{equation*}
+        \tau = 
+        \begin{tikzcd}
+          d
+          \arrow[rr, "F", ""{swap, name=M}]
+          \arrow[dr, swap, "f"]
+          && d''
+          \\
+          & d'
+          \arrow[ur, swap, "g"]
+          \arrow[Rightarrow, from=M, "\eta"]
+        \end{tikzcd}.
+      \end{equation*}
+
+    \item The pullback functor $f_{*}\colon \Map_{\DD}(d', d'') \to \Map_{\DD}(d, d'')$ admits a left adjoint $g = f_{!}F$ at $F$.
+  \end{itemize}
+\end{corollary}
+\begin{proof}
+  The functor $i$
+\end{proof}
+
 \end{document}

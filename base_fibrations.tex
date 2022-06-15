@@ -5,7 +5,9 @@
 \section{Monoidal push-pull of local systems}
 \label{sec:the_monoidal_construction}
 
-Suppose $p\colon \category{C} \to \category{D}$ is a cartesian fibration of 1-categories which classifies a pseudofunctor $\hat{p}\colon \category{D}\op \to \Cat$. Further suppose the following:
+The classical Grothendieck construction provides an equivalence between functors $\hat{p}\colon \category{D} \to \Cat$ and cartesian fibrations $p\colon \int \hat{p} \to \category{D}\op$. There are many conditions one can impose upon of the functor $\hat{p}$, and many structures one can endow it with; it is natural to wonder whether these properties and structures can be captured in the fibration $p$.
+
+An answer in the case that $F$ is lax monoidal is given in \cite{moeller2018monoidal}. Suppose $p\colon \category{C} \to \category{D}$ is a cartesian fibration of 1-categories which classifies a pseudofunctor $\hat{p}\colon \category{D}\op \to \Cat$. Further suppose the following:
 \begin{itemize}
   \item The category $\category{C}$ carries a symmetric monoidal structure $(\otimes, I_{\category{C}}, \ldots)$.
 
@@ -15,7 +17,7 @@ Suppose $p\colon \category{C} \to \category{D}$ is a cartesian fibration of 1-ca
 
   \item The monoidal product $\otimes$ preserves $p$-cartesian morphisms in the sense that if $f$ and $g$ are $p$-cartesian morphisms, then $f \otimes g$ is also $p$-cartesian.
 \end{itemize}
-Under these conditions, the pseudofunctor $\hat{p}$ carries a lax monoidal structure $(\category{D}\op, \boxtimes) \to (\Cat, \times)$ \cite{moeller2018monoidal}, described as follows. 
+Under these conditions, the pseudofunctor $\hat{p}$ carries a lax monoidal structure $(\category{D}\op, \boxtimes) \to (\Cat, \times)$, described as follows. 
 \begin{itemize}
   \item Restricting the tensor product
     \begin{equation*}
@@ -52,7 +54,7 @@ and that the functor $\LS(\category{C}) \to \S$ is can be given the structure of
 \subsection{The lax monoidal Grothendieck construction}
 \label{ssc:the_lax_monoidal_grothendieck_construction}
 
-Our aim in this section will be an $\infty$-categorical version of the statement that a monoidal cartesian fibration $p\colon (\category{C}, \otimes) \to (\category{D}, \boxtimes)$ such that $\otimes$ preserves $p$-cartesian morphisms straightens to a lax monoidal pseudofunctor $\category{D}\op \to \Cat$. We will assume familiarity with the theory of symmetric monoidal $\infty$-categories as laid out in \cite[Chap.~2]{luriehigheralgebra}. Our first goal will be to rephrase some of the results there in terms of cartesian fibrations rather than cocartesian fibrations.
+Our aim in this section is to show an $\infty$-categorical version of the statement that a monoidal cartesian fibration $p\colon (\category{C}, \otimes) \to (\category{D}, \boxtimes)$ such that $\otimes$ preserves $p$-cartesian morphisms straightens to a lax monoidal pseudofunctor $\category{D}\op \to \Cat$. We will assume familiarity with the theory of symmetric monoidal $\infty$-categories as laid out in \cite[Chap.~2]{luriehigheralgebra}; roughly, a symmetric monoidal $\infty$-category is defined to be a cocartesian fibration classifying a commutative monoid in $\ICat$. Our first goal will be to rephrase some of the results there in terms of cartesian fibrations rather than cocartesian fibrations.
 
 \begin{notation}
   We will frequently refer to the following maps in $\Finp\op$.
@@ -64,17 +66,17 @@ Our aim in this section will be an $\infty$-categorical version of the statement
 \end{notation}
 
 \begin{definition}
-  A \defn{CSMC} (contravariantly-presented symmetric monoidal $\infty$-category) is a cocartesian fibration $p\colon \category{C}_{\otimes} \to \Finp\op$ such that the pullback maps $\rho_{i}^{*}\colon (\category{C}_{ \otimes})_{\langle n \rangle} \to (\category{C}_{ \otimes})_{\langle 1 \rangle}$ are the canonical projections exhibiting $(\category{C}_{ \otimes})_{\langle n \rangle}$ as an $n$-fold homotopy product.
+  A \defn{CSMC} (contravariantly-presented symmetric monoidal $\infty$-category) is a cartesian fibration $p\colon \category{C}_{\otimes} \to \Finp\op$ such that the contravariant transport maps $\rho_{i}^{*}\colon (\category{C}_{ \otimes})_{\langle n \rangle} \to (\category{C}_{ \otimes})_{\langle 1 \rangle}$ are the canonical projections exhibiting $(\category{C}_{ \otimes})_{\langle n \rangle}$ as an $n$-fold homotopy product.
 \end{definition}
 
 \begin{notation}
   For any CSMC $\category{C}_{\otimes} \to \Finp\op$, we will denote the fiber $(\category{C}_{\otimes})_{\langle 1 \rangle}$ simply by $\category{C}$.
 \end{notation}
 
-The equivalence $(\category{C}_{\otimes})_{\langle n \rangle} \simeq \category{C}^{n}$ allow us to trade a diagram in $(\category{C}_{\otimes})_{\langle n \rangle}$ for $n$ diagrams in $\category{C}$, well-defined up to equivalence. Given a diagram $a\colon K \to (\category{C}_{\otimes})_{\langle n \rangle}$, we will often abuse this terminology by calling any such corresponding diagrams $a_{i}\colon K \to \category{C}$ `the' components of $a$, when we are making reference only to properties of these components which are well-defined under equivalence.
+The equivalence $(\category{C}_{\otimes})_{\langle n \rangle} \simeq \category{C}^{n}$ allow us to trade maps into $(\category{C}_{\otimes})_{\langle n \rangle}$ for $n$ maps into $\category{C}$, well-defined up to equivalence. Given a diagram $a\colon K \to (\category{C}_{\otimes})_{\langle n \rangle}$, we will often abuse this terminology by calling any such corresponding diagrams $a_{i}\colon K \to \category{C}$ `the' components of $a$, as long as we are making reference only to properties of these components which are preserved under equivalence.
 
 \begin{definition}
-  A \defn{map} between CSMCs $\category{C}_{\otimes} \to \Fin\op$ and $\category{D}_{\boxtimes} \to \Finp\op$ is a functor $r$ making the diagram
+  A \defn{map} between CSMCs $\category{C}_{\otimes} \to \Finp\op$ and $\category{D}_{\boxtimes} \to \Finp\op$ is a functor $r$ making the diagram
   \begin{equation*}
     \begin{tikzcd}
       \category{C}_{\otimes}
@@ -376,7 +378,7 @@ We now construct the monoidal structure on this category of spans explicitly, st
 \subsection{Monoidal Beck-Chevalley fibrations}
 \label{ssc:monoidal_beck_chevalley_fibrations}
 
-\begin{note}
+{\color{red}\begin{note}
   For this to work out, I think we probably need to modify the second condition to be an adequate triple so that we only need to consider pullbacks of the type given in the first condition, i.e:
 
   For any pullback square
@@ -412,11 +414,21 @@ We now construct the monoidal structure on this category of spans explicitly, st
     \end{tikzcd}
   \end{equation*}
   where $g$ and $g'$ are equivalences, if $f \in \category{C}\downdag$  (resp.\ $\category{C}\updag$), then $f' \in \category{C}\downdag$ (resp.\ $\category{C}\updag$). Wait, no, we don't. The subcategories $\category{C}\downdag$ and $\category{C}\updag$ contain all equivalences by assumption. Barwick, why would you make your conditions like this?
-\end{note}
+\end{note}}
+
+In this section, we combine several results from earlier sections.
+
+\begin{itemize}
+  \item In \hyperref[sec:the_non_monoidal_construction]{Section~\ref*{sec:the_non_monoidal_construction}}, we showed that a bicartesian fibration $p\colon \category{X} \to \category{T}$ satisfying the Beck-Chevalley condition allows us to combine the functoriality $\category{T} \to \ICat$ and $\category{T}\op \to \ICat$ into push-pull functoriality $\Span(\category{T}) \to \ICat$. We called such bicartesian fibrations \emph{Beck-Chevalley fibrations.}
+
+  \item In \hyperref[ssc:the_lax_monoidal_grothendieck_construction]{Subsection~\ref*{ssc:the_lax_monoidal_grothendieck_construction}} we showed that a cartesian fibration $p\colon \category{C} \to \category{D}$ between monoidal categories whose tensor products were subject to certain compatibility conditions classifies a lax monoidal functor $\category{D}\op \to \ICat$; and dually, that a cocartesian fibration $p$ satisfying dual compatibility conditions classifies a lax monoidal functor $\category{D} \to \ICat$.
+\end{itemize}
+
+We will now show that a Beck-Chevalley fibration $p\colon \category{X} \to \category{T}$ between monoidal categories whose tensor products satisfy appropriate compatibility conditions classifies a lax monoidal functor $\Span(\category{T}) \to \ICat$. We will call such fibrations \emph{monoidal Beck-Chevalley fibrations.}
 
 \begin{lemma}
   \label{lemma:cocartesian_iff_componentwise_cocartesian}
-  Let $p$ and $q$ be CSMCs as below. Then for monoidal functor $r$, the CSMC $q$ is cocartesian-compatible.
+  Let $p$ and $q$ be CSMCs as below. Then for any monoidal functor $r$, the CSMC $q$ is cocartesian-compatible.
   \begin{equation*}
     \begin{tikzcd}
       \category{C}_{\otimes}
@@ -521,7 +533,7 @@ We now construct the monoidal structure on this category of spans explicitly, st
   \end{enumerate}
 \end{definition}
 
-The above conditions are more or less to do with the properties of the functor $r|\langle 1 \rangle$, together with properties of the tensor product $\otimes$, and how it is encoded as a cartesian fibration. We can also express these properties in terms directly in terms of the fibrations $p$, $q$, and $r$.
+The above conditions are to do only with the properties of the functor $r|\langle 1 \rangle$, together with properties of the tensor product $\otimes$; the only exception is (M5), which is a compatibility condition with how the monoidal structure is encoded as a cartesian fibration. We can also express these properties in terms directly in terms of the fibrations $p$, $q$, and $r$.
 \begin{lemma}
   \label{lemma:equivalent_conditions_beck_chevalley_fibration}
   Consider a functor $r$ of CSMCs, where $\category{T}_{\times}$ is a cartesian CSMC.
@@ -712,20 +724,20 @@ The above conditions are more or less to do with the properties of the functor $
   Note that since $r$ is monoidal, the image of $\sigma$ in $\category{T}_{\times}$ is automatically pullback. We now note that if $f$ is $r$-cartesian, then $f'$ is $r$-cartesian by \cite[Prop.~2.4.1.7]{highertopostheory}, and if $f$ is $r$-cocartesian, then $f'$ is $r$-cocartesian (hence $r|\langle 1 \rangle$-cocartesian) by the interchange law.
 \end{proof}
 
-\begin{lemma}
-  The category $\Finp$ admits finite limits and colimits.
-\end{lemma}
-\begin{proof}
-  Denote by $\Fin$ the category of finite sets.
-
-  \begin{itemize}
-    \item A finite diagram $j\colon K^{\triangleleft} \to \Finp$ is a limit diagram if and only if the restriction $j|K$ is a limit diagram.
-
-    \item A diagram $K^{\triangleright} \to \Finp$ is a colimit diagram if and only if the corresponding diagram $\{\ast\} \star (K^{\triangleright}) \to \Fin$ is a colimit diagram.
-  \end{itemize}
-
-  The result then follows from the fact that the category $\Fin$ admits all finite limits and colimits.
-\end{proof}
+%\begin{lemma}
+%  The category $\Finp$ admits finite limits and colimits.
+%\end{lemma}
+%\begin{proof}
+%  Denote by $\Fin$ the category of finite sets.
+%
+%  \begin{itemize}
+%    \item A finite diagram $j\colon K^{\triangleleft} \to \Finp$ is a limit diagram if and only if the restriction $j|K$ is a limit diagram.
+%
+%    \item A diagram $K^{\triangleright} \to \Finp$ is a colimit diagram if and only if the corresponding diagram $\{\ast\} \star (K^{\triangleright}) \to \Fin$ is a colimit diagram.
+%  \end{itemize}
+%
+%  The result then follows from the fact that the category $\Fin$ admits all finite limits and colimits.
+%\end{proof}
 
 
 \begin{proposition}
@@ -748,7 +760,14 @@ The above conditions are more or less to do with the properties of the functor $
   with the following description up to equivalence.
   \begin{itemize}
     \item On objects, the functor $\hat{r}$ sends $t \in \Span(\category{T})$ to the fiber $\category{X}_{t} \in \ICat$
-    \item On morphisms, $\hat{r}$ sends a span $t \overset{g}{\leftarrow} s \overset{f}{\to} t'$ to the composition $g^{*} \circ f_{!}\colon \category{X}_{t} \to \category{X}_{t'}$.
+
+    \item On morphisms, $\hat{r}$ sends a span $t \overset{g}{\leftarrow} s \overset{f}{\to} t'$ to the composition $f_{!} \circ g^{*}\colon \category{X}_{t} \to \category{X}_{t'}$.
+
+    \item The structure morphisms
+      \begin{equation*}
+        \category{X}_{t} \times \category{X}_{t'} \to \category{X}_{t \times t'}
+      \end{equation*}
+      of the lax monoidal structure on $\hat{r}$ are given by the restriction of the tensor product $\otimes$ to the fibers over $t$ and $t'$.
   \end{itemize}
 \end{proposition}
 \begin{proof}
@@ -1019,7 +1038,7 @@ For each $\langle n \rangle \in \Finp\op$ there is a cartesian fibration $\alpha
 \end{equation*}
 to the functor $G$.
 
-Because the pointwise product of any number of thin 1-simplices in $\Tw(\ICCat)$ is again a thin 1-simplex in $\Tw(\ICCat)$, the conditions of \hyperref[lemma:triangle_of_cartesian_fibrations]{Lemma~\ref*{lemma:triangle_of_cartesian_fibrations}} are satisfied. Unrolling, we find a commuting triangle of cartesian fibrations
+We now apply the relative nerve to the data $\alpha\colon F \Rightarrow G$. Because the pointwise product of any number of thin 1-simplices in $\Tw(\ICCat)$ is again a thin 1-simplex in $\Tw(\ICCat)$, the conditions of \hyperref[lemma:triangle_of_cartesian_fibrations]{Lemma~\ref*{lemma:triangle_of_cartesian_fibrations}} are satisfied. Unrolling, we find a commuting triangle of cartesian fibrations
 \begin{equation}
   \label{eq:base_triangle}
   \begin{tikzcd}
@@ -1048,7 +1067,7 @@ Because both $\TICatCocart \to \Finp$ and $\ICatCocart \to \Finp$ classify the s
   \begin{equation*}
     \TSCart \to \TICatCart \times (\TICatCocart)\op
   \end{equation*}
-  which is induced by the inclusion $\S \hookrightarrow \ICat$ on the first component of the product, and given by the composition
+  which is the inclusion $\TSCart \hookrightarrow \TICatCart$ on the first component of the product, and given by the composition
   \begin{equation*}
     \TSCart \to \Finp\op \overset{(\category{C}^{\otimes})\op}{\to} (\TICatCocart)\op
   \end{equation*}
@@ -1079,7 +1098,7 @@ Because both $\TICatCocart \to \Finp$ and $\ICatCocart \to \Finp$ classify the s
     \end{tikzcd}.
   \end{equation*}
 
-  Since the (cartesian) relative nerve construction produces a cartesian fibration by definition, the map $p$ is a cartesian fibration. Furthermore, because the map $r$ is a pullback of the horizontal map in \hyperref[eq:base_triangle]{Diagram~\ref*{eq:base_triangle}}, it is a cartesian fibration. Hence $q$ is also a $p$-cartesian fibration. It remains only to show that $q$ is a CSMC. It suffices to show that $r$ is a cartesian fibration of $\infty$-operads. Note that because both $p'$ and $q'$ are CSMCs, $r'$ is a cartesian fibration of $\infty$-operads. The claim follows because $r$ is a pullback of $r'$.
+  We claim that $\LS(\category{C})_{\otimes}$ is a CSMC, $\TSCart$ is a cartesian CSMC. Since the (cartesian) relative nerve construction produces a cartesian fibration by definition, the map $p$ is a cartesian fibration; by its definition, it is even a CSMC. Furthermore, because the map $r$ is a pullback of the horizontal map in \hyperref[eq:base_triangle]{Diagram~\ref*{eq:base_triangle}}, it is a cartesian fibration. Hence $q$ is also a cartesian fibration. It remains only to show that $q$ is a CSMC. It suffices to show that $r$ is a cartesian fibration of $\infty$-operads. Note that because both $p'$ and $q'$ are CSMCs, $r'$ is a cartesian fibration of $\infty$-operads. The claim follows because $r$ is a pullback of $r'$.
 \end{construction}
 
 \begin{example}
@@ -1127,7 +1146,10 @@ Because both $\TICatCocart \to \Finp$ and $\ICatCocart \to \Finp$ classify the s
 \end{example}
 
 \begin{example}
-  The tensor product of two local systems $F\colon X \to \category{C}$ and $G\colon Y \to \category{C}$ is $F \otimes G\colon X \times Y \to \category{C} \times \category{C} \overset{\otimes}{\to} \category{C}$.
+  Examining the $q$-cartesian case more closely, one sees that the tensor product of two local systems $F\colon X \to \category{C}$ and $G\colon Y \to \category{C}$ is the local system given the composition
+  \begin{equation*}
+    F \otimes G\colon X \times Y \to \category{C} \times \category{C} \overset{\otimes}{\to} \category{C}
+  \end{equation*}
 \end{example}
 
 \begin{lemma}
@@ -1163,7 +1185,7 @@ Because both $\TICatCocart \to \Finp$ and $\ICatCocart \to \Finp$ classify the s
 \begin{proof}
   The tensor product $e \otimes e'$ is given, up to homotopy, by the pasting diagram
   
-  In order to show that this map is $r$-cocartesian, we need to show that the triangle
+  In order to show that this map is $r$-cocartesian, we need to show that the outer triangle
   \begin{equation*}
     \begin{tikzcd}[row sep=large]
       X \times X'
@@ -1188,5 +1210,31 @@ Because both $\TICatCocart \to \Finp$ and $\ICatCocart \to \Finp$ classify the s
 \begin{proof}
   We need to check the conditions (M1)--(M5) of \hyperref[def:monoidal_beck_chevalley_fibration]{Definition~\ref*{def:monoidal_beck_chevalley_fibration}}. The condition (M1) is the content of \hyperref[prop:local_systems_are_beck_chevalley]{Proposition~\ref*{prop:local_systems_are_beck_chevalley}}. Conditions (M2), (M3), and (M5) follow immediately from \hyperref[lemma:equivalent_conditions_to_be_cartesan]{Lemma~\ref*{lemma:equivalent_conditions_to_be_cartesan}}, using the fact that $r$ is a cartesian fibration. In order to show that (M4) holds, it suffices by \hyperref[lemma:co_cartesian_preservation_determined_by_bifunctor]{Lemma~\ref*{lemma:co_cartesian_preservation_determined_by_bifunctor}} to check that the tensor product of two $r|\langle 1 \rangle$-cocartesian edges is again $r|\langle 1 \rangle$-cocartesian. But this is the content of \hyperref[lemma:tensor_product_of_local_systems_preserves_cocart_edges]{Lemma~\ref*{lemma:tensor_product_of_local_systems_preserves_cocart_edges}}.
 \end{proof}
+
+\begin{corollary}
+  There is a lax monoidal functor
+  \begin{equation*}
+    \hat{r}\colon (\Span(\S), \widetilde{\times}) \to (\ICat, \times),
+  \end{equation*}
+  with the following description up to equivalence.
+  \begin{itemize}
+    \item On objects, the functor $\hat{r}$ sends a space $X$ to the $\infty$-category $\LS(\category{C})_{X}$ of $\category{C}$-local systems on $X$.
+
+    \item On morphisms, the functor $\hat{r}$ sends a span of spaces $X \overset{g}{\leftarrow} Y \overset{f}{\to} X'$ to the pull-push
+      \begin{equation*}
+        f_{!} \circ g^{*}\colon \LS(\category{C})_{X} \to \LS(\category{C})_{X'}.
+      \end{equation*}
+
+    \item The structure morphisms of the lax monoidal structure are the maps
+      \begin{equation*}
+        \LS(\category{C})_{X} \times \LS(\category{C})_{X'} \to \LS(\category{C})_{X \times X'}
+      \end{equation*}
+      given by the composition
+      \begin{equation*}
+        \Fun(X, \category{C}) \times \Fun(Y, \category{C}) \overset{\times}{\to} \Fun(X \times Y, \category{C} \times \category{C}) \overset{\otimes}{\to} \Fun(X \times Y, \category{C}),
+      \end{equation*}
+      under the identification $\LS(\category{C})_{X} \cong \Fun(X, \category{C})$.
+  \end{itemize}
+\end{corollary}
 
 \end{document}

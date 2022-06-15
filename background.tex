@@ -4,6 +4,21 @@
 \section{Introduction and conventions}
 \label{sec:introduction_and_conventions}
 
+\subsection{Introduction}
+\label{ssc:introduction}
+
+\begin{itemize}
+  \item We show that pull-push of local systems is lax functorial. We do this by providing a general theory of situations in which one has lax functorial push-pull of local systems (monoidal Beck--Chevalley fibrations).
+
+  \item Our approach differs from previous ones:
+    \begin{itemize}
+      \item In \cite{spectralmackeyfunctors2}, similar results are stated in a rather different situation. Our approach is more explicit, based on hands-on computations done in an $\infty$-categorical twisted arrow category.
+
+      \item In TODO, similar results are proved, but abstractly and model-independently. We believe that the explicitness of our model will be useful computationally.
+    \end{itemize}
+\end{itemize}
+
+
 \subsection{General conventions}
 \label{ssc:general_conventions}
 
@@ -12,33 +27,24 @@ By $\S$, we mean the $\infty$-category of \emph{small} spaces.
 \subsection{The marked-scaled model structure}
 \label{ssc:marked-scaled_model_structure}
 
-One common model for $(\infty,2)$-categories is Lurie's theory of $\infty$-bicategories
+We will need two different models for $(\infty,2)$-categories: Lurie's theory of scaled simplicial sets, as laid out in \cite{lurie2009infinity}; and Abellan--Stern's theory of marked-scaled simplicial sets, as explained in \cite{garcia2cartesianfibrationsii}. We will assume a knowledge of scaled simplicial sets. We give a basic outline of the portions of the theory of marked-scaled simplicial sets which we will need.
 
-In \cite{garcia20212}, a marked-biscaled model structure modelling cartesian fibrations of $\infty$-bicategories is defined. When taken over a point, the two scalings collapse into one, giving the following.
+A marked-scaled simplicial set is a triple $(X, E_{X}, T_{X})$, where $E_{X} \subseteq X_{1}$ is a collection of edges of $X$ containing all degenerate edges, and $T_{X} \subseteq X_{2}$ is a collection of triangles of $X$ containing all degenerate triangles.
+\begin{itemize}
+  \item We will denote the category of marked-scaled simplicial sets by $\SSetms$.
 
-\begin{definition}
-  \label{def:marked-scaled_simplicial_set}
-  A marked-scaled simplicial set is a triple $(X, E_{X}, T_{X})$, where $E_{X} \subseteq X_{1}$ is a collection of edges of $X$ containing all degenerate edges, and $T_{X} \subseteq X_{2}$ is a collection of triangles of $X$ containing all degenerate triangles.
-\end{definition}
+  \item To save on notation, we will sometimes denote the marked-scaled simplicial set $(X, E_{X}, T_{X})$ by $X^{E_{X}}_{T_{X}}$, particularly in the case that $E_{X}$ or $T_{X}$ are $\sharp$ or $\flat$, the maximum (resp. minimum) markings and scalings. For example, the bimarked simplicial set $X^{\sharp}_{\flat}$ has all 1-simplices marked and only degenerate 2-simplices scaled, etc.
+\end{itemize}
 
-\begin{notation}
-  \leavevmode
-  \begin{itemize}
-    \item We will denote the category of marked-scaled simplicial sets by $\SSetms$.
+We will use the following abuses of notation freely.
 
-    \item To save on notation, we will sometimes denote the marked-scaled simplicial set $(X, E_{X}, T_{X})$ by $X^{E_{X}}_{T_{X}}$, particularly in the case that $E_{X}$ or $T_{X}$ are $\sharp$ or $\flat$, the maximum (resp. minimum) markings and scalings. For example, the bimarked simplicial set $X^{\sharp}_{\flat}$ has all 1-simplices marked and only degenerate 2-simplices scaled, etc.
-  \end{itemize}
-\end{notation}
+\begin{itemize}
+  \item Let $(\Delta^{n}, E, T)$ be a marked-scaled $n$-simplex. For any simplicial subset $S \subseteq \Delta^{n}$, we will denote by $(S, E, T)$ the simplicial subset $S$ together with the inherited marking and scaling.
+        
+  \item Given a cosimplicial object $Q\colon \Delta \to \category{C}$, we will sometimes write $Q(n)$ instead of $Q([n])$.
+\end{itemize}
 
-We will use the following abuse of notation freely.
-
-\begin{notation}
-  Let $(\Delta^{n}, E, T)$ be a marked-scaled $n$-simplex. For any simplicial subset $S \subseteq \Delta^{n}$, we will denote by $(S, E, T)$ the simplicial subset $S$ together with the inherited marking and scaling.
-\end{notation}
-
-\begin{notation}
-  Given a cosimplicial object $Q\colon \Delta \to \category{C}$, we will write $Q(n)$ instead of $Q([n])$.
-\end{notation}
+There is a set of marked-scaled anodyne morphisms, which have the left lifting property with respect to marked-scaled fibrations. We will not need to use the full power of the marked-scaled anodyne morphisms, so we content ourselves with an incomplete description.
 
 \begin{definition}
   \label{def:ms-anodyne_morphisms}
@@ -58,10 +64,15 @@ We will use the following abuse of notation freely.
   \end{enumerate}
 \end{definition}
 
-\begin{proposition}
+\begin{example}
   \label{prop:sharp_marked_right_anodyne}
-  For any right anodyne morphism $A \hookrightarrow B$, the morphism $A^{\sharp}_{\sharp} \hookrightarrow B^{\sharp}_{\sharp}$ is marked-scaled anodyne.
-\end{proposition}
+  \leavevmode
+  \begin{itemize}
+    \item For any right anodyne morphism $A \hookrightarrow B$, the morphism $A^{\sharp}_{\sharp} \hookrightarrow B^{\sharp}_{\sharp}$ is marked-scaled anodyne.
+
+    \item For any marked anodyne morphism $A^{\mathcal{A}} \to B^{\mathcal{B}}$, the morphism $A^{\mathcal{A}}_{\sharp} \to B^{\mathcal{B}}_{\sharp}$ is marked-scaled anodyne.
+  \end{itemize}
+\end{example}
 
 \begin{theorem}
   There is a model structure on the category $\SSetms$, whose trivial cofibrations are TODO, and whose fibrant objects are $\infty$-bicategories with precisely the equivalences marked.
@@ -74,5 +85,6 @@ We will use the following abuse of notation freely.
     (-)_{\flat} : \SSetms \longleftrightarrow \SSetmk : Q.
   \end{equation*}
 \end{theorem}
+
 
 \end{document}
