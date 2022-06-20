@@ -56,6 +56,30 @@
       \endverb
       \keyw{Mathematics - Algebraic Topology,Mathematics - Category Theory}
     \endentry
+    \entry{spectralmackeyfunctors1}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=5a69a25c19b869f4a198377a48671213}{%
+           family={Barwick},
+           familyi={B\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{5a69a25c19b869f4a198377a48671213}
+      \strng{fullhash}{5a69a25c19b869f4a198377a48671213}
+      \strng{bibnamehash}{5a69a25c19b869f4a198377a48671213}
+      \strng{authorbibnamehash}{5a69a25c19b869f4a198377a48671213}
+      \strng{authornamehash}{5a69a25c19b869f4a198377a48671213}
+      \strng{authorfullhash}{5a69a25c19b869f4a198377a48671213}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Spectral Mackey functors and equivariant algebraic K-theory (I)}
+      \field{year}{2014}
+      \verb{eprint}
+      \verb arXiv:1404.0108
+      \endverb
+    \endentry
     \entry{spectralmackeyfunctors2}{misc}{}
       \name{author}{1}{}{%
         {{hash=06f83ea8e5fbb3836278ac17f0831a65}{%

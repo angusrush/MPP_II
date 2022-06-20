@@ -216,7 +216,7 @@ The lifting problems which we have to solve in \hyperref[eq:lifting_problems_for
 \subsection{Basic facts about Kan extensions}
 \label{ssc:basic_facts_about_kan_extensions}
 
-In this section, we recall a few basic facts about Kan extensions. These can be found in \cite{kerodon}. Since Kan extensions are defined by the colimit formula, we will start by defining colimits. Clasically, colimits in $\infty$-categories are defined using colimit cones.
+In this section, we recall a few basic facts about Kan extensions. These are mostly results found in \cite{kerodon} which we will need. Since Kan extensions are defined by the colimit formula, we will start by defining colimits. Clasically, colimits in $\infty$-categories are defined using colimit cones.
 
 \begin{definition}
   \label{def:colimit_via_cocones}
@@ -387,7 +387,34 @@ The following is an easy consequence of \cite[Remark~7.3.1.11]{kerodon}.
 \subsection{Filling cubes relative to their boundaries}
 \label{ssc:filling_cubes_relative_to_their_boundary}
 
-In this section, we give the combinatorics of filling the $n$-cube $(\Delta^{1})^{n}$ relative to its boundary. Our main result is \hyperref[prop:cube_filling]{Proposition~\ref*{prop:cube_filling}}, which writes the inclusion the boundary of the $n$-cube missing a certain face into the full cube as a composition of an inner anodyne map and a marked anodyne map.
+Our main goal in this \hyperref[sec:horn_filling_via_left_kan_extensions]{Section~\ref*{sec:horn_filling_via_left_kan_extensions}} is to prove \hyperref[thm:left_kan_implies_globally_left_kan]{Theorem~\ref*{thm:left_kan_implies_globally_left_kan}}. To do this, we must understand lifting problems of the form
+\begin{equation*}
+  \begin{tikzcd}
+    (\Lambda^{n+1}_{0})_{\flat}
+    \arrow[r]
+    \arrow[d, hook]
+    & \ICCat
+    \\
+    \Delta^{n+1}_{\flat}
+    \arrow[ur, dashed]
+  \end{tikzcd}.
+\end{equation*}
+
+The category $\ICCat$ is defined to be the homotopy coherent nerve of the $\SSetmk$-enriched category $\QCat$ of quasicategories. Therefore, solving such lifting problems is equivalent to solving the adjunct lifting problems
+\begin{equation*}
+  \begin{tikzcd}
+    \C[\Lambda^{n+1}_{0}]
+    \arrow[r]
+    \arrow[d, hook]
+    & \QCat
+    \\
+    \C[\Delta^{n+1}]
+    \arrow[ur, dashed]
+  \end{tikzcd}
+\end{equation*}
+where the diagram in question is now a diagram of $\SSetmk$-enriched categories (where the mapping spaces of $\C[\Lambda^{n+1}_{0}]$ and $\C[\Delta^{n}]$ are taken to carry the flat marking). In order to solve such lifting problems, we need to fill the missing data in each mapping space. As we will see in \hyperref[ssc:left_kan_implies_globally_left_kan]{Subsection~\ref*{ssc:left_kan_implies_globally_left_kan}}, these fillings take the form of filling a cube $(\Delta^{1})^{n}$ relative to its boundary missing one face.
+
+In this subsection, we give the combinatorics of filling the $n$-cube. Our main result is \hyperref[prop:cube_filling]{Proposition~\ref*{prop:cube_filling}}, which writes the inclusion the boundary of the $n$-cube missing a certain face into the full cube as a composition of an inner anodyne map and a marked anodyne map.
 
 \begin{definition}
   The \defn{$n$-cube} is the simplicial set $C^{n} := (\Delta^{1})^{n}$.
@@ -637,13 +664,13 @@ is of the form $\Lambda^{n}_{T}$ for some proper $T \subseteq [n]$ containing 0 
 \begin{proof}
   The first inclusion
   \begin{equation*}
-    LC^{n} \hookrightarrow LC^{n} \cup \phi(0, \ldots, n)
+    LC^{n} \hookrightarrow LC^{n} \cup \phi(1, \ldots, n)
   \end{equation*}
-  is inner anodyne because by \hyperref[lemma:first_and_last_face]{Lemma~\ref*{lemma:first_and_last_face}} the intersection $LC^{n} \cap \phi(0, \ldots, n)$ is of the form $d_{0}\Delta^{n} \cup d_{n} \Delta^{n}$.
+  is inner anodyne because by \hyperref[lemma:first_and_last_face]{Lemma~\ref*{lemma:first_and_last_face}} the intersection $LC^{n} \cap \phi(1, \ldots, n)$ is of the form $d_{0}\Delta^{n} \cup d_{n} \Delta^{n}$.
 
   Each subsequent intersection contains the faces $d_{0}\Delta^{n}$ and $d_{n}\Delta^{n}$ (again by \hyperref[lemma:first_and_last_face]{Lemma~\ref*{lemma:first_and_last_face}}), so by \hyperref[lemma:subset_of_faces_inner_anodyne]{Lemma~\ref*{lemma:subset_of_faces_inner_anodyne}}, it suffices to show that for each $\tau$ under consideration, there is at least one face not shared with any previous $\tau'$.
 
-  To this end, fix $0 < i < n$, and consider $\tau \in S_{n}$ such that $\tau \neq (0, \ldots, n)$. We consider the face $d_{i}\phi(\tau)$. Let $j = \tau^{-1}(i)$ and $j' = \tau^{-1}(i+1)$. Then $d_{i} a^{\tau(j)} = d_{i}a^{\tau(j')}$, so $d_{i} \phi(\tau) = d_{i}\phi(\tau \circ \gamma_{jj'})$, where $\gamma_{jj'} \in S_{n}$ is the permutation swapping $j$ and $j'$. Thus, the face $d_{i}\sigma(\tau)$ is equal to the face $d_{i}\sigma(\tau \circ \gamma_{jj'})$, which is already contained in the union under consideration if and only $\tau \circ \gamma_{jj'} < \tau$. This in turn is true if and only if $j < j'$.
+  To this end, fix $0 < i < n$, and consider $\tau \in S_{n}$ such that $\tau \neq (1, \ldots, n)$. We consider the face $d_{i}\phi(\tau)$. Let $j = \tau^{-1}(i)$ and $j' = \tau^{-1}(i+1)$. Then $d_{i} a^{\tau(j)} = d_{i}a^{\tau(j')}$, so $d_{i} \phi(\tau) = d_{i}\phi(\tau \circ \gamma_{jj'})$, where $\gamma_{jj'} \in S_{n}$ is the permutation swapping $j$ and $j'$. Thus, the face $d_{i}\sigma(\tau)$ is equal to the face $d_{i}\sigma(\tau \circ \gamma_{jj'})$, which is already contained in the union under consideration if and only $\tau \circ \gamma_{jj'} < \tau$. This in turn is true if and only if $j < j'$.
 
   Assume that every face of $\phi(\tau)$ is contained in the union. Then
   \begin{equation*}
@@ -702,7 +729,7 @@ We collect our major results from this section in the following proposition.
   \begin{equation*}
     (\Delta^{0} \ast \partial C^{n-1}, \mathcal{G}) \hookrightarrow (\Delta^{0} \ast C^{n-1}, \mathcal{G}),
   \end{equation*}
-  where the marking $\mathcal{G}$ contains all degenerate morphisms together with the morphism $(0, \ldots, 0) \to (0, \ldots 1)$.
+  where the marking $\mathcal{G}$ contains all degenerate morphisms together with the morphism $(0, \ldots, 0, 0) \to (0, \ldots,0, 1)$.
 
   %is the morphism underlying a
   %(cocartesian-) marked anodyne morphism of marked simplicial sets $(J^{n})^{\clubsuit} \hookrightarrow (C^{n})^{\clubsuit}$. Furthermore, we have a pushout square
@@ -729,7 +756,7 @@ We collect our major results from this section in the following proposition.
 \subsection{Adjunct data}
 \label{ssc:adjunct_data}
 
-When confronted with a lifting problem, one frequently finds a lift by passing to an adjoint lifting problem which has a solution and transporting the solution back along the adjunction. This relies on the fact that providing data on one side of an adjunction is, in a certain sense, equivalent to providing adjunct data on the other side. In this section, we give a formalization of the the notion of adjunct data. Our main result is \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}}, which shows that under certain conditions, we can use data on one side of an adjunction to solve lifting problems on the other side. First, we recall somewhat explicitly the definition of an adjunction given in \cite{highertopostheory}.
+When confronted with a lifting problem, one frequently finds a lift by passing to an adjoint lifting problem which has a solution, and transporting the solution back along the adjunction. This relies on the fact that providing data on one side of an adjunction is, in a certain sense, equivalent to providing adjunct data on the other side. In this section, we give a formalization of the the notion of adjunct data in the $\infty$-categorical context. Our main result is \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}}, which shows that under certain conditions, we can use data on one side of an adjunction of an $\infty$-categories to fill in data on the other side. First, we recall somewhat explicitly the definition of an adjunction given in \cite{highertopostheory}.
 
 \begin{definition}
   \label{def:adjunction}
@@ -1151,7 +1178,7 @@ In this subsection, we will prove \hyperref[thm:left_kan_implies_globally_left_k
     \arrow[ur, dashed]
   \end{tikzcd},
 \end{equation*}
-for $n \geq 2$, where $\tau$ is left Kan. Forgetting for a moment that have singled out some $2$-simplex $\tau$, and using the adjunction $\Csc \dashv \Nsc$, we will do this by solving equivalent lifting problems of the form\footnote{Note that we are implicitly taking $\C[\Lambda^{n+1}_{0}]$ and $\C[\Delta^{n+1}]$ to carry the flat markings on their mapping spaces.}
+for $n \geq 2$, where $\tau$ is left Kan. Forgetting for a moment the upper triangle singling out the $2$-simplex $\tau$, and using the adjunction $\Csc \dashv \Nsc$, we will do this by solving equivalent lifting problems of the form\footnote{Note that we are implicitly taking $\C[\Lambda^{n+1}_{0}]$ and $\C[\Delta^{n+1}]$ to carry the flat markings on their mapping spaces.}
 \begin{equation}
   \label{eq:left_horns_in_cat_infty_scaled}
   \begin{tikzcd}

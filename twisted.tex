@@ -5,7 +5,7 @@
 \section{Local systems}
 \label{sec:local_systems}
 
-For any $\infty$-category $\category{C}$, a $\category{C}$-local system on some space $X$ is simply a functor $X \to \category{C}$. Thus, the $\infty$-category of $\category{C}$-local systems on $X$ should simply be $\LS(\category{C})_{X}:=\Fun(X, \category{C})$. Our goal is to consider local systems on all spaces $X$ simultaneously, defining an $\infty$-category of $\category{C}$-local systems.
+For any $\infty$-category $\category{C}$, a $\category{C}$-local system on some space $X$ is simply a functor $X \to \category{C}$. Thus, the $\infty$-category of $\category{C}$-local systems on $X$ should simply be $\LS(\category{C})_{X}:=\Fun(X, \category{C})$. Our goal is to consider local systems on all spaces $X$ simultaneously, defining an $\infty$-category $\LS(\category{C})$ of $\category{C}$-local systems.
 
 We follow the general strategy laid out in \cite{luriehopkins2013ambidexterity}. We will consider a cartesian fibration 
 \begin{equation*}
@@ -35,7 +35,7 @@ will then classify the functor
 \end{equation*}
 The total space $\LS(\category{C})$ of $p$ will thus be our candidate for our $\infty$-category of local systems.
 
-In \cite{garcia2020enhanced}, a suitable model for $\int\Fun(-, -)$ is given: the so-called \emph{enhanced twisted arrow category} $\Tw(\ICCat)$. In \hyperref[ssc:the_twisted_arrow_category]{Subsection~\ref*{ssc:the_twisted_arrow_category}}, we reproduce the salient points of \cite{garcia2020enhanced}, defining the enhanced twisted arrow category. In \hyperref[ssc:the_infinity_category_of_local_systems]{Subsection~\ref*{ssc:the_infinity_category_of_local_systems}}, we use the enhanced twisted arrow category to define the category $\LS(\category{C})$ of local systems, together with a cartesian fibration $p\colon \LS(\category{C}) \to \S$ classifying the functor
+In \cite{garcia2020enhanced}, a suitable model for $\int\Fun(-, -)$ is given: the so-called \emph{enhanced twisted arrow category} $\Tw(\ICCat)$. In \hyperref[ssc:the_twisted_arrow_category]{Subsection~\ref*{ssc:the_twisted_arrow_category}}, we reproduce the pertinent points of \cite{garcia2020enhanced}, defining the enhanced twisted arrow category. In \hyperref[ssc:the_infinity_category_of_local_systems]{Subsection~\ref*{ssc:the_infinity_category_of_local_systems}}, we use the enhanced twisted arrow category to define the category $\LS(\category{C})$ of local systems, together with a cartesian fibration $p\colon \LS(\category{C}) \to \S$ classifying the functor
 \begin{equation*}
   \S\op \to \ICat;\qquad X \to \Fun(X, \category{C}).
 \end{equation*}
@@ -136,7 +136,7 @@ in $\CC$. Here, the top row of morphisms corresponds to the spine of the $n$-sim
 
 Thus, the $i$th column in the above diagram corresponds to the image of the morphism $i \to \overline{i}$ in $\Delta^{n} \star (\Delta^{n})\op$.
 
-We are now ready to define this scaling.
+The scaling mentioned above is defined in the following way.
 
 \begin{definition}
   We define a cosimplicial object $\tilde{Q}\colon \Delta \to \SSetsc$ by sending
@@ -163,7 +163,7 @@ This extends to a nerve-realization adjunction
 \end{equation*}
 where the functor $Q$ is the extension by colimits of the functor $\tilde{Q}$, and for any scaled simplicial set $X$, the simplicial set $\Tw(X)$ has $n$-simplices
 \begin{equation*}
-  \Hom_{\SSetsc}(Q(\Delta^{n}), X).
+  \Tw(\CC)_{n} = \Hom_{\SSetsc}(Q(\Delta^{n}), X).
 \end{equation*}
 
 \begin{notation}
@@ -182,7 +182,10 @@ In \cite{garcia2020enhanced}, the following is shown.
   \begin{equation*}
     p_{\CC}\colon \Tw(\CC) \to \category{C} \times \category{C}\op.
   \end{equation*}
-  is a cartesian fibration between quasicategories, and a morphism $f\colon \Delta^{1} \to \Tw(\CC)$ is $p_{\CC}$-cartesian if and only if the morphism $\sigma\colon \Delta^{3}_{\dagger} \to \CC$ to which it is adjunct is fully scaled, i.e.\ factors through the map $\Delta^{3}_{\dagger} \to \Delta^{3}_{\sharp}$.
+  is a cartesian fibration between quasicategories, and a morphism $f\colon \Delta^{1} \to \Tw(\CC)$ is $p_{\CC}$-cartesian if and only if the morphism $\sigma\colon \Delta^{3}_{\dagger} \to \CC$ to which it is adjunct is fully scaled, i.e.\ factors through the map $\Delta^{3}_{\dagger} \to \Delta^{3}_{\sharp}$. Furthermore, the cartesian fibration $p_{\CC}$ classifies the functor
+  \begin{equation*}
+    \Map_{\CC}(-, -)\colon \category{C}\op \times \category{C} \to \ICat.
+  \end{equation*}
 \end{theorem}
 
 %In fact, this assignment is functorial.
@@ -194,7 +197,7 @@ In \cite{garcia2020enhanced}, the following is shown.
 \subsection{Two lemmas about marked-scaled anodyne morphisms}
 \label{ssc:two_lemmas_about_marked_scaled_anodyne_morphisms}
 
-In the section following this one, we provide a fairly explicit construction of a family of marked-scaled anodyne inclusions. Constructing these inclusions directly from the classes of generating marked-scaled anodyne inclusions given in \hyperref[def:ms-anodyne_morphisms]{Definition~\ref*{def:ms-anodyne_morphisms}} horn fillings would be possible but tedious. To lighten this load somewhat, we reproduce in this section two lemmas from \cite{garcia2cartesianfibrationsii}. The majority of this section is a retelling of sections 2.3 and 2.4 of \cite{garcia2cartesianfibrationsii}. Note however that our needs will be rather different than those of \cite{garcia2cartesianfibrationsii}, and this is reflected in some subtle differences of notation.
+In the section following this one, we provide a fairly explicit construction of a family of marked-scaled anodyne inclusions. Constructing these inclusions directly from the classes of generating marked-scaled anodyne inclusions given in \hyperref[def:ms-anodyne_morphisms]{Definition~\ref*{def:ms-anodyne_morphisms}} horn fillings would be possible but tedious. To lighten this load somewhat, we reproduce in this section two lemmas from \cite{garcia2cartesianfibrationsii}. The majority of this section is a retelling of \cite[Sec.~2.3~and~2.4]{garcia2cartesianfibrationsii}. Note however that our needs will be rather different than those of \cite{garcia2cartesianfibrationsii}, and this is reflected in some subtle differences of notation.
 
 We first need a compact notation for specifying simplicial subsets of $\Delta^{n}$. Denote by $P\colon \Set \to \Set$ the power set functor.
 
@@ -359,11 +362,9 @@ In the remainder of this section we reproduce two lemmas from \cite{garcia2carte
 \subsection{The infinity-category of local systems}
 \label{ssc:the_infinity_category_of_local_systems}
 
-We are now ready to define, for any cocomplete $\infty$-category $\category{C}$, the $\infty$-category of $\category{C}$-local systems.
+In \hyperref[ssc:the_twisted_arrow_category]{Subsection~\ref*{ssc:the_twisted_arrow_category}}, we defined the twisted arrow category $\Tw(\CC)$ of an $\infty$-bicategory $\CC$, and noted that the natural cartesian fibration $\Tw(\CC) \to \category{C} \times \category{C}\op$ classifies the mapping functor $\Map_{\CC}(-, -)$. Thus, the objects $\Tw(\CC)$ are simply the morphisms in $\CC$.
 
-\subsubsection{The basic idea}
-\label{sss:the_infinity_category_of_local_systems}
-
+We can use this to define, for any cocomplete $\infty$-category $\category{C}$, the $\infty$-category of $\category{C}$-local systems; we simply consider $\Tw(\ICCat)$, whose objects are all functors between $\infty$-categories, and restrict to those functors whose domain is an $\infty$-groupoid, and whose codomain is $\category{C}$.
 
 \begin{definition}
   For any cocomplete $\infty$-category $\category{C}$, we define the $\infty$-category of $\category{C}$-local systems $\LS(\category{C})$ together with a map of simplicial sets $p\colon \LS(\category{C}) \to \S$ by the following pullback diagram.
@@ -383,16 +384,17 @@ We are now ready to define, for any cocomplete $\infty$-category $\category{C}$,
   \end{equation}
 \end{definition}
 
+\begin{note}
+  It is natural to wonder if we are making life unnecessarily difficult by not simply considering the category $\S \times_{\ICCat}(\ICCat)_{/\category{C}}$, which is after all also an $\infty$-category of functors from spaces into $\category{C}$. The reason for the more complicated construction given here will become apparent in \hyperref[ssc:the_monoidal_twisted_arrow_category]{Subsection~\ref*{ssc:the_monoidal_twisted_arrow_category}}, when we define the monoidal structure on $\LS(\category{C})$.
+\end{note}
+
 It is shown in \cite{garcia2020enhanced} that $p'$, hence also $p$, is a cartesian fibration. The cartesian fibration $p$ classifies the functor $\S\op \to \ICat$ sending
 \begin{equation*}
   f\colon X \to Y \qquad \longmapsto \qquad f^{*}\colon \Fun(Y, \category{C}) \to \Fun(X, \category{C}).
 \end{equation*}
-Under the assumption that $\category{C}$ is cocomplete, each pullback map $f^{*}$ has a left adjoint $f_{!}$, given by left Kan extension. It follows on abstract grounds that $p$ is also a cocartesian fibration, whose cocartesian edges represent left Kan extension. In \hyperref[ssc:the_fibration]{Subsection~\ref*{ssc:the_fibration}}, we show this explicitly.
+Under the assumption that $\category{C}$ is cocomplete, each pullback map $f^{*}$ has a left adjoint $f_{!}$, given by left Kan extension. It follows on abstract grounds that $p$ is also a cocartesian fibration, whose cocartesian edges represent left Kan extension. In \hyperref[ssc:the_fibration]{Subsection~\ref*{ssc:the_fibration}}, we show this explicitly. Our goal in this section is to do some legwork to facilitate the proof of this result.
 
-\subsubsection{Cosimplicial objects}
-\label{sss:cosimplicial_objects}
-
-Our main goal is to show that the map $p\colon \LS(\category{C}) \to \S$ is a cocartesian fibration. In doing this, it will be useful to factor the pullback square in \hyperref[eq:pullback_square_defining_local_systems]{Equation~\ref*{eq:pullback_square_defining_local_systems}} into the two pullback squares
+In investigating the map $p\colon \LS(\category{C}) \to \S$, it will be useful to factor the pullback square in \hyperref[eq:pullback_square_defining_local_systems]{Equation~\ref*{eq:pullback_square_defining_local_systems}} into the two pullback squares
 \begin{equation*}
   \begin{tikzcd}
     \LS(\category{C})

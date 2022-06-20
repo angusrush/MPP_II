@@ -7,20 +7,117 @@
 \subsection{Introduction}
 \label{ssc:introduction}
 
+Let $\category{C}$ be a cocomplete $\infty$-category. For any space $X \in \S$, denote by $\LS(\category{C})_{X}$ the $\infty$-category of $\category{C}$-local systems on $X$. Recall that for any morphism $f\colon X \to Y$ of spaces, there are several associated functors between $\LS(\category{C})_{X}$ and $\LS(\category{C})_{Y}$. In particular:
 \begin{itemize}
-  \item We show that pull-push of local systems is lax functorial. We do this by providing a general theory of situations in which one has lax functorial push-pull of local systems (monoidal Beck--Chevalley fibrations).
+  \item The functor $f^{*}\colon \LS(\category{C})_{Y} \to \LS(\category{C})_{X}$ pulls back local systems on $Y$ to local systems on $X$, sending a local system $\mathcal{F}\colon Y \to \S$ to the local system $f^{*}\mathcal{F}$ given by the composition
+    \begin{equation*}
+      \begin{tikzcd}
+        X
+        \arrow[r, "f"]
+        & Y
+        \arrow[r, "\mathcal{F}"]
+        & \S
+      \end{tikzcd}.
+    \end{equation*}
 
-  \item Our approach differs from previous ones:
-    \begin{itemize}
-      \item In \cite{spectralmackeyfunctors2}, similar results are stated in a rather different situation. Our approach is more explicit, based on hands-on computations done in an $\infty$-categorical twisted arrow category.
+  \item The functor $f_{!}\colon \LS(\category{C})_{X} \to \LS(\category{C})_{Y}$ pushes forward local systems via left Kan extension, sending a local system $\mathcal{G}\colon X \to \S$ to the left Kan extension $\mathrm{Lan}_{f}\mathcal{G}$.
+    \begin{equation*}
+      \begin{tikzcd}
+        X
+        \arrow[rr, "\mathcal{G}"]
+        \arrow[dr, swap, "f"]
+        && \S
+        \\
+        & Y
+        \arrow[ur, swap, "\mathrm{Lan}_{f}\mathcal{G}"]
+      \end{tikzcd}
+    \end{equation*}
+\end{itemize}
 
-      \item In TODO, similar results are proved, but abstractly and model-independently. We believe that the explicitness of our model will be useful computationally.
-    \end{itemize}
+This is a prototype of a common situation: one has a functor (say, of quasicategories) $F\colon \category{C} \to \category{D}$, which sends an object $c \in \category{C}$ to an object $F(c) \in \category{D}$, and a morphism $f\colon c \to c'$ in $\category{C}$ to a morphism $f_{!}\colon F(c) \to F(c')$ in $\category{D}$. One has additionally a `wrong-way' map, which creates from a morphism $f\colon c \to c'$ a morphism $f^{*}\colon F(c') \to F(c)$. In this case, from the data of a diagram in $\category{C}$ of the form
+\begin{equation}
+  \label{eq:span}
+  \begin{tikzcd}
+    & c'
+    \arrow[dl, swap, "g"]
+    \arrow[dr, "f"]
+    \\
+    c
+    && c''
+  \end{tikzcd},
+\end{equation}
+one can produce a morphism $F(c) \to F(c'')$ in $\category{D}$ via the composition
+\begin{equation*}
+  \begin{tikzcd}
+    & F(c')
+    \arrow[dr, "f_{!}"]
+    \\
+    F(c)
+    \arrow[ur, "g^{*}"]
+    \arrow[rr, swap, "f_{!} \circ g^{*}"]
+    && F(c'')
+  \end{tikzcd}.
+\end{equation*}
+
+The data of \hyperref[eq:span]{Diagram~\ref*{eq:span}} is known as a \emph{span} in $\category{C}$. It is natural to ask whether this construction can be extended to a functor $\Span(\category{C}) \to \category{D}$, where $\Span(\category{C})$ is an $\infty$-category whose objects are the same as the objects of $\category{C}$, and whose morphisms are spans in $\category{C}$. In defining $\Span(\category{C})$, it is necessary to specify a composition law for spans. There is a natural way of doing this: given two spans $X \leftarrow Y \rightarrow X'$ and $X' \leftarrow Y' \rightarrow X''$ in $\category{C}$, we define their composition to be the pullback $X \leftarrow Y \times_{X'} Y' \rightarrow X''$ as below.
+\begin{equation*}
+  \begin{tikzcd}
+    && Y \times_{X'} Y'
+    \arrow[dl, dashed, swap, "q'"]
+    \arrow[dr, dashed, "f'"]
+    \\
+    & Y
+    \arrow[dl, swap, "g"]
+    \arrow[dr, "f"]
+    && Y'
+    \arrow[dl, swap, "q"]
+    \arrow[dr, "p"]
+    \\
+    X
+    && X'
+    && X''
+  \end{tikzcd}
+\end{equation*}
+In order for a functor $\Span(\category{C}) \to \category{D}$ to be well-defined, it will have to respect this composition law on $\Span(\category{C})$. That is, we must have for all such pullback diagrams an equivalence
+\begin{equation*}
+  (p \circ f')_{!} \circ (g \circ q')^{*} \simeq p_{!} \circ q^{*} \circ f_{!} \circ g^{*}.
+\end{equation*}
+This is equivalent to the simpler condition that for any pullback square as above we must have an equivalence
+\begin{equation*}
+  f'_{!} \circ (q')^{*} \simeq q^{*} \circ f_{!}.
+\end{equation*}
+This is know as the \emph{base change condtition,} or the \emph{Beck--Chevalley condition.}
+
+This is the second part of a two-part paper. In the first part, we provided a new proof of a theorem of Barwick \cite[Thm.~12.2]{spectralmackeyfunctors1}, which provides sufficient conditions for a functor of quasicategories $p\colon \category{C} \to \category{D}$ to yield a cocartesian fibration between $\infty$-categories of spans $\Span(p)\colon \Span(\category{C}) \to \Span(\category{D})$. %We will see that in order for such a functor to exist, the map $p$ must satisfy an unstraightened version of the Beck--Chevalley condition.
+
+In this paper, we use this result to construct a functor $\hat{r}\colon \Span(\category{S}) \to \ICat$, which sends a space $X$ to the category $\LS(\category{C})_{X}$ of local systems on $X$, and a morphism in $\Span(\S)$ represented by a span
+\begin{equation*}
+  \begin{tikzcd}
+    & Y
+    \arrow[dl, swap, "g"]
+    \arrow[dr, "f"]
+    \\
+    X
+    && X'
+  \end{tikzcd}
+\end{equation*}
+to the functor $f_{!} \circ g^{*}\colon \LS(\category{C})_{X} \to \LS(\category{C})_{X'}$. We further show that our functor is lax monoidal with respect to a monoidal structure on $\Span(\S)$ induced by the cartesian structure on $\S$, and the cartesian structure on $\ICat$. We do this by providing a general theory of situations in which one has lax functorial push-pull of local systems (monoidal Beck--Chevalley fibrations). This is not a new idea, although our approach differs from previous ones.
+
+\begin{itemize}
+  \item In \cite{spectralmackeyfunctors2}, similar results to those in \hyperref[ssc:monoidal_beck_chevalley_fibrations]{Subsection~\ref*{ssc:monoidal_beck_chevalley_fibrations}}, about monoidal Beck-Chevalley fibrations, are stated in a rather different situation. The application to local systems is not considered.
+
+  \item In TODO, similar results about local systems are proved, but abstractly and model-independently. Our approach is more explicit, based on hands-on computations done in an $\infty$-categorical twisted arrow category. We believe that the explicitness of our model will be useful in future work.
 \end{itemize}
 
 
 \subsection{General conventions}
 \label{ssc:general_conventions}
+
+Suppose $X$ is a simplicial set and $\category{C}$ is an $\infty$-category. By $\Fun(X, \category{C})$, we mean the $\infty$-category of maps $X \to \category{C}$. By $\Map(X, \category{C})$, we mean the $\infty$-groupoid of such maps; that is,
+\begin{equation*}
+  \Map(X, \category{C}) = \Fun(X, \category{C})^{\simeq},
+\end{equation*}
+where $(-)^{\simeq}\colon \QCat \to \Kan$ denotes the \emph{core.}
 
 By $\S$, we mean the $\infty$-category of \emph{small} spaces.
 
@@ -85,6 +182,81 @@ There is a set of marked-scaled anodyne morphisms, which have the left lifting p
     (-)_{\flat} : \SSetms \longleftrightarrow \SSetmk : Q.
   \end{equation*}
 \end{theorem}
+
+\subsection{Selected results from Monoidal Pull-Push I}
+\label{ssc:selected_results_from_mppi}
+
+We will need several of the results of the first part of this paper, Monoidal Pull-Push I. Here, we collect some results proved there which we will need.
+
+\begin{theorem}[Old Barwick]
+  \label{thm:old_barwick}
+  Let $p\colon \triple{C} \to \triple{D}$ be a functor between adequate triples such that $p\colon \category{C} \to \category{D}$ is an inner fibration which satisfies the following conditions.
+  \begin{enumerate}
+    \item Each morphism $g \in \category{D}\downdag$ admits a lift to a morphism in $\category{C}\downdag$ (given a lift of the source) which is both $p$-cocartesian and $p\downdag$-cocartesian.
+
+    \item Consider a commutative square
+      \begin{equation*}
+        \sigma = \quad
+        \begin{tikzcd}
+          y'
+          \arrow[r, rightarrowtail, "f'"]
+          \arrow[d, two heads, swap, "g'"]
+          & x'
+          \arrow[d, "g"]
+          \\
+          y
+          \arrow[r, rightarrowtail, "f"]
+          & x
+        \end{tikzcd}
+      \end{equation*}
+      in $\category{C}$ where $g'$ belongs to $\category{C}\updag$, and $f$ and $f'$ belong to $\category{C}\downdag$. Suppose that $f$ is $p$-cocartesian. Then $f'$ is $p'$-cocartesian if and only if $\sigma$ is an ambigressive pullback square (and in particular $g \in \category{C}\updag$).
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[New Barwick]
+  \label{thm:new_barwick}
+  Let $p\colon \triple{C} \to \triple{D}$ be a functor between adequate triples such that $p\colon \category{C} \to \category{D}$ is an inner fibration which satisfies the following conditions.
+  \begin{enumerate}
+    \item The subcategory $\category{C}\updag \subseteq \category{C}$ consists of all $p$-cartesian morhisms in $\category{C}$; that is, an $n$-simplex in $\category{C}$ belongs to $\category{C}\updag$ if and only if each $1$-simplex it contains is $p$-cartesian.
+
+    \item The map $p\updag\colon \category{C}\updag \to \category{D}\updag$ is a cartesian fibration.
+
+    \item Consider a square
+      \begin{equation*}
+          \sigma = \quad
+          \begin{tikzcd}
+            y'
+            \arrow[r, "f'"]
+            \arrow[d, two heads, swap, "g'"]
+            & x'
+            \arrow[d, two heads, "g"]
+            \\
+            y
+            \arrow[r, rightarrowtail, "f"]
+            & x
+          \end{tikzcd}
+      \end{equation*}
+      in $\category{C}$ where $g$ and $g'$ belong to $\category{C}\updag$, and $f$ belongs to $\category{C}\downdag$. Further suppose that $f$ is $p$-cocartesian. Then $f'$ belongs to $\category{C}\downdag$, and is both $p$-cocartesian and $p\downdag$-cocartesian.
+  \end{enumerate}
+  Then spans of the form
+  \begin{equation*}
+    \begin{tikzcd}
+      & z
+      \arrow[dl, two heads, swap, "g"]
+      \arrow[dr, rightarrowtail, "f"]
+      \\
+      x
+      && y
+    \end{tikzcd}
+  \end{equation*}
+  are cocartesian, where $g$ is $p\updag$-cartesian and $f$ is $p$-cocartesian.
+\end{theorem}
+\begin{proof}
+  We first note that $\sigma$ is automatically pullback; since the sides are $p$-cartesian, it is automatically a relative pullback, and it lies over a pullback square.
+
+  The rest is even simpler than the proof in my thesis of the ordinary Barwick's theorem. The square that we have to show is homotopy pullback factors as before, but this time we don't have to take the final homotopy pullback to find path components corresponding to cartesian 2-simplices, since our 2-simplices are automatically cartesian.
+\end{proof}
+
 
 
 \end{document}

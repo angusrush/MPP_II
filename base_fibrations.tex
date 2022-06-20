@@ -7,7 +7,7 @@
 
 The classical Grothendieck construction provides an equivalence between functors $\hat{p}\colon \category{D} \to \Cat$ and cartesian fibrations $p\colon \int \hat{p} \to \category{D}\op$. There are many conditions one can impose upon of the functor $\hat{p}$, and many structures one can endow it with; it is natural to wonder whether these properties and structures can be captured in the fibration $p$.
 
-An answer in the case that $F$ is lax monoidal is given in \cite{moeller2018monoidal}. Suppose $p\colon \category{C} \to \category{D}$ is a cartesian fibration of 1-categories which classifies a pseudofunctor $\hat{p}\colon \category{D}\op \to \Cat$. Further suppose the following:
+An answer in the case that $\hat{p}$ is lax monoidal is given in \cite{moeller2018monoidal}. Suppose $p\colon \category{C} \to \category{D}$ is a cartesian fibration of 1-categories which classifies a pseudofunctor $\hat{p}\colon \category{D}\op \to \Cat$. Further suppose the following:
 \begin{itemize}
   \item The category $\category{C}$ carries a symmetric monoidal structure $(\otimes, I_{\category{C}}, \ldots)$.
 
@@ -76,6 +76,7 @@ Our aim in this section is to show an $\infty$-categorical version of the statem
 The equivalence $(\category{C}_{\otimes})_{\langle n \rangle} \simeq \category{C}^{n}$ allow us to trade maps into $(\category{C}_{\otimes})_{\langle n \rangle}$ for $n$ maps into $\category{C}$, well-defined up to equivalence. Given a diagram $a\colon K \to (\category{C}_{\otimes})_{\langle n \rangle}$, we will often abuse this terminology by calling any such corresponding diagrams $a_{i}\colon K \to \category{C}$ `the' components of $a$, as long as we are making reference only to properties of these components which are preserved under equivalence.
 
 \begin{definition}
+  \label{def:terminology_about_csmcs}
   A \defn{map} between CSMCs $\category{C}_{\otimes} \to \Finp\op$ and $\category{D}_{\boxtimes} \to \Finp\op$ is a functor $r$ making the diagram
   \begin{equation*}
     \begin{tikzcd}
@@ -356,19 +357,19 @@ We now construct the monoidal structure on this category of spans explicitly, st
   In order to show this, we should show that for each simplicial set $K$, the map $a$ in the diagram
   \begin{equation*}
     \begin{tikzcd}
-      \Fun(K, \Span(\category{T})^{\times}_{\langle n \rangle})
+      \Map(K, \Span(\category{T})^{\times}_{\langle n \rangle})
       \arrow[r, "a"]
       \arrow[d, swap, "\simeq"]
-      & \prod_{i = 1}^{n} \Fun(K, \Span(\category{T})^{\times}_{\langle 1 \rangle})
+      & \prod_{i = 1}^{n} \Map(K, \Span(\category{T})^{\times}_{\langle 1 \rangle})
       \arrow[d, "\simeq"]
       \\
-      \Fun^{\aCart}(\sd(K), (\category{T}_{\times})_{\langle n \rangle}) \arrow[r, "b"]
+      \Map^{\aCart}(\sd(K), (\category{T}_{\times})_{\langle n \rangle}) \arrow[r, "b"]
       \arrow[d, hook, "i"{swap}]
-      & \prod_{i = 1}^{n} \Fun^{\aCart}(\sd(K), (\category{T}_{\times})_{\langle 1 \rangle})
+      & \prod_{i = 1}^{n} \Map^{\aCart}(\sd(K), (\category{T}_{\times})_{\langle 1 \rangle})
       \arrow[d, hook, "j"]
       \\
-      \Fun(\sd(K), (\category{T}_{\times})_{\langle n \rangle}) \arrow[r, "c", "\simeq"{swap}]
-      & \prod_{i = 1}^{n} \Fun(\sd(K), (\category{T}_{\times})_{\langle 1 \rangle})
+      \Map(\sd(K), (\category{T}_{\times})_{\langle n \rangle}) \arrow[r, "c", "\simeq"{swap}]
+      & \prod_{i = 1}^{n} \Map(\sd(K), (\category{T}_{\times})_{\langle 1 \rangle})
     \end{tikzcd}
   \end{equation*}
   is an isomorphism in the category $\h \Kan$. In order to show this, it suffices to show that the map $b$ is an isomorphism in $\h \Kan$. We note that the morphisms $i$ and $j$ are inclusions of connected components, and the map $c$ is an isomorphism because $\category{T}_{\times} \to \Finp\op$ is a CSMC, so in order to show that $b$ is an isomorphism in $\h\Kan$, it suffices to show that it is essentially surjective. This follows from the fact that a square in $(\category{T}_{\times})_{\langle n \rangle} \simeq ((\category{T}_{\times})_{\langle 1 \rangle})^{n}$ is pullback if and only if each component is pullback.
@@ -813,9 +814,56 @@ The above conditions are to do only with the properties of the functor $r|\langl
 \subsection{The monoidal twisted arrow category}
 \label{ssc:the_monoidal_twisted_arrow_category}
 
-We have seen that for any $\infty$-bicategory $\CC$ (presented as a fibrant scaled simplicial set), there is an $\infty$-category $\Tw(\CC)$, the \emph{twisted arrow category} of $\CC$. We would like to upgrade this construction to a functor $\Tw\colon \ITCat \to \ICat$, where $\ITCat$ is the $\infty$-category of $\infty$-bicategories.
+We have seen that for any $\infty$-bicategory $\CC$ (presented as a fibrant scaled simplicial set), there is an $\infty$-category $\Tw(\CC)$, the \emph{twisted arrow category} of $\CC$. If $\CC$ carries a monoidal structure, this structure is inherited by the twisted arrow $\infty$-category $\Tw(\CC)$ by defining
+\begin{equation*}
+  \left(
+  \begin{tikzcd}
+    c_{1}
+    \arrow[r]
+    \arrow[d, ""{name=L}]
+    & c_{2}
+    \arrow[d, ""{name=R, swap}]
+    \\
+    d_{1}
+    & d_{2}
+    \arrow[l]
+    \arrow[from=L, to=R, Rightarrow, shorten=1.5ex, "\eta"{description}]
+  \end{tikzcd}
+  \right) \otimes \left(
+  \begin{tikzcd}
+    c_{1}'
+    \arrow[r]
+    \arrow[d, ""{name=L}]
+    & c_{2}'
+    \arrow[d, ""{name=R, swap}]
+    \\
+    d_{1}'
+    & d_{2}'
+    \arrow[l]
+    \arrow[from=L, to=R, Rightarrow, shorten=1.5ex, "\eta'"{description}]
+  \end{tikzcd}
+  \right)
+  =
+  \begin{tikzcd}
+    c_{1} \otimes c_{1}'
+    \arrow[r]
+    \arrow[d, ""{name=L}]
+    & c_{2} \otimes c_{2}'
+    \arrow[d, ""{name=R, swap}]
+    \\
+    d_{1} \otimes d_{1}'
+    & d_{2} \otimes d_{2}'
+    \arrow[l]
+    \arrow[from=L, to=R, Rightarrow, shorten=1.5ex, "\eta \otimes \eta'"{description}]
+  \end{tikzcd}
+\end{equation*}
+In this section, we construct this monoidal structure explicitly. 
 
-To this end, we note that we can certainly express the twisted arrow category as an ordinary functor
+For our construction, will need to upgrade the twisted arrow category construction to a functor 
+\begin{equation*}
+  \Tw\colon \ITCat \to \ICat,
+\end{equation*}
+where $\ITCat$ is the $\infty$-category of $\infty$-bicategories. To this end, we note that we can certainly express the twisted arrow category as an ordinary functor
 \begin{equation*}
   \Tw'\colon \SSetsc \to \SSetmk.
 \end{equation*}
@@ -859,7 +907,7 @@ By \hyperref[thm:quillen_equiv_ms_and_scaled]{Theorem~\ref*{thm:quillen_equiv_ms
 \begin{equation*}
   \Tw' \circ Q\colon \SSetms \to \SSetmk.
 \end{equation*}
-Since $Q$ is a right Quillen functor, it preserves weak equivalences between fibrant objects. Thus, the composite $\Tw' \circ Q$ does as well. Restricting to fibrant objects and taking the simplicial localizations yields a functor
+Since $Q$ is a right Quillen functor, it preserves weak equivalences between fibrant objects. Thus, the composite $\Tw' \circ Q$ does as well. Restricting to fibrant objects and taking simplicial localizations yields a functor
 \begin{equation*}
   \SSetms[W^{-1}] \to \SSetmk[W^{-1}].
 \end{equation*}
@@ -1060,6 +1108,9 @@ where
 
 Because both $\TICatCocart \to \Finp$ and $\ICatCocart \to \Finp$ classify the same functor $\Finp \to \ICat$, they are related by a fiberwise equivalence. Composing a commutative monoid $\Finp \to \ICatCocart$ with this equivalence allows us to express symmetric monoidal $\infty$-categories as commutative monoids in $\TICatCocart$.
 
+\subsection{The monoidal category of local systems}
+\label{ssc:the_monoidal_category_of_local_systems}
+
 \begin{construction}
   We will denote the full subcategory of $\TICatCart$ on those objects $[\category{D}_{1}, \ldots, \category{D}_{n}]$ such that $\category{D}_{i}$ is an $\infty$-groupoid for all $1 \leq i \leq n$ by $\TSCart$. Note that $\TSCart \to \Finp$ can be understood as the relative nerve (as a cartesian fibration) of a commutative monoid $\Finp \to \ICat$ giving the cartesian monoidal structure on $\S$.
 
@@ -1154,36 +1205,57 @@ Because both $\TICatCocart \to \Finp$ and $\ICatCocart \to \Finp$ classify the s
 
 \begin{lemma}
   \label{lemma:tensor_product_of_local_systems_preserves_cocart_edges}
-  Let $e\colon F \to G$ and $e'\colon F' \to G'$ be $r|\langle 1 \rangle$-cocartesian edges of $\LS(\category{C})_{\otimes}$. Then $e \otimes e'$ is $r|\langle 1 \rangle$-cocartesian.
-  %\begin{equation*}
-  %  e =
-  %  \begin{tikzcd}
-  %    X
-  %    \arrow[r]
-  %    \arrow[d, swap, "F"]
-  %    & Y
-  %    \arrow[d, "G"]
-  %    \\
-  %    \category{C}
-  %    & \category{C}
-  %    \arrow[l, "\id"]
-  %  \end{tikzcd},\qquad e' =
-  %  \begin{tikzcd}
-  %    X'
-  %    \arrow[r]
-  %    \arrow[d, swap, "F'"]
-  %    & Y'
-  %    \arrow[d, "G'"]
-  %    \\
-  %    \category{C}
-  %    & \category{C}
-  %    \arrow[l, "\id"]
-  %  \end{tikzcd}.
-  %\end{equation*}
-  %Then $e \otimes e'\colon F \otimes F' \to G \otimes G'$ is also $r$-cocartesian.
+  The tensor product of local systems preserves cocartesian edges (in the sense of \hyperref[def:terminology_about_csmcs]{Definition~\ref*{def:terminology_about_csmcs}}).
 \end{lemma}
 \begin{proof}
+  In order to show that the tensor product of local systems preserves cocartesian edges, it suffices by \hyperref[lemma:co_cartesian_preservation_determined_by_bifunctor]{Lemma~\ref*{lemma:co_cartesian_preservation_determined_by_bifunctor}} to check that the tensor product of two $r|\langle 1 \rangle$-cocartesian edges is again $r|\langle 1 \rangle$-cocartesian. Let $e\colon F \to G$ and $e'\colon F' \to G'$ be $r|\langle 1 \rangle$-cocartesian edges of $\LS(\category{C})_{\otimes}$.
+  \begin{equation*}
+    e =
+    \begin{tikzcd}
+      X
+      \arrow[r]
+      \arrow[d, swap, "F"]
+      & Y
+      \arrow[d, "G"]
+      \\
+      \category{C}
+      & \category{C}
+      \arrow[l, "\id"]
+    \end{tikzcd},\qquad e' =
+    \begin{tikzcd}
+      X'
+      \arrow[r]
+      \arrow[d, swap, "F'"]
+      & Y'
+      \arrow[d, "G'"]
+      \\
+      \category{C}
+      & \category{C}
+      \arrow[l, "\id"]
+    \end{tikzcd}.
+  \end{equation*}
+  We wish to show that $e \otimes e'$ is $r|\langle 1 \rangle$-cocartesian.
+
   The tensor product $e \otimes e'$ is given, up to homotopy, by the pasting diagram
+  \begin{equation*}
+    \begin{tikzcd}
+      X \times X'
+      \arrow[r]
+      \arrow[d]
+      & Y \times Y'
+      \arrow[d]
+      \\
+      \category{C} \times \category{C}
+      \arrow[d, swap, "\otimes"]
+      & \category{C} \times \category{C}
+      \arrow[d, "\otimes"]
+      \arrow[l]
+      \\
+      \category{C}
+      & \category{C}
+      \arrow[l]
+    \end{tikzcd}
+  \end{equation*}
   
   In order to show that this map is $r$-cocartesian, we need to show that the outer triangle
   \begin{equation*}
@@ -1208,7 +1280,7 @@ Because both $\TICatCocart \to \Finp$ and $\ICatCocart \to \Finp$ classify the s
   The map $r$ above is a monoidal Beck-Chevalley fibration.
 \end{proposition}
 \begin{proof}
-  We need to check the conditions (M1)--(M5) of \hyperref[def:monoidal_beck_chevalley_fibration]{Definition~\ref*{def:monoidal_beck_chevalley_fibration}}. The condition (M1) is the content of \hyperref[prop:local_systems_are_beck_chevalley]{Proposition~\ref*{prop:local_systems_are_beck_chevalley}}. Conditions (M2), (M3), and (M5) follow immediately from \hyperref[lemma:equivalent_conditions_to_be_cartesan]{Lemma~\ref*{lemma:equivalent_conditions_to_be_cartesan}}, using the fact that $r$ is a cartesian fibration. In order to show that (M4) holds, it suffices by \hyperref[lemma:co_cartesian_preservation_determined_by_bifunctor]{Lemma~\ref*{lemma:co_cartesian_preservation_determined_by_bifunctor}} to check that the tensor product of two $r|\langle 1 \rangle$-cocartesian edges is again $r|\langle 1 \rangle$-cocartesian. But this is the content of \hyperref[lemma:tensor_product_of_local_systems_preserves_cocart_edges]{Lemma~\ref*{lemma:tensor_product_of_local_systems_preserves_cocart_edges}}.
+  We need to check the conditions (M1)--(M5) of \hyperref[def:monoidal_beck_chevalley_fibration]{Definition~\ref*{def:monoidal_beck_chevalley_fibration}}. The condition (M1) is the content of \hyperref[prop:local_systems_are_beck_chevalley]{Proposition~\ref*{prop:local_systems_are_beck_chevalley}}. Conditions (M2), (M3), and (M5) follow immediately from \hyperref[lemma:equivalent_conditions_to_be_cartesan]{Lemma~\ref*{lemma:equivalent_conditions_to_be_cartesan}}, using the fact that $r$ is a cartesian fibration. That (M4) holds is the content of \hyperref[lemma:tensor_product_of_local_systems_preserves_cocart_edges]{Lemma~\ref*{lemma:tensor_product_of_local_systems_preserves_cocart_edges}}.
 \end{proof}
 
 \begin{corollary}
