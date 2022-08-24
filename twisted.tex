@@ -5,7 +5,7 @@
 \section{Local systems}
 \label{sec:local_systems}
 
-For any $\infty$-category $\category{C}$, a $\category{C}$-local system on some space $X$ is simply a functor $X \to \category{C}$. Thus, the $\infty$-category of $\category{C}$-local systems on $X$ should simply be $\LS(\category{C})_{X}:=\Fun(X, \category{C})$. Our goal is to consider local systems on all spaces $X$ simultaneously, defining an $\infty$-category $\LS(\category{C})$ of $\category{C}$-local systems.
+For any $\infty$-category $\category{C}$, a $\category{C}$-local system on some space $X$ is simply a functor $X \to \category{C}$. Thus, the $\infty$-category of $\category{C}$-local systems on $X$ is simply $\LS(\category{C})_{X}:=\Fun(X, \category{C})$. Our goal is to consider local systems on all spaces $X$ simultaneously, defining an $\infty$-category $\LS(\category{C})$ of $\category{C}$-local systems.
 
 We follow the general strategy laid out in \cite{luriehopkins2013ambidexterity}. We will consider a cartesian fibration 
 \begin{equation*}
@@ -44,6 +44,10 @@ We note that this functor sends a map of spaces $f\colon X \to Y$ to the pullbac
   f^{*}\colon \Fun(Y, \category{C}) \to \Fun(X, \category{C}).
 \end{equation*}
 If $\category{C}$ is cocomplete, each functor $f^{*}$ has a left adjoint $f_{!}$ given by left Kan extension. By abstract nonsense, the cartesian fibration $p$ is also a cocartesian fibration, whose cocartesian edges correspond to left Kan extension. In \hyperref[ssc:the_fibration]{Subsection~\ref*{ssc:the_fibration}} we will show this explicitly.
+
+\begin{note}
+  The reader may notice that we are being inefficient here. If we were only interested in the construction outlined above, then using the twisted arrow category would be much more combinatorially strenuous than necessary; the objects of the twisted arrow category $\Tw(\ICCat)$ are functors of $\infty$-categories $\category{D} \to \category{C}$, with $\category{C}$ and $\category{D}$ both allowed to vary. If, in the very next breath, we fix the target $\category{C}$, then it makes more sense to use some sort of overcategory $(\ICCat)_{/\category{C}}$ from the beginning. There is a method to our madness; in \hyperref[sec:the_monoidal_construction]{Section~\ref*{sec:the_monoidal_construction}}, we will introduce a monoidal version of this construction, and here we will need to allow the targets of our functors to vary.
+\end{note}
 
 \subsection{The enhanced twisted arrow category}
 \label{ssc:the_twisted_arrow_category}
@@ -197,7 +201,7 @@ In \cite{garcia2020enhanced}, the following is shown.
 \subsection{Two lemmas about marked-scaled anodyne morphisms}
 \label{ssc:two_lemmas_about_marked_scaled_anodyne_morphisms}
 
-In the section following this one, we provide a fairly explicit construction of a family of marked-scaled anodyne inclusions. Constructing these inclusions directly from the classes of generating marked-scaled anodyne inclusions given in \hyperref[def:ms-anodyne_morphisms]{Definition~\ref*{def:ms-anodyne_morphisms}} horn fillings would be possible but tedious. To lighten this load somewhat, we reproduce in this section two lemmas from \cite{garcia2cartesianfibrationsii}. The majority of this section is a retelling of \cite[Sec.~2.3~and~2.4]{garcia2cartesianfibrationsii}. Note however that our needs will be rather different than those of \cite{garcia2cartesianfibrationsii}, and this is reflected in some subtle differences of notation.
+In the section following this one, we provide a fairly explicit construction of a family of marked-scaled anodyne inclusions. Constructing these inclusions directly from the classes of generating marked-scaled anodyne inclusions given in \hyperref[def:ms-anodyne_morphisms]{Definition~\ref*{def:ms-anodyne_morphisms}} would be possible but tedious. To lighten this load somewhat, we reproduce in this section two lemmas from \cite{garcia2cartesianfibrationsii}. The majority of this section is a retelling of \cite[Sec.~2.3~and~2.4]{garcia2cartesianfibrationsii}. Note however that our needs will be rather different than those of \cite{garcia2cartesianfibrationsii}, and this is reflected in some minor differences of notation.
 
 We first need a compact notation for specifying simplicial subsets of $\Delta^{n}$. Denote by $P\colon \Set \to \Set$ the power set functor.
 

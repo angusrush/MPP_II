@@ -9,24 +9,24 @@
 
 Let $\category{C}$ be a cocomplete $\infty$-category. For any space $X \in \S$, denote by $\LS(\category{C})_{X}$ the $\infty$-category of $\category{C}$-local systems on $X$. Recall that for any morphism $f\colon X \to Y$ of spaces, there are several associated functors between $\LS(\category{C})_{X}$ and $\LS(\category{C})_{Y}$. In particular:
 \begin{itemize}
-  \item The functor $f^{*}\colon \LS(\category{C})_{Y} \to \LS(\category{C})_{X}$ pulls back local systems on $Y$ to local systems on $X$, sending a local system $\mathcal{F}\colon Y \to \S$ to the local system $f^{*}\mathcal{F}$ given by the composition
+  \item The functor $f^{*}\colon \LS(\category{C})_{Y} \to \LS(\category{C})_{X}$ pulls back local systems on $Y$ to local systems on $X$, sending a local system $\mathcal{F}\colon Y \to \category{C}$ to the local system $f^{*}\mathcal{F}$ given by the composition
     \begin{equation*}
       \begin{tikzcd}
         X
         \arrow[r, "f"]
         & Y
         \arrow[r, "\mathcal{F}"]
-        & \S
+        & \category{C}
       \end{tikzcd}.
     \end{equation*}
 
-  \item The functor $f_{!}\colon \LS(\category{C})_{X} \to \LS(\category{C})_{Y}$ pushes forward local systems via left Kan extension, sending a local system $\mathcal{G}\colon X \to \S$ to the left Kan extension $\mathrm{Lan}_{f}\mathcal{G}$.
+  \item The functor $f_{!}\colon \LS(\category{C})_{X} \to \LS(\category{C})_{Y}$ pushes forward local systems via left Kan extension, sending a local system $\mathcal{G}\colon X \to \category{C}$ to the left Kan extension $\mathrm{Lan}_{f}\mathcal{G}$.
     \begin{equation*}
       \begin{tikzcd}
         X
         \arrow[rr, "\mathcal{G}"]
         \arrow[dr, swap, "f"]
-        && \S
+        && \category{C}
         \\
         & Y
         \arrow[ur, swap, "\mathrm{Lan}_{f}\mathcal{G}"]
@@ -88,7 +88,7 @@ This is equivalent to the simpler condition that for any pullback square as abov
 \end{equation*}
 This is know as the \emph{base change condtition,} or the \emph{Beck--Chevalley condition.}
 
-This is the second part of a two-part paper. In the first part, we provided a new proof of a theorem of Barwick \cite[Thm.~12.2]{spectralmackeyfunctors1}, which provides sufficient conditions for a functor of quasicategories $p\colon \category{C} \to \category{D}$ to yield a cocartesian fibration between $\infty$-categories of spans $\Span(p)\colon \Span(\category{C}) \to \Span(\category{D})$. %We will see that in order for such a functor to exist, the map $p$ must satisfy an unstraightened version of the Beck--Chevalley condition.
+This is the second part of a two-part paper. In the first part, we provided a simplified proof of a theorem of Barwick \cite[Thm.~12.2]{spectralmackeyfunctors1}, which provides sufficient conditions for a functor of quasicategories $p\colon \category{C} \to \category{D}$ to yield a cocartesian fibration between $\infty$-categories of spans $\Span(p)\colon \Span(\category{C}) \to \Span(\category{D})$. %We will see that in order for such a functor to exist, the map $p$ must satisfy an unstraightened version of the Beck--Chevalley condition.
 
 In this paper, we use this result to construct a functor $\hat{r}\colon \Span(\category{S}) \to \ICat$, which sends a space $X$ to the category $\LS(\category{C})_{X}$ of local systems on $X$, and a morphism in $\Span(\S)$ represented by a span
 \begin{equation*}
@@ -101,14 +101,28 @@ In this paper, we use this result to construct a functor $\hat{r}\colon \Span(\c
     && X'
   \end{tikzcd}
 \end{equation*}
-to the functor $f_{!} \circ g^{*}\colon \LS(\category{C})_{X} \to \LS(\category{C})_{X'}$. We further show that our functor is lax monoidal with respect to a monoidal structure on $\Span(\S)$ induced by the cartesian structure on $\S$, and the cartesian structure on $\ICat$. We do this by providing a general theory of situations in which one has lax functorial push-pull of local systems (monoidal Beck--Chevalley fibrations). This is not a new idea, although our approach differs from previous ones.
+to the functor $f_{!} \circ g^{*}\colon \LS(\category{C})_{X} \to \LS(\category{C})_{X'}$. We further show that our functor is lax monoidal with respect to a monoidal structure on $\Span(\S)$ induced by the cartesian structure on $\S$, and the cartesian structure on $\ICat$. We do this by providing a general theory of situations in which one has lax functorial push-pull of local systems (monoidal Beck--Chevalley fibrations). 
 
+\subsection{Relation to previous work}
+\label{ssc:relation_to_previous_work}
+
+That pull-push of local systems can be written as a symmetric monoidal functor out of a category of spans is far from a new idea. Our approach differs from previous ones, however; our aim is to provide a simple, explicit construction of pull-push of local systems, without any pretensions of working in complete generality when it does not, in our view, lead to greater conceptual clarity. 
+
+There have been (to the knowledge of the author) two main works with results similar to those in this paper.
 \begin{itemize}
-  \item In \cite{spectralmackeyfunctors2}, similar results to those in \hyperref[ssc:monoidal_beck_chevalley_fibrations]{Subsection~\ref*{ssc:monoidal_beck_chevalley_fibrations}}, about monoidal Beck-Chevalley fibrations, are stated in a rather different situation. The application to local systems is not considered.
+  \item In \cite{spectralmackeyfunctors2}, similar results to those in \hyperref[ssc:monoidal_beck_chevalley_fibrations]{Subsection~\ref*{ssc:monoidal_beck_chevalley_fibrations}}, about monoidal Beck-Chevalley fibrations, are stated in a rather different situation. The application to local systems is not considered. We have treated these results in less generality.
 
-  \item In TODO, similar results about local systems are proved, but abstractly and model-independently. Our approach is more explicit, based on hands-on computations done in an $\infty$-categorical twisted arrow category. We believe that the explicitness of our model will be useful in future work.
+  \item In \cite{gaitsgory2019study}, results about extending a functor out of a category of spans are proved, but more generally, more abstractly, and for the most part model-independently; there, spans come in $(\infty, 2)$-categories, modelled when necessary by complete 2-Segal spaces. Our approach is more explicit, based on hands-on combinatorial computations done in a quasicategorical twisted arrow category. We believe that the explicitness of our model will be useful in our future work.
 \end{itemize}
 
+\subsection{Outline}
+\label{ssc:outline}
+
+In \hyperref[sec:horn_filling_via_left_kan_extensions]{Section~\ref*{sec:horn_filling_via_left_kan_extensions}}, we generalize the universal property satisfied by Kan extensions of $1$-categories to $\infty$-categorical Kan extensions, and show how this universal property can be used to solve lifting problems in $\ICCat$.
+
+Our proof that left Kan extensions enjoy this lifting property uses that left Kan extension is left adjoint to restriction; this can be used even if not all left Kan extensions along a functor exist. To formalize this, we introduce in \hyperref[ssc:adjunct_data]{Subsection~\ref*{ssc:adjunct_data}} the notion of a \emph{partial adjunction,} and use this to show that data on one side of an adjunction of $\infty$-categories can be used to fill adjunct data on the other side. Using this, we show in \hyperref[ssc:left_kan_implies_globally_left_kan]{Subsection~\ref*{ssc:left_kan_implies_globally_left_kan}} that this generalized lifting property really is satisfied.
+
+In \hyperref[sec:local_systems]{Section~\ref*{sec:local_systems}}, we apply our results about left Kan extensions to show, via an explicit computation in an appropriate model (an $\infty$-categorical twisted arrow category), that left Kan extensions of local systems are $\infty$-functorial, i.e.\ extends to a functor $\S \to \ICat$. We then use this to show that pull-push functoriality extends to a functor $\Span(\S) \to \ICat$. In \hyperref[sec:the_monoidal_construction]{Section~\ref*{sec:the_monoidal_construction}}, we show that this construction can be endowed with a lax monoidal structure.
 
 \subsection{General conventions}
 \label{ssc:general_conventions}
@@ -117,28 +131,20 @@ Suppose $X$ is a simplicial set and $\category{C}$ is an $\infty$-category. By $
 \begin{equation*}
   \Map(X, \category{C}) = \Fun(X, \category{C})^{\simeq},
 \end{equation*}
-where $(-)^{\simeq}\colon \QCat \to \Kan$ denotes the \emph{core.}
-
-By $\S$, we mean the $\infty$-category of \emph{small} spaces.
+where $(-)^{\simeq}\colon \SSet \to \Kan$ denotes the \emph{core} functor, i.e.\ the functor associating to a simplicial set $K$ the largest Kan complex contained in it.
 
 \subsection{The marked-scaled model structure}
 \label{ssc:marked-scaled_model_structure}
 
 We will need two different models for $(\infty,2)$-categories: Lurie's theory of scaled simplicial sets, as laid out in \cite{lurie2009infinity}; and Abellan--Stern's theory of marked-scaled simplicial sets, as explained in \cite{garcia2cartesianfibrationsii}. We will assume a knowledge of scaled simplicial sets. We give a basic outline of the portions of the theory of marked-scaled simplicial sets which we will need.
 
-A marked-scaled simplicial set is a triple $(X, E_{X}, T_{X})$, where $E_{X} \subseteq X_{1}$ is a collection of edges of $X$ containing all degenerate edges, and $T_{X} \subseteq X_{2}$ is a collection of triangles of $X$ containing all degenerate triangles.
+A marked-scaled simplicial set is a triple $(X, E_{X}, T_{X})$, where $E_{X} \subseteq X_{1}$ is a collection of edges of $X$ containing all degenerate edges, and $T_{X} \subseteq X_{2}$ is a collection of triangles of $X$ containing all degenerate triangles. We will use the following notation.
 \begin{itemize}
   \item We will denote the category of marked-scaled simplicial sets by $\SSetms$.
 
-  \item To save on notation, we will sometimes denote the marked-scaled simplicial set $(X, E_{X}, T_{X})$ by $X^{E_{X}}_{T_{X}}$, particularly in the case that $E_{X}$ or $T_{X}$ are $\sharp$ or $\flat$, the maximum (resp. minimum) markings and scalings. For example, the bimarked simplicial set $X^{\sharp}_{\flat}$ has all 1-simplices marked and only degenerate 2-simplices scaled, etc.
-\end{itemize}
+  \item To save on notation, we will sometimes denote the marked-scaled simplicial set $(X, E_{X}, T_{X})$ by $X^{E_{X}}_{T_{X}}$, particularly in the case that $E_{X}$ or $T_{X}$ are $\sharp$ or $\flat$, the maximum (resp. minimum) markings and scalings. For example, the bimarked simplicial set $X^{\sharp}_{\flat}$ has all 1-simplices marked and only degenerate 2-simplices scaled.
 
-We will use the following abuses of notation freely.
-
-\begin{itemize}
   \item Let $(\Delta^{n}, E, T)$ be a marked-scaled $n$-simplex. For any simplicial subset $S \subseteq \Delta^{n}$, we will denote by $(S, E, T)$ the simplicial subset $S$ together with the inherited marking and scaling.
-        
-  \item Given a cosimplicial object $Q\colon \Delta \to \category{C}$, we will sometimes write $Q(n)$ instead of $Q([n])$.
 \end{itemize}
 
 There is a set of marked-scaled anodyne morphisms, which have the left lifting property with respect to marked-scaled fibrations. We will not need to use the full power of the marked-scaled anodyne morphisms, so we content ourselves with an incomplete description.
@@ -163,32 +169,33 @@ There is a set of marked-scaled anodyne morphisms, which have the left lifting p
 
 \begin{example}
   \label{prop:sharp_marked_right_anodyne}
-  \leavevmode
+  The marked-scaled anodyne morphisms encapsulate both left- and marked-anodyne morphisms.
   \begin{itemize}
     \item For any right anodyne morphism $A \hookrightarrow B$, the morphism $A^{\sharp}_{\sharp} \hookrightarrow B^{\sharp}_{\sharp}$ is marked-scaled anodyne.
 
-    \item For any marked anodyne morphism $A^{\mathcal{A}} \to B^{\mathcal{B}}$, the morphism $A^{\mathcal{A}}_{\sharp} \to B^{\mathcal{B}}_{\sharp}$ is marked-scaled anodyne.
+    \item For any marked anodyne morphism $(A, \mathcal{E}) \to (B, \mathcal{F})$, the morphism $A^{\mathcal{E}}_{\sharp} \to B^{\mathcal{F}}_{\sharp}$ is marked-scaled anodyne.
   \end{itemize}
 \end{example}
 
 \begin{theorem}
-  There is a model structure on the category $\SSetms$, whose trivial cofibrations are TODO, and whose fibrant objects are $\infty$-bicategories with precisely the equivalences marked.
+  There is a model structure on the category $\SSetms$, whose trivial cofibrations are contain the set of marked-scaled anodyne maps, and whose fibrant objects are $\infty$-bicategories with the equivalences marked and thin simplices scaled.
 \end{theorem}
 
 \begin{theorem}
   \label{thm:quillen_equiv_ms_and_scaled}
   There is a Quillen equivalence
   \begin{equation*}
-    (-)_{\flat} : \SSetms \longleftrightarrow \SSetmk : Q.
+    (-)_{\flat} : \SSetsc \longleftrightarrow \SSetms : G,
   \end{equation*}
+  where $(-)^{\flat}$ endows any scaled simplicial set with the flat marking, and $G$ forgets the marking.
 \end{theorem}
 
 \subsection{Selected results from Monoidal Pull-Push I}
 \label{ssc:selected_results_from_mppi}
 
-We will need several of the results of the first part of this paper, Monoidal Pull-Push I. Here, we collect some results proved there which we will need.
+We will need several of the results of the first part of this paper, Monoidal Pull-Push I. Both of these give sufficient conditions on a functor $p\colon \category{C} \to \category{D}$ so that the induced functor $\Span(\category{C}) \to \Span(\category{D})$ is a cocartesian fibration. Here, the subcategories $\category{C}\downdag$ and $\category{C}\updag$ pick out distinguished classes of morphisms to which the legs of the spans of $\Span(\category{C})$ are allowed to belong, and similarly for $\category{D}\downdag$ and $\category{D}\updag$.
 
-\begin{theorem}[Old Barwick]
+\begin{theorem}
   \label{thm:old_barwick}
   Let $p\colon \triple{C} \to \triple{D}$ be a functor between adequate triples such that $p\colon \category{C} \to \category{D}$ is an inner fibration which satisfies the following conditions.
   \begin{enumerate}
@@ -211,13 +218,26 @@ We will need several of the results of the first part of this paper, Monoidal Pu
       \end{equation*}
       in $\category{C}$ where $g'$ belongs to $\category{C}\updag$, and $f$ and $f'$ belong to $\category{C}\downdag$. Suppose that $f$ is $p$-cocartesian. Then $f'$ is $p'$-cocartesian if and only if $\sigma$ is an ambigressive pullback square (and in particular $g \in \category{C}\updag$).
   \end{enumerate}
+
+  Then spans of the form
+  \begin{equation*}
+    \begin{tikzcd}
+      & z
+      \arrow[dl, two heads, swap, "g"]
+      \arrow[dr, rightarrowtail, "f"]
+      \\
+      x
+      && y
+    \end{tikzcd}
+  \end{equation*}
+  are cocartesian, where $g$ is $p\updag$-cartesian and $f$ is $p$-cocartesian.
 \end{theorem}
 
-\begin{theorem}[New Barwick]
+\begin{theorem}
   \label{thm:new_barwick}
   Let $p\colon \triple{C} \to \triple{D}$ be a functor between adequate triples such that $p\colon \category{C} \to \category{D}$ is an inner fibration which satisfies the following conditions.
   \begin{enumerate}
-    \item The subcategory $\category{C}\updag \subseteq \category{C}$ consists of all $p$-cartesian morhisms in $\category{C}$; that is, an $n$-simplex in $\category{C}$ belongs to $\category{C}\updag$ if and only if each $1$-simplex it contains is $p$-cartesian.
+    \item The subcategory $\category{C}\updag \subseteq \category{C}$ consists of all $p$-cartesian morphisms in $\category{C}$; that is, an $n$-simplex in $\category{C}$ belongs to $\category{C}\updag$ if and only if each $1$-simplex it contains is $p$-cartesian.
 
     \item The map $p\updag\colon \category{C}\updag \to \category{D}\updag$ is a cartesian fibration.
 
@@ -251,12 +271,6 @@ We will need several of the results of the first part of this paper, Monoidal Pu
   \end{equation*}
   are cocartesian, where $g$ is $p\updag$-cartesian and $f$ is $p$-cocartesian.
 \end{theorem}
-\begin{proof}
-  We first note that $\sigma$ is automatically pullback; since the sides are $p$-cartesian, it is automatically a relative pullback, and it lies over a pullback square.
-
-  The rest is even simpler than the proof in my thesis of the ordinary Barwick's theorem. The square that we have to show is homotopy pullback factors as before, but this time we don't have to take the final homotopy pullback to find path components corresponding to cartesian 2-simplices, since our 2-simplices are automatically cartesian.
-\end{proof}
-
 
 
 \end{document}

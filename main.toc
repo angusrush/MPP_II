@@ -4,13 +4,17 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.1}Introduction}{2}{subsection.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.2}General conventions}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.2}Relation to previous work}{3}{subsection.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.3}The marked-scaled model structure}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.3}Outline}{3}{subsection.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.4}Selected results from Monoidal Pull-Push I}{4}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.4}General conventions}{4}{subsection.1.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Horn filling via left Kan extensions}{5}{section.2}%
+\contentsline {subsection}{\numberline {1.5}The marked-scaled model structure}{4}{subsection.1.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.6}Selected results from Monoidal Pull-Push I}{5}{subsection.1.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2}Horn filling via left Kan extensions}{6}{section.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.1}Basic facts about Kan extensions}{7}{subsection.2.1}%
 \defcounter {refsection}{0}\relax 
@@ -18,28 +22,28 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3}Adjunct data}{14}{subsection.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4}Left Kan implies globally left Kan}{17}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.4}Left Kan implies globally left Kan}{18}{subsection.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5}A few other tricks with Kan extensions}{20}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.5}A few other tricks with Kan extensions}{21}{subsection.2.5}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3}Local systems}{21}{section.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}The enhanced twisted arrow category}{21}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.1}The enhanced twisted arrow category}{22}{subsection.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Two lemmas about marked-scaled anodyne morphisms}{23}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.2}Two lemmas about marked-scaled anodyne morphisms}{24}{subsection.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}The infinity-category of local systems}{25}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.3}The infinity-category of local systems}{26}{subsection.3.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.4}The map governing local systems is a cocartesian fibration}{31}{subsection.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Pull-Push of local systems}{33}{section.4}%
+\contentsline {section}{\numberline {4}Pull-Push of local systems}{34}{section.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Monoidal push-pull of local systems}{37}{section.5}%
+\contentsline {section}{\numberline {5}Monoidal push-pull of local systems}{38}{section.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}The lax monoidal Grothendieck construction}{38}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.1}The lax monoidal Grothendieck construction}{39}{subsection.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}Monoidal Beck-Chevalley fibrations}{43}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.2}Monoidal Beck-Chevalley fibrations}{44}{subsection.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3}The monoidal twisted arrow category}{47}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.3}The monoidal twisted arrow category}{48}{subsection.5.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4}The monoidal category of local systems}{50}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.4}The monoidal category of local systems}{51}{subsection.5.4}%

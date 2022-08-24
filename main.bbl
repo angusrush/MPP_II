@@ -131,6 +131,36 @@
       \field{volume}{180}
       \field{year}{2019}
     \endentry
+    \entry{gaitsgory2019study}{book}{}
+      \name{author}{2}{}{%
+        {{hash=0da990b8e12de8e4bcdbaff207c15484}{%
+           family={Gaitsgory},
+           familyi={G\bibinitperiod},
+           given={Dennis},
+           giveni={D\bibinitperiod}}}%
+        {{hash=6d0c23454f5609cf340fad037188d86e}{%
+           family={Rozenblyum},
+           familyi={R\bibinitperiod},
+           given={Nick},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Mathematical Society}%
+      }
+      \strng{namehash}{077d2f6629c91d6c6950517feeb03e59}
+      \strng{fullhash}{077d2f6629c91d6c6950517feeb03e59}
+      \strng{bibnamehash}{077d2f6629c91d6c6950517feeb03e59}
+      \strng{authorbibnamehash}{077d2f6629c91d6c6950517feeb03e59}
+      \strng{authornamehash}{077d2f6629c91d6c6950517feeb03e59}
+      \strng{authorfullhash}{077d2f6629c91d6c6950517feeb03e59}
+      \field{sortinit}{G}
+      \field{sortinithash}{62eb2aa29549e4fdbd3cb154ec5711cb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A study in derived algebraic geometry: Volume I: correspondences and duality}
+      \field{volume}{221}
+      \field{year}{2019}
+    \endentry
     \entry{garcia2020enhanced}{article}{}
       \name{author}{2}{}{%
         {{hash=55e5a03c8980dfc902177ad3e18aba74}{%

@@ -7,7 +7,7 @@
 
 Kan extensions of $\infty$-categories are usually defined pointwise via the colimit formula \cite{highertopostheory} \cite{cisinski2019higher}. In this section, we will show that such pointwise $\infty$-Kan extensions enjoy a horn filling property in $\ICCat$ which generalizes the universal property for Kan extensions of functors between $1$-categories.
 
-We will expand upon the following definition in \hyperref[ssc:basic_facts_about_kan_extensions]{Subsection~\ref*{ssc:basic_facts_about_kan_extensions}}.
+We will explain the precise meaning of the below definition in \hyperref[ssc:basic_facts_about_kan_extensions]{Subsection~\ref*{ssc:basic_facts_about_kan_extensions}}.
 
 \begin{definition}
   \label{def:left_kan}
@@ -223,7 +223,7 @@ In this section, we recall a few basic facts about Kan extensions. These are mos
   Let $F\colon K \to \category{C}$ be a diagram, where $\category{C}$ is an $\infty$-category. A cocone $\tilde{F}\colon K^{\triangleright} \to \category{C}$ is a \defn{colimit cone} if it is an initial object in the $\infty$-category $\category{C}_{F/}$.
 \end{definition}
 
-It is sometimes more convenient to define colimits via natural transformation.
+It is sometimes more convenient to define colimits via natural transformations to a constant functor.
 
 \begin{definition}
   Let $f\colon K \to \category{C}$ be a map between simplicial sets, where $\category{C}$ is an $\infty$-category. Let $c \in \category{C}$ be an object, and denote by $\underline{c}$ the constant functor $K \to \category{C}$ with value $c$. A natural transformation $f \Rightarrow \underline{c}$ \defn{exhibits $c$ as the colimit of $f$} if it is an initial object in the $\infty$-category $\category{C}^{F/}$.
@@ -237,7 +237,7 @@ Fortunately, these definitions are compatible: an object $K^{\triangleright} \to
 exhibits $c$ as a colimit of $F$. This follows from the fact that for any $\infty$-category $\category{C}$ and any functor $F\colon K \to \category{C}$, the comparison map $\category{C}_{/F} \to \category{C}^{/F}$ of \cite[Prop.~4.2.1.5]{highertopostheory} is a categorical equivalence.
 
 \begin{note}
-  If a natural transformation $\eta$ exhibits some object as a colimit of some diagram, than any natural transformation $\eta'$ which is homotopic to $\eta$ will do just as well.
+  It follows immediately from this description that colimit cones are homotopically invariant: if a natural transformation $\eta$ exhibits some object as a colimit of some diagram, than any natural transformation $\eta'$ which is homotopic to $\eta$ will do just as well.
 \end{note}
 
 We take a moment to record a definition, which we will need later.
@@ -246,7 +246,7 @@ We take a moment to record a definition, which we will need later.
   \label{def:preserve_colimits_in_each_slot}
   Let $\category{C}$ be an $\infty$-category, and let $F\colon \category{C} \times \category{C} \to \category{C}$ be a functor. We say that \defn{$F$ preserves colimits in each slot} if and only if the following condition is satisfed:
   \begin{itemize}
-    \item Let $G\colon K \to \category{C}$ and $G'\colon K' \to \category{C}$ be functors; and suppose $\eta\colon G \Rightarrow \underline{c}$ exhibits $c$ as the colimit of $G$, and $\eta'\colon G' \Rightarrow \underline{c'}$ exhibits $c'$ as the colimit of $G'$. Then $F(\eta \times \eta')\colon F \circ (G \times G') \Rightarrow \underline{F(c, c')}$ exhibits $F(c, c')$ as the colimit of $F \circ (G \times G')$.
+    \item Let $K$ and $K'$ be simplicial sets; let $G\colon K \to \category{C}$ and $G'\colon K' \to \category{C}$ be functors; and suppose $\eta\colon G \Rightarrow \underline{c}$ exhibits $c$ as the colimit of $G$, and $\eta'\colon G' \Rightarrow \underline{c'}$ exhibits $c'$ as the colimit of $G'$. Then $F(\eta \times \eta')\colon F \circ (G \times G') \Rightarrow \underline{F(c, c')}$ exhibits $F(c, c')$ as the colimit of $F \circ (G \times G')$.
   \end{itemize}
   %\begin{equation*}
   %  \begin{tikzcd}[row sep=huge, column sep=large]
@@ -310,7 +310,7 @@ We take a moment to record a definition, which we will need later.
       \arrow[from=LA, to=LB, Rightarrow, shorten=1ex, "\alpha"]
     \end{tikzcd}
   \end{equation*}
-  exhibits $G(y)$ as the colimit of the functor $F \circ \pi$.
+  exhibits $G(y)$ as the colimit of the functor $F \circ \pi$. Here, $\underline{G(y)}$ is the `counterclockwise' path from $X_{/y}$ to $\category{C}$.
 \end{definition}
 
 The following guarantees the existence of local left Kan extensions.
@@ -348,7 +348,7 @@ The following guarantees existence of global left Kan extensions.
   Let $f\colon X \to Y$ be a map of simplicial sets, and suppose that $\category{C}$ is a quasicategory which admits $X_{/y}$-shaped colimits for all $y \in Y$. Then the restriction functor $f^{*}\colon \Fun(Y, \category{C}) \to \Fun(X, \category{C})$ admits a left adjoint $f_{!}$, sending a functor $F\colon X \to \category{C}$ to $f_{!}F\colon Y \to \category{C}$, its left Kan extension along $f$.
 \end{theorem}
 
-The following is an easy consequence of \cite[Remark~7.3.1.11]{kerodon}.
+The following is an easy consequence of \cite[Remark~7.3.1.11]{kerodon}, to be explained later.
 \begin{proposition}
   Let $f\colon X \to Y$ be a map of simplicial sets, and let $\category{C}$ be a category such that all functors $X \to \category{C}$ admit left Kan extensions along $f$, so that we have an adjunction $f_{!} \vdash f^{*}$. Let $G\colon Y \to \category{C}$ and $\eta\colon F \Rightarrow G \circ f$. The natural transformation $\eta$ exhibits $G$ as a left Kan extension of $F$ along $f$ if and only if it is adjunct (in the sense of \hyperref[def:adjunct_data]{Definition~\ref*{def:adjunct_data}}) to an equivalence in $\Fun(Y, \category{C})$ relative to $s = \id_{\Delta^{1}}$.
 \end{proposition}
@@ -412,7 +412,7 @@ The category $\ICCat$ is defined to be the homotopy coherent nerve of the $\SSet
     \arrow[ur, dashed]
   \end{tikzcd}
 \end{equation*}
-where the diagram in question is now a diagram of $\SSetmk$-enriched categories (where the mapping spaces of $\C[\Lambda^{n+1}_{0}]$ and $\C[\Delta^{n}]$ are taken to carry the flat marking). In order to solve such lifting problems, we need to fill the missing data in each mapping space. As we will see in \hyperref[ssc:left_kan_implies_globally_left_kan]{Subsection~\ref*{ssc:left_kan_implies_globally_left_kan}}, these fillings take the form of filling a cube $(\Delta^{1})^{n}$ relative to its boundary missing one face.
+where the diagram in question is now a diagram of $\SSetmk$-enriched categories (where the mapping spaces of $\C[\Lambda^{n+1}_{0}]$ and $\C[\Delta^{n+1}]$ are taken to carry the flat marking). In order to solve such lifting problems, we need to fill the missing data in each mapping space. As we will see in \hyperref[ssc:left_kan_implies_globally_left_kan]{Subsection~\ref*{ssc:left_kan_implies_globally_left_kan}}, these fillings take the form of filling a cube $(\Delta^{1})^{n}$ relative to its boundary missing one face.
 
 In this subsection, we give the combinatorics of filling the $n$-cube. Our main result is \hyperref[prop:cube_filling]{Proposition~\ref*{prop:cube_filling}}, which writes the inclusion the boundary of the $n$-cube missing a certain face into the full cube as a composition of an inner anodyne map and a marked anodyne map.
 
@@ -786,7 +786,7 @@ When confronted with a lifting problem, one frequently finds a lift by passing t
 \end{definition}
 
 \begin{note}
-  This terminology is slightly imprecise; it would be more correct to say that $p$ is associated to $f$ and $g$ via the data $(h_{0}, h_{1}, u, v)$.
+  As noted in \cite{highertopostheory}, this terminology is slightly imprecise; it would be more correct to say that $p$ is associated to $f$ and $g$ via the data $(h_{0}, h_{1}, u, v)$.
 \end{note}
 
 \begin{note}
@@ -799,7 +799,7 @@ When confronted with a lifting problem, one frequently finds a lift by passing t
   \begin{equation*}
     f : \category{C} \longleftrightarrow \category{D} : g
   \end{equation*}
-  via data $(u, v)$. We say that a map $\alpha\colon K \to \category{C}$ is \defn{adjunct} to a map $\tilde{\alpha}\colon K \to \category{D}$ relative to $s$, and equivalently that $\tilde{\alpha}$ is adjunct to $\alpha$ relative to $s$, if there exists a map $A\colon K \times \Delta^{1} \to \category{M}$ such that the diagram
+  via data $(u\colon \category{C} \times \Delta^{1} \to \category{M}, v\colon \category{D} \times \Delta^{1} \to \category{M})$. We say that a map $\alpha\colon K \to \category{C}$ is \defn{adjunct} to a map $\tilde{\alpha}\colon K \to \category{D}$ relative to $s$, and equivalently that $\tilde{\alpha}$ is adjunct to $\alpha$ relative to $s$, if there exists a map $A\colon K \times \Delta^{1} \to \category{M}$ such that the diagram
   \begin{equation*}
     \begin{tikzcd}
       K \times \Delta^{1}
@@ -857,10 +857,9 @@ corresponding to a bicartesian fibration $p\colon \category{M} \to \Delta^{1}$ v
   Pick some object $D \in \category{D}$, and consider the identity morphism $\id\colon gD \to gD$ in $\category{C}$. This morphism is adjunct to the component of the unit map $\eta_{D}\colon D \to fgD$ relative to $s = \id\colon \Delta^{1} \to \Delta^{1}$.
 \end{example}
 
-The next example will follow from \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}}.
 
 \begin{example}
-  Any diagram $K \ast K' \to \category{D}$ such that $K$ is in the image of $f$ is adjunct to some diagram $K \ast K' \to \category{C}$ such that $K'$ is in the image of $g$.
+  For any simplicial sets $K$ and $K'$, any diagram $K \ast K' \to \category{D}$ such that $K$ is in the image of $f$ is adjunct to some diagram $K \ast K' \to \category{C}$ such that $K'$ is in the image of $g$. This will follow from \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}}.
 \end{example}
 
 \begin{lemma}
@@ -1115,6 +1114,8 @@ We note that in the proof of \hyperref[prop:can_transport_adjunct_data]{Proposit
   Suppose $f\colon \category{C} \to \category{C}'$ and $F\colon \category{C} \to \category{D}$ are functors. The statement that the left Kan extension $f_{!}F\colon \category{C'} \to \category{D}$ exists is equivalent to the statement that $f^{*}$ admits a left adjoint at $F$.
 \end{example}
 
+The proof of \hyperref[prop:can_transport_adjunct_data]{Proposition~\ref*{prop:can_transport_adjunct_data}} can be used as is to show the following statement.
+
 \begin{proposition}
   \label{prop:can_transport_adjunct_data_partial}
   Let $p\colon \category{M} \to \Delta^{1}$ classify $g\colon \category{D} \to \category{C}$ via $v\colon \category{D} \times\Delta^{1} \to \category{M}$, and let
@@ -1202,7 +1203,7 @@ We expect that the reader is familiar with the basics of (scaled) rigidification
 
 where $P_{ij}$ is the poset of subsets of the linearly ordered set $\{i, \ldots, j\}$ containing $i$ and $j$, ordered by inclusion. The simplicial category $\C[\Lambda^{n+1}_{0}]$ has the same objects as $\C[\Delta^{n+1}]$, and each morphism space $\C[\Lambda^{n+1}_{0}](i, j)$ is a simplicial subset of $\C[\Delta^{n+1}](i, j)$, as we shall soon describe.
 
-The map $\C[\Lambda^{n+1}_{0}](i, j) \hookrightarrow \C[\Delta^{n+1}](i, j)$ is an isomorphism except for $(i, j) = (1, n+1)$ and $(i, j) = (0, n+1)$. The missing data corresponds in the case of $(1, n+1)$ to the missing face $d_{0}\Delta^{n+1}$ of $\Lambda^{n+1}_{0}$, and in the case of $(0, n+1)$ to the missing interior. Thus, to find a filling as in \hyperref[eq:left_horns_in_cat_infty_scaled]{Equation~\ref*{eq:left_horns_in_cat_infty_scaled}}, we need to solve the lifting problems
+The map $\C[\Lambda^{n+1}_{0}](i, j) \hookrightarrow \C[\Delta^{n+1}](i, j)$ is an isomorphism except for $(i, j) = (1, n+1)$ and $(i, j) = (0, n+1)$; in these cases, it is an inclusion. The missing data corresponds in the case of $(1, n+1)$ to the missing face $d_{0}\Delta^{n+1}$ of $\Lambda^{n+1}_{0}$, and in the case of $(0, n+1)$ to the missing interior. Thus, to find a filling as in \hyperref[eq:left_horns_in_cat_infty_scaled]{Equation~\ref*{eq:left_horns_in_cat_infty_scaled}}, we need to solve the lifting problems
 \begin{equation}
   \label{eq:lifting_problem_1}
   \begin{tikzcd}
@@ -1270,7 +1271,9 @@ commute.
   admits a dashed filler.
 \end{theorem}
 
-The author would like to offer the friendly recommendation that in reading the proof below, it is helpful to follow along with the explanation given at the beginning of \hyperref[sec:horn_filling_via_left_kan_extensions]{Section~\ref*{sec:horn_filling_via_left_kan_extensions}}.
+\begin{note}
+  The author would like to offer the friendly recommendation that in reading the proof below, it is helpful to follow along with the explanation given at the beginning of \hyperref[sec:horn_filling_via_left_kan_extensions]{Section~\ref*{sec:horn_filling_via_left_kan_extensions}}.
+\end{note}
 
 \begin{proof}
   We need to solve the lifting problems of \hyperref[eq:lifting_problem_1]{Equation~\ref*{eq:lifting_problem_1}} and \hyperref[eq:lifting_problem_2]{Equation~\ref*{eq:lifting_problem_2}}, and check that our solutions satisfy the condition of \hyperref[eq:lifting_problem_compatibility_condition]{Equation~\ref*{eq:lifting_problem_compatibility_condition}}. In the discussuion surrounding these equations, we ignored that the simplex $\tau\colon \Delta^{\{0,1,n+1\}}_{\flat} \to \ICCat$ was left Kan. We now reintroduce this information. The information that the simplex $\tau\colon \Delta^{\{0,1,n+1\}}_{\flat} \to \ICCat$ is left Kan tells us the following.
@@ -1280,7 +1283,7 @@ The author would like to offer the friendly recommendation that in reading the p
     \item In particular, \hyperref[eg:partial_adjunctions_and_kan_extensions]{Example~\ref*{eg:partial_adjunctions_and_kan_extensions}} then tells us that the map $f_{1,0}^{*}$ admits a left adjoint at $f_{n+1,0}$.
   \end{itemize}
 
-  The lifting problems as described above are somewhat unwieldy, given in terms of mapping spaces of simplicial categories $\C[\Delta^{n+1}]$ and $\C[\Lambda^{n+1}_{0}]$. It will be useful to give them more down-to-earth descriptions. We have the following succinct descriptions of the inclusions of \hyperref[eq:lifting_problem_1]{Equation~\ref*{eq:lifting_problem_1}} and \hyperref[eq:lifting_problem_2]{Equation~\ref*{eq:lifting_problem_2}} along which we have to extend.
+  The lifting problems as described above are somewhat unwieldy, given in terms of mapping spaces of simplicial categories $\C[\Delta^{n+1}]$ and $\C[\Lambda^{n+1}_{0}]$. It will be useful to give these mapping spaces more down-to-earth descriptions, in terms of simplicial sets with which we are familiar. We have the following succinct descriptions of the inclusions of \hyperref[eq:lifting_problem_1]{Equation~\ref*{eq:lifting_problem_1}} and \hyperref[eq:lifting_problem_2]{Equation~\ref*{eq:lifting_problem_2}} along which we have to extend.
   \begin{itemize}
     \item There is an isomorphism of simplicial sets
       \begin{equation*}

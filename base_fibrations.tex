@@ -379,43 +379,6 @@ We now construct the monoidal structure on this category of spans explicitly, st
 \subsection{Monoidal Beck-Chevalley fibrations}
 \label{ssc:monoidal_beck_chevalley_fibrations}
 
-{\color{red}\begin{note}
-  For this to work out, I think we probably need to modify the second condition to be an adequate triple so that we only need to consider pullbacks of the type given in the first condition, i.e:
-
-  For any pullback square
-  \begin{equation*}
-    \begin{tikzcd}
-      y'
-      \arrow[r,  "f'"]
-      \arrow[d, swap, "g'"]
-      & x'
-      \arrow[d, "g"]
-      \\
-      y
-      \arrow[r, "f"]
-      & x
-    \end{tikzcd}
-  \end{equation*}
-  where $f \in \category{C}\downdag$ and $g \in \category{C}\updag$, we have that $f' \in \category{C}\downdag$ and $g' \in \category{C}\updag$.
-
-  This means we also need to add the condition:
-
-  For any square
-  \begin{equation*}
-    \begin{tikzcd}
-      y'
-      \arrow[r,  "f'"]
-      \arrow[d, swap, "g'"]
-      & x'
-      \arrow[d, "g"]
-      \\
-      y
-      \arrow[r, "f"]
-      & x
-    \end{tikzcd}
-  \end{equation*}
-  where $g$ and $g'$ are equivalences, if $f \in \category{C}\downdag$  (resp.\ $\category{C}\updag$), then $f' \in \category{C}\downdag$ (resp.\ $\category{C}\updag$). Wait, no, we don't. The subcategories $\category{C}\downdag$ and $\category{C}\updag$ contain all equivalences by assumption. Barwick, why would you make your conditions like this?
-\end{note}}
 
 In this section, we combine several results from earlier sections.
 
@@ -426,45 +389,6 @@ In this section, we combine several results from earlier sections.
 \end{itemize}
 
 We will now show that a Beck-Chevalley fibration $p\colon \category{X} \to \category{T}$ between monoidal categories whose tensor products satisfy appropriate compatibility conditions classifies a lax monoidal functor $\Span(\category{T}) \to \ICat$. We will call such fibrations \emph{monoidal Beck-Chevalley fibrations.}
-
-\begin{lemma}
-  \label{lemma:cocartesian_iff_componentwise_cocartesian}
-  Let $p$ and $q$ be CSMCs as below. Then for any monoidal functor $r$, the CSMC $q$ is cocartesian-compatible.
-  \begin{equation*}
-    \begin{tikzcd}
-      \category{C}_{\otimes}
-      \arrow[rr, "r"]
-      \arrow[dr, swap, "q"]
-      && \category{D}_{\boxtimes}
-      \arrow[dl, "p"]
-      \\
-      & \Finp\op
-    \end{tikzcd}
-  \end{equation*}
-\end{lemma}
-\begin{proof}
-  We need to show that $f$ in $(\category{C}_{\otimes})_{\langle n \rangle}$ is $r$-cocartesian if and only if it is componentwise cocartesian. Consider the following diagram of pullback squares.
-  \begin{equation*}
-    \begin{tikzcd}
-      (\category{C}_{\otimes})_{\langle n \rangle}
-      \arrow[r]
-      \arrow[d, swap, "r|\langle n \rangle"]
-      & \category{C}_{\otimes}
-      \arrow[d, "r"]
-      \\
-      (\category{D}_{\otimes})_{\langle n \rangle}
-      \arrow[r]
-      \arrow[d, swap, "p|\langle n \rangle"]
-      & \category{D}_{\otimes}
-      \arrow[d, "p"]
-      \\
-      \{\langle n \rangle\}
-      \arrow[r]
-      & \Finp\op
-    \end{tikzcd}
-  \end{equation*}
-  It follows from the dual to \cite[Cor.~4.3.1.15]{highertopostheory}\footnote{Note an unfortunate notational clash: our maps $p$, $q$, and $r$ do not agree with Lurie's.} that a morphism in $(\category{C}_{\otimes})_{\langle n \rangle}$ is $r|\langle n \rangle$-cocartesian if and only if its image in $\category{C}_{\otimes}$ is $r$-cocartesian. But a morphism is $r|\langle n \rangle$-cocartesian if and only if each component is $r|\langle 1 \rangle$-cocartesian.
-\end{proof}
 
 \begin{definition}
   \label{def:monoidal_beck_chevalley_fibration}
@@ -534,7 +458,46 @@ We will now show that a Beck-Chevalley fibration $p\colon \category{X} \to \cate
   \end{enumerate}
 \end{definition}
 
-The above conditions are to do only with the properties of the functor $r|\langle 1 \rangle$, together with properties of the tensor product $\otimes$; the only exception is (M5), which is a compatibility condition with how the monoidal structure is encoded as a cartesian fibration. We can also express these properties in terms directly in terms of the fibrations $p$, $q$, and $r$.
+\begin{lemma}
+  \label{lemma:cocartesian_iff_componentwise_cocartesian}
+  Let $p$ and $q$ be CSMCs as below. Then for any monoidal functor $r$, the CSMC $q$ is cocartesian-compatible.
+  \begin{equation*}
+    \begin{tikzcd}
+      \category{C}_{\otimes}
+      \arrow[rr, "r"]
+      \arrow[dr, swap, "q"]
+      && \category{D}_{\boxtimes}
+      \arrow[dl, "p"]
+      \\
+      & \Finp\op
+    \end{tikzcd}
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+  We need to show that $f$ in $(\category{C}_{\otimes})_{\langle n \rangle}$ is $r$-cocartesian if and only if it is componentwise cocartesian. Consider the following diagram of pullback squares.
+  \begin{equation*}
+    \begin{tikzcd}
+      (\category{C}_{\otimes})_{\langle n \rangle}
+      \arrow[r]
+      \arrow[d, swap, "r|\langle n \rangle"]
+      & \category{C}_{\otimes}
+      \arrow[d, "r"]
+      \\
+      (\category{D}_{\otimes})_{\langle n \rangle}
+      \arrow[r]
+      \arrow[d, swap, "p|\langle n \rangle"]
+      & \category{D}_{\otimes}
+      \arrow[d, "p"]
+      \\
+      \{\langle n \rangle\}
+      \arrow[r]
+      & \Finp\op
+    \end{tikzcd}
+  \end{equation*}
+  It follows from the dual to \cite[Cor.~4.3.1.15]{highertopostheory}\footnote{Note an unfortunate notational clash: our maps $p$, $q$, and $r$ do not agree with Lurie's.} that a morphism in $(\category{C}_{\otimes})_{\langle n \rangle}$ is $r|\langle n \rangle$-cocartesian if and only if its image in $\category{C}_{\otimes}$ is $r$-cocartesian. But a morphism is $r|\langle n \rangle$-cocartesian if and only if each component is $r|\langle 1 \rangle$-cocartesian.
+\end{proof}
+
+The conditions in \hyperref[def:monoidal_beck_chevalley_fibration]{Definition~\ref*{def:monoidal_beck_chevalley_fibration}} are to do only with the properties of the functor $r|\langle 1 \rangle$, together with properties of the tensor product $\otimes$; the only exception is (M5), which is a compatibility condition with how the monoidal structure is encoded as a cartesian fibration. We can also express these properties in terms directly in terms of the fibrations $p$, $q$, and $r$.
 \begin{lemma}
   \label{lemma:equivalent_conditions_beck_chevalley_fibration}
   Consider a functor $r$ of CSMCs, where $\category{T}_{\times}$ is a cartesian CSMC.
@@ -903,11 +866,11 @@ Here we take $\SSetsc$ and $\SSetmk$ to carry their standard model structures.
   This is a weak equivalence for all $C$ because $f$ is an equivalence of $\infty$-bicategories.
 \end{proof}
 
-By \hyperref[thm:quillen_equiv_ms_and_scaled]{Theorem~\ref*{thm:quillen_equiv_ms_and_scaled}}, there is a right Quillen equivalence $Q\colon \SSetms \to \SSetsc$. Composing this with the functor $\Tw'$ above gives us a functor
+By \hyperref[thm:quillen_equiv_ms_and_scaled]{Theorem~\ref*{thm:quillen_equiv_ms_and_scaled}}, there is a right Quillen equivalence $G\colon \SSetms \to \SSetsc$. Composing this with the functor $\Tw'$ above gives us a functor
 \begin{equation*}
-  \Tw' \circ Q\colon \SSetms \to \SSetmk.
+  \Tw' \circ G\colon \SSetms \to \SSetmk.
 \end{equation*}
-Since $Q$ is a right Quillen functor, it preserves weak equivalences between fibrant objects. Thus, the composite $\Tw' \circ Q$ does as well. Restricting to fibrant objects and taking simplicial localizations yields a functor
+Since $G$ is a right Quillen functor, it preserves weak equivalences between fibrant objects. Thus, the composite $\Tw' \circ G$ does as well. Restricting to fibrant objects and taking simplicial localizations yields a functor
 \begin{equation*}
   \SSetms[W^{-1}] \to \SSetmk[W^{-1}].
 \end{equation*}
@@ -974,7 +937,7 @@ We are now ready to construct a model for the monoidal twisted arrow category.
 
     \item A pair of `target' objects $G_{i}\colon \category{D}_{i} \to \category{D}'_{i}$, $i = 1$, $2$.
 
-    \item A morphism $\Tw(\ICat)$ corresponding to a diagram $\Delta^{3}_{\dagger} \to \ICat$ with front and back
+    \item A morphism $F \to G_{1} \times G_{2}$ in $\Tw(\ICat)$ corresponding to a diagram $\Delta^{3}_{\dagger} \to \ICat$ with front and back
       \begin{equation*}
         \begin{tikzcd}
           \category{C}
@@ -1110,6 +1073,8 @@ Because both $\TICatCocart \to \Finp$ and $\ICatCocart \to \Finp$ classify the s
 
 \subsection{The monoidal category of local systems}
 \label{ssc:the_monoidal_category_of_local_systems}
+
+In this subsection, we show that the monoidal structure on the twisted arrow category, defined in \hyperref[ssc:the_monoidal_twisted_arrow_category]{Subsection~\ref*{ssc:the_monoidal_twisted_arrow_category}}, can be used to construct a monoidal structure on the category of local systems.
 
 \begin{construction}
   We will denote the full subcategory of $\TICatCart$ on those objects $[\category{D}_{1}, \ldots, \category{D}_{n}]$ such that $\category{D}_{i}$ is an $\infty$-groupoid for all $1 \leq i \leq n$ by $\TSCart$. Note that $\TSCart \to \Finp$ can be understood as the relative nerve (as a cartesian fibration) of a commutative monoid $\Finp \to \ICat$ giving the cartesian monoidal structure on $\S$.
