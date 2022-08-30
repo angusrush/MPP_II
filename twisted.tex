@@ -5,7 +5,7 @@
 \section{Local systems}
 \label{sec:local_systems}
 
-For any $\infty$-category $\category{C}$, a $\category{C}$-local system on some space $X$ is simply a functor $X \to \category{C}$. Thus, the $\infty$-category of $\category{C}$-local systems on $X$ is simply $\LS(\category{C})_{X}:=\Fun(X, \category{C})$. Our goal is to consider local systems on all spaces $X$ simultaneously, defining an $\infty$-category $\LS(\category{C})$ of $\category{C}$-local systems.
+For any $\infty$-category $\category{C}$, a $\category{C}$-local system on some space $X$ is simply a functor $X \to \category{C}$. Thus, the $\infty$-category of $\category{C}$-local systems on $X$ is simply $\LS(\category{C})_{X}:=\Fun(X, \category{C})$. We would like to consider local systems on all spaces $X$ simultaneously, defining an $\infty$-category $\LS(\category{C})$ of $\category{C}$-local systems.
 
 We follow the general strategy laid out in \cite{luriehopkins2013ambidexterity}. We will consider a cartesian fibration 
 \begin{equation*}
@@ -33,7 +33,7 @@ will then classify the functor
 \begin{equation*}
   \S \to \ICat;\qquad X \mapsto \LS(\category{C})_{X}.
 \end{equation*}
-The total space $\LS(\category{C})$ of $p$ will thus be our candidate for our $\infty$-category of local systems.
+The total space $\LS(\category{C})$ of $p$ will thus be our candidate for our $\infty$-category of local systems. The fibration $p$ remembers the source of the local system.
 
 In \cite{garcia2020enhanced}, a suitable model for $\int\Fun(-, -)$ is given: the so-called \emph{enhanced twisted arrow category} $\Tw(\ICCat)$. In \hyperref[ssc:the_twisted_arrow_category]{Subsection~\ref*{ssc:the_twisted_arrow_category}}, we reproduce the pertinent points of \cite{garcia2020enhanced}, defining the enhanced twisted arrow category. In \hyperref[ssc:the_infinity_category_of_local_systems]{Subsection~\ref*{ssc:the_infinity_category_of_local_systems}}, we use the enhanced twisted arrow category to define the category $\LS(\category{C})$ of local systems, together with a cartesian fibration $p\colon \LS(\category{C}) \to \S$ classifying the functor
 \begin{equation*}
@@ -43,7 +43,7 @@ We note that this functor sends a map of spaces $f\colon X \to Y$ to the pullbac
 \begin{equation*}
   f^{*}\colon \Fun(Y, \category{C}) \to \Fun(X, \category{C}).
 \end{equation*}
-If $\category{C}$ is cocomplete, each functor $f^{*}$ has a left adjoint $f_{!}$ given by left Kan extension. By abstract nonsense, the cartesian fibration $p$ is also a cocartesian fibration, whose cocartesian edges correspond to left Kan extension. In \hyperref[ssc:the_fibration]{Subsection~\ref*{ssc:the_fibration}} we will show this explicitly.
+If $\category{C}$ is cocomplete, each functor $f^{*}$ has a left adjoint $f_{!}$ given by left Kan extension. By abstract nonsense, the cartesian fibration $p$ is also a cocartesian fibration, whose cocartesian edges correspond to left Kan extension. In \hyperref[ssc:the_fibration]{Subsection~\ref*{ssc:the_fibration}} we will show this explicitly, using results built up in \hyperref[ssc:two_lemmas_about_marked_scaled_anodyne_morphisms]{Subsection~\ref*{ssc:two_lemmas_about_marked_scaled_anodyne_morphisms}} and \hyperref[ssc:the_infinity_category_of_local_systems]{Subsection~\ref*{ssc:the_infinity_category_of_local_systems}}; if the reader is willing to take this on faith, these sections can be safely skipped.
 
 \begin{note}
   The reader may notice that we are being inefficient here. If we were only interested in the construction outlined above, then using the twisted arrow category would be much more combinatorially strenuous than necessary; the objects of the twisted arrow category $\Tw(\ICCat)$ are functors of $\infty$-categories $\category{D} \to \category{C}$, with $\category{C}$ and $\category{D}$ both allowed to vary. If, in the very next breath, we fix the target $\category{C}$, then it makes more sense to use some sort of overcategory $(\ICCat)_{/\category{C}}$ from the beginning. There is a method to our madness; in \hyperref[sec:the_monoidal_construction]{Section~\ref*{sec:the_monoidal_construction}}, we will introduce a monoidal version of this construction, and here we will need to allow the targets of our functors to vary.

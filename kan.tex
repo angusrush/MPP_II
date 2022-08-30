@@ -53,6 +53,10 @@ The goal of this section is to prove the following.
   admits a dashed solution.
 \end{theorem}
 
+\begin{note}
+  One can even show that if the terminal vertex in $\tau$ is mapped to an $\infty$-category $\category{C}$ with sufficient colimits (i.e.\ all colimits in $\category{C}$ indexed by the homotopy fibers of $f$ should exist), then $\tau$ is left kan \emph{if and only if} it enjoys these lifting properties. That is, these lifting properties generalize the universal property for Kan extensions of ordinary categories. However, we will not make use of this result.
+\end{note}
+
 %In this section, we show that a simplex $\Delta^{2}_{\flat} \to \ICCat$ which is left Kan is also globally left Kan. This will amount to showing that a simplex $\tau\colon \Delta^{2}_{\flat} \to \ICCat$ of the form
 %\begin{equation*}
 %  \begin{tikzcd}
@@ -85,7 +89,7 @@ The goal of this section is to prove the following.
 %\end{equation}
 %has a dashed solution.
 
-Let us examine this in the case $n = 2$. In this case we have the data of categories and functors
+Let us examine the lifting problems of \hyperref[eq:lifting_problems_for_global_kan_extensions]{Equation~\ref*{eq:lifting_problems_for_global_kan_extensions}} in the case $n = 2$. In this case we have the data of categories and functors
 \begin{equation*}
   \begin{tikzcd}
     & Y
@@ -102,7 +106,7 @@ Let us examine this in the case $n = 2$. In this case we have the data of catego
     \arrow[from=uul, crossing over, near start, "g"]
   \end{tikzcd}
 \end{equation*}
-together with natural transformations $\eta\colon F \Rightarrow f_{!}F \circ f$, $\beta\colon h \Rightarrow g \circ f$, and $\delta\colon F \Rightarrow G \circ h$. We need to produce a natural transformation $\alpha\colon f_{!}F \Rightarrow G \circ g$ and a filling of the full 3-simplex, which is the data of a homomotopy-commutative diagram
+together with natural transformations $\eta\colon F \Rightarrow f_{!}F \circ f$, $\beta\colon h \Rightarrow g \circ f$, and $\delta\colon F \Rightarrow G \circ h$, making up the sides of $\Lambda^{3}_{0}$. We need to produce a natural transformation $\alpha\colon f_{!}F \Rightarrow G \circ g$ and a filling of the full 3-simplex, which is the data of a homomotopy-commutative diagram
 \begin{equation*}
   \begin{tikzcd}
     F

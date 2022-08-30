@@ -7,9 +7,15 @@
 \subsection{Introduction}
 \label{ssc:introduction}
 
-Let $\category{C}$ be a cocomplete $\infty$-category. For any space $X \in \S$, denote by $\LS(\category{C})_{X}$ the $\infty$-category of $\category{C}$-local systems on $X$. Recall that for any morphism $f\colon X \to Y$ of spaces, there are several associated functors between $\LS(\category{C})_{X}$ and $\LS(\category{C})_{Y}$. In particular:
+In topology, one often studies spaces via algebraic invariants associated to them. One such invariant of particular interest is the \emph{$n$th homology} of a space $X$, denoted $H_{n}(X)$. Roughly speaking, $H_{n}(X)$ is the abelian group consisting of formal sums of certain maps from the standard $n$-simplex $\Delta^{n}$ into $X$, considered modulo some equivalence relation.
+
+It turns out to be fruitful to generalize $n$th homology. Formal sums are nothing else but $\Z$-linear combinations, and one can ask what happens when $\Z$ is replaced by some other commutative ring $R$. The associated invariant is then known as \emph{$n$th homology with coefficients in $R$}. One can even allow the ring $R$ to vary along $X$, or allow $R$ to be not only a ring, but an object of some appropriate category $\category{C}$. The structure which keeps track of these changing coefficients is called a $\category{C}$-\emph{local system}. 
+
+Classically speaking, when we say \emph{space,} we really mean \emph{topological space,} and $\category{C}$-local systems are modelled by locally-constant sheaves with values in $\category{C}$. In modern homotopy theory, one often takes \emph{space} to mean \emph{$\infty$-groupoid;} thought of in this way, a $\category{C}$-local system on a space $X$ is nothing more than a functor $X \to \category{C}$. This is the point of view that we will take.
+
+With this point of view in mind, let $\category{C}$ be a cocomplete $\infty$-category. For any space $X$, denote by $\LS(\category{C})_{X}$ the $\infty$-category of $\category{C}$-local systems on $X$; that is, $\LS(\category{C})_{X} \simeq \Fun(X, \category{C})$. Recall that for any morphism $f\colon X \to Y$ of spaces, there are several associated functors between $\LS(\category{C})_{X}$ and $\LS(\category{C})_{Y}$. In particular:
 \begin{itemize}
-  \item The functor $f^{*}\colon \LS(\category{C})_{Y} \to \LS(\category{C})_{X}$ pulls back local systems on $Y$ to local systems on $X$, sending a local system $\mathcal{F}\colon Y \to \category{C}$ to the local system $f^{*}\mathcal{F}$ given by the composition
+  \item The \emph{pullback functor} $f^{*}\colon \LS(\category{C})_{Y} \to \LS(\category{C})_{X}$ pulls back local systems on $Y$ to local systems on $X$, sending a local system $\mathcal{F}\colon Y \to \category{C}$ to the local system $f^{*}\mathcal{F}$ given by the composition
     \begin{equation*}
       \begin{tikzcd}
         X
@@ -20,7 +26,7 @@ Let $\category{C}$ be a cocomplete $\infty$-category. For any space $X \in \S$, 
       \end{tikzcd}.
     \end{equation*}
 
-  \item The functor $f_{!}\colon \LS(\category{C})_{X} \to \LS(\category{C})_{Y}$ pushes forward local systems via left Kan extension, sending a local system $\mathcal{G}\colon X \to \category{C}$ to the left Kan extension $\mathrm{Lan}_{f}\mathcal{G}$.
+  \item The \emph{pushforward functor} $f_{!}\colon \LS(\category{C})_{X} \to \LS(\category{C})_{Y}$ pushes forward local systems via left Kan extension, sending a local system $\mathcal{G}\colon X \to \category{C}$ to the left Kan extension $f_{!}\mathcal{G}$.
     \begin{equation*}
       \begin{tikzcd}
         X
@@ -29,66 +35,39 @@ Let $\category{C}$ be a cocomplete $\infty$-category. For any space $X \in \S$, 
         && \category{C}
         \\
         & Y
-        \arrow[ur, swap, "\mathrm{Lan}_{f}\mathcal{G}"]
+        \arrow[ur, swap, "f_{!}G"]
       \end{tikzcd}
     \end{equation*}
 \end{itemize}
 
-This is a prototype of a common situation: one has a functor (say, of quasicategories) $F\colon \category{C} \to \category{D}$, which sends an object $c \in \category{C}$ to an object $F(c) \in \category{D}$, and a morphism $f\colon c \to c'$ in $\category{C}$ to a morphism $f_{!}\colon F(c) \to F(c')$ in $\category{D}$. One has additionally a `wrong-way' map, which creates from a morphism $f\colon c \to c'$ a morphism $f^{*}\colon F(c') \to F(c)$. In this case, from the data of a diagram in $\category{C}$ of the form
+Note that pulling back is contravariantly functorial, and pushing forward is covariantly functorial. One can combine these functorialities. Given the data of a diagram of spaces of the form
 \begin{equation}
   \label{eq:span}
   \begin{tikzcd}
-    & c'
-    \arrow[dl, swap, "g"]
-    \arrow[dr, "f"]
-    \\
-    c
-    && c''
-  \end{tikzcd},
-\end{equation}
-one can produce a morphism $F(c) \to F(c'')$ in $\category{D}$ via the composition
-\begin{equation*}
-  \begin{tikzcd}
-    & F(c')
-    \arrow[dr, "f_{!}"]
-    \\
-    F(c)
-    \arrow[ur, "g^{*}"]
-    \arrow[rr, swap, "f_{!} \circ g^{*}"]
-    && F(c'')
-  \end{tikzcd}.
-\end{equation*}
-
-The data of \hyperref[eq:span]{Diagram~\ref*{eq:span}} is known as a \emph{span} in $\category{C}$. It is natural to ask whether this construction can be extended to a functor $\Span(\category{C}) \to \category{D}$, where $\Span(\category{C})$ is an $\infty$-category whose objects are the same as the objects of $\category{C}$, and whose morphisms are spans in $\category{C}$. In defining $\Span(\category{C})$, it is necessary to specify a composition law for spans. There is a natural way of doing this: given two spans $X \leftarrow Y \rightarrow X'$ and $X' \leftarrow Y' \rightarrow X''$ in $\category{C}$, we define their composition to be the pullback $X \leftarrow Y \times_{X'} Y' \rightarrow X''$ as below.
-\begin{equation*}
-  \begin{tikzcd}
-    && Y \times_{X'} Y'
-    \arrow[dl, dashed, swap, "q'"]
-    \arrow[dr, dashed, "f'"]
-    \\
     & Y
     \arrow[dl, swap, "g"]
     \arrow[dr, "f"]
-    && Y'
-    \arrow[dl, swap, "q"]
-    \arrow[dr, "p"]
     \\
     X
     && X'
-    && X''
-  \end{tikzcd}
-\end{equation*}
-In order for a functor $\Span(\category{C}) \to \category{D}$ to be well-defined, it will have to respect this composition law on $\Span(\category{C})$. That is, we must have for all such pullback diagrams an equivalence
+  \end{tikzcd},
+\end{equation}
+one can produce a functor $\LS(\category{C})_{X} \to \LS(\category{C})_{X'}$ via the composition
 \begin{equation*}
-  (p \circ f')_{!} \circ (g \circ q')^{*} \simeq p_{!} \circ q^{*} \circ f_{!} \circ g^{*}.
+  \begin{tikzcd}
+    & \LS(\category{C})_{Y}
+    \arrow[dr, "f_{!}"]
+    \\
+    \LS(\category{C})_{X}
+    \arrow[ur, "g^{*}"]
+    \arrow[rr, swap, "f_{!} \circ g^{*}"]
+    && \LS(\category{C})_{X'}
+  \end{tikzcd}.
 \end{equation*}
-This is equivalent to the simpler condition that for any pullback square as above we must have an equivalence
-\begin{equation*}
-  f'_{!} \circ (q')^{*} \simeq q^{*} \circ f_{!}.
-\end{equation*}
-This is know as the \emph{base change condtition,} or the \emph{Beck--Chevalley condition.}
 
-This is the second part of a two-part paper. In the first part, we provided a simplified proof of a theorem of Barwick \cite[Thm.~12.2]{spectralmackeyfunctors1}, which provides sufficient conditions for a functor of quasicategories $p\colon \category{C} \to \category{D}$ to yield a cocartesian fibration between $\infty$-categories of spans $\Span(p)\colon \Span(\category{C}) \to \Span(\category{D})$. %We will see that in order for such a functor to exist, the map $p$ must satisfy an unstraightened version of the Beck--Chevalley condition.
+The data of \hyperref[eq:span]{Diagram~\ref*{eq:span}} is known as a \emph{span} of spaces. It is natural to ask whether this construction can be extended to a functor $\Span(\S) \to \ICat$, where $\Span(\S)$ is an $\infty$-category whose objects are spaces, and whose morphisms are spans of spaces.
+
+This is the second part of a two-part paper. In the first part, we provided a simplified proof of a theorem of Barwick \cite[Thm.~12.2]{spectralmackeyfunctors1}, which provides sufficient conditions for a functor of quasicategories $p\colon \category{C} \to \category{D}$ to yield a cocartesian fibration between $\infty$-categories of spans $\Span(p)\colon \Span(\category{C}) \to \Span(\category{D})$.
 
 In this paper, we use this result to construct a functor $\hat{r}\colon \Span(\category{S}) \to \ICat$, which sends a space $X$ to the category $\LS(\category{C})_{X}$ of local systems on $X$, and a morphism in $\Span(\S)$ represented by a span
 \begin{equation*}
@@ -101,12 +80,12 @@ In this paper, we use this result to construct a functor $\hat{r}\colon \Span(\c
     && X'
   \end{tikzcd}
 \end{equation*}
-to the functor $f_{!} \circ g^{*}\colon \LS(\category{C})_{X} \to \LS(\category{C})_{X'}$. We further show that our functor is lax monoidal with respect to a monoidal structure on $\Span(\S)$ induced by the cartesian structure on $\S$, and the cartesian structure on $\ICat$. We do this by providing a general theory of situations in which one has lax functorial push-pull of local systems (monoidal Beck--Chevalley fibrations). 
+to the functor $f_{!} \circ g^{*}\colon \LS(\category{C})_{X} \to \LS(\category{C})_{X'}$. We further show that our functor is lax monoidal with respect to a monoidal structure on $\Span(\S)$ induced by the cartesian structure on $\S$, and the cartesian structure on $\ICat$. We do this by providing a general theory of situations in which one has lax functorial push-pull of local systems (monoidal Beck--Chevalley fibrations).
 
 \subsection{Relation to previous work}
 \label{ssc:relation_to_previous_work}
 
-That pull-push of local systems can be written as a symmetric monoidal functor out of a category of spans is far from a new idea. Our approach differs from previous ones, however; our aim is to provide a simple, explicit construction of pull-push of local systems, without any pretensions of working in complete generality when it does not, in our view, lead to greater conceptual clarity. 
+That pull-push of local systems can be written as a symmetric monoidal functor out of a category of spans is far from a new idea. Our approach differs from previous ones, however, in that our aim is to provide a simple, explicit construction of pull-push of local systems, without any pretensions of working in complete generality when it does not, in our view, lead to greater conceptual clarity.
 
 There have been (to the knowledge of the author) two main works with results similar to those in this paper.
 \begin{itemize}
@@ -124,7 +103,7 @@ Our proof that left Kan extensions enjoy this lifting property uses that left Ka
 
 In \hyperref[sec:local_systems]{Section~\ref*{sec:local_systems}}, we apply our results about left Kan extensions to show, via an explicit computation in an appropriate model (an $\infty$-categorical twisted arrow category), that left Kan extensions of local systems are $\infty$-functorial, i.e.\ extends to a functor $\S \to \ICat$. We then use this to show that pull-push functoriality extends to a functor $\Span(\S) \to \ICat$. In \hyperref[sec:the_monoidal_construction]{Section~\ref*{sec:the_monoidal_construction}}, we show that this construction can be endowed with a lax monoidal structure.
 
-\subsection{General conventions}
+\subsection{General conventions and set-theoretic size issues}
 \label{ssc:general_conventions}
 
 Suppose $X$ is a simplicial set and $\category{C}$ is an $\infty$-category. By $\Fun(X, \category{C})$, we mean the $\infty$-category of maps $X \to \category{C}$. By $\Map(X, \category{C})$, we mean the $\infty$-groupoid of such maps; that is,
@@ -132,6 +111,8 @@ Suppose $X$ is a simplicial set and $\category{C}$ is an $\infty$-category. By $
   \Map(X, \category{C}) = \Fun(X, \category{C})^{\simeq},
 \end{equation*}
 where $(-)^{\simeq}\colon \SSet \to \Kan$ denotes the \emph{core} functor, i.e.\ the functor associating to a simplicial set $K$ the largest Kan complex contained in it.
+
+For the most part, our conventions regarding set-theoretic size issues are standard. However, we will at several points point need to consider an $\infty$-category whose objects are large $\infty$-categories. The rigorous solution would be to introduce a series of nested Grothendieck universe, keep track of which one we are currently in, and carry this around as extra notation. However, there are no arguments in this paper which hinge on any set-theoretic size-issues, and the author feels that clarity is lost, rather than gained, by introducing this extraneous notation. Therefore, we will use the same notation for the large $\infty$-category of small $\infty$-categories and the `huge' $\infty$-category of large $\infty$-categories.
 
 \subsection{The marked-scaled model structure}
 \label{ssc:marked-scaled_model_structure}
@@ -272,5 +253,9 @@ We will need several of the results of the first part of this paper, Monoidal Pu
   are cocartesian, where $g$ is $p\updag$-cartesian and $f$ is $p$-cocartesian.
 \end{theorem}
 
+\subsection{Acknowledgements}
+\label{ssc:acknowledgements}
+
+We would like to thank his advisor, Tobias Dyckerhoff, for his patience and guidance. We would also like to thank Fernando Abell{\'a}n Garc{\'i}a for many helpful conversations about the results contained in this paper, especially those pertaining to the twisted arrow category.
 
 \end{document}

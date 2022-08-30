@@ -8,25 +8,27 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.3}Outline}{3}{subsection.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.4}General conventions}{4}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.4}General conventions and set-theoretic size issues}{3}{subsection.1.4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.5}The marked-scaled model structure}{4}{subsection.1.5}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.6}Selected results from Monoidal Pull-Push I}{5}{subsection.1.6}%
 \defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.7}Acknowledgements}{6}{subsection.1.7}%
+\defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2}Horn filling via left Kan extensions}{6}{section.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1}Basic facts about Kan extensions}{7}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.1}Basic facts about Kan extensions}{8}{subsection.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2}Filling cubes relative to their boundaries}{9}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.2}Filling cubes relative to their boundaries}{10}{subsection.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3}Adjunct data}{14}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.3}Adjunct data}{15}{subsection.2.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.4}Left Kan implies globally left Kan}{18}{subsection.2.4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.5}A few other tricks with Kan extensions}{21}{subsection.2.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Local systems}{21}{section.3}%
+\contentsline {section}{\numberline {3}Local systems}{22}{section.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1}The enhanced twisted arrow category}{22}{subsection.3.1}%
 \defcounter {refsection}{0}\relax 
@@ -34,9 +36,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.3}The infinity-category of local systems}{26}{subsection.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4}The map governing local systems is a cocartesian fibration}{31}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.4}The map governing local systems is a cocartesian fibration}{32}{subsection.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Pull-Push of local systems}{34}{section.4}%
+\contentsline {section}{\numberline {4}Pull-Push of local systems}{35}{section.4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5}Monoidal push-pull of local systems}{38}{section.5}%
 \defcounter {refsection}{0}\relax 
