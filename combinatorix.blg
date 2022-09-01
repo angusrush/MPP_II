@@ -1,5 +1,0 @@
-[0] Config.pm:304> INFO - This is Biber 2.14 (beta)
-[0] Config.pm:307> INFO - Logfile is 'combinatorix.blg'
-[50] biber:322> INFO - === Fr Nov  5, 2021, 10:55:42
-[60] Biber.pm:415> INFO - Reading 'combinatorix.bcf'
-[102] Utils.pm:293> WARN - No data sources defined!
