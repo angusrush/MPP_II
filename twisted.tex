@@ -221,6 +221,10 @@ We first need a compact notation for specifying simplicial subsets of $\Delta^{n
   The assignment $\mathcal{A} \mapsto \S^{\mathcal{A}}$ does not induce is not a one-to-one correspondence between subsets $\mathcal{A} \subseteq P([n])$ and simplicial subsets $S^{\mathcal{A}} \subseteq \Delta^{n}$, since for any two subsets $S \subsetneq S' \subset [n]$, we have that $\Delta^{[n] \smallsetminus S'} \subsetneq \Delta^{[n] \smallsetminus S}$.
 \end{note}
 
+\begin{example}
+  Take $T = [2]$. Taking $\mathcal{A} = \{\{2\}, \{1,2\}\}$ gives the simplicial subset $\S^{\mathcal{A}}_{T} = \Delta^{\{0,1\}} \cup \Delta^{\{0\}} = \Delta^{\{0,1\}} \subset \Delta^{2}$, as does taking $\mathcal{A} = \{\{2\}\}$.
+\end{example}
+
 It will be useful to consider two subsets $\mathcal{A}$ and $\mathcal{A}' \subseteq P(T)$ to be equivalent if they produce the same simplicial subset of $\Delta^{T}$.
 
 \begin{definition}
@@ -477,7 +481,7 @@ The inclusions of \hyperref[eq:inclusion_j_into_r]{Equation~\ref*{eq:inclusion_j
 
 \begin{lemma}
   \label{lemma:lower_morphism_equivalence}
-  For all $n \geq 0$, the map $v_{n}$ is marked-scaled anodyne, hence a weak equivalence.
+  For all $n \geq 0$, the map $v_{n}$ is marked-scaled anodyne, hence a weak equivalence in the model structure on marked-scaled simplicial sets.
 \end{lemma}
 
 We postpone the proof of \hyperref[lemma:lower_morphism_equivalence]{Lemma~\ref*{lemma:lower_morphism_equivalence}} until the end of this section.
@@ -496,7 +500,7 @@ Despite the warning given in \hyperref[note:not_natural]{Note~\ref*{note:not_nat
 It is easy to check the following.
 \begin{lemma}
   \label{lemma:restricted_natural_transformation}
-  The morphisms $v_{n}$ form a natural transformation $v\colon \tilde{J} \circ I \Rightarrow \tilde{R} \circ I$, each of whose components is an equivalence in the model structure on marked-scaled simplicial sets.
+  The morphisms $v_{n}$ form a natural transformation $v\colon \tilde{J} \circ I \Rightarrow \tilde{R} \circ I$.
 \end{lemma}
 
 \begin{lemma}
@@ -521,7 +525,7 @@ It is easy to check the following.
       &\SSetms
     \end{tikzcd},
   \end{equation*}
-  where $(\Delta \downarrow \Lambda^{n}_{0})^{\mathrm{nd}}$ is the category of nondegenerate simplices of $\Lambda^{n}_{0}$. Denote by $P_{n}$ the poset of proper subsets of $[n]$ such that $0 \in S$. There is an obvious inclusion $P_{n} \hookrightarrow (\Delta \downarrow \Lambda^{n}_{0})^{\mathrm{nd}}$, and one readily checks using Quillen's Theorem A that this inclusion is cofinal. Further note that the functor $P_{n} \to (\Delta \downarrow \Lambda^{n}_{0}) \to \Delta$ factors through $\mathring{\Delta}$ via a map $a\colon P_{n} \to \mathring{\Delta}$. Thus, we can equally express $J(\Lambda^{n}_{0})$ as the colimit of the functor $\tilde{J} \circ I \circ a$. Precisely the same reasoning tells us that we can express $R(\Lambda^{n}_{0})$ as the colimit of $\tilde{R} \circ I \circ a$. The result now follows from \hyperref[lemma:restricted_natural_transformation]{Lemma~\ref*{lemma:restricted_natural_transformation}}, and the fact that each strict colimit is the model for the homotopy colimit.
+  where $(\Delta \downarrow \Lambda^{n}_{0})^{\mathrm{nd}}$ is the category of nondegenerate simplices of $\Lambda^{n}_{0}$. Denote by $P_{n}$ the poset of proper subsets of $[n]$ such that $0 \in S$. There is an obvious inclusion $P_{n} \hookrightarrow (\Delta \downarrow \Lambda^{n}_{0})^{\mathrm{nd}}$, and one readily checks using Quillen's Theorem A that this inclusion is cofinal. Further note that the functor $P_{n} \to (\Delta \downarrow \Lambda^{n}_{0}) \to \Delta$ factors through $\mathring{\Delta}$ via a map $a\colon P_{n} \to \mathring{\Delta}$. Thus, we can equally express $J(\Lambda^{n}_{0})$ as the colimit of the functor $\tilde{J} \circ I \circ a$. Precisely the same reasoning tells us that we can express $R(\Lambda^{n}_{0})$ as the colimit of $\tilde{R} \circ I \circ a$. The result now follows from \hyperref[lemma:restricted_natural_transformation]{Lemma~\ref*{lemma:restricted_natural_transformation}}, \hyperref[lemma:lower_morphism_equivalence]{Lemma~\ref*{lemma:lower_morphism_equivalence}}, and the fact that each strict colimit is the model for the homotopy colimit.
 \end{proof}
 
 \begin{proof}[Proof of Lemma \ref{lemma:lower_morphism_equivalence}]
@@ -754,7 +758,7 @@ Our aim is to show that the map of quasicategories $p\colon \LS(\category{C}) \t
     & \ICat \times \ICat\op
   \end{tikzcd},
 \end{equation*}
-where both squares are pullback, is a cocartesian fibration. We now define the class of morphisms which we claim are $p$-cocartesian.
+in which both squares are pullback, is a cocartesian fibration. We now define the class of morphisms in $\LS(\category{C})$ which we claim are $p$-cocartesian.
 
 \begin{definition}
   \label{def:left_kan_simplex}
@@ -869,7 +873,7 @@ Here, the $2$-simplices which are notated without natural transformations are co
           \arrow[ur, dashed]
         \end{tikzcd}
       \end{equation}
-      such that $\sigma|\{0,1,\overline{0}\}$ is left Kan. Here $R$ is the functor defined in \hyperref[def:cosimplicial_obj_R]{Definition~\ref*{def:cosimplicial_obj_R}}.
+      such that $\sigma|\{0,1,\overline{0}\}$ is left Kan. Here $R$ is the functor of \hyperref[def:cosimplicial_obj_R]{Definition~\ref*{def:cosimplicial_obj_R}}.
 
       We note the existence of a commutative square
       \begin{equation*}

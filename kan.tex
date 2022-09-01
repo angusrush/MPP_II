@@ -96,14 +96,14 @@ Let us examine the lifting problems of \hyperref[eq:lifting_problems_for_global_
     \arrow[drr, "f_{!}F"]
     \\
     X
-    \arrow[drr, swap, "h"]
+    \arrow[dr, swap, "h"]
     \arrow[ur, "f"]
     \arrow[rrr, near end, "F"]
     &&& \category{C}
     \\
-    && Z
-    \arrow[ur, swap, "G"]
-    \arrow[from=uul, crossing over, near start, "g"]
+    & Z
+    \arrow[urr, swap, "G"]
+    \arrow[from=uu, crossing over, near start, "g"]
   \end{tikzcd}
 \end{equation*}
 together with natural transformations $\eta\colon F \Rightarrow f_{!}F \circ f$, $\beta\colon h \Rightarrow g \circ f$, and $\delta\colon F \Rightarrow G \circ h$, making up the sides of $\Lambda^{3}_{0}$. We need to produce a natural transformation $\alpha\colon f_{!}F \Rightarrow G \circ g$ and a filling of the full 3-simplex, which is the data of a homomotopy-commutative diagram
@@ -166,7 +166,7 @@ where the left-hand diagram is a map $LC^{2} \to \Fun(X, C)$, where $LC^{2}$ is 
       \end{tikzcd}}^{\text{ in }\Fun(Y, \category{C})}.
     \end{equation*}
 
-  \item We note that we can extend the diagram on the right to a diagram which is adjunct to the diagram on the left (in the sense to be described in \hyperref[ssc:adjunct_data]{Subsection~\ref*{ssc:adjunct_data}}):
+  \item Using the adjunction $f_{!} \dashv f^{*}$, we can extend the diagram on the right to a diagram which is adjunct to the diagram on the left (in the sense to be described in \hyperref[ssc:adjunct_data]{Subsection~\ref*{ssc:adjunct_data}}):
     \begin{equation*}
       \overbrace{
       \begin{tikzcd}[ampersand replacement=\&]
@@ -871,7 +871,7 @@ corresponding to a bicartesian fibration $p\colon \category{M} \to \Delta^{1}$ v
   The inclusion of marked simplicial sets
   \begin{equation}
     \label{eq:cocartesian_anodyne_morphism}
-    \left( \Delta^{n} \times \Delta^{\{0\}} \coprod_{\partial \Delta^{n} \times \Delta^{\{0\}}} \partial \Delta^{n} \times \Delta^{\{0\}}, \mathcal{E} \right) \hookrightarrow (\Delta^{n} \times \Delta^{1}, \mathcal{F})
+    \left( \Delta^{n} \times \Delta^{\{0\}} \coprod_{\partial \Delta^{n} \times \Delta^{\{0\}}} \partial \Delta^{n} \times \Delta^{1}, \mathcal{E} \right) \hookrightarrow (\Delta^{n} \times \Delta^{1}, \mathcal{F})
   \end{equation}
   where the marking $\mathcal{F}$ is the flat marking together with the edge $\Delta^{\{0\}} \times \Delta^{1}$, and $\mathcal{E}$ is the restriction of this marking, is marked (cocartesian) anodyne.
 \end{lemma}
@@ -1081,7 +1081,7 @@ We note that in the proof of \hyperref[prop:can_transport_adjunct_data]{Proposit
   \label{def:partial_adjunction}
   Let $g\colon \category{D} \to \category{C}$ be a functor between quasicategories, and pick some cartesian fibration $p\colon \category{M} \to \Delta^{1}$ which classifies it. We assume without loss of generality that $h_{0}\colon \category{M}_{0} \cong \category{C}$ and  $h_{1}\colon \category{M}_{1} \cong \category{D}$ are isomorphisms, and we will notationally suppress them.
 
-  We say that $g$ \defn{admits a left adjoint at $c \in \category{C}$} if $p$ admits a cocartesian lift at $c$.
+  We say that $g$ \defn{admits a left adjoint at $c \in \category{C}$} if $p$ admits a cocartesian lift of the morphism $\id_{\Delta^{1}}$ with source $c \in \category{M}_{0}$.
 \end{definition}
 
 \begin{definition}

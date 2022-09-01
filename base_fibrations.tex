@@ -2,12 +2,12 @@
 
 \begin{document}
 
-\section{Monoidal push-pull of local systems}
+\section{Monoidal pull-push of local systems}
 \label{sec:the_monoidal_construction}
 
 The classical Grothendieck construction provides an equivalence between functors $\hat{p}\colon \category{D} \to \Cat$ and cartesian fibrations $p\colon \int \hat{p} \to \category{D}\op$. There are many conditions one can impose upon of the functor $\hat{p}$, and many structures one can endow it with; it is natural to wonder whether these properties and structures can be captured in the fibration $p$.
 
-An answer in the case that $\hat{p}$ is lax monoidal is given in \cite{moeller2018monoidal}. Suppose $p\colon \category{C} \to \category{D}$ is a cartesian fibration of 1-categories which classifies a pseudofunctor $\hat{p}\colon \category{D}\op \to \Cat$. Further suppose the following:
+An answer is known in the case that $\hat{p}$ is lax monoidal (the author learned about this fact from \cite{moeller2018monoidal}). Suppose $p\colon \category{C} \to \category{D}$ is a cartesian fibration of 1-categories which classifies a pseudofunctor $\hat{p}\colon \category{D}\op \to \Cat$. Further suppose the following:
 \begin{itemize}
   \item The category $\category{C}$ carries a symmetric monoidal structure $(\otimes, I_{\category{C}}, \ldots)$.
 
@@ -101,7 +101,7 @@ The equivalence $(\category{C}_{\otimes})_{\langle n \rangle} \simeq \category{C
 
     \item The tensor product $\otimes$ \defn{preserves cartesian (resp.\ cocartesian) edges} if for all $\phi\colon \langle n \rangle \leftarrow \langle m \rangle \in \Finp\op$, the associated functor $\phi^{*}\colon (\category{C}_{\otimes})_{\langle m \rangle} \to (\category{C}_{\otimes})_{\langle n \rangle}$ sends componentwise cartesian (resp.\ componentwise cocartesian) morphisms contained in the fiber $(\category{C})_{\langle m \rangle}$ to componentwise cartesian (resp.\ componentwise cocartesian) morphisms contained in the fiber $(\category{C}_{\otimes})_{\langle n \rangle}$.
 
-      \textit{We will show below that this is equivalent to demanding that if morphisms $f$ and $g$ in $\category{C}$ are $r|\langle 1 \rangle$-(co)cartesian, then $f \otimes g$ is as well.}
+      \textit{We will show in \hyperref[lemma:co_cartesian_preservation_determined_by_bifunctor]{Lemma~\ref*{lemma:co_cartesian_preservation_determined_by_bifunctor}} that this is equivalent to demanding that if morphisms $f$ and $g$ in $\category{C}$ are $r|\langle 1 \rangle$-(co)cartesian, then $f \otimes g$ is as well.}
 
     \item The CSMC $q\colon \category{C}_{\otimes} \to \Finp\op$ is \defn{cartesian-compatible (resp.\ cocartesian-compatible)} an edge $f$ in the fiber $(\category{C}_{\otimes})_{\langle n \rangle}$ is $r$-cartesian (resp.\ cocartesian) if and only if it is componentwise cartesian.
 
@@ -130,7 +130,7 @@ The equivalence $(\category{C}_{\otimes})_{\langle n \rangle} \simeq \category{C
 
   Suppose that $\otimes$ preserves $r$-cartesian morphisms, and let $f$ and $g$ be $r|\langle 1 \rangle$-cartesian morphisms in $\category{C}$. Then there is a morphism $[f, g]$ in $( \category{C}_{\otimes} )_{\langle 2 \rangle}$ with components $f$ and $g$. Taking $\phi$ to be the active map $\langle 2 \rangle \to \langle 1 \rangle$ shows that $f \otimes g$ is $r|\langle 1 \rangle$-cartesian.
 
-  Now suppose that for any $r|\langle 1 \rangle$-cartesian morphisms $f$ and $g$, the morphism $f \otimes g = \phi^{*}([f, g])$ in $\category{C}$ is $r|\langle 1 \rangle$-cartesian. By associativity of the tensor product and induction, we have that the $n$-ary product of $r|\langle 1 \rangle$-cartesian morphisms is again $r|\langle 1 \rangle$-cartesian for $n \geq 2$. The image of the map $\alpha^{*}$, for $\alpha\colon \langle 0 \rangle \to \langle 1 \rangle$, i.e.\ the 0-ary tensor product, is equivalent to $\id_{I}$, where $I$ is the unit object of $\category{C}$, and is thus an equivalence, hence also $r|\langle 1 \rangle$-cartesian.
+  Conversely, suppose that for any $r|\langle 1 \rangle$-cartesian morphisms $f$ and $g$, the morphism $f \otimes g = \phi^{*}([f, g])$ in $\category{C}$ is $r|\langle 1 \rangle$-cartesian. By associativity of the tensor product and induction, we have that the $n$-ary product of $r|\langle 1 \rangle$-cartesian morphisms is again $r|\langle 1 \rangle$-cartesian for $n \geq 2$. The image of the map $\alpha^{*}$, for $\alpha\colon \langle 0 \rangle \to \langle 1 \rangle$, i.e.\ the 0-ary tensor product, is equivalent to $\id_{I}$, where $I$ is the unit object of $\category{C}$, and is thus an equivalence, hence also $r|\langle 1 \rangle$-cartesian.
 
   Now let $\psi\colon \langle m \rangle \to \langle n \rangle$ be a general map in $\Finp$, and let $f = [f_{1}, \ldots, f_{m}]$ be a componentwise cartesian map. The $i$th component of $\psi^{*}(f)$ is given by $\bigotimes_{\psi(j) = i} f_{j}$, which is $r|\langle 1 \rangle$-cartesian no matter the cardinality of $\psi^{-1}(i)$. Thus, $\psi^{*}(f)$ is $r$-cartesian.
 \end{proof}

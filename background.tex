@@ -9,7 +9,7 @@
 
 In topology, one often studies spaces via algebraic invariants associated to them. One such invariant of particular interest is the \emph{$n$th homology} of a space $X$, denoted $H_{n}(X)$. Roughly speaking, $H_{n}(X)$ is the abelian group consisting of formal sums of certain maps from the standard $n$-simplex $\Delta^{n}$ into $X$, considered modulo some equivalence relation.
 
-It turns out to be fruitful to generalize $n$th homology. Formal sums are nothing else but $\Z$-linear combinations, and one can ask what happens when $\Z$ is replaced by some other commutative ring $R$. The associated invariant is then known as \emph{$n$th homology with coefficients in $R$}. One can even allow the ring $R$ to vary along $X$, or allow $R$ to be not only a ring, but an object of some appropriate category $\category{C}$. The structure which keeps track of these changing coefficients is called a $\category{C}$-\emph{local system}. 
+It turns out to be fruitful to generalize $n$th homology. Formal sums are nothing else but $\Z$-linear combinations, and one can ask what happens when $\Z$ is replaced by some other commutative ring $R$. The associated invariant is then known as \emph{$n$th homology with coefficients in $R$}. One can even allow the ring $R$ to vary along $X$, or allow $R$ to be not only a ring, but an object of some appropriate category $\category{C}$. The structure which keeps track of these changing coefficients is called a $\category{C}$-\emph{local system}.
 
 Classically speaking, when we say \emph{space,} we really mean \emph{topological space,} and $\category{C}$-local systems are modelled by locally-constant sheaves with values in $\category{C}$. In modern homotopy theory, one often takes \emph{space} to mean \emph{$\infty$-groupoid;} thought of in this way, a $\category{C}$-local system on a space $X$ is nothing more than a functor $X \to \category{C}$. This is the point of view that we will take.
 
@@ -91,7 +91,7 @@ There have been (to the knowledge of the author) two main works with results sim
 \begin{itemize}
   \item In \cite{spectralmackeyfunctors2}, similar results to those in \hyperref[ssc:monoidal_beck_chevalley_fibrations]{Subsection~\ref*{ssc:monoidal_beck_chevalley_fibrations}}, about monoidal Beck-Chevalley fibrations, are stated in a rather different situation. The application to local systems is not considered. We have treated these results in less generality.
 
-  \item In \cite{gaitsgory2019study}, results about extending a functor out of a category of spans are proved, but more generally, more abstractly, and for the most part model-independently; there, spans come in $(\infty, 2)$-categories, modelled when necessary by complete 2-Segal spaces. Our approach is more explicit, based on hands-on combinatorial computations done in a quasicategorical twisted arrow category. We believe that the explicitness of our model will be useful in our future work.
+  \item In \cite{gaitsgory2019study}, results about extending a functor out of a category of spans are proved, but more generally, more abstractly, and for the most part model-independently; there, spans come in $(\infty, 2)$-categories, modelled when necessary by complete 2-fold Segal spaces. Our approach is more explicit, based on hands-on combinatorial computations done in a quasicategorical twisted arrow category. We believe that the explicitness of our model will be useful in our future work.
 \end{itemize}
 
 \subsection{Outline}
@@ -106,18 +106,39 @@ In \hyperref[sec:local_systems]{Section~\ref*{sec:local_systems}}, we apply our 
 \subsection{General conventions and set-theoretic size issues}
 \label{ssc:general_conventions}
 
-Suppose $X$ is a simplicial set and $\category{C}$ is an $\infty$-category. By $\Fun(X, \category{C})$, we mean the $\infty$-category of maps $X \to \category{C}$. By $\Map(X, \category{C})$, we mean the $\infty$-groupoid of such maps; that is,
+We do our level best to adhere to the following terminological and typographical practices regarding various types of categories.
+\begin{itemize}
+  \item When we say `$\infty$-groupoid,' we will mean an $(\infty, 0)$-category, here always modelled by a Kan complex. We will in general denote $\infty$-groupoids by capital roman letters coming from the end of the alphabet: $X$, $Y$, \dots
+
+  \item When we say `$\infty$-category,' we will mean an $(\infty, 1)$-category, usually modelled by a quasicategory. We will strive to denote $\infty$-categories by calligraphic letters typeset using the \textsf{eucal} package: $\category{C}$, $\category{D}$, \dots
+
+  \item When we say `$\infty$-bicategory,' we will mean an $(\infty, 2)$-category in the sense of \cite{lurie2009infinity}, modelled by a fibrant scaled or marked-scaled\footnote{The theory of marked-scaled simplicial sets is given in \cite{garcia2cartesianfibrationsii}, and summarized in \hyperref[ssc:marked-scaled_model_structure]{Subsection~\ref*{ssc:marked-scaled_model_structure}}.} simplicial set; which one we mean should be clear from context. We will denote $(\infty, 2)$-categories by blackboard-bold letters typeset with the \textsf{mathbbol} package: $\CC$, $\DD$, \dots
+\end{itemize}
+
+We follow Lurie in our definitions of categories of $\infty$-categories (except for a few size-related transgressions explained below). We also adhere to the above typographical conventions in doing so. Thus:
+\begin{itemize}
+  \item The $(\infty, 1)$-category of spaces is $\S$. We model this as a quasicategory, constructed (as in \cite{highertopostheory}) as the homotopy-coherent nerve (as described in \cite[Sec.~1.1.5]{highertopostheory}, there called the simplicial nerve) of $\Kan$, the Kan-enriched category of Kan complexes.
+
+  \item The $(\infty, 1)$-category of $(\infty,1)$-categories is $\ICat$. We model this as a quasicategory, defined to be the homotopy-coherent nerve of $\QCat$, the Kan-enriched category of quasicategories.
+
+  \item The $(\infty,2)$-category of $(\infty, 1)$-categories is $\ICCat$. We model this as an $\infty$-bicategory, defined to be the scaled nerve (as described in \cite[Sec.~3.1]{lurie2009infinity}) of the $\SSetmk$-enriched category of quasicategories.
+
+  \item The $(\infty, 1)$-category of $(\infty,2)$-categories is $\Cat_{(\infty, 2)}$. This is used only briefly, and will be modelled as the simplicial localization of $(\SSetms)^{f}$, the full subcategory of marked-scaled simplicial sets on fibrant objects, at the class of bicategorical equivalences.
+\end{itemize}
+
+For the most part, our conventions regarding set-theoretic size issues are standard. However, we will at several points point need to consider an $\infty$-category whose objects are large $\infty$-categories. The rigorous solution would be to introduce a series of nested Grothendieck universe, keep track of which one we are currently in, and carry this around as extra notation. However, there are no arguments in this paper which hinge on any set-theoretic size-issues, and the author feels that clarity is lost, rather than gained, by introducing this extraneous notation. Therefore, we will use the same notation for the large $\infty$-category of small $\infty$-categories and the `huge' $\infty$-category of large $\infty$-categories.
+
+Suppose $K$ is a simplicial set and $\category{C}$ is an $\infty$-category. By $\Fun(K, \category{C})$, we mean the $\infty$-category of maps $K \to \category{C}$. By $\Map(K, \category{C})$, we mean the $\infty$-groupoid of such maps; that is,
 \begin{equation*}
-  \Map(X, \category{C}) = \Fun(X, \category{C})^{\simeq},
+  \Map(K, \category{C}) = \Fun(K, \category{C})^{\simeq},
 \end{equation*}
 where $(-)^{\simeq}\colon \SSet \to \Kan$ denotes the \emph{core} functor, i.e.\ the functor associating to a simplicial set $K$ the largest Kan complex contained in it.
 
-For the most part, our conventions regarding set-theoretic size issues are standard. However, we will at several points point need to consider an $\infty$-category whose objects are large $\infty$-categories. The rigorous solution would be to introduce a series of nested Grothendieck universe, keep track of which one we are currently in, and carry this around as extra notation. However, there are no arguments in this paper which hinge on any set-theoretic size-issues, and the author feels that clarity is lost, rather than gained, by introducing this extraneous notation. Therefore, we will use the same notation for the large $\infty$-category of small $\infty$-categories and the `huge' $\infty$-category of large $\infty$-categories.
 
 \subsection{The marked-scaled model structure}
 \label{ssc:marked-scaled_model_structure}
 
-We will need two different models for $(\infty,2)$-categories: Lurie's theory of scaled simplicial sets, as laid out in \cite{lurie2009infinity}; and Abellan--Stern's theory of marked-scaled simplicial sets, as explained in \cite{garcia2cartesianfibrationsii}. We will assume a knowledge of scaled simplicial sets. We give a basic outline of the portions of the theory of marked-scaled simplicial sets which we will need.
+We will need two different models for $(\infty,2)$-categories: Lurie's theory of scaled simplicial sets, as laid out in \cite{lurie2009infinity}; and Abell\'an--Stern's theory of marked-scaled simplicial sets, as explained in \cite{garcia2cartesianfibrationsii}. We will assume a knowledge of scaled simplicial sets. We give a basic outline of the portions of the theory of marked-scaled simplicial sets which we will need.
 
 A marked-scaled simplicial set is a triple $(X, E_{X}, T_{X})$, where $E_{X} \subseteq X_{1}$ is a collection of edges of $X$ containing all degenerate edges, and $T_{X} \subseteq X_{2}$ is a collection of triangles of $X$ containing all degenerate triangles. We will use the following notation.
 \begin{itemize}

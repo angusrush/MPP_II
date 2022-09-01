@@ -24,28 +24,28 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3}Adjunct data}{15}{subsection.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4}Left Kan implies globally left Kan}{18}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.4}Left Kan implies globally left Kan}{19}{subsection.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5}A few other tricks with Kan extensions}{21}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.5}A few other tricks with Kan extensions}{22}{subsection.2.5}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3}Local systems}{22}{section.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}The enhanced twisted arrow category}{22}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.1}The enhanced twisted arrow category}{23}{subsection.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Two lemmas about marked-scaled anodyne morphisms}{24}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.2}Two lemmas about marked-scaled anodyne morphisms}{25}{subsection.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}The infinity-category of local systems}{26}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.3}The infinity-category of local systems}{27}{subsection.3.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.4}The map governing local systems is a cocartesian fibration}{32}{subsection.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Pull-Push of local systems}{35}{section.4}%
+\contentsline {section}{\numberline {4}Pull-push of local systems}{35}{section.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Monoidal push-pull of local systems}{38}{section.5}%
+\contentsline {section}{\numberline {5}Monoidal pull-push of local systems}{39}{section.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}The lax monoidal Grothendieck construction}{39}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.1}The lax monoidal Grothendieck construction}{40}{subsection.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}Monoidal Beck-Chevalley fibrations}{44}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.2}Monoidal Beck-Chevalley fibrations}{45}{subsection.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3}The monoidal twisted arrow category}{48}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.3}The monoidal twisted arrow category}{49}{subsection.5.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4}The monoidal category of local systems}{51}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.4}The monoidal category of local systems}{52}{subsection.5.4}%
