@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.4.24)  1 SEP 2022 16:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.4.24)  1 SEP 2022 16:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -920,27 +920,27 @@ Overfull \hbox (10.58138pt too wide) in paragraph at lines 760--762
  []
 
 [48] [49] [50] [51] [52] [53])
-Overfull \hbox (19.42342pt too wide) in paragraph at lines 29--29
+Overfull \hbox (19.42342pt too wide) in paragraph at lines 23--23
 []\OT1/cmr/m/n/10 Jacob Lurie. ``(In-fin-ity, 2)-Categories and the Good-willie Cal-cu-lus I''. In: \OT1/cmr/m/it/10 arXiv preprint arXiv:0905.0462
  []
 
 
-Overfull \hbox (2.54018pt too wide) in paragraph at lines 29--29
+Overfull \hbox (2.54018pt too wide) in paragraph at lines 23--23
 []\OT1/cmr/m/n/10 Joe Moeller and Christina Vasi-lakopoulou. ``Monoidal grothendieck con-struc-tion''. In: \OT1/cmr/m/it/10 arXiv preprint
  []
 
 [54]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 30.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 30.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 24.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 24.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 30.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 30.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 24.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 24.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 69B66825DDB07A8E3FA94A33E9CEB786;1979.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 30.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 24.
  ) 
 Here is how much of TeX's memory you used:
  34624 strings out of 481239
